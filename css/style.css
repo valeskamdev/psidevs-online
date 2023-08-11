@@ -556,7 +556,7 @@ nav {
   width: 450px;
 }
 
-form {
+ /* form {
   max-width: 500px;
   display: flex;
   justify-content: center;
@@ -564,17 +564,17 @@ form {
   background-color: #ffffff;
   padding: 40px;
   border-radius: 5px;
-}
-label {
+} */
+/* label {
   font-weight: 500;
   font-size: 1.5rem;
   line-height: 17px;
   display: block;
   color: var(--senary-color);
   margin: 10px 0;
-}
+} */
 
-input {
+/* input [type="email"], input [type="password"] {
   font-weight: 400;
   font-size: 1.4rem;
   width: 100%;
@@ -583,9 +583,9 @@ input {
   border: none;
   border-radius: 3px;
   background-color: transparent;
-}
+} */
 
-textarea {
+/* textarea {
   margin: 25px 0;
   font-weight: 400;
   font-size: 1.4rem;
@@ -593,9 +593,9 @@ textarea {
   color: var(--quinary-color);
   border: none;
   padding: 3px;
-}
+}  */
 
-input,
+/* input,
 textarea {
   font-family: var(--font-family-primary);
   border: 1px solid #00000056;
@@ -612,7 +612,7 @@ textarea:focus {
   box-shadow: rgb(57, 122, 209) 0px 0px 3px 1px,
     rgb(57, 122, 209) 0px 0px 2px 1px inset;
   outline: 1px solid rgb(13, 13, 87);
-}
+} */
 
 form button {
   border: none;
