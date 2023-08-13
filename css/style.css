@@ -113,7 +113,7 @@ button {
 header {
   background-color: var(--primary-color);
   position: sticky;
-  top: 46px;
+  top: 0;
   z-index: 10;
   padding: 25px 0;
 }
@@ -367,7 +367,7 @@ nav {
   flex-direction: row-reverse;
 }
 
-.servicos-img-texto img {
+.servicos-img {
   margin-left: 80px;
 }
 
@@ -795,7 +795,7 @@ footer p {
     width: 65%;
   }
 
-  .nos-escolher-img-texto img {
+  .nos-escolher-img {
     display: none;
   }
 
