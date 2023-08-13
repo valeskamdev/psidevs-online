@@ -57,6 +57,60 @@ button {
   cursor: pointer;
 }
 
+/* Esqueci a Senha */
+
+.body-esqueceu-senha{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(200,222,255);
+  background: linear-gradient(130deg, rgba(200,222,255,1) 0%, rgba(136,186,235,1) 75%, rgba(127,181,233,1) 80%, rgba(113,173,228,1) 99%);
+  background-image: url(../iPhone\ 14\ Fundo\ azul.png);
+  /* background: rgb(243,247,255);
+  background: linear-gradient(239deg, rgba(243,247,255,1) 0%, rgba(201,224,245,1) 80%, rgba(191,218,243,1) 99%); */
+}
+.form-header-esqueceu-senha{
+  display: flex;
+  align-items: start;
+  justify-content: end;
+}
+.container-esqueceu-senha{
+  width: 95%;
+  height: 80vh;
+  display: flex;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+}.container-esqueceu-senha form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 10px;
+}
+
+.container-esqueceu-senha form input{
+  box-shadow: 2px 3px 4px rgba(100, 100, 100, 0.212);
+  height: 31px;
+}
+#form-header-esqueceu-senha h2, p{
+  color: #152A5C;
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+}
+.button-esqueci-senha{
+  background-color: #67b0cf;
+  padding: 8px 60px 8px 60px;
+  border: none;
+  color: var(--quaternary-color);
+  border-radius: 5px;
+  background: rgb(102,124,187);
+  background: linear-gradient(270deg, rgba(102,124,187,0.8911939775910365) 0%, rgba(90,155,249,1) 25%, rgba(118,174,226,1) 79%, rgba(163,210,253,1) 99%);
+}
+
+
 /* INICIO HOME */
 
 .limitador {
