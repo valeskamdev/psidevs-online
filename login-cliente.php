@@ -15,8 +15,8 @@
 <body>
     <main>       x
        
-        <form action="" method="post" class="row g-3"> 
-        <div class="text-center">
+        <form action="" method="post" class="row g-3" > 
+        <div class="text-center" id="form-header-esqueceu-senha">
             <p><img src="img/github.png" alt="" class="img-login-cliente"></p>
             <h3>Entre na sua conta!</h3>
             <p>Faça o seu login e dê início à sua trajetória!</p>
@@ -45,7 +45,7 @@
             </div>
 
             <div class="text-center">
-                <button type="submit" name="entrar-na-conta-cliente" class=" text-center">Entrar na Conta</button>
+                <button type="submit" name="entrar-na-conta-cliente"  class="primary-color text-center button-esqueci-senha">Entrar na Conta</button>
 
             </div>   
         <div>

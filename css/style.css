@@ -732,6 +732,10 @@ footer p {
   font-weight: 600;
 }
 
+.img-login-cliente{
+  
+}
+
 @media screen and (max-width: 1300px) {
   .depoimentos > p {
     margin-left: 0;
