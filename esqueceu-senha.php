@@ -11,22 +11,29 @@
 <body class="body-esqueceu-senha">
     <main>
         <div class="container-esqueceu-senha">
-            <form method="post" class="row g-3">
-                <div id="form-header-esqueceu-senha">
-                    <h2>Esqueci minha senha</h2>
-                    <p>Informe o seu email para enviarmos o link para redefinir sua senha</p>
-                </div>
-                <div>
-                    <div class="col-12">
-                        <p>
-                            <input class="form-control" type="email" placeholder="E-mail">
-                        </p>
+            <div class="form-img-esqueceu-senha">
+                <img src="img/character-esqueceu-senha.png" alt="" >
+            </div>
+
+            <div class="form-esqueceu-senha" >
+                <form method="post" class="row g-3">
+                    <div class="form-header">
+                        <h2>Esqueci minha senha</h2>
+                        <p>Informe o seu email para enviarmos o link para redefinir sua senha</p>
                     </div>
-                    <div class= "text-center">
-                        <button type="submit" name="esqueci-a-senha-cliente" class="primary-color text-center button-esqueci-senha"><b>Enviar</b></button>
-                </div>
-                </div>
-            </form>
+                    <div>
+                        <div class="col-12">
+                            <p>
+                                <img src="" alt="">
+                                <input class="form-control" type="email" placeholder="E-mail">
+                            </p>
+                        </div>
+                        <div class= "text-center">
+                            <button type="submit" name="esqueci-a-senha-cliente" class="primary-color text-center button-esqueci-senha"><b>Enviar</b></button>
+                    </div>
+                    </div>
+                </form>
+            </div>
         </div>   
     </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

@@ -60,55 +60,83 @@ button {
 /* Esqueci a Senha */
 
 .body-esqueceu-senha{
-  width: 100%;
+
   height: 100vh;
+  width: 100%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+    background-image: url(../img/fundo-neutro.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.main-esqueceu-senha{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(200,222,255);
-  background: linear-gradient(130deg, rgba(200,222,255,1) 0%, rgba(136,186,235,1) 75%, rgba(127,181,233,1) 80%, rgba(113,173,228,1) 99%);
-  background-image: url(../iPhone\ 14\ Fundo\ azul.png);
-  /* background: rgb(243,247,255);
-  background: linear-gradient(239deg, rgba(243,247,255,1) 0%, rgba(201,224,245,1) 80%, rgba(191,218,243,1) 99%); */
 }
-.form-header-esqueceu-senha{
-  display: flex;
-  align-items: start;
-  justify-content: end;
-}
+
 .container-esqueceu-senha{
-  width: 95%;
-  height: 80vh;
+  width: 63vw;;
+  height: 78vh;
   display: flex;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
-}.container-esqueceu-senha form{
+  background-image: url(../img/fundo-azul.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
+.form-esqueceu-senha{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #fff;
   padding: 3rem;
-  border-radius: 10px;
+  border-radius: 0px 10px 10px 0;
+  width: 49%;
+}
+.form-esqueceu-senha form{
+  width: 85%;
+  margin-left:-40px;
 }
 
-.container-esqueceu-senha form input{
+
+
+.form-esqueceu-senha input{
   box-shadow: 2px 3px 4px rgba(100, 100, 100, 0.212);
   height: 31px;
 }
-#form-header-esqueceu-senha h2, p{
+
+.form-header{
   color: #152A5C;
   font-family: var(--font-family-primary);
   font-weight: 600;
+  margin-bottom: 10px;
 }
+/* .form-header h2{
+  font-size: 23px;
+} */
+
 .button-esqueci-senha{
   background-color: #67b0cf;
-  padding: 8px 60px 8px 60px;
+  padding: 8px 38px 8px 38px;
   border: none;
   color: var(--quaternary-color);
   border-radius: 5px;
   background: rgb(102,124,187);
   background: linear-gradient(270deg, rgba(102,124,187,0.8911939775910365) 0%, rgba(90,155,249,1) 25%, rgba(118,174,226,1) 79%, rgba(163,210,253,1) 99%);
 }
+.form-img-esqueceu-senha{
+  max-width: 51%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-img-esqueceu-senha img{
+  padding: 35px;
+}
+
 
 
 /* INICIO HOME */
@@ -740,6 +768,29 @@ footer p {
   .depoimentos > p {
     margin-left: 0;
   }
+
+/* Esqueceu senha */
+  .form-img-esqueceu-senha{
+    display: none;
+  }
+  .container-esqueceu-senha{
+    max-width: 40vw;
+    max-height: 65vh;
+  }
+  .form-esqueceu-senha{
+    width: 100%;
+    border-radius: 10px;
+  }
+  .button-esqueci-senha{
+    background-color: #152A5C;
+  }
+
+  .container-esqueceu-senha form{
+    width: 91%;
+    margin-left: 0px;
+  }
+
+  /* ---------- */
 }
 
 @media screen and (max-width: 1243px) {
@@ -751,6 +802,12 @@ footer p {
     width: 88%;
     gap: 35px;
   }
+/* esqueceu senha */
+  .container-esqueceu-senha{
+    max-width: 50vw;
+    margin-top: -90px;
+  }
+  
 }
 
 @media screen and (max-width: 1173px) {
@@ -789,6 +846,8 @@ footer p {
   .nos-escolher-texto article {
     flex-direction: column;
   }
+
+
 }
 
 @media screen and (max-width: 1000px) {
@@ -838,6 +897,7 @@ footer p {
 .separador {
   display: none;
 }
+
 
 }
 
@@ -907,11 +967,28 @@ footer p {
     justify-content: space-between;
     align-items: center;
   }
+
 }
+
+@media screen and (max-width: 800px) {
+    /* Esqueceu senha */
+    .form-esqueceu-senha{
+      padding: 1rem;
+    }
+    .container-esqueceu-senha{
+      max-width: 58vw;
+    }
+
+  }
+
 
 @media screen and (max-width: 749px) {
   .info-num-adress div:nth-child(3), .info-num-adress div:nth-child(2)  {
     display: none;
+  }
+  /*  */
+  .container-esqueceu-senha{
+    max-width: 62vw;
   }
 }
 
