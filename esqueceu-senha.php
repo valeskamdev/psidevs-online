@@ -6,10 +6,11 @@
     <title>Esqueci minha senha | Psidevs online</title>
     <link rel="stylesheet" href="css/style.css">
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 </head>
 <body class="body-esqueceu-senha">
-    <main>
+    <main class="main-esqueceu-senha">
         <div class="container-esqueceu-senha">
             <div class="form-img-esqueceu-senha">
                 <img src="img/character-esqueceu-senha.png" alt="" >
@@ -25,12 +26,14 @@
                         <div class="col-12">
                             <p>
                                 <img src="" alt="">
-                                <input class="form-control" type="email" placeholder="E-mail">
+                                <input class="form-control" type="email" placeholder="E-mai">
                             </p>
                         </div>
                         <div class= "text-center">
                             <button type="submit" name="esqueci-a-senha-cliente" class="primary-color text-center button-esqueci-senha"><b>Enviar</b></button>
                     </div>
+                    <div class="termos-condicoes">
+                        Li e concordo com <a href="">os Termos e Condições e Política de Privacidade</a>
                     </div>
                 </form>
             </div>
