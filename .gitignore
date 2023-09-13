@@ -2,3 +2,6 @@ node_modules/
 
 # Ignorar o arquivo build.css gerado pelo Tailwind CSS
 css/dist/build.css
+
+.idea/
+.DS_Storeclear
