@@ -3,12 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/cadastroprofissional.css">.
     <title>Cadastro de Profissional - Psidevs</title>
 </head>
+
+<style>
+     body {
+            background: rgb(243, 247, 255);
+            background: linear-gradient(239deg, rgba(243, 247, 255, 1) 0%, rgba(201, 224, 245, 1) 80%, rgba(191, 218, 243, 1) 99%);
+        }
+        
+        /* Adicionando o fundo azul */
+        .fundo-azul {
+            background: rgb(200, 222, 255);
+            background: linear-gradient(130deg, rgba(200, 222, 255, 1) 0%, rgba(136, 186, 235, 1) 75%, rgba(127, 181, 233, 1) 80%, rgba(113, 173, 228, 1) 99%);
+        }
+        button {
+            background: rgb(102, 124, 187);
+            background: linear-gradient(270deg, rgba(102, 124, 187, 0.8911939775910365) 0%, rgba(90, 155, 249, 1) 25%, rgba(118, 174, 226, 1) 79%, rgba(163, 210, 253, 1) 99%);
+        }
+    </style>
 <body>
     <div class="container">
         <h1>Bem-vindo ao Psidevs</h1>
         <p>Venha conhecer os nossos serviços</p>
+
+
+        
         
         <form action="processa_cadastro.php" method="POST">
             <label for="nome">Nome:</label>
