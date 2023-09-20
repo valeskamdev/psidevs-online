@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Profissional - Psidevs</title>
-    <link rel="stylesheet"  href="css/cadastroprofissional.css">
-</head>     
+    <link rel="stylesheet" href="css/cadastroprofissional.css">
+</head>
+
 <body>
+    <div>
+        <img src="img/duasmocassentadas.svg" alt="duasmocassentadas">
+    </div>
     <div class="container">
         <h1>Bem-vindo ao Psidevs</h1>
-        <p>Venha conhecer os nossos serviços</p>        
-        
+        <p>Venha conhecer os nossos serviços</p>
+
         <form action="processa_cadastro.php" method="POST">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required><br>
@@ -42,7 +47,7 @@
                 <option value="psicologia">Psicologia</option>
                 <option value="psiquiatria">Psiquiatria</option>
                 <option value="terapia-ocupacional">Terapia Ocupacional</option>
-                <!-- Adicione mais opções conforme necessário -->
+
             </select><br>
 
             <label>Gênero:</label><br>
@@ -65,4 +70,5 @@
         </form>
     </div>
 </body>
+
 </html>
