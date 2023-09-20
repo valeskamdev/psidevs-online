@@ -9,10 +9,7 @@
 <body>
     <div class="container">
         <h1>Bem-vindo ao Psidevs</h1>
-        <p>Venha conhecer os nossos serviços</p>
-
-
-        
+        <p>Venha conhecer os nossos serviços</p>        
         
         <form action="processa_cadastro.php" method="POST">
             <label for="nome">Nome:</label>
