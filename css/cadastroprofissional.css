@@ -1,0 +1,13 @@
+body {
+    background: rgb(243, 247, 255);
+    background: linear-gradient(239deg, rgba(243, 247, 255, 1) 0%, rgba(201, 224, 245, 1) 80%, rgba(191, 218, 243, 1) 99%);
+}      
+
+.fundo-azul {
+    background: rgb(200, 222, 255);
+    background: linear-gradient(130deg, rgba(200, 222, 255, 1) 0%, rgba(136, 186, 235, 1) 75%, rgba(127, 181, 233, 1) 80%, rgba(113, 173, 228, 1) 99%);
+}
+button {
+    background: rgb(102, 124, 187);
+    background: linear-gradient(270deg, rgba(102, 124, 187, 0.8911939775910365) 0%, rgba(90, 155, 249, 1) 25%, rgba(118, 174, 226, 1) 79%, rgba(163, 210, 253, 1) 99%);
+}
