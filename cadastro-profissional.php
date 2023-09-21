@@ -19,7 +19,6 @@
                     <h1 class="bemvindo">Bem vindo ao Psidevs</h1>
                     <p>Venha conhecer os nossos serviços</p>
                 </div>
-
                 <div class="input">
                     <form action="processa_cadastro.php" method="POST">
                         <label for="nome">Nome:</label>
