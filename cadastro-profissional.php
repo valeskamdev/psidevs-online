@@ -9,28 +9,24 @@
 </head>
 
 <body>
+    <div>
+        <img src="img/duasmocassentadas.svg" alt="duasmocassentadas">
+    </div>
     <div class="container">
-        <div class="form-image">
-            <img src="img/duasmocassentadas.svg" alt="duasmocassentadas">
-        </div>
-        <div class="form">
-            <form action="#">
-                <div class="titulo">
-                    <h1 class="bemvindo">Bem vindo ao Psidevs</h1>
-                    <p>Venha conhecer os nossos serviços</p>
-                </div>
-                <div class="formulario">
-                    <form action="processa_cadastro.php" method="POST">
-                        <label for="nome">Nome:</label>
-                        <input class="rectangle-85" type="text" id="nome" name="nome" required><br>
+        <h1 class="bemvindo">Bem-vindo ao Psidevs</h1>
+        <p class="venha">Venha conhecer os nossos serviços</p>
 
-                        <label for="email">E-mail:</label>
-                        <input class="rectangle-85" type="email" id="email" name="email" required><br>
+        <form action="processa_cadastro.php" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br>
 
-                        <label for="senha">Senha:</label>
-                        <input class="rectangle-85" type="password" id="senha" name="senha" required><br>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required><br>
 
-                        <label for="lembrar-senha">Lembrar Senha:</label>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required><br>
+
+            <label for="lembrar-senha">Lembrar Senha:</label>
             <input type="checkbox" id="lembrar-senha" name="lembrar-senha"><br>
 
             <label for="celular">Celular:</label>
@@ -45,31 +41,35 @@
             <label for="ano-formacao">Ano de Formação:</label>
             <input type="number" id="ano-formacao" name="ano-formacao" required><br>
 
-                        
+            <label for="especialidade">Especialidade:</label>
+            <select id="especialidade" name="especialidade">
+                <option value=""></option>
+                <option value="psicologia">Psicologia</option>
+                <option value="psiquiatria">Psiquiatria</option>
+                <option value="terapia-ocupacional">Terapia Ocupacional</option>
 
-                        <label for="especialidade">Especialidade:</label>
-                        <select class="rectangle-85" id="especialidade" name="especialidade">
-                            <option value=""></option>
-                            <option value="psicologia">Psicologia</option>
-                            <option value="psiquiatria">Psiquiatria</option>
-                            <option value="terapia-ocupacional">Terapia Ocupacional</option>
-                        </select><br>
+            </select><br>
 
-                        <!-- Outros campos de entrada aqui... -->
+            <label>Gênero:</label><br>
+            <input type="radio" id="genero-masculino" name="genero" value="masculino">
+            <label for="genero-masculino">Masculino</label><br>
 
-                        <label for="termos">Aceitar os <a href="termos.html">Termos e Condições</a>:</label>
-                        <input type="checkbox" id="termos" name="termos" required><br>
+            <input type="radio" id="genero-feminino" name="genero" value="feminino">
+            <label for="genero-feminino">Feminino</label><br>
 
-                        <label for="politica-privacidade">Aceitar a <a href="politica_privacidade.html">Política de Privacidade</a>:</label>
-                        <input type="checkbox" id="politica-privacidade" name="politica-privacidade" required><br>
-                    </form>
-                </div>
-                <div class="botao">
-                    <button><a class="criar-conta" href="#">Criar conta</a></button>
-                </div>
-            </form>
-        </div>
+            <input type="radio" id="genero-nao-binario" name="genero" value="nao-binario">
+            <label for="genero-nao-binario">Não Binário</label><br>
+
+            <label for="termos">Aceitar os <a href="termos.html">Termos e Condições</a>:</label>
+            <input type="checkbox" id="termos" name="termos" required><br>
+
+            <label for="politica-privacidade">Aceitar a <a href="politica_privacidade.html">Política de Privacidade</a>:</label>
+            <input type="checkbox" id="politica-privacidade" name="politica-privacidade" required><br>
+
+            <button type="submit">Criar Conta</button>
+        </form>
     </div>
+
 </body>
 
 </html>
