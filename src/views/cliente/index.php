@@ -6,20 +6,25 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../../../css/dist/build.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
   <title>Psidevs | Minha Conta</title>
 </head>
 <body>
-  <header>
-    <div class="header_logo">
-      <h1><a href="index.php"><img src="../../../assets/logo-branca.svg" alt="Logo Psidevs, Plataforma Online"></a></h1>
-    </div>
-    <div class="header_perfil">
-      <div class="header_perfil_nome">
-        <p>Josefa Ferreira</p>
-        <p>Perfil</p>
+  <header class="bg-primary text-right">
+    <div class="container_header container py-3 flex justify-between items-center">
+      <div class="header_logo">
+        <h1><a href="index.php"><img src="../../../assets/logo-branca.svg" alt="Logo Psidevs, Plataforma Online"></a></h1>
       </div>
-      <div class="header_perfil_avatar">
-        <img src="../../../assets/cliente-avatar.svg" alt="Avatar cliente">
+      <div class="header_perfil flex">
+        <div class="header_perfil_nome pe-5 text-neutral-100 font-ubuntu font">
+          <p>Josefa Ferreira</p>
+          <p class="font-bold">Perfil</p>
+        </div>
+        <div class="header_perfil_avatar">
+          <img src="../../../assets/cliente-avatar.svg" alt="Avatar cliente">
+        </div>
       </div>
     </div>
   </header>
