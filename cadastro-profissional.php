@@ -31,22 +31,22 @@
     <input class="email" type="email" id="email" name="email" required placeholder="Digite seu e-mail"><br>
 
     <label for="senha"></label>
-    <input type="password" id="senha" name="senha" required placeholder="Digite sua senha"><br>
+    <input class="senha" type="password" id="senha" name="senha" required placeholder="senha"><br>
 
-    <label for="lembrar-senha">Lembrar Senha:</label>
-    <input type="checkbox" id="lembrar-senha" name="lembrar-senha"><br>
+    <label for="lembrar-senha" class="lembrar-senha">Lembrar Senha:</label>
+    <input type="checkbox" id="lembrar-senha" name="lembrar-senha" class="botao-lembrar-senha"><br>
 
     <label for="celular"></label>
-    <input type="tel" id="celular" name="celular" required placeholder="Digite seu número de celular"><br>
+    <input type="tel" id="celular" name="celular" required placeholder="Digite seu número de celular" class="celular"><br>
 
     <label for="cpf"></label>
-    <input type="text" id="cpf" name="cpf" required placeholder="Digite seu CPF"><br>
+    <input type="text" id="cpf" name="cpf" required placeholder="Digite seu CPF" class="cpf"><br>
 
     <label for="crp"></label>
-    <input type="text" id="crp" name="crp" required placeholder="Digite seu CRP"><br>
+    <input type="text" id="crp" name="crp" required placeholder="Digite seu CRP" class="crp"><br>
 
     <label for="ano-formacao"></label>
-    <input type="number" id="ano-formacao" name="ano-formacao" required placeholder="Digite o ano de formação"><br>
+    <input type="number" id="ano-formacao" name="ano-formacao" required placeholder="Digite o ano de formação" class="ano-formacao"><br>
 
     <label for="especialidade"></label>
     <select id="especialidade" name="especialidade">
