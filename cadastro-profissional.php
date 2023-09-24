@@ -48,15 +48,15 @@
     <label for="ano-formacao"></label>
     <input type="number" id="ano-formacao" name="ano-formacao" required placeholder="Digite o ano de formação" class="ano-formacao"><br>
 
-    <label for="especialidade"></label>
-    <select id="especialidade" name="especialidade">
+    <label  for="especialidade"></label>
+    <select class="especialidade" id="especialidade" name="especialidade">
         <option value="" selected disabled>Especialidade</option>
         <option value="psicologia">Psicologia</option>
         <option value="psiquiatria">Psiquiatria</option>
         <option value="terapia-ocupacional">Terapia Ocupacional</option>
     </select><br>
 
-    <label>Gênero:</label><br>
+    <label class="genero">Gênero:</label><br>
     <input type="radio" id="genero-masculino" name="genero" value="masculino">
     <label for="genero-masculino">Masculino</label><br>
 

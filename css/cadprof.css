@@ -199,3 +199,29 @@
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
+.especialidade {
+    width: 500px;
+    height: 30px;
+    flex-shrink: 1;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 1px 4px 4px 0px rgba(0, 0, 0, 0.25);    
+}
+
+.genero {
+    display: flex;
+width: 104.942px;
+height: 34px;
+flex-direction: column;
+justify-content: center;
+flex-shrink: 0;
+
+color: #060B38;
+font-family: Plus Jakarta Sans;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 22px; /* 110% */
+}
