@@ -29,15 +29,17 @@
     </div>
   </header>
 
-  <main>
-    <div class="container_header">
-      <h2>Boa tarde, Josefa Ferreira</h2>
-      <div class="container_header_interacao">
-        <div class="container_header_interacao_notificacao">
-          <img src="../../../assets/icone-notificacao.svg" alt="Sino">
-        </div>
-        <div class="container_header_interacao_consulta">
-          <a href="#"><img src="../../../assets/icone-plus.svg" alt="Sinal de adição">Marcar consulta</a>
+  <main class="container">
+    <div class="container_sub_header grid grid-cols-3 gap-4 font-ubuntu pt-5">
+      <div class="container_header flex justify-between col-span-2 col-start-2">
+        <h2 class="text-neutral-900 text-3xl">Boa tarde, Josefa Ferreira</h2>
+        <div class="container_header_interacao w-72 flex justify-between items-center">
+          <div class="container_header_interacao_notificacao bg-primary w-11 h-11 rounded-full inline-flex justify-center items-center relative before:content-[''] before:absolute before:bg-red-600 before:w-3 before:h-3 before:rounded-full before:top-1 before:right-0">
+            <img src="../../../assets/icone-notificacao.svg" alt="Sino">
+          </div>
+          <div class="container_header_interacao_consulta bg-primary rounded-full inline-flex justify-center items-center h-11 px-5">
+            <a href="#" class="inline-flex text-neutral-100"><img src="../../../assets/icone-plus.svg" class="pe-2" alt="Sinal de adição">Marcar consulta</a>
+          </div>
         </div>
       </div>
     </div>
