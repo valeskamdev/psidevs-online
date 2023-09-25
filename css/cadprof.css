@@ -1,27 +1,62 @@
 /* Estilos para o layout da página */
 body {
-    background: rgb(243, 247, 255);
-    background: linear-gradient(239deg, rgba(243, 247, 255, 1) 0%, rgba(201, 224, 245, 1) 80%, rgba(191, 218, 243, 1) 99%);
+    border-radius: 0px 40px 40px 0px;
+background: #FBFCFE;
 
 }
 
 .container {
+    background-color: #f0f0f0; /* Mantém a cor de fundo */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px; /* Espaçamento interno para melhorar o visual */
+    background: rgb(200,222,255);
+background: linear-gradient(130deg, rgba(200,222,255,1) 0%, rgba(136,186,235,1) 75%, rgba(127,181,233,1) 80%, rgba(113,173,228,1) 99%);
 }
 
-/* Estilos para a imagem */
+.conteudo {
+    display: flex;
+    align-items: center;
+}
+
+.texto {
+    flex: 1;
+}
+
 .imagem {
     flex: 1;
-    margin-right: 20px;
-    background: rgb(200, 222, 255);
-    background: linear-gradient(130deg, rgba(200, 222, 255, 1) 0%, rgba(136, 186, 235, 1) 75%, rgba(127, 181, 233, 1) 80%, rgba(113, 173, 228, 1) 99%);
+    text-align: center;
+    margin-top: 500px; /* Move a imagem para baixo */
+   
+}
+
+.welcome {
+    font-size: 24px;
+    margin-bottom: 10px; /* Espaço entre "Welcome to" e "PSI" */
+}
+
+.psi {
+    font-size: 70px;
+    margin-bottom: 0; /* Remove a margem do "PSI" */
+}
+
+.devs {
+    font-size: 150px;
+    margin-top: 5px; /* Adiciona um pequeno espaço entre "PSI" e "Devs" */
+    color: white;
+}
+
+}
+
+.texto-img {
+    font-size: 16px;
+    margin-top: 20px;
 }
 
 /* Estilos para o formulário */
 .formulario {
-    flex: 2;
+    flex: 150px;
 }
 
 .welcome {

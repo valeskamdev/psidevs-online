@@ -9,16 +9,19 @@
 </head>
 
 <body>
-    <div class="container">
+<div class="container">
+    <div class="conteudo">
+        <div class="texto">
+            <h1 class="welcome">Welcome to</h1>
+            <h1 class="psi">PSI</h1>
+            <h1 class="devs">Devs</h1>
+            <p class="texto-img">A Psidevs torna simples encontrar psicólogos qualificados online e reservar consultas de forma conveniente.</p>
+        </div>
         <div class="imagem">
             <img src="img/duasmocassentadas.svg" alt="duasmocassentadas">
-            <div>
-                <h1 class="welcome">Welcome to</h1>
-                <h1 class="psi">PSIDEVS</h1>
-                <P class="texto-img">A Psidevs torna simples encontrar psicólogos qualificados on line e reservar consultas de forma conveniente.</P>
-            </div>
-
         </div>
+    </div>
+    
         <div class="formulario">
             <h1 class="bem-psidev">Bem-vindo ao Psidevs</h1>
             <p class="venha-conhecer">Venha conhecer os nossos serviços</p>
