@@ -33,22 +33,25 @@
                 <label for="senha"></label>
                 <input class="senha" type="password" id="senha" name="senha" required placeholder="senha"><br>
 
-                <label for="lembrar-senha" class="lembrar-senha">Lembrar Senha:</label>
-                <input type="checkbox" id="lembrar-senha" name="lembrar-senha" class="botao-lembrar-senha"><br>
+                <div class="lembrar-senha">
+                    <label for="lembrar-senha">Lembrar Senha:</label>
+                    <input type="checkbox" id="lembrar-senha" name="lembrar-senha" class="botao-lembrar-senha"><br>
+                </div>
 
-                <label for="celular"></label>
-                <input type="tel" id="celular" name="celular" required placeholder="Digite seu número de celular" class="celular"><br>
+                <div class="crp-celular">
+                    <label for="celular"></label>
+                    <input type="tel" id="celular" name="celular" required placeholder="Digite seu número de celular" class="celular"><br>
 
-                <label for="cpf"></label>
-                <input type="text" id="cpf" name="cpf" required placeholder="Digite seu CPF" class="cpf"><br>
+                    <label for="cpf"></label>
+                    <input type="text" id="cpf" name="cpf" required placeholder="Digite seu CPF" class="cpf"><br>
 
-                <label for="crp"></label>
-                <input type="text" id="crp" name="crp" required placeholder="Digite seu CRP" class="crp"><br>
+                    <label for="crp"></label>
+                    <input type="text" id="crp" name="crp" required placeholder="Digite seu CRP" class="crp"><br>
 
-                <label for="ano-formacao"></label>
-                <input type="number" id="ano-formacao" name="ano-formacao" required placeholder="Digite o ano de formação" class="ano-formacao"><br>
+                    <label for="ano-formacao"></label>
+                    <input type="number" id="ano-formacao" name="ano-formacao" required placeholder="Digite o ano de formação" class="ano-formacao"><br>
 
-                <label for="especialidade"></label>
+                </div> <label for="especialidade"></label>
                 <select class="especialidade" id="especialidade" name="especialidade">
                     <option value="" selected disabled>Especialidade</option>
                     <option value="psicologia">Psicologia</option>
