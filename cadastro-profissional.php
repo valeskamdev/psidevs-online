@@ -4,25 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="css/cadprof.css">
+    <link rel="stylesheet" href="css/esqueceu-senha.css">
     <title>Cadastro Profissional</title>
 </head>
 
-<body>
-<div class="container">
-    <div class="conteudo">
-        <div class="texto">
-            <h1 class="welcome">Welcome to</h1>
-            <h1 class="psi">PSI</h1>
-            <h1 class="devs">Devs</h1>
-            <p class="texto-img">A Psidevs torna simples encontrar psicólogos qualificados online e reservar consultas de forma conveniente.</p>
+<body class="body-esqueceu-senha">
+    <main class="main-esqueceu-senha">
+        <div class="container-esqueceu-senha container-cadastro-profissional">
+        <div class="form-img-esqueceu-senha">
+            <div class="texto">
+                <h1 class="welcome">Welcome to</h1>
+                <h1 class="psi">PSI</h1>
+                <h1 class="devs">Devs</h1>
+                <p class="texto-img">A Psidevs torna simples encontrar psicólogos qualificados online e reservar consultas de forma conveniente.</p>
+            </div>
+            <div class="imagem">
+                <img src="img/duasmocassentadas.svg" alt="duasmocassentadas">
+            </div>
         </div>
-        <div class="imagem">
-            <img src="img/duasmocassentadas.svg" alt="duasmocassentadas">
-        </div>
-    </div>
-    
-        <div class="formulario">
+
+        <div class="form-esqueceu-senha">
             <h1 class="bem-psidev">Bem-vindo ao Psidevs</h1>
             <p class="venha-conhecer">Venha conhecer os nossos serviços</p>
 
@@ -85,8 +88,12 @@
             </form>
 
         </div>
+        </div>
+        
 
+    </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 
 </html>
