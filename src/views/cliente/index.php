@@ -27,7 +27,7 @@
           <img src="../../../assets/cliente-avatar.svg" alt="Avatar cliente">
         </div>
       </div>
-      <div class="container_header_mobile xl:hidden">
+      <div class="container_header_mobile xl:hidden  z-40">
         <span class=" cursor-pointer" onclick="Openbar()">
           <img src="../../../assets/icone-menu.svg" class="pe-2 sm:pe-0" alt="menu">
         </span>
@@ -73,7 +73,6 @@
         </div>
       </div>
     </div>
-
   </header>
 
   <main class="container">
@@ -250,11 +249,13 @@
         </div>
       </div>
     </div>
+    <div class="backdrop" onclick="Openbar()"></div>
   </main>
 
   <script>
     function Openbar() {
-      document.querySelector('.sidebar').classList.toggle('right-[0px]')
+      document.querySelector('.sidebar').classList.toggle('right-[0px]');
+      document.querySelector('.backdrop').classList.toggle('drawer-backdrop');
     }
   </script>
 </body>
