@@ -119,7 +119,7 @@
         </div>
       </div>
       <div class="container_conteudo col-span-3 bg-amber-200 ">
-        <div class="container_conteudo_consulta_hoje bg-cards mx-3 rounded-xl py-5 px-3">
+        <div class="container_conteudo_consulta_hoje bg-cards mx-3 rounded-xl py-5 px-3 border border-border-blue">
           <div class="container_conteudo_consulta_hoje_titulo flex justify-between items-center pb-5">
             <h2 class="font-ubuntu font-bold text-xl text-neutral-700">Consulta de hoje</h2>
             <span class="bg-[#E8ECF4] p-3 rounded font-inter font-medium text-primary">16:40</span>
@@ -142,40 +142,62 @@
               </div>
             </div>
             <div class="container_conteudo_consulta_hoje_rodape_conteudo_link px-2">
-              <a href="#" class="inline-flex items-center text-neutral-700 text-primary">Conectar<img src="../../../assets/arrow-right.svg" class="ms-3" alt=""></a>
+              <a href="#" class="inline-flex items-center text-primary">Conectar<img src="../../../assets/arrow-right.svg" class="ms-3" alt=""></a>
             </div>
           </div>
         </div>
-        <div class="container_conteudo_proxima_consulta">
-          <div class="container_conteudo_proxima_consulta_titulo">
-            <h2>Próxima consulta</h2>
+        <div class="container_conteudo_proxima_consulta_bg bg-cards mx-3 border border-border-blue mt-5  rounded-xl">
+            <div class="container_conteudo_proxima_consulta py-5 px-3 ">
+              <div class="container_conteudo_proxima_consulta_titulo">
+                <h2 class="font-ubuntu font-bold text-xl text-neutral-700 mb-5">Próxima consulta</h2>
+              </div>
+              <div class="container_conteudo_proxima_consulta_profissional flex items-center justify-between">
+                <div class="container_conteudo_proxima_consulta_profissional_avatar_e_horario flex items-center">
+                  <div class="container_conteudo_proxima_consulta_grupo_1_avatar me-3">
+                    <img src="../../../assets/icone-avatar-profissional.svg" alt="Avatar de uma mulher">
+                  </div>
+                  <div class="container_conteudo_proxima_consulta_grupo_1_texto">
+                    <h3 class="font-inter text-neutral-600 mb-1">Fábia Araújo de Nogueira</h3>
+                    <span class="flex font-inter text-neutral-500 text-xs"><img src="../../../assets/icone-horario.svg" class="me-2" alt="Calendário"> 20 Jul | Zoom</span>
+                  </div>
+                </div>
+                <div class="container_conteudo_proxima_consulta_grupo_1_horario">
+                  <span class="font-inter text-primary rounded-full bg-hours px-3 py-1 text-sm font-bold">14:30</span>
+                </div>
+              </div>
+              <hr class="my-3">
+              <div class="container_conteudo_proxima_consulta_profissional flex items-center justify-between">
+                <div class="container_conteudo_proxima_consulta_profissional_avatar_e_horario flex items-center">
+                  <div class="container_conteudo_proxima_consulta_grupo_1_avatar me-3">
+                    <img src="../../../assets/icone-avatar-profissional.svg" alt="Avatar de uma mulher">
+                  </div>
+                  <div class="container_conteudo_proxima_consulta_grupo_1_texto">
+                    <h3 class="font-inter text-neutral-600 mb-1">Fábia Araújo de Nogueira</h3>
+                    <span class="flex font-inter text-neutral-500 text-xs"><img src="../../../assets/icone-horario.svg" class="me-2" alt="Calendário"> 20 Jul | Zoom</span>
+                  </div>
+                </div>
+                <div class="container_conteudo_proxima_consulta_grupo_1_horario">
+                  <span class="font-inter text-primary rounded-full bg-hours px-3 py-1 text-sm font-bold">14:30</span>
+                </div>
+              </div>
+              <hr class="my-3">
+              <div class="container_conteudo_proxima_consulta_profissional flex items-center justify-between">
+                <div class="container_conteudo_proxima_consulta_profissional_avatar_e_horario flex items-center">
+                  <div class="container_conteudo_proxima_consulta_grupo_1_avatar me-3">
+                    <img src="../../../assets/icone-avatar-profissional.svg" alt="Avatar de uma mulher">
+                  </div>
+                  <div class="container_conteudo_proxima_consulta_grupo_1_texto">
+                    <h3 class="font-inter text-neutral-600 mb-1">Fábia Araújo de Nogueira</h3>
+                    <span class="flex font-inter text-neutral-500 text-xs"><img src="../../../assets/icone-horario.svg" class="me-2" alt="Calendário"> 20 Jul | Zoom</span>
+                  </div>
+                </div>
+                <div class="container_conteudo_proxima_consulta_grupo_1_horario">
+                  <span class="font-inter text-primary rounded-full bg-hours px-3 py-1 text-sm font-bold">14:30</span>
+                </div>
+              </div>
           </div>
-          <div class="container_conteudo_proxima_consulta_profissional">
-            <div class="container_conteudo_proxima_consulta_grupo_1_avatar">
-              <img src="../../../assets/icone-avatar-profissional.svg" alt="Avatar de uma mulher">
-            </div>
-            <div class="container_conteudo_proxima_consulta_grupo_1_texto">
-              <h3>Fábia Araújo de Fraiz</h3>
-              <span><img src="../../../assets/icone-horario.svg" alt="Calendário"> 20 Jul | Zoom</span>
-            </div>
-            <div class="container_conteudo_proxima_consulta_grupo_1_horario">
-              <span>14:30</span>
-            </div>
-          </div>
-          <div class="container_conteudo_proxima_consulta_profissional">
-            <div class="container_conteudo_proxima_consulta_grupo_1_avatar">
-              <img src="../../../assets/icone-avatar-profissional.svg" alt="Avatar de uma mulher">
-            </div>
-            <div class="container_conteudo_proxima_consulta_grupo_1_texto">
-              <h3>Juliana Souza Martins</h3>
-              <span><img src="../../../assets/icone-horario.svg" alt="Calendário"> 21 Jul | Meet</span>
-            </div>
-            <div class="container_conteudo_proxima_consulta_grupo_1_horario">
-              <span>09:00</span>
-            </div>
-          </div>
-          <div class="container_conteudo_proxima_consulta_rodape">
-            <p>Ver todas consultas</p>
+          <div class="container_conteudo_proxima_consulta_rodape bg-hours rounded-b-xl p-3">
+            <p class="text-primary font-ubuntu font-bold">Ver todas consultas</p>
           </div>
         </div>
         <div class="container_conteudo_historico_consulta">
