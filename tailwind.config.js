@@ -8,7 +8,7 @@ module.exports = {
         'secondary': '#E6ECF8',
         'cards': '#FDFDFD',
         'border-blue': '#B1C3F0',
-        'hours': '#E8ECF4',
+        'hours': '#ECEFF6',
       },
       container: {
         center: true,
