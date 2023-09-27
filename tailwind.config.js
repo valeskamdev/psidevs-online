@@ -6,8 +6,8 @@ module.exports = {
       colors: {
         'primary': '#415DA1',
         'secondary': '#E6ECF8',
-        'namehawkes-blue': '#ECEFF6',
-        'pale-cornflower-blue': '#B1C3F0',
+        'cards': '#FDFDFD',
+        'boder': '#B1C3F0',
       },
       container: {
         center: true,

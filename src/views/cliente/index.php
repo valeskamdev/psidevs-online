@@ -77,20 +77,20 @@
   </header>
 
   <main class="container">
-    <div class="container_sub_header md:grid md:grid-cols-4 font-ubuntu pt-5">
+    <div class="container_sub_header md:grid md:grid-cols-4 font-ubuntu">
       <div class="container_header flex flex-col-reverse md:justify-between md:col-span-3 md:col-start-2">
-        <h2 class="text-neutral-700 text-2xl md:text-4xl">Boa tarde, Josefa Ferreira</h2>
+        <h2 class="text-neutral-700 text-xl text-center md:text-4xl py-5">Boa tarde, Josefa Ferreira</h2>
         <div class="container_header_interacao w-72 flex justify-between items-center">
-          <div class="container_header_interacao_notificacao bg-primary w-11 h-11 rounded-full inline-flex justify-center items-center relative before:content-[''] before:absolute before:bg-red-600 before:w-3 before:h-3 before:rounded-full before:top-1 before:right-0">
+          <div class="container_header_interacao_notificacao bg-primary w-11 h-11 rounded-full lg:inline-flex justify-center items-center relative before:content-[''] before:absolute before:bg-red-600 before:w-3 before:h-3 before:rounded-full before:top-1 before:right-0 hidden">
             <img src="../../../assets/icone-notificacao.svg" alt="Sino">
           </div>
-          <div class="container_header_interacao_consulta bg-primary rounded-full inline-flex justify-center items-center h-11 px-5">
+          <div class="container_header_interacao_consulta bg-primary fixed bottom-[15px] right-[12px] rounded-full inline-flex justify-center items-center h-11 px-5">
             <a href="#" class="inline-flex text-neutral-100"><img src="../../../assets/icone-plus.svg" class="pe-2" alt="Sinal de adição">Marcar consulta</a>
           </div>
         </div>
       </div>
     </div>
-    <div class="container_principal grid grid-cols-4">
+    <div class="container_principal lg:grid lg:grid-cols-4">
       <div class="container_navbar col-span-1 font-ubuntu hidden">
         <div class="container_navbar_conteudo bg-gray-50 border border-solid border-pale-cornflower-blue p-5 w-11/12 rounded-2xl">
           <div class="container_navbar_conteudo_avatar flex items-center text-xl font-medium text-neutral-700 pt-3">
@@ -118,30 +118,31 @@
           </nav>
         </div>
       </div>
-      <div class="container_conteudo col-span-3 bg-amber-200">
-        <div class="container_conteudo_consulta_hoje">
-          <div class="container_conteudo_consulta_hoje_titulo">
-            <h2>Consulta de hoje</h2>
-            <span>16:40</span>
+      <div class="container_conteudo col-span-3 bg-amber-200 ">
+        <div class="container_conteudo_consulta_hoje bg-cards mx-3 rounded-xl py-5 px-3">
+          <div class="container_conteudo_consulta_hoje_titulo flex justify-between items-center pb-5">
+            <h2 class="font-ubuntu font-bold text-xl text-neutral-700">Consulta de hoje</h2>
+            <span class="bg-[#E8ECF4] p-3 rounded font-inter font-medium text-primary">16:40</span>
           </div>
           <div class="container_conteudo_consulta_hoje_corpo">
-            <h3>Jorge Nogueira</h3>
-            <p>Psicólogo Educacional</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, magnam, maxime!
-              Adipisci aut blanditiis corporis facilis illo quas saepe voluptatem.</p>
+            <h3 class="text-lg font-bold text-primary">Jorge Nogueira</h3>
+            <p class="text-neutral-700 mb-4">Psicólogo Educacional</p>
+            <p class="text-neutral-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, magnam, maxime!
+              Adipisci aut blanditiis.</p>
           </div>
-          <div class="container_conteudo_consulta_hoje_rodape">
-            <div class="container_conteudo_consulta_hoje_rodape_plataforma">
-              <img src="../../../assets/icone-plataforma-zoom.svg" alt="Plataforma Zoom">
+          <hr class="my-3">
+          <div class="container_conteudo_consulta_hoje_rodape flex justify-between items-center">
+            <div class="container_conteudo_consulta_hoje_rodape_plataforma hidden">
+              <img src="../../../assets/icone-plataforma-zoom.svg" class="" alt="Plataforma Zoom">
             </div>
-            <div class="container_conteudo_consulta_hoje_rodape_conteudo">
+            <div class="container_conteudo_consulta_hoje_rodape_conteudo font-inter">
               <div class="container_conteudo_consulta_hoje_rodape_texto">
-                <h4>Entre na chamada</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi atque repudiandae vero?</p>
+                <h4 class="text-neutral-700 font-ubuntu">Entre na chamada</h4>
+                <p class="text-xs text-neutral-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
               </div>
-              <div class="container_conteudo_consulta_hoje_rodape_conteudo_link">
-                <a href="#">Conectar<img src="../../../assets/arrow-right.svg" alt=""></a>
-              </div>
+            </div>
+            <div class="container_conteudo_consulta_hoje_rodape_conteudo_link px-2">
+              <a href="#" class="inline-flex items-center text-neutral-700 text-primary">Conectar<img src="../../../assets/arrow-right.svg" class="ms-3" alt=""></a>
             </div>
           </div>
         </div>
