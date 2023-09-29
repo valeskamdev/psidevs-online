@@ -13,12 +13,12 @@
   <title>Psidevs | Minha Conta</title>
 </head>
 <body class="bg-secondary">
-  <header class="bg-primary text-right sticky top-0 z-50">
-    <div class="container_header_desktop container py-3 ">
+  <header class="container_header">
+    <div class="container_header_desktop">
       <div class="header_logo py-2">
         <h1><a href="index.php"><img src="../../../assets/logo-branca.svg" class="w-11/12 ps-2 sm:ps-0" alt="Logo Psidevs, Plataforma Online"></a></h1>
       </div>
-      <div class="header_perfil hidden xl:flex">
+      <div class="header_perfil hidden lg:flex">
         <div class="header_perfil_nome pe-5 text-neutral-100 font-ubuntu">
           <p>Josefa Ferreira</p>
           <p class="font-medium">Perfil</p>
@@ -27,7 +27,7 @@
           <img src="../../../assets/cliente-avatar.svg" alt="Avatar cliente">
         </div>
       </div>
-      <div class="container_header_mobile xl:hidden z-10">
+      <div class="container_header_mobile lg:hidden z-10">
         <span class=" cursor-pointer" onclick="Openbar()">
           <img src="../../../assets/icone-menu.svg" class="pe-2 sm:pe-0" alt="menu">
         </span>
@@ -73,23 +73,18 @@
   </header>
 
   <main class="container">
-    <div class="container_bg mx-3">
-      <div class="container_sub_header font-ubuntu">
-        <div class="container_header flex flex-col-reverse">
-          <h2 class="text-neutral-700 text-2xl text-center py-5">Boa tarde, Josefa Ferreira</h2>
-          <div class="container_header_interacao w-72 ">
-            <div class="container_header_interacao_notificacao">
-              <img src="../../../assets/icone-notificacao.svg" alt="Sino">
-            </div>
-            <div class="container_header_interacao_consulta">
-              <a href="#" class="inline-flex text-neutral-100"><img src="../../../assets/icone-plus.svg" class="pe-2" alt="Sinal de adição">Marcar consulta</a>
-            </div>
+    <div class="container_bg">
+      <div class="container_sub_header_bg">
+        <div class="container_sub_header">
+          <h2 class="container_sub_header_saudacao">Boa tarde, Josefa Ferreira</h2>
+          <div class="container_header_marcar_consulta_botao_bg">
+              <a href="#" class="container_header_marcar_consulta_botao"><img src="../../../assets/icone-plus.svg" class="pe-2" alt="Sinal de adição">Marcar consulta</a>
           </div>
         </div>
       </div>
-      <div class="container_principal lg:grid lg:grid-cols-4">
-        <div class="container_navbar col-span-1 font-ubuntu hidden">
-          <div class="container_navbar_conteudo">
+      <div class="container_principal">
+        <div class="container_navbar">
+          <div class="container_navbar_conteudo lg:sticky lg:top-5">
             <div class="container_navbar_conteudo_avatar text-xl font-medium text-neutral-700 pt-3">
               <img src="../../../assets/cliente-avatar.svg" class="pe-4" alt="Avatar cliente">
               <p>Minha conta</p>
@@ -115,52 +110,50 @@
             </nav>
           </div>
         </div>
-        <div class="container_conteudo col-span-3 mb-20">
-
-          <div class="container_conteudo_consulta_hoje_bg card_bg mt-0 border-primary">
-            <div class="container_conteudo_consulta_hoje py-6 px-4">
-              <div class="container_conteudo_consulta_hoje_titulo pb-5">
-                <h2 class="consultaTitulo mb-0">Consulta de hoje</h2>
-                <span class="bg-tertiary m-1 p-3 rounded font-inter text-primary font-bold">16:40</span>
+        <div class="container_conteudo">
+          <div class="container_conteudo_consulta_hoje_bg">
+            <div class="container_conteudo_consulta_hoje">
+              <div class="container_conteudo_consulta_hoje_titulo">
+                <h2 class="consultaTitulo">Consulta de hoje</h2>
+                <span class="container_conteudo_consulta_hoje_horario">16:40</span>
               </div>
-              <div class="divisor">
-                <div class="container_conteudo_consulta_hoje_corpo pb-8">
-                  <h3 class="text-xl font-bold text-primary">Jorge Nogueira</h3>
-                  <p class="text-lg text-neutral-700 mb-4">Psicólogo Educacional</p>
-                  <p class="text-neutral-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, magnam, maxime!
-                    Adipisci aut blanditiis.</p>
+              <div class="divisor container_conteudo_consulta_hoje_body_rodape">
+                <div class="container_conteudo_consulta_hoje_corpo">
+                  <h3 class="container_conteudo_consulta_hoje_corpo_titulo">Jorge Nogueira</h3>
+                  <p class="container_conteudo_consulta_hoje_corpo_subtitulo">Psicólogo Educacional</p>
+                  <p class="container_conteudo_consulta_hoje_corpo_texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, magnam, maxime!
+                    Adipisci aut blanditiis commodi delectus laboriosam nulla rerum?</p>
                 </div>
-                <div class="container_conteudo_consulta_hoje_rodape pt-3">
+                <div class="container_conteudo_consulta_hoje_rodape">
                   <div class="container_conteudo_consulta_hoje_rodape_plataforma hidden">
                     <img src="../../../assets/icone-plataforma-zoom.svg" class="" alt="Plataforma Zoom">
                   </div>
-                  <div class="container_conteudo_consulta_hoje_rodape_conteudo font-inter">
-                    <div class="container_conteudo_consulta_hoje_rodape_texto">
-                      <h4 class="text-neutral-700 font-ubuntu mb-1">Entre na chamada</h4>
-                      <p class="text-sm text-neutral-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                  <div class="container_conteudo_consulta_hoje_rodape_conteudo">
+                    <div class="container_conteudo_consulta_hoje_rodape_textos">
+                      <h4 class="container_conteudo_consulta_hoje_rodape_titulo">Entre na chamada</h4>
+                      <p class="container_conteudo_consulta_hoje_rodape_texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                     </div>
                   </div>
-                  <div class="container_conteudo_consulta_hoje_rodape_conteudo_link px-2">
-                    <a href="#" class="inline-flex items-center text-primary">Conectar<img src="../../../assets/arrow-right.svg" class="ms-3" alt=""></a>
+                  <div class="container_conteudo_consulta_hoje_rodape_conteudo_link">
+                    <a href="#" class="container_conteudo_consulta_hoje_rodape_conteudo_link_botao">Conectar</a>
                   </div>
               </div>
               </div>
             </div>
           </div>
-
           <div class="container_conteudo_proxima_consulta_bg card_bg">
-              <div class="container_conteudo_proxima_consulta pt-6 px-4">
+              <div class="container_conteudo_proxima_consulta">
                 <div class="container_conteudo_proxima_consulta_titulo">
-                  <h2 class="consultaTitulo">Próxima consulta</h2>
+                  <h2 class="consultaTitulo">Próximas consultas</h2>
                 </div>
                 <ul class="divisor">
-                  <li><div class="container_conteudo_proxima_consulta_profissional py-5">
+                  <li><div class="container_conteudo_proxima_consulta_profissional">
                       <div class="container_conteudo_proxima_consulta_profissional_avatar_e_horario">
-                        <div class="container_conteudo_proxima_consulta_grupo_1_avatar me-3">
+                        <div class="container_conteudo_proxima_consulta_grupo_avatar">
                           <img src="../../../assets/icone-avatar-profissional.svg" alt="Avatar de uma mulher">
                         </div>
-                        <div class="container_conteudo_proxima_consulta_grupo_1_texto">
-                          <h3 class="font-inter text-neutral-600 mb-1 text-lg">Fábia Araújo de Nogueira</h3>
+                        <div class="container_conteudo_proxima_consulta_grupo_texto">
+                          <h3 class="container_conteudo_proxima_consulta_grupo_texto_titulo">Fábia Araújo de Nogueira</h3>
                           <span class="dataConsulta"><img src="../../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
                         </div>
                       </div>
@@ -168,13 +161,13 @@
                         <span class="horarioConsulta">14:30</span>
                       </div>
                     </div></li>
-                  <li><div class="container_conteudo_proxima_consulta_profissional py-5">
+                  <li><div class="container_conteudo_proxima_consulta_profissional">
                       <div class="container_conteudo_proxima_consulta_profissional_avatar_e_horario">
-                        <div class="container_conteudo_proxima_consulta_grupo_avatar me-3">
+                        <div class="container_conteudo_proxima_consulta_grupo_avatar">
                           <img src="../../../assets/icone-avatar-profissional.svg" alt="Avatar de uma mulher">
                         </div>
                         <div class="container_conteudo_proxima_consulta_grupo_texto">
-                          <h3 class="font-inter text-neutral-600 mb-1 text-lg">Fábia Araújo de Nogueira</h3>
+                          <h3 class="container_conteudo_proxima_consulta_grupo_texto_titulo">Fábia Araújo de Nogueira</h3>
                           <span class="dataConsulta"><img src="../../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
                         </div>
                       </div>
@@ -182,13 +175,13 @@
                         <span class="horarioConsulta">14:30</span>
                       </div>
                     </div></li>
-                  <li><div class="container_conteudo_proxima_consulta_profissional py-5">
+                  <li><div class="container_conteudo_proxima_consulta_profissional">
                       <div class="container_conteudo_proxima_consulta_profissional_avatar_e_horario">
-                        <div class="container_conteudo_proxima_consulta_grupo_avatar me-3">
+                        <div class="container_conteudo_proxima_consulta_grupo_avatar">
                           <img src="../../../assets/icone-avatar-profissional.svg" alt="Avatar de uma mulher">
                         </div>
                         <div class="container_conteudo_proxima_consulta_grupo_texto">
-                          <h3 class="font-inter text-neutral-600 mb-1 text-lg">Fábia Araújo de Nogueira</h3>
+                          <h3 class="container_conteudo_proxima_consulta_grupo_texto_titulo">Fábia Araújo de Nogueira</h3>
                           <span class="dataConsulta"><img src="../../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
                         </div>
                       </div>
@@ -199,56 +192,55 @@
                 </ul>
             </div>
             <div class="container_conteudo_proxima_consulta_rodape">
-              <p class="text-primary font-ubuntu font-bold">Ver todas consultas</p>
+              <a href="#" class="rodape">Ver todas consultas</a>
             </div>
           </div>
-
           <div class="container_conteudo_historico_consulta_bg card_bg">
-            <div class="container_conteudo_historico_consulta py-6 px-4">
+            <div class="container_conteudo_historico_consulta">
               <div class="container_conteudo_historico_consulta_sessao">
                 <div class="container_conteudo_historico_consulta_titulo">
                   <h2 class="consultaTitulo">Histórico de consultas</h2>
                 </div>
-                <div class="container_conteudo_historico_consulta_profissional_bg ">
-                  <div class="container_conteudo_historico_consulta_profissional w-full">
-                    <div class="container_conteudo_historico_consulta_profissional_avatar me-3">
-                      <img src="../../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
+                <div class="divisor">
+                  <div class="container_conteudo_historico_consulta_profissional_bg">
+                    <div class="container_conteudo_historico_consulta_profissional">
+                      <div class="container_conteudo_historico_consulta_profissional_avatar">
+                        <img src="../../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
+                      </div>
+                      <div class="container_conteudo_historico_consulta_profissional_texto">
+                        <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
+                        <span class="dataConsulta mb-1"><img src="../../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
+                        <span class="dataConsulta_status_badge text-green-800 bg-green-100 me-2">Finalizada</span>
+                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-100">R$ 75,00</span>
+                      </div>
                     </div>
-                    <div class="container_conteudo_historico_consulta_profissional_texto">
-                      <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
-                      <span class="dataConsulta"><img src="../../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                      <span class="dataConsulta_status_badge text-green-800 bg-green-100">Finalizada</span>
-                      <span class="dataConsulta_status_badge text-gray-800 bg-gray-100">R$ 75,00</span>
-                    </div>
-                  </div>
-                  <div class="container_conteudo_historico_consulta_profissional_botao">
-                    <a href="#" class="botaoReagendar">Reagendar</a>
-                  </div>
-                </div>
-                <hr class="my-3">
-                <div class="container_conteudo_historico_consulta_profissional_bg ">
-                  <div class="container_conteudo_historico_consulta_profissional w-full">
-                    <div class="container_conteudo_historico_consulta_profissional_avatar me-3">
-                      <img src="../../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
-                    </div>
-                    <div class="container_conteudo_historico_consulta_profissional_texto">
-                      <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
-                      <span class="dataConsulta"><img src="../../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                      <span class="dataConsulta_status_badge text-red-800 bg-red-100">Cancelada</span>
-                      <span class="dataConsulta_status_badge text-gray-800 bg-gray-100">R$ 75,00</span>
+                    <div class="container_conteudo_historico_consulta_profissional_botao">
+                      <a href="#" class="botaoReagendar">Reagendar</a>
                     </div>
                   </div>
-                  <div class="container_conteudo_historico_consulta_profissional_botao">
-                    <a href="#" class="botaoReagendar">Reagendar</a>
+                  <div class="container_conteudo_historico_consulta_profissional_bg">
+                    <div class="container_conteudo_historico_consulta_profissional">
+                      <div class="container_conteudo_historico_consulta_profissional_avatar">
+                        <img src="../../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
+                      </div>
+                      <div class="container_conteudo_historico_consulta_profissional_texto">
+                        <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
+                        <span class="dataConsulta mb-1"><img src="../../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
+                        <span class="dataConsulta_status_badge text-red-800 bg-red-100 me-2">Cancelada</span>
+                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-100">R$ 75,00</span>
+                      </div>
+                    </div>
+                    <div class="container_conteudo_historico_consulta_profissional_botao">
+                      <a href="#" class="botaoReagendar">Reagendar</a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="container_conteudo_historico_consulta_rodape">
-              <p class="text-primary font-ubuntu font-bold">Ver histórico de consultas</p>
+              <a href="#" class="rodape">Ver histórico de consultas</a>
             </div>
           </div>
-
         </div>
       </div>
     </div>
