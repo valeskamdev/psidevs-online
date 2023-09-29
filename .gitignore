@@ -4,4 +4,4 @@ node_modules/
 css/dist/build.css
 
 .idea/
-.DS_Storeclear
+.DS_Store
