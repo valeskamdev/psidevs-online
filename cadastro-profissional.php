@@ -12,26 +12,85 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;            
+            margin: 0;
             background: rgb(243, 247, 255);
-            background: linear-gradient(239deg, rgba(243, 247, 255, 1) 0%, rgba(201, 224, 245, 1) 80%, rgba(191, 218, 243, 1) 99%);            
+            background: linear-gradient(239deg, rgba(243, 247, 255, 1) 0%, rgba(201, 224, 245, 1) 80%, rgba(191, 218, 243, 1) 99%);
         }
+
         .container {
             display: flex;
             align-items: center;
         }
+
         .imagem-form {
             flex: 1;
             padding: 20px;
         }
+
         .imagem-form img {
             max-width: 100%;
             height: auto;
         }
+
         .formulario {
             flex: 1;
             padding: 20px;
         }
+
+        .bem-vindo {
+            display: flex;
+            width: 367.298px;
+            height: 68px;
+            flex-direction: column;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #152A5C;
+            font-family: Plus Jakarta Sans;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 18px;
+            /* 60% */
+        }
+
+        .venha {
+            display: flex;
+            width: 359.378px;
+            height: 34px;
+            flex-direction: column;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #000;
+            font-family: Plus Jakarta Sans;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 18px;
+            /* 90% */
+        }
+
+        input {
+            border-radius: 10px;
+            background: #FFF;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.20);
+            width: 500px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .chek {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            border-radius: 5px;
+            background: #002776;
+        }
+        .sexo {
+            display: flex;
+            width: 20px;
+            height: 20px;
+        }
+        
     </style>
 </head>
 
@@ -41,8 +100,8 @@
             <img src="img/duasmocassentadas.svg" alt="">
         </div>
         <div class="formulario">
-            <h1>Bem vindo ao Psidevs</h1>
-            <p>Venha conhecer os nossos serviços</p>
+            <h1 class="bem-vindo">Bem vindo ao Psidevs</h1>
+            <p class="venha">Venha conhecer os nossos serviços</p>
             <form action="processa_cadastro.php" method="POST">
                 <label for="nome"></label>
                 <input type="text" id="nome" name="nome" required placeholder="Digite seu nome"><br>
@@ -54,7 +113,7 @@
                 <input type="password" id="senha" name="senha" required placeholder="Senha"><br>
 
                 <div>
-                    <input type="checkbox" id="lembrar-senha" name="lembrar-senha">
+                    <input class="chek" type="checkbox" id="lembrar-senha" name="lembrar-senha">
                     <label for="lembrar-senha">Lembrar Senha</label><br>
                 </div>
 
@@ -72,14 +131,14 @@
 
                 <label for="especialidade"></label>
                 <select id="especialidade" name="especialidade">
-                    <option value="" selected disabled>Especialidade</option>
                     <option value="psicologia"></option>
+                    <option value="" selected disabled>Especialidade</option>
                     <option value="psicologia">Psicologia</option>
                     <option value="psiquiatria">Psiquiatria</option>
                     <option value="terapia-ocupacional">Terapia Ocupacional</option>
                 </select><br>
 
-                <div>
+                <div class="sexo">
                     <label>Gênero:</label><br>
                     <input type="checkbox" id="genero-masculino" name="genero" value="masculino">
                     <label for="genero-masculino">Masculino</label><br>
