@@ -25,11 +25,14 @@
             </div>
         </div>
 
+
+
         <div class="form-esqueceu-senha">
+            
             <h1 class="bem-psidev">Bem-vindo ao Psidevs</h1>
             <p class="venha-conhecer">Venha conhecer os nossos serviços</p>
 
-            <form action="processa_cadastro.php" method="POST">
+            <form action="processa_cadastro.php" method="POST" class="form-control">
                 <label for="nome"></label>
                 <input class="input-nome" type="text" id="nome" name="nome" required placeholder="Digite seu nome"><br>
 
@@ -43,6 +46,8 @@
                     <label for="lembrar-senha">Lembrar Senha:</label>
                     <input type="checkbox" id="lembrar-senha" name="lembrar-senha" class="botao-lembrar-senha"><br>
                 </div>
+
+                
 
                 <div class="crp-celular">
                     <label for="celular"></label>
