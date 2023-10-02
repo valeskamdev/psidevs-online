@@ -1,8 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./cliente/*.{html,js,php}"],
+  content: ["./src/**/*.{html,js,php}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primary': '#415DA1',
+        'secondary': '#F1F6FF',
+        'tertiary': '#e5ebfd',
+        'cards': '#FDFDFD',
+        'border-blue': '#B1C3F0',
+      },
+      container: {
+        center: true,
+      },
+      fontFamily: {
+        'ubuntu': ['Ubuntu', 'sans-serif'],
+        'inter': ['Inter', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }

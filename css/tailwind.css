@@ -1,3 +1,297 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  .drawer-backdrop {
+    @apply bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0;
+  }
+
+  .container_header {
+    @apply bg-primary text-right sticky top-0 z-50;
+  }
+
+  .container_header_desktop {
+    @apply container py-3;
+  }
+
+  .container_bg {
+    @apply mx-3;
+  }
+
+  .container_sub_header_bg {
+    @apply font-ubuntu;
+  }
+
+  .container_navbar {
+    @apply col-span-1 font-ubuntu hidden;
+  }
+
+  .container_conteudo_consulta_hoje,
+  .container_conteudo_historico_consulta {
+    @apply py-6 px-4;
+  }
+
+  .container_conteudo_consulta_hoje_rodape_conteudo_link {
+    @apply ms-3.5;
+  }
+
+  .container_conteudo_consulta_hoje_rodape_conteudo_link_botao {
+    @apply bg-tertiary text-primary ring-2 ring-primary rounded-full px-4 py-2 font-medium text-center flex items-center hover:bg-primary hover:text-tertiary hover:ring-2 transition duration-150 ease-in-out;
+  }
+
+  .card_bg {
+    @apply bg-cards border border-border-blue rounded-xl;
+  }
+
+  .insideCard {
+    @apply py-6 px-4;
+  }
+
+  .linkMenuMobile {
+    @apply p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-tertiary;
+  }
+
+  .textMenuMobile {
+    @apply text-[15px] ml-4 text-primary;
+  }
+
+  .linkSidebar {
+    @apply flex items-center py-3 rounded-lg hover:bg-tertiary px-3;
+  }
+
+  .container_sub_header {
+    @apply flex justify-center;
+  }
+
+  .container_sub_header_saudacao {
+    @apply text-neutral-700 text-2xl py-5;
+  }
+
+  .container_conteudo_consulta_hoje_titulo {
+    @apply pb-5;
+  }
+
+  .container_conteudo_consulta_hoje_horario {
+    @apply bg-tertiary m-1 p-3 rounded font-inter text-primary font-bold;
+  }
+
+  .container_conteudo_consulta_hoje_body_rodape {
+    @apply flex flex-col h-full justify-around;
+  }
+
+  .container_conteudo_consulta_hoje_corpo {
+    @apply pb-8;
+  }
+
+  .container_conteudo_consulta_hoje_corpo_titulo {
+    @apply text-xl font-bold text-primary;
+  }
+
+  .container_conteudo_consulta_hoje_corpo_subtitulo {
+    @apply text-lg text-neutral-700 mb-4;
+  }
+
+  .container_conteudo_consulta_hoje_corpo_texto {
+    @apply text-neutral-500 xl:w-11/12;
+  }
+
+  .container_conteudo_consulta_hoje_rodape_titulo {
+    @apply text-neutral-700 font-ubuntu mb-1;
+  }
+
+  .container_conteudo_consulta_hoje_rodape_texto {
+    @apply text-sm text-neutral-500;
+  }
+
+  .container_conteudo_consulta_hoje_rodape {
+    @apply pt-3
+  }
+
+  .consultaTitulo {
+    @apply mb-0;
+  }
+
+  .container_conteudo_proxima_consulta {
+    @apply pt-6 px-4;
+  }
+
+  .container_conteudo_proxima_consulta_profissional {
+    @apply py-5;
+  }
+
+  .container_conteudo_proxima_consulta_grupo_avatar,
+  .container_conteudo_historico_consulta_profissional_avatar {
+    @apply me-3;
+  }
+
+  .container_conteudo_proxima_consulta_grupo_texto_titulo {
+    @apply text-neutral-600 mb-1 text-lg;
+  }
+
+  .container_conteudo_consulta_hoje_titulo,
+  .container_conteudo_consulta_hoje_rodape,
+  .container_header_desktop,
+  .container_header_interacao,
+  .container_conteudo_proxima_consulta_profissional,
+  .status_consulta,
+  .header_sidebar
+  {
+    @apply flex justify-between items-center;
+  }
+
+  .consultaTitulo {
+    @apply font-ubuntu font-bold text-2xl text-neutral-600 mb-5;
+  }
+
+  .container_header_marcar_consulta_botao_bg {
+    @apply fixed bottom-[15px] right-[12px] inline-flex justify-center items-center;
+  }
+
+  .container_header_marcar_consulta_botao {
+    @apply bg-primary rounded-full inline-flex text-neutral-100 py-3.5 px-5 hover:bg-primary/90 transition duration-150 ease-in-out;
+  }
+
+  .container_navbar_conteudo {
+    @apply bg-gray-50 border border-solid border-border-blue p-5 w-11/12 rounded-2xl;
+  }
+
+  .container_conteudo {
+    @apply mb-20 font-inter;
+  }
+
+  .sidebar {
+    @apply fixed top-0 bottom-0 right-[-300px] duration-1000
+    p-2 w-[300px] overflow-y-auto text-center bg-gray-50 shadow h-screen;
+  }
+
+  .horarioConsulta {
+    @apply text-primary rounded-full bg-tertiary px-4 py-1 text-sm font-bold;
+  }
+
+  .container_conteudo_proxima_consulta_bg {
+    @apply my-8;
+  }
+
+  .container_conteudo_historico_consulta_profissional_bg {
+    @apply flex flex-wrap items-center min-[450px]:flex-nowrap;
+  }
+
+  .dataConsulta {
+    @apply flex text-neutral-500 text-sm flex-wrap;
+  }
+
+  .dot {
+    @apply before:content-['\007C'] before:mx-1 after:content-['\007C'] after:mx-1 before:text-primary after:text-primary;
+  }
+
+  .botaoReagendar {
+    @apply text-orange-800 bg-orange-100 rounded-full px-4 py-2 font-bold block w-full text-center hover:bg-orange-300/60 transition duration-150 ease-in-out;
+  }
+
+  .container_conteudo_consulta_hoje_bg {
+    @apply card_bg mt-0 border-primary;
+  }
+
+  .container_conteudo_historico_consulta_rodape,
+  .container_conteudo_proxima_consulta_rodape {
+    @apply bg-tertiary rounded-b-xl px-3 py-4;
+  }
+
+  .rodape {
+    @apply text-primary font-ubuntu font-bold;
+  }
+
+  .container_conteudo_proxima_consulta_profissional_avatar_e_horario,
+  .container_conteudo_historico_consulta_profissional,
+  .container_header_mobile_avatar,
+  .container_navbar_conteudo_avatar {
+    @apply flex items-center;
+  }
+
+  .container_conteudo_historico_consulta_profissional_bg {
+    @apply py-5;
+  }
+
+  .container_conteudo_historico_consulta_profissional {
+    @apply w-full;
+  }
+
+  .container_conteudo_historico_consulta_profissional_botao {
+    @apply flex justify-end w-full mt-6 min-[450px]:w-auto min-[450px]:mt-0;
+  }
+
+  .dataConsulta_status_badge {
+    @apply font-medium rounded px-2 py-1 text-sm;
+  }
+
+  .divisor {
+    @apply divide-y divide-gray-200
+  }
+
+  @screen lg {
+    .container_header {
+      @apply static top-auto;
+    }
+
+    .container_header_marcar_consulta_botao_bg {
+      @apply static bottom-auto right-auto bg-inherit;
+    }
+
+    .container_sub_header_bg {
+      @apply grid grid-cols-6 py-5;
+    }
+
+    .container_sub_header {
+      @apply col-span-4 col-start-3 justify-between items-center;
+    }
+
+    .container_sub_header_saudacao {
+      @apply py-0
+    }
+
+    .container_principal {
+      @apply grid grid-cols-6;
+    }
+
+    .container_navbar {
+      @apply block col-span-2;
+    }
+
+    .container_conteudo {
+      @apply col-span-4 col-start-3
+    }
+
+    .container_conteudo {
+      @apply mb-4;
+    }
+  }
+
+  @screen xl {
+    .container_conteudo_proxima_consulta_bg {
+      @apply my-0
+    }
+
+    .container_conteudo {
+      @apply grid grid-cols-4 gap-6;
+    }
+
+    .container_conteudo_consulta_hoje {
+      @apply h-5/6;
+    }
+
+    .container_conteudo_proxima_consulta_bg,
+    .container_conteudo_consulta_hoje_bg {
+      @apply col-span-2;
+    }
+
+    .container_conteudo_historico_consulta_bg {
+      @apply col-span-4;
+    }
+
+    .container_conteudo_consulta_hoje_rodape_texto {
+      @apply w-10/12;
+    }
+  }
+}
