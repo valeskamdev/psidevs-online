@@ -77,20 +77,6 @@
             height: 40px;
             flex-shrink: 0;
         }
-
-        .chek {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-            border-radius: 5px;
-            background: #002776;
-        }
-        .sexo {
-            display: flex;
-            width: 20px;
-            height: 20px;
-        }
-        
     </style>
 </head>
 
@@ -103,19 +89,24 @@
             <h1 class="bem-vindo">Bem vindo ao Psidevs</h1>
             <p class="venha">Venha conhecer os nossos serviços</p>
             <form action="processa_cadastro.php" method="POST">
-                <label for="nome"></label>
-                <input type="text" id="nome" name="nome" required placeholder="Digite seu nome"><br>
 
-                <label for="email"></label>
-                <input type="email" id="email" name="email" required placeholder="Digite seu e-mail"><br>
+                <div class="nome-email-senha">
+                    <label for="nome"></label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome"><br>
 
-                <label for="senha"></label>
-                <input type="password" id="senha" name="senha" required placeholder="Senha"><br>
+                    <label for="email"></label>
+                    <input type="email" id="email" name="email" required placeholder="Digite seu e-mail"><br>
 
-                <div>
+                    <label for="senha"></label>
+                    <input type="password" id="senha" name="senha" required placeholder="Senha"><br>
+                </div>
+
+
+                
                     <input class="chek" type="checkbox" id="lembrar-senha" name="lembrar-senha">
                     <label for="lembrar-senha">Lembrar Senha</label><br>
-                </div>
+                
+
 
                 <label for="celular"></label>
                 <input type="tel" id="celular" name="celular" required placeholder="Digite seu número de celular"><br>
@@ -123,39 +114,43 @@
                 <label for="crp"></label>
                 <input type="text" id="crp" name="crp" required placeholder="Digite seu CRP"><br>
 
+
                 <label for="cpf"></label>
                 <input type="text" id="cpf" name="cpf" required placeholder="Digite seu CPF"><br>
 
                 <label for="ano-formacao"></label>
                 <input type="number" id="ano-formacao" name="ano-formacao" required placeholder="Digite o ano de formação"><br>
 
-                <label for="especialidade"></label>
-                <select id="especialidade" name="especialidade">
-                    <option value="psicologia"></option>
-                    <option value="" selected disabled>Especialidade</option>
-                    <option value="psicologia">Psicologia</option>
-                    <option value="psiquiatria">Psiquiatria</option>
-                    <option value="terapia-ocupacional">Terapia Ocupacional</option>
-                </select><br>
-
-                <div class="sexo">
-                    <label>Gênero:</label><br>
-                    <input type="checkbox" id="genero-masculino" name="genero" value="masculino">
-                    <label for="genero-masculino">Masculino</label><br>
-
-                    <input type="checkbox" id="genero-feminino" name="genero" value="feminino">
-                    <label for="genero-feminino">Feminino</label><br>
-
-                    <input type="checkbox" id="genero-nao-binario" name="genero" value="nao-binario">
-                    <label for="genero-nao-binario">Não Binário</label><br>
-                </div>
-
                 <div>
-                    <input type="checkbox" id="termos-politica" name="termos-politica" required>
-                    <label for="termos-politica">Aceitar os <a href="termos.html">Termos e Condições</a></label><br>
-                </div>
+                    <label for="especialidade"></label>
+                    <select id="especialidade" name="especialidade">
+                        <option value="psicologia"></option>
+                        <option value="" selected disabled>Especialidade</option>
+                        <option value="psicologia">Psicologia</option>
+                        <option value="psiquiatria">Psiquiatria</option>
+                        <option value="terapia-ocupacional">Terapia Ocupacional</option>
+                    </select><br>
 
-                <button type="submit">Criar Conta</button>
+                    <div class="sexo">
+                        <label>Gênero:</label><br>
+                        <input type="checkbox" id="genero-masculino" name="genero" value="masculino">
+                        <label for="genero-masculino">Masculino</label><br>
+
+                        <input type="checkbox" id="genero-feminino" name="genero" value="feminino">
+                        <label for="genero-feminino">Feminino</label><br>
+
+                        <input type="checkbox" id="genero-nao-binario" name="genero" value="nao-binario">
+                        <label for="genero-nao-binario">Não Binário</label><br>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="termos-politica" name="termos-politica" required>
+                        <label for="termos-politica">Aceitar os <a href="termos.html">Termos e Condições</a></label><br>
+                    </div>
+
+                    <button type="submit">Criar Conta</button>
+
+                </div>
             </form>
 
         </div>
