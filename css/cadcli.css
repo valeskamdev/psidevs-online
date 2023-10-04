@@ -56,6 +56,7 @@ img:not(header h1 a img) {
 button {
   cursor: pointer;
   margin: 20px;
+  margin-bottom: 0.1rem
 }
 
 /* Cadastro Cliente */
@@ -105,13 +106,18 @@ button {
 
 .form-cadastro-cliente input{
   box-shadow: 2px 3px 4px rgba(100, 100, 100, 0.212);
+  font-size: 1.5rem;
   /* height: 36px; */
+}
+
+.form-cadastro-cliente label, button{
+    font-size: 1.5rem;
 }
 
 .form-header{
   color: #152A5C;
   font-family: var(--font-family-primary);
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 5rem;
 }
