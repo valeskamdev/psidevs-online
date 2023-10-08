@@ -28,9 +28,18 @@
     @apply col-span-1 font-ubuntu hidden;
   }
 
+  .historicos_consulta,
+  .container_conteudo_historico_consulta_titulo_pagina_consultas {
+    @apply px-4;
+  }
+
   .container_conteudo_consulta_hoje,
   .container_conteudo_historico_consulta {
     @apply py-6 px-4;
+  }
+
+  .container_conteudo_historico_consulta_pagina_consultas {
+    @apply pb-6;
   }
 
   .container_conteudo_consulta_hoje_rodape_conteudo_link {
@@ -109,8 +118,8 @@
     @apply pt-3
   }
 
-  .consultaTitulo {
-    @apply mb-0;
+  .container_conteudo_historico_consulta_titulo_pagina_consultas  {
+    @apply bg-tertiary pt-6 pb-4 sticky top-0;
   }
 
   .container_conteudo_proxima_consulta {
@@ -142,11 +151,15 @@
   }
 
   .consultaTitulo {
-    @apply font-ubuntu font-bold text-2xl text-neutral-600 mb-5;
+    @apply font-ubuntu font-medium text-2xl text-neutral-700 mb-5;
+  }
+
+  .consultaTitulo.individual {
+    @apply text-primary;
   }
 
   .container_header_marcar_consulta_botao_bg {
-    @apply fixed bottom-[15px] right-[12px] inline-flex justify-center items-center;
+    @apply fixed bottom-[30px] right-[12px] inline-flex justify-center items-center;
   }
 
   .container_header_marcar_consulta_botao {
@@ -158,11 +171,15 @@
   }
 
   .container_conteudo {
-    @apply mb-20 font-inter;
+    @apply mb-8 font-inter;
+  }
+
+  .container_conteudo_historico_consulta_bg_pagina_consultas {
+    @apply h-[700px] overflow-auto clear-both;
   }
 
   .sidebar {
-    @apply fixed top-0 bottom-0 right-[-300px] duration-1000
+    @apply fixed top-0 bottom-0 right-[-300px] duration-700
     p-2 w-[300px] overflow-y-auto text-center bg-gray-50 shadow h-screen;
   }
 
@@ -190,8 +207,12 @@
     @apply text-orange-800 bg-orange-100 rounded-full px-4 py-2 font-bold block w-full text-center hover:bg-orange-300/60 transition duration-150 ease-in-out;
   }
 
+  .botaoCancelar {
+    @apply text-red-800 bg-red-100 rounded-full px-4 py-2 font-bold block w-full text-center hover:bg-red-300/60 transition duration-150 ease-in-out;
+  }
+
   .container_conteudo_consulta_hoje_bg {
-    @apply card_bg mt-0 border-primary;
+    @apply card_bg mt-0 border-primary ;
   }
 
   .container_conteudo_historico_consulta_rodape,
@@ -248,7 +269,7 @@
     }
 
     .container_sub_header_saudacao {
-      @apply py-0
+      @apply py-0 text-3xl;
     }
 
     .container_principal {
@@ -260,7 +281,7 @@
     }
 
     .container_conteudo {
-      @apply col-span-4 col-start-3
+      @apply col-span-4 col-start-3;
     }
 
     .container_conteudo {
@@ -286,7 +307,8 @@
       @apply col-span-2;
     }
 
-    .container_conteudo_historico_consulta_bg {
+    .container_conteudo_historico_consulta_bg,
+    .container_conteudo_historico_consulta_bg_pagina_consultas {
       @apply col-span-4;
     }
 
