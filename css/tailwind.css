@@ -248,7 +248,7 @@
     }
 
     .container_sub_header_saudacao {
-      @apply py-0
+      @apply py-0 text-3xl
     }
 
     .container_principal {
