@@ -42,28 +42,38 @@
             </div>
             <hr class="my-2 text-gray-600">
             <ul>
-              <li class="linkMenuMobile">
-                <img src="../../../assets/icone-home.svg" alt="Casa">
-                <span class="textMenuMobile">Home</span>
+              <li>
+                <a href="index.php" class="linkMenuMobile">
+                  <img src="../../../assets/icone-home.svg" alt="Casa">
+                  <span class="textMenuMobile">Início</span>
+                </a>
               </li>
-              <li class="linkMenuMobile">
-                <img src="../../../assets/icone-calendario.svg" alt="Calendário">
-                <span class="textMenuMobile">Minhas consultas</span>
+              <li>
+                <a href="consultas.php" class="linkMenuMobile">
+                  <img src="../../../assets/icone-calendario.svg" alt="Calendário">
+                  <span class="textMenuMobile">Minhas consultas</span>
+                </a>
               </li>
-              <li class="linkMenuMobile">
-                <img src="../../../assets/icone-historico.svg" alt="Relógio">
-                <span class="textMenuMobile">Histórico de consultas</span>
+              <li>
+                <a href="#" class="linkMenuMobile">
+                  <img src="../../../assets/icone-historico.svg" alt="Relógio">
+                  <span class="textMenuMobile">Histórico de consultas</span>
+                </a>
               </li>
-              <li class="linkMenuMobile">
-                <img src="../../../assets/icone-perfil.svg" alt="Boneco">
-                <span class="textMenuMobile">Meu perfil</span>
+              <li>
+                <a href="#" class="linkMenuMobile">
+                  <img src="../../../assets/icone-perfil.svg" alt="Boneco">
+                  <span class="textMenuMobile">Meu perfil</span>
+                </a>
               </li>
               <li class="my-4 text-gray-600"></li>
             </ul>
             <ul class="pt-5 space-y-2 border-t border-gray-200">
-              <li class="linkMenuMobile mt-0">
-                <img src="../../../assets/icone-sair.svg" alt="Porta">
-                <span class="textMenuMobile">Sair</span>
+              <li>
+                <a href="#" class="linkMenuMobile mt-0">
+                  <img src="../../../assets/icone-sair.svg" alt="Porta">
+                  <span class="textMenuMobile">Sair</span>
+                </a>
               </li>
             </ul>
           </div>
@@ -92,10 +102,10 @@
             <nav class="text-primary text-lg font-medium mt-4">
               <ul>
                 <li>
-                  <a href="#" class="linkSidebar"><img src="../../../assets/icone-home.svg" class="pe-3.5" alt="Casa">Início</a>
+                  <a href="index.php" class="linkSidebar"><img src="../../../assets/icone-home.svg" class="pe-3.5" alt="Casa">Início</a>
                 </li>
                 <li>
-                  <a href="#" class="linkSidebar"><img src="../../../assets/icone-calendario.svg" class="pe-3.5" alt="Calendário">Minhas consultas</a>
+                  <a href="consultas.php" class="linkSidebar"><img src="../../../assets/icone-calendario.svg" class="pe-3.5" alt="Calendário">Minhas consultas</a>
                 </li>
                 <li>
                   <a href="#" class="linkSidebar"><img src="../../../assets/icone-historico.svg" class="pe-3.5" alt="Relógio">Histórico de consultas</a>
@@ -211,7 +221,7 @@
                         <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
                         <span class="dataConsulta mb-1"><img src="../../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
                         <span class="dataConsulta_status_badge text-green-800 bg-green-100 me-2">Finalizada</span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-100">R$ 75,00</span>
+                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary">R$ 75,00</span>
                       </div>
                     </div>
                     <div class="container_conteudo_historico_consulta_profissional_botao">
@@ -227,7 +237,7 @@
                         <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
                         <span class="dataConsulta mb-1"><img src="../../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
                         <span class="dataConsulta_status_badge text-red-800 bg-red-100 me-2">Cancelada</span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-100">R$ 75,00</span>
+                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary">R$ 75,00</span>
                       </div>
                     </div>
                     <div class="container_conteudo_historico_consulta_profissional_botao">
