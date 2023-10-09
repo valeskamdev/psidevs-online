@@ -5,157 +5,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Profissional</title>
+    <link rel="stylesheet" href="css/dist/build.css">
     <link rel="stylesheet" href="css/cadprof.css">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: rgb(243, 247, 255);
-            background: linear-gradient(239deg, rgba(243, 247, 255, 1) 0%, rgba(201, 224, 245, 1) 80%, rgba(191, 218, 243, 1) 99%);
-        }
-
-        .container {
-            display: flex;
-            align-items: center;
-        }
-
-        .imagem-form {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .imagem-form img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .formulario {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .bem-vindo {
-            display: flex;
-            width: 367.298px;
-            height: 68px;
-            flex-direction: column;
-            justify-content: center;
-            flex-shrink: 0;
-            color: #152A5C;
-            font-family: Plus Jakarta Sans;
-            font-size: 30px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 18px;
-            /* 60% */
-        }
-
-        .venha {
-            display: flex;
-            width: 359.378px;
-            height: 34px;
-            flex-direction: column;
-            justify-content: center;
-            flex-shrink: 0;
-            color: #000;
-            font-family: Plus Jakarta Sans;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 18px;
-            /* 90% */
-        }
-
-        input {
-            border-radius: 10px;
-            background: #FFF;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.20);
-            width: 500px;
-            height: 40px;
-            flex-shrink: 0;
-        }
-    </style>
 </head>
 
-<body>
-    <div class="container">
-        <div class="imagem-form">
-            <img src="img/duasmocassentadas.svg" alt="">
-        </div>
-        <div class="formulario">
-            <h1 class="bem-vindo">Bem vindo ao Psidevs</h1>
-            <p class="venha">Venha conhecer os nossos serviços</p>
-            <form action="processa_cadastro.php" method="POST">
+<body class="">
 
-                <div class="nome-email-senha">
-                    <label for="nome"></label>
-                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome"><br>
-
-                    <label for="email"></label>
-                    <input type="email" id="email" name="email" required placeholder="Digite seu e-mail"><br>
-
-                    <label for="senha"></label>
-                    <input type="password" id="senha" name="senha" required placeholder="Senha"><br>
-                </div>
-
-
-                
-                    <input class="chek" type="checkbox" id="lembrar-senha" name="lembrar-senha">
-                    <label for="lembrar-senha">Lembrar Senha</label><br>
-                
-
-
-                <label for="celular"></label>
-                <input type="tel" id="celular" name="celular" required placeholder="Digite seu número de celular"><br>
-
-                <label for="crp"></label>
-                <input type="text" id="crp" name="crp" required placeholder="Digite seu CRP"><br>
-
-
-                <label for="cpf"></label>
-                <input type="text" id="cpf" name="cpf" required placeholder="Digite seu CPF"><br>
-
-                <label for="ano-formacao"></label>
-                <input type="number" id="ano-formacao" name="ano-formacao" required placeholder="Digite o ano de formação"><br>
-
-                <div>
-                    <label for="especialidade"></label>
-                    <select id="especialidade" name="especialidade">
-                        <option value="psicologia"></option>
-                        <option value="" selected disabled>Especialidade</option>
-                        <option value="psicologia">Psicologia</option>
-                        <option value="psiquiatria">Psiquiatria</option>
-                        <option value="terapia-ocupacional">Terapia Ocupacional</option>
-                    </select><br>
-
-                    <div class="sexo">
-                        <label>Gênero:</label><br>
-                        <input type="checkbox" id="genero-masculino" name="genero" value="masculino">
-                        <label for="genero-masculino">Masculino</label><br>
-
-                        <input type="checkbox" id="genero-feminino" name="genero" value="feminino">
-                        <label for="genero-feminino">Feminino</label><br>
-
-                        <input type="checkbox" id="genero-nao-binario" name="genero" value="nao-binario">
-                        <label for="genero-nao-binario">Não Binário</label><br>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="termos-politica" name="termos-politica" required>
-                        <label for="termos-politica">Aceitar os <a href="termos.html">Termos e Condições</a></label><br>
-                    </div>
-
-                    <button type="submit">Criar Conta</button>
+    <div class="min-h-screen p-6 bg-fundo-neutro bg-cover flex items-center justify-center">
+        <div class="container max-w-screen-lg mx-auto">
+            <div class="flex">
+                <div class="text-gray-600 bg-fundo-azul bg-cover ">                    
+                    <img src="img/fundo-profissional.png" class="w-50" alt="">
 
                 </div>
-            </form>
+                <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8">
+                    <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+                        <div class="lg:col-span-2">
 
+                            <h1>Bem vindo(a)ao Psidevs!</h1>
+                            <p>Venha connecer os nossos serviços.</p>
+
+
+
+                            <form>
+                                <div class="relative z-0 w-full mb-6 group">
+                                    <input type="text" name="floating_nome" id="floating_nome" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                    <label for="floating_nome" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nome</label>
+                                </div>
+                                <div class="relative z-0 w-full mb-6 group">
+                                    <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                    <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">E-mail</label>
+                                </div>
+                                <div class="relative z-0 w-full mb-6 group">
+                                    <input type="password" name="repeat_password" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                    <label for="floating_repeat_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Senha</label>
+                                </div>
+
+                                <div class="flex items-center mb-4">
+                                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Lembra Senha</label>
+                                </div>
+
+
+                                <div class="grid md:grid-cols-2 md:gap-6">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                        <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Celular</label>
+                                    </div>
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                        <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">CPF</label>
+                                    </div>
+                                </div>
+                                <div class="grid">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                        <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">CRP</label>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option>Especialidade</option>
+                                        <option value="clinica">Psicologia Clínica</option>
+                                        <option value="educacional">Psicologia Educacional</option>
+                                        <option value="organizacional">Psicologia Organizacional</option>
+                                        <option value="outros">Outras Especialidades</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="flex">
+                                    <div class="flex items-center mr-4">
+                                        <input id="inline-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="inline-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Feminino</label>
+                                    </div>
+                                    <div class="flex items-center mr-4">
+                                        <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="inline-2-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Masculino</label>
+                                    </div>
+                                    <div class="flex items-center mr-4">
+                                        <input checked id="inline-checked-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="inline-checked-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Não-binário</label>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="link-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Li e concordo com os<a href="#" class="underline">
+                                            termos e condições.</a>e <a href="" class="underline">Política de privacidade</a>.</label>
+                                </div>
+
+                                <div>
+                                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Criar conta</button>
+                                </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    </div>
 
 
+    <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
 </body>
 
 </html>
