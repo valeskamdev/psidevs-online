@@ -29,7 +29,7 @@
   }
 
   .historicos_consulta,
-  .container_conteudo_historico_consulta_titulo_pagina_consultas {
+  .container_conteudo_historico_consulta_titulo_pagina_consultas, .container_conteudo_perfil_estrutura {
     @apply px-4;
   }
 
@@ -174,7 +174,7 @@
     @apply mb-8 font-inter;
   }
 
-  .container_conteudo_historico_consulta_bg_pagina_consultas {
+  .container_conteudo_historico_consulta_bg_pagina_consultas, .container_conteudo_perfil_bg {
     @apply h-[700px] overflow-auto clear-both;
   }
 
@@ -250,6 +250,9 @@
   .divisor {
     @apply divide-y divide-gray-200
   }
+  .container_conteudo_perfil_estrutura {
+    @apply pt-6 pb-4 sticky top-0;
+  }
 
   @screen lg {
     .container_header {
@@ -308,7 +311,7 @@
     }
 
     .container_conteudo_historico_consulta_bg,
-    .container_conteudo_historico_consulta_bg_pagina_consultas {
+    .container_conteudo_historico_consulta_bg_pagina_consultas, .container_conteudo_perfil_bg {
       @apply col-span-4;
     }
 
