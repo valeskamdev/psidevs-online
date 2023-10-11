@@ -165,6 +165,9 @@
   .container_header_marcar_consulta_botao {
     @apply bg-primary rounded-full inline-flex text-neutral-100 py-3.5 px-5 hover:bg-primary/90 transition duration-150 ease-in-out;
   }
+  .perfil_botao {
+    @apply rounded-lg inline-flex text-neutral-100 py-3.5 px-5 hover:bg-primary/90 transition duration-150 ease-in-out;
+  }
 
   .container_navbar_conteudo {
     @apply bg-gray-50 border border-solid border-border-blue p-5 w-11/12 rounded-2xl;
