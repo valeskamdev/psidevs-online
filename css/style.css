@@ -952,3 +952,26 @@ footer p {
     min-width: 250px;
   }
 }
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.container, div {
+  margin: 0 10px; /* Ajuste a margem como desejado para controlar o espaçamento entre os elementos */
+}
+footer {
+  color: #415DA1;
+}
+
+.psidevs {
+  text-align: center;
+  font-size: 18px;
+}
+
+.container, li {
+  list-style: none;
+}
