@@ -954,24 +954,54 @@ footer p {
 }
 
 
-.container {
+footer {
   display: flex;
-  justify-content: space-between;
-  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-.container, div {
-  margin: 0 10px; /* Ajuste a margem como desejado para controlar o espaçamento entre os elementos */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px; /* Largura máxima desejada para o conteúdo */
+  margin: 0 auto; /* Centralizar o conteúdo horizontalmente */
 }
-footer {
+
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.info-block {
+  flex: 1;
+  margin: 0 10px; /* Espaçamento entre as divs */
+  text-align: center;
+}
+
+/* Aplicar cor de fonte a todos os elementos de texto */
+footer,
+footer a,
+footer p,
+footer h2,
+footer ul,
+footer li {
   color: #415DA1;
 }
 
-.psidevs {
-  text-align: center;
-  font-size: 18px;
+footer, h2 {
+  font-size: 20px;  
 }
 
-.container, li {
-  list-style: none;
+ul {
+  list-style-type: none;
 }
+
+
+
+
+
+
+
+
