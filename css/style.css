@@ -967,6 +967,7 @@ footer {
   justify-content: space-between;
   max-width: 1200px; /* Largura máxima desejada para o conteúdo */
   margin: 0 auto; /* Centralizar o conteúdo horizontalmente */
+  text-align: left;
 }
 
 .info {
@@ -977,7 +978,7 @@ footer {
 .info-block {
   flex: 1;
   margin: 0 10px; /* Espaçamento entre as divs */
-  text-align: center;
+  text-align: left;
 }
 
 /* Aplicar cor de fonte a todos os elementos de texto */
