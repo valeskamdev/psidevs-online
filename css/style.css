@@ -977,7 +977,7 @@ footer {
 
 .info-block {
   flex: 1;
-  margin: 0 10px; /* Espaçamento entre as divs */
+  margin: 0 40px; /* Espaçamento entre as divs */
   text-align: left;
 }
 
@@ -998,6 +998,12 @@ footer, h2 {
 ul {
   list-style-type: none;
 }
+
+
+a {
+  text-decoration: none;
+}
+
 
 
 
