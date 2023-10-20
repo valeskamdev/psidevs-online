@@ -1,3 +1,18 @@
+<?php
+
+$generos  = [
+    "Masculino",
+    "Feminino",
+    "Não binário",
+  /*   "Homem trans",
+    "Mulher trans",
+    "Fluído",
+    "Outro",
+    "Prefiro não responder" */
+];
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -44,16 +59,30 @@
                         <input type="password" name="senha-cliente" id="senha-cliente" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                         <label for="senha-cliente" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Senha</label>
                     </div>
+                    <div class="relative z-0 w-full mb-6 group"">
+
+                        <input datepicker datepicker-title="Flowbite datepicker" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                    </div>
+                    <div class="titulo">
+                        <p>Gêneros</p>
+                    </div>
+
+                    <div class="flex  flex-wrap genero">
+
+                        <?php foreach ($generos as $genero) { ?>
+                            <div class="flex items-center mr-4 genero">
+                                <input type="radio" name="genero" id="<?= $genero ?>" class="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="<?= $genero ?>" class="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"><?= $genero ?></label>
+                            </div>
+                        <?php } ?>
+                    </div>
 
                     <div class="flex items-center mb-4">
                         <input id="lembrar-senha" type="checkbox" value="lembrar-senha" name="lembrar-senha" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="lembrar-senha" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" style="font-size: 1rem;">Lembrar Senha</label>
                     </div>
 
-                    <div class="relative max-w-sm">
 
-                        <input datepicker datepicker-title="Flowbite datepicker" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
-                    </div>
 
 
                     <div class="text-center">
@@ -61,7 +90,7 @@
                         <p> <a href="">Já tem conta?</a> | <a href="esqueceu-senha.php">Esqueceu a Senha?</a> </p>
                     </div>
 
-                  
+
             </div>
             </form>
         </div>

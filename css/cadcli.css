@@ -59,6 +59,7 @@ button {
   margin-bottom: 0.1rem
 }
 
+
 /* Cadastro Cliente */
 
 .body-cadastro-cliente{
@@ -97,6 +98,7 @@ button {
   padding: 3rem;
   border-radius: 0px 10px 10px 0;
   width: 49%;
+  
 }
 .form-cadastro-cliente form{
   width: 85%;
@@ -122,6 +124,24 @@ button {
   margin-bottom: 5rem;
 }
 
+.titulo p {
+  margin: auto;
+  color: #152A5C;
+  font-size: 1.5rem;
+}
+
+.genero label{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.genero {
+  margin-bottom: 1.5rem;
+}
+
+
+
 
 .button-cadastro-cliente{
   background-color: #67b0cf;
@@ -145,15 +165,17 @@ button {
 
 
 
-@media screen and (max-width: 1173px) {
-
+@media screen and (max-width: 1373px) {
+ html{
+    font-size: 10.1px;
+ }
 /*Cadastro Cliente */
   .form-img-cadastro-cliente{
     display: none;
   }
   .container-cadastro-cliente{
     max-width: 40vw;
-    max-height: 65vh;
+    /* max-height: 65vh; */
   }
   .form-cadastro-cliente{
     width: 100%;
