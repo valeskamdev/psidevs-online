@@ -262,6 +262,19 @@
   .foto-legenda{
     @apply row-span-1 text-center;
   }
+  .mb10{
+    @apply mb-10;
+  }
+  .mt9{
+    @apply mt-9
+  }
+  .mostrar-form{
+    @apply hidden;
+  }
+  .conteudo-direito{
+    @apply bg-white rounded shadow-lg py-32 px-3 w-full mx-auto flex flex-col justify-center items-center;
+  }
+  
 
   @screen sm {
     .foto-botoes{
@@ -271,7 +284,15 @@
       @apply row-span-1 col-span-2 text-left;
     }
     .mostrar-form{
+      @apply hidden;
+    }
+  }
+  @screen md {
+    .mostrar-form{
       @apply block;
+    }
+    .conteudo-direito{
+      @apply  py-4 px-9  w-1/2;
     }
   }
 
