@@ -7,6 +7,9 @@
   .drawer-backdrop {
     @apply bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0;
   }
+  .apenas-form{
+    @apply col-span-6;
+  }
 
   .container_header {
     @apply bg-primary text-right sticky top-0 z-50;
@@ -256,6 +259,24 @@
   .container_conteudo_perfil_estrutura {
     @apply pt-6 pb-4 sticky top-0;
   }
+  .foto-botoes{
+    @apply row-span-1 flex justify-center items-start ;
+  }
+  .foto-legenda{
+    @apply row-span-1 text-center;
+  }
+
+  @screen sm {
+    .foto-botoes{
+      @apply row-span-1 col-span-2 text-left flex justify-start items-end;
+    }
+    .foto-legenda{
+      @apply row-span-1 col-span-2 text-left;
+    }
+    .mostra-form{
+      @apply block;
+    }
+  }
 
   @screen lg {
     .container_header {
@@ -292,6 +313,9 @@
 
     .container_conteudo {
       @apply mb-4;
+    }
+    .foto-botoes{
+      @apply col-span-3;
     }
   }
 
