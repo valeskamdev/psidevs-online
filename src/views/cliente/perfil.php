@@ -128,7 +128,7 @@
                       <input id="dropzone-file" type="file" class="hidden" />
                     </label>
                   </div>
-                  <div class="foto-botoes row-span-1 flex justify-center sm:row-span-1 sm:col-span-2 sm:items-end sm:justify-start lg:col-span-3 ">
+                  <div class="foto-botoes">
                     <button type="button" class="perfil_botao bg-primary sm:col-span-3 mr-4">DEFINIR NOVA FOTO
                     </button>
                     <button type="button" class="perfil_botao text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg sm:col-span-3">
@@ -136,7 +136,7 @@
                     </button>
                   </div>
 
-                  <div class="foto-legenda row-span-1 text-center sm:row-span-1 sm:col-span-2  sm:text-left">
+                  <div class="foto-legenda">
                     <label class="text-gray-500 font-bold">
                       <span class="text-sm"> JPG ou PNG permitidos. (Tamanho máx. 800k) </span>
                     </label>
