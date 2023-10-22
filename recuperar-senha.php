@@ -16,7 +16,7 @@
             <div class="flex">
                 <!-- Lado Esquerdo -->
                 <div class="mostrar-form text-gray-600 bg-fundo-azul rounded-l-lg bg-cover p-6 w-1/2  md:block">                    
-                    <img src="img/character-login.png" class="w-50" alt="">
+                    <img src="img/character-esqueceu-senha.png" class="w-50" alt="">
                 </div>
 
                 <!-- Lado Direito -->
