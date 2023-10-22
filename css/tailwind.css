@@ -7,10 +7,7 @@
   .drawer-backdrop {
     @apply bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0;
   }
-  .apenas-form{
-    @apply col-span-6;
-  }
-
+ 
   .container_header {
     @apply bg-primary text-right sticky top-0 z-50;
   }
@@ -273,7 +270,7 @@
     .foto-legenda{
       @apply row-span-1 col-span-2 text-left;
     }
-    .mostra-form{
+    .mostrar-form{
       @apply block;
     }
   }
