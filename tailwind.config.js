@@ -16,6 +16,10 @@ module.exports = {
       fontFamily: {
         'ubuntu': ['Ubuntu', 'sans-serif'],
         'inter': ['Inter', 'sans-serif'],
+      },
+      backgroundImage: {
+        'fundo-neutro': "url('../../img/fundo-neutro.png')",
+        'fundo-azul': "url('../../img/fundo-azul.png')",
       }
     },
   },
