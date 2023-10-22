@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro Profissional</title>
+    <title>Psidevs | Login</title>
     <link rel="stylesheet" href="css/dist/build.css">
     <link rel="stylesheet" href="css/cadprof.css">
 </head>
@@ -14,9 +14,12 @@
     <div class="min-h-screen p-6 bg-fundo-neutro bg-cover flex items-center justify-center">
         <div class="container max-w-screen-lg mx-auto flex items-center justify-center">
             <div class="flex ">
+                <!-- Lado Esquerdo -->
                 <div class="text-gray-600 bg-fundo-azul rounded-l-lg bg-cover p-6 w-1/2">                    
                     <img src="img/character-login.png" class="w-50" alt="">
                 </div>
+
+                <!-- Lado Direito -->
                 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 w-1/2">
                     <div class="grid grid-cols-6 gap-4 text-sm lg:grid-cols-3 p-6">
                         <div class="sm:col-span-6">
