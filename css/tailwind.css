@@ -274,7 +274,9 @@
   .conteudo-direito{
     @apply bg-white rounded shadow-lg py-32 px-3 w-full mx-auto flex flex-col justify-center items-center;
   }
-  
+  .p10{
+    @apply py-10;
+  }
 
   @screen sm {
     .foto-botoes{
