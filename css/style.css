@@ -952,3 +952,63 @@ footer p {
     min-width: 250px;
   }
 }
+
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px; /* Largura máxima desejada para o conteúdo */
+  margin: 0 auto; /* Centralizar o conteúdo horizontalmente */
+  text-align: left;
+}
+
+.info {
+  display: flex;
+  
+}
+
+.info-block {
+  flex: 1;
+  margin: 0 40px; /* Espaçamento entre as divs */
+  text-align: left;
+}
+
+/* Aplicar cor de fonte a todos os elementos de texto */
+footer,
+footer a,
+footer p,
+footer h2,
+footer ul,
+footer li {
+  color: #415DA1;
+}
+
+footer, h2 {
+  font-size: 20px;  
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+

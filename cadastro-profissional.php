@@ -14,7 +14,7 @@
     <div class="min-h-screen p-6 bg-fundo-neutro bg-cover flex items-center justify-center">
         <div class="container max-w-screen-lg mx-auto">
             <div class="flex">
-                <div class="text-gray-600 bg-fundo-azul bg-cover ">                    
+                <div class="text-gray-600 bg-fundo-azul rounded-l-lg bg-cover p-5">                    
                     <img src="img/fundo-profissional.png" class="w-50" alt="">
 
                 </div>
