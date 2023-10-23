@@ -260,7 +260,7 @@
     @apply row-span-1 flex justify-center items-start col-span-3;
   }
   .foto-legenda{
-    @apply row-span-1 text-center;
+    @apply row-span-1 flex justify-center items-start col-span-3;
   }
   .mb10{
     @apply mb-10;
@@ -274,14 +274,16 @@
   .conteudo-direito{
     @apply bg-white rounded shadow-lg py-32 px-3 w-full mx-auto flex flex-col justify-center items-center;
   }
-  
+  .p10{
+    @apply py-10;
+  }
 
   @screen sm {
     .foto-botoes{
       @apply row-span-1 col-span-2 text-left flex justify-start items-end;
     }
     .foto-legenda{
-      @apply row-span-1 col-span-2 text-left;
+      @apply row-span-1 col-span-2 text-left flex justify-start items-start;
     }
     .mostrar-form{
       @apply hidden;

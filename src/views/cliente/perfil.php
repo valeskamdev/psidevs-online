@@ -128,7 +128,7 @@
                       <input id="dropzone-file" type="file" class="hidden" />
                     </label>
                   </div>
-                  <div class="foto-botoes">
+                  <div class="foto-botoes lg:col-span-3">
                     <button type="button" class="perfil_botao bg-primary mr-4">DEFINIR NOVA FOTO
                     </button>
                     <button type="button" class="perfil_botao text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg ">
