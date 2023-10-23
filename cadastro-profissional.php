@@ -126,9 +126,12 @@
                                 </div>
 
                                 <div>
-                                    <button type="submit" class="text-white bg-gradient-to-r from-[rgba(200,222,255,1)] via-[rgba(136,186,235,1)] to-[rgba(113,173,228,1)] hover:from-[rgba(200,222,255,1)] hover:via-[rgba(136,186,235,1)] hover:to-[rgba(113,173,228,1)] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:from-[rgba(200,222,255,1)] dark:via-[rgba(136,186,235,1)] dark:to-[rgba(113,173,228,1)] dark:hover:from-[rgba(200,222,255,1)] dark:hover:via-[rgba(136,186,235,1)] dark:hover:to-[rgba(113,173,228,1)] dark:focus:ring-blue-800">
-                                        Criar conta
-                                    </button>
+                                    <div class="flex justify-center">
+                                        <button type="submit" class="text-white bg-gradient-to-r from-[rgba(200,222,255,1)] via-[rgba(136,186,235,1)] to-[rgba(113,173,228,1)] hover:from-[rgba(200,222,255,1)] hover:via-[rgba(136,186,235,1)] hover:to-[rgba(113,173,228,1)] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base sm:text-lg px-12 py-2 text-center dark:from-[rgba(200,222,255,1)] dark:via-[rgba(136,186,235,1)] dark:to-[rgba(113,173,228,1)] dark:hover:from-[rgba(200,222,255,1)] dark:hover:via-[rgba(136,186,235,1)] dark:hover:to-[rgba(113,173,228,1)] dark:focus:ring-blue-800">
+                                            Criar conta
+                                        </button>
+                                    </div>
+
 
                                 </div>
                         </div>
