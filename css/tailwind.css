@@ -265,17 +265,14 @@
   .mb10{
     @apply mb-10;
   }
-  .mt9{
-    @apply mt-9
+  .mtquatro{
+    @apply mt-14;
   }
   .mostrar-form{
     @apply hidden;
   }
   .conteudo-direito{
     @apply bg-white rounded shadow-lg py-32 px-3 w-full mx-auto flex flex-col justify-center items-center;
-  }
-  .p10{
-    @apply py-10;
   }
 
   @screen sm {
