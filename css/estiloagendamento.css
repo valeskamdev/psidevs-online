@@ -61,6 +61,7 @@ img:not(header h1 a img) {
 
 img {
     max-width: 100%;
+    width: 420px;
 }
 
 button {
@@ -104,15 +105,15 @@ button {
     padding: 2rem;
     width: 30vw;
     background-color: #d5e0fb;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
-.destaque-agendamento form > input:focus {
+/* .destaque-agendamento form > input:focus {
     background-color: #e9f0ff;
-}
+} */
 
 .destaque-agendamento form>button {
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: #415DA1;
     color: #e9f0ff;
     padding: 2rem;
@@ -121,11 +122,11 @@ button {
 
 .filtros{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     background-color: #415DA1;
-    height: 21vh;
-    
+    height: 15vh;
+     gap: 20px ;
 }
 
 
@@ -139,13 +140,14 @@ button {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    gap: 20px ;
+   
 }
 
 
 
 .filtros form > input{
     padding: 2rem;
+    width: 30vw;
 }
 
 
@@ -161,9 +163,13 @@ button {
 }
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
  html{
         font-size:  73%;
+    }
+
+    .destaque-agendamento p > picture {
+        display: none;
     }
 
     .destaque-agendamento form>input {

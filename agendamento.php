@@ -45,9 +45,10 @@
                         <option value="">Todos</option>
                     </select>
                 </div>
+            </form>
 
-
-                <div>
+            <form action="" method="get">
+            <div>
                     <p>Valor da sessão</p>
                     <select name="preco" id="preco" class="form-select form-select-lg mb-3">
                         <option value="">Qualquer valor</option>
