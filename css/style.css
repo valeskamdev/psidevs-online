@@ -63,7 +63,7 @@ button {
 
 .limitador {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1650px;
   width: calc(
     100% - 100px
   ); /* a largura é a largura total menos 100px (50px para cada lado) */
@@ -83,7 +83,7 @@ button {
 
 .info-num-adress {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 45%;
 }
@@ -117,7 +117,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
-  padding: 25px 0;
+  padding: 13px 0;
 }
 
 .info-bg {
@@ -129,7 +129,7 @@ header {
 header div {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items:center;
 }
 
 nav {
@@ -167,6 +167,25 @@ nav {
 .menu a:focus {
   background-color: var(--secondary-color);
   color: var(--quaternary-color);
+}
+
+.con-age {
+  background-color: #415DA1;
+  color: white;
+  padding: 1.55%;
+  text-align: center;
+  border-radius: 10px;
+  margin-inline: 12%;
+}
+
+.entrar {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.config-header {
+  color: #415DA1;
+  text-align: right;
 }
 
 .destaque {
