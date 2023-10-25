@@ -35,6 +35,23 @@ html {
   height: 200px;
 }
 
+
+#fade.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#modal.hide {
+  top: 0;
+}
+#modal.hide,
+#fade.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
 body {
   font-family: var(--font-family-primary);
   background-color: var(--primary-color);
