@@ -1,7 +1,9 @@
 
     
         <!-- hide -->
-        <div id="fade" class="hide"></div> 
+        <div id="fade" class="hide">
+        </div> 
+
             <div id="modal" class ="modal hide">
                     <!-- Modal cabeçalho -->
                     <div class="modal-header flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
@@ -48,5 +50,3 @@
                     </div>
 
             </div>
-
-        </div>
