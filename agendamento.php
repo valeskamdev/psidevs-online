@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/dist/build.css">
     <link rel="stylesheet" href="css/estiloagendamento.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
 </head>
 
@@ -26,8 +27,9 @@
             <article>
                 <h2 class="text-center">Encontre um Especialista</h2>
                 <form action="" method="get">
+                    <label for="busca"></label>
                     <input type="search" name="busca" id="busca" placeholder="pesquisar">
-                    <button type="submit" name="pesquisar">Pesquisar</button>
+                    <button type="submit" name="pesquisar"><i class="bi bi-search"></i></button>
                 </form>
             </article>
             <p>
@@ -56,7 +58,12 @@
                 </div>
             </form>
         </section>
+        
+        <section class="container">
+            <article class="exibir-psicologo">
 
+            </article>
+        </section>
 
     </main>
 
