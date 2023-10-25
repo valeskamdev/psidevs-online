@@ -29,20 +29,16 @@
 
                         <form class="px-4">
 
-                            <div class="relative z-0 w-full mt-4 mb-6 group">
-                                <input
-                                type="email"
-                                id="UserEmail"
-                                placeholder="josefa@gmail.com"
-                                class=" mt-10 w-full rounded-md border-gray-200 pe-10 shadow-sm sm:text-sm"/>
-                                <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">E-mail</label>
+                            <div class="relative z-0 w-full mt-10 mb-4 group">
+                                <input type="email" id="email" name="email"class="block py-2.5 px-2 w-full text-sm text-gray-900 bg-transparent rounded-md border-gray-200 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_repeat_password" class=" text-transparent ml-2 mb-6 px-2 peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 z-1 bg-white origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 ">E-mail</label>
                             </div>
 
 
                             <div class="relative z-0 w-full mb-6 group">
-                                <input type="password" name="repeat_password" 
-                                id="floating_repeat_password" class="block pe-10 px-0 w-full text-sm text-gray-900 bg-transparent rounded-md border-gray-200 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <label for="floating_repeat_password" class=" ml-2 mb-6 peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Senha</label>
+                                <input type="password" id="senha" name="senha" 
+                                 class="block pe-10 px-2 w-full text-sm text-gray-900 bg-transparent rounded-md border-gray-200 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="floating_repeat_password" class="text-transparent ml-2 mb-6 px-2 peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 z-1 bg-white origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 ">Senha</label>
                             </div>
 
 
@@ -53,7 +49,7 @@
 
 
                             <div class="mb-6 text-center">
-                                <button type="submit" style="background: rgb(102,124,187);
+                                <button type="submit" name="enviar" style="background: rgb(102,124,187);
                                     background: linear-gradient(270deg, rgba(102,124,187,0.8911939775910365) 0%, rgba(90,155,249,1) 25%, rgba(118,174,226,1) 79%, rgba(163,210,253,1) 99%);
                                 /* Outros estilos que você deseja adicionar */" class=" text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Criar conta</button>
                             </div>
