@@ -62,7 +62,7 @@ button {
 /* INICIO HOME */
 
 .limitador {
-  margin: 0 auto;
+  margin: 0px auto;
   max-width: 1650px;
   width: calc(
     100% - 100px
@@ -144,13 +144,13 @@ nav {
   display: flex;
   list-style: none;
   align-items: center;
-  justify-content: space-between;
 }
 
 .menu li {
   font-weight: 500;
   font-size: 1.8rem;
   width: 100%;
+  margin-left: 70px;
 }
 
 .menu a {
@@ -172,16 +172,12 @@ nav {
 .con-age {
   background-color: #415DA1;
   color: white;
-  padding: 1.55%;
+  padding: 1%;
   text-align: center;
   border-radius: 10px;
-  margin-inline: 12%;
+  margin-inline: 13%;
 }
 
-.entrar {
-  padding-left: 0px;
-  padding-right: 0px;
-}
 
 .config-header {
   color: #415DA1;
@@ -697,10 +693,6 @@ footer p a:hover {
 footer p {
   margin-top: 30px;
   font-weight: 600;
-}
-
-.img-login-cliente{
-  
 }
 
 @media screen and (max-width: 1300px) {
