@@ -26,7 +26,7 @@
                     <!-- Modal conteudo -->
                     <div class="flex flex-col p-6 space-y-6 w-11/12 justify-center content-center">
                         <button >
-                            <a href="login.php?id=" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                            <a href="login.php?" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                                 <img src="img/github.png" class="w-10 mr-4"  alt="">
                                 <div class="text-left">
                                     <span class="flex-1 ml-3">Cliente</span>
@@ -37,7 +37,7 @@
                             </a>
                         </button>
                         <button>
-                            <a href="login.php?id=" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                            <a href="login.php?" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                                 <img src="img/github.png" class="w-10 mr-4"  alt="">
                                 <div class="text-left">
                                     <span class="flex-1">Profissional</span>
