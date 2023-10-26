@@ -61,7 +61,25 @@
         
         <section class="container">
             <article class="exibir-psicologo">
-              
+              <div class="flex">
+                <div>
+                    <p><img src="https://cdn-icons-png.flaticon.com/512/711/711769.png" alt=""></p>
+                    <h3>nome</h3>
+                    <p><b>Preco</b></p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ipsa officia officiis sunt aperiam dolores eligendi iusto adipisci ea, dolore quam cum tenetur, possimus porro similique quis dolor amet ullam!</p>
+                    <h2>Plataformas</h2>
+                    <div class="flex">
+                        <p><img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-1.png" alt=""></p>
+                        <p><img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-1.png" alt=""></p>
+                        <p><img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-1.png" alt=""></p>
+                    </div>
+
+                </div>
+                <div>
+                    <h2>Horarios Disponiveis</h2>
+                </div>
+              </div>
             </article>
         </section>
 
