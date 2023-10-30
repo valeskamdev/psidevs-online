@@ -34,7 +34,7 @@
                                 <input
                                     type="email"
                                     id="UserEmail"
-                                    placeholder="josefa@gmail.com"
+                                    placeholder="E-mail"
                                     class=" mt-10 w-full rounded-md border-gray-200 pe-10 shadow-sm sm:text-sm"/>
 
                                     <span
