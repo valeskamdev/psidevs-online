@@ -29,10 +29,16 @@
         </h2>
         <ul class="menu">
           <li><a href="index.html">Home</a></li>
-          <li><a href="cadastro-profissional.php">Cadastro</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
+
+          <button id="open-cadastro" data-modal-target="staticModal" data-modal-toggle="staticModal" class="block text-black bg-secondary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+            Cadastro
+          </button>
+
           <button id="open" data-modal-target="staticModal" data-modal-toggle="staticModal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-            login
-        </button>
+            Login
+          </button>
         </ul>
       </nav>
     </div>
@@ -40,6 +46,7 @@
 
   <main>
     <?php require_once "inc/modal.php"?>
+    <?php require_once "inc/modal-cadastro.php"?>
 
     <article class="destaque">
         <div class="limitador" data-aos="fade-right">
@@ -59,7 +66,8 @@
 
   </main>
   <script src="js/menu.js"></script>
-  <script src="js/script.js" defer></script>
+  <script src="js/modal.js" defer></script>
+  <script src="js/modal-cadastro.js" defer></script>
 </body>
 
 </html>

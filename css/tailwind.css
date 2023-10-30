@@ -274,14 +274,14 @@
   .conteudo-direito{
     @apply bg-white rounded shadow-lg py-32 px-3 w-full mx-auto flex flex-col justify-center items-center;
   }
-  #fade{
+  #fade, #fade-cadastro{
     @apply fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-10;
   }
-  .modal{
-    @apply bg-white rounded-lg shadow dark:bg-gray-700 w-1/2 fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10;
+  .modal, .modal-cadastro{
+    @apply bg-white rounded-lg shadow dark:bg-gray-700 w-4/5 h-2/5 fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 mx-auto md:w-1/2 sm:h-1/2;
   }
-  #fade, .modal{
-    @apply transition-opacity duration-500 opacity-100 pointer-events-auto;
+  #fade, #fade-cadastro, .modal, .modal-cadastro{
+    @apply transition-opacity duration-100 opacity-100 pointer-events-auto;
   }
   @screen sm {
     .foto-botoes{
