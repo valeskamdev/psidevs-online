@@ -21,7 +21,7 @@
                         <div class="lg:col-span-3">
 
                         <div class="mb-10">
-                            <h1 class="flex flex-col justify-center flex-shrink-0 mb-3 text-[#152A5C] font-plus-jakarta-sans font-semibold text-3xl ">
+                            <h1 class="flex flex-col justify-center flex-shrink-0 mb-5 text-[#152A5C] font-plus-jakarta-sans font-semibold text-3xl ">
                                 Bem vindo(a) ao Psidevs!
                             </h1>
 
