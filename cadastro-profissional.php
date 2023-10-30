@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="css/cadprof.css">
 </head>
 
-<body class="">
-
-    <div class="min-h-screen p-6 bg-fundo-neutro bg-cover flex items-center justify-center">
+<body class="p-6 bg-fundo-neutro bg-cover bg-no-repeat  flex items-center justify-center">
         <div class="container max-w-screen-lg mx-auto flex items-center justify-center">
             <div class="flex">
                 <div class="mostrar-form  text-gray-600 bg-fundo-azul rounded-l-lg bg-cover p-6 w-1/2  md:block">
@@ -22,13 +20,15 @@
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
                         <div class="lg:col-span-3">
 
-                            <h1 class="flex w-[367.298px] h-[68px] flex-col justify-center flex-shrink-0 text-[#152A5C] font-plus-jakarta-sans font-semibold text-3xl leading-[18px]">
+                        <div class="mb-10">
+                            <h1 class="flex flex-col justify-center flex-shrink-0 mb-3 text-[#152A5C] font-plus-jakarta-sans font-semibold text-3xl ">
                                 Bem vindo(a) ao Psidevs!
                             </h1>
 
-                            <p class="flex  w-[359.378px] h-[34px] flex-col justify-center flex-shrink-0 text-[#000] font-plus-jakarta-sans text-base font-normal leading-[18px]">
+                            <p class="flex flex-col  justify-center flex-shrink-0 text-[#000] font-plus-jakarta-sans text-base font-normal">
                                 Venha conhecer os nossos serviços.
                             </p>
+                        </div>
 
 
 
@@ -64,34 +64,29 @@
                                 </div>
 
 
-                                <div class="grid md:grid-cols-2 md:gap-6">
-                                    <div class="relative z-0 w-full mb-6 group">
-                                        <label for="Celular" class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
-                                            <input type="tel" id="Celular" class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0" placeholder="Celular" />
-                                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-                                                Celular
-                                            </span>
-                                        </label>
-                                    </div>
-
-                                    <div class="relative z-0 w-full mb-6 group">
-                                        <label for="CPF" class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
-                                            <input type="text" id="CPF" class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0" placeholder="CPF" />
-                                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-                                                CPF
-                                            </span>
-                                        </label>
-                                    </div>
+                                <div class="relative z-0 w-full my-3 group mb-6">
+                                    <label for="celular" class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                        <input type="text" id="celular" class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0" placeholder="Nome" />
+                                        <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+                                            Celular
+                                        </span>
+                                    </label>
                                 </div>
-                                <div class="grid">
-                                    <div class="relative z-0 w-full mb-6 group">
-                                        <label for="CRP" class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
-                                            <input type="text" id="CRP" class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0" placeholder="CRP" />
-                                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-                                                CRP
-                                            </span>
-                                        </label>
-                                    </div>
+                                <div class="relative z-0 w-full mb-6 group">
+                                    <label for="cpf" class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                        <input type="text" id="cpf" class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0" placeholder="E-mail" />
+                                        <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+                                           CPF
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="relative z-0 w-full mb-6 group">
+                                    <label for="crp" class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                        <input type="text" id="crp" class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0" placeholder="Senha" />
+                                        <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+                                            CRP
+                                        </span>
+                                    </label>
                                 </div>
 
                                 <div class="mb-5">
@@ -105,7 +100,7 @@
                                 </div>
 
 
-                                <div class="flex mb-5">
+                                <div class="flex mb-5 flex-wrap">
                                     <div class="flex items-center mr-10">
                                         <input id="inline-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         <label for="inline-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Feminino</label>
@@ -138,11 +133,9 @@
                         </form>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
     </div>
-
 
     <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
 </body>
