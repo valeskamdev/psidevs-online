@@ -1,0 +1,252 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-family-primary: "Plus Jakarta Sans", sans-serif;
+  --primary-color: #e9f0ff;
+  --secondary-color: #415da1;
+  --tertiary-color: #d5e0fb;
+  --quaternary-color: #f4f4f4;
+  --quinary-color: #39394a;
+  --senary-color: #121229;
+  --octonary-color: #67b0cf;
+  --bottun-hover-dark: #394d64;
+  --letter-spacing: 0.8px;
+  --margin-primary: 13rem;
+}
+
+html {
+  font-size: 75.5%;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  background-color: #f5f5f5; /* Cor de fundo do scroll */
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #415DA1; /* Cor da barra de rolagem */
+  height: 200px;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  background-color: var(--primary-color);
+  color: var(--quinary-color);
+
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+img:not(header h1 a img) {
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  margin: 20px;
+  margin-bottom: 0.1rem
+}
+
+
+/* Cadastro Cliente */
+
+.body-cadastro-cliente{
+
+  height: 100vh;
+  width: 100%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+    background-image: url(../img/fundo-neutro.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.main-cadastro-cliente{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-cadastro-cliente{
+  width: 63vw;;
+  height: 78vh;
+  display: flex;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+  background-image: url(../img/fundo-azul.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
+.form-cadastro-cliente{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:center;
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 0px 10px 10px 0;
+  width: 49%;
+  
+}
+.form-cadastro-cliente form{
+  width: 85%;
+  margin-left:-40px;
+}
+
+
+.form-cadastro-cliente input{
+  box-shadow: 2px 3px 4px rgba(100, 100, 100, 0.212);
+  font-size: 1.5rem;
+  /* height: 36px; */
+}
+
+.form-cadastro-cliente label, button{
+    font-size: 1.5rem;
+}
+
+.form-header{
+  color: #152A5C;
+  font-family: var(--font-family-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 5rem;
+}
+
+.titulo p {
+  margin: auto;
+  color: #152A5C;
+  font-size: 1.5rem;
+}
+
+.genero label{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.genero {
+  margin-bottom: 1.5rem;
+}
+
+
+
+
+.button-cadastro-cliente{
+  background-color: #67b0cf;
+  padding: 8px 38px 8px 38px;
+  border: none;
+  color: var(--quaternary-color);
+  border-radius: 5px;
+  background: rgb(102,124,187);
+  background: linear-gradient(270deg, rgba(102,124,187,0.8911939775910365) 0%, rgba(90,155,249,1) 25%, rgba(118,174,226,1) 79%, rgba(163,210,253,1) 99%);
+}
+.form-img-cadastro-cliente{
+  max-width: 51%;
+  max-height: 78vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-img-cadastro-cliente img{
+  padding: 35px;
+}
+
+
+
+@media screen and (max-width: 1373px) {
+ html{
+    font-size: 10.1px;
+ }
+/*Cadastro Cliente */
+  .form-img-cadastro-cliente{
+    display: none;
+  }
+  .container-cadastro-cliente{
+    max-width: 40vw;
+    /* max-height: 65vh; */
+  }
+  .form-cadastro-cliente{
+    width: 100%;
+    border-radius: 10px;
+  }
+  .button-cadastro-cliente{
+    background-color: #152A5C;
+  }
+
+  .container-cadastro-cliente form{
+    width: 91%;
+    margin-left: 0px;
+  }
+
+  .container-cadastro-cliente{
+    max-width: 50vw;
+    margin-top: -90px;
+  }
+  
+}
+
+
+@media screen and (max-width: 800px) {
+    /* Cadastro Cliente */
+    .form-cadastro-cliente{
+      padding: 1rem;
+    }
+    .container-cadastro-cliente{
+      max-width: 58vw;
+    }
+
+  }
+
+
+@media screen and (max-width: 749px) {
+
+  .container-cadastro-cliente{
+    max-width: 62vw;
+  }
+}
+
+
+@media screen and (max-width: 585px) {
+  html {
+    font-size: 59%;
+  }
+  
+}
+
+
+@media screen and (max-width: 388px) {
+  .info-num-adress div:nth-child(1) {
+    display: none;
+  }
+
+  header {
+    background-color: var(--primary-color);
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+    padding: 25px 0;
+  }
+  
+  .info-bg {
+    position: unset;
+    top: unset;
+  }
+
+  header h1 a img {
+    max-width: 100%;
+    min-width: 150px;
+  }
+}
+
