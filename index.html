@@ -17,11 +17,8 @@
   <header>
     <div class="limitador">
         <h1>
-          <a href="index.html"><img src="assets/logo.svg" alt="Logo psidevs" /></a>
-        </h1>
-        <h2 class="config-header dimi">
-          Para Especialistas
-        </h2>   
+          <a href="index.html"><img src="assets/logo.png" alt="Logo psidevs" class="logo"/></a>
+        </h1>   
       <nav>
       <h2>
         <a href="" class="icone"><img src="assets/icon-menu.svg" alt="icone de menu"></a>
@@ -267,7 +264,45 @@
         </div>
       </div>
     </article>
-        <article class="motivacional-pt2">
+    <article class="contato limitador">
+      <div class="contato-form-titulos" data-aos="fade-up">
+        <div class="contato-titulos">
+          <p>Fale conosco</p>
+          <h2>Essencial para agendar consultas e obter informações</h2>
+        </div>
+
+        <form id="my-form" action="https://formspree.io/f/mbjebokg" method="post">
+          <div>
+            <div>
+              <label for="nome">Nome</label>
+              <input type="text" name="nome" id="nome" required />
+            </div>
+            <div>
+              <label for="sobrenome">Sobrenome</label>
+              <input type="text" name="sobrenome" id="sobrenome" required />
+            </div>
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required />
+          </div>
+
+          <div>
+            <textarea name="mensagem" id="textarea" rows="7" placeholder="Mensagem" required></textarea>
+            <button id="my-form-button" type="submit">Enviar mensagem</button>
+            <p id="my-form-status"></p>
+          </div>
+        </form>
+      </div>
+      <div class="contato-principal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.175765503497!2d-46.54283012381075!3d-23.52617986030222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5e45de28bb23%3A0x1d2ed3122aae28a7!2sSenac%20Penha!5e0!3m2!1spt-BR!2sbr!4v1683496236901!5m2!1spt-BR!2sbr"
+          height="690" style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          data-aos="zoom-in"></iframe>
+      </div>
+    </article>
+    <article class="motivacional-pt2">
       <div data-aos="fade-up">
         <p>
           "A vida é imperfeita, mas cada momento tem sua própria beleza. Não
@@ -345,7 +380,7 @@
       <div class="info">
         <div class="info-block">
           <figure>
-            <img src="assets/logo.svg" alt="Logo Psidev">
+            <img src="assets/logo-vertical.png" alt="Logo Psidev">
           </figure>
           <p>
             Somos uma plataforma online que conecta você a psicólogos qualificados.
@@ -375,15 +410,6 @@
               Por E-mail
             </div>
           </div>
-        </div>
-
-        <div class="section">
-          <ul>
-            <li><h2>Atendimento</h2></li>
-            <li>(11)94909-6814</li>
-            <li>For</li>
-          </ul>
-
         </div>
 
 
