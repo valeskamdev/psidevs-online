@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -1080,8 +1080,65 @@ a {
   word-wrap: break-word
 }
 
+/* Finanças */
 
+.card-fin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5%;
+  padding: 2%;
+  flex-wrap: wrap;
+}
 
+.detalhamento {
+  box-shadow: 3px 3px 5px gray;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  background-color: white;
+  padding: 30px;
+}
 
+.sessoes {
+  box-shadow: 3px 3px 5px gray;
+  text-align: center;
+  width: 33%;
+  background-color: white;
+  padding: 30px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
 
+.sessoes h2 {
+  font-size: 50px;
+}
+
+.sessoes p {
+  font-size: 18px;
+}
+
+.sessoes p svg {
+  max-height: 25px;
+  max-width: 40px;
+}
+
+.detalhamento table, thead {
+  padding: 10px;
+  margin: auto;
+} 
+
+.detalhamento caption {
+  font-size: 20px;
+}
+
+.detalhamento table, thead, tr th {
+  font-size: 13px;
+  padding: 10px ;
+}
+
+.detalhamento table, tbody, tr td {
+  font-size: 13px;
+  padding: 30px;
+}
 
