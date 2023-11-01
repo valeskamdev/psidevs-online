@@ -1,6 +1,6 @@
 const openModalButton1 = document.querySelector("#open");
 const closeModalButton1 = document.querySelector("#close");
-const modal1 = document.querySelector("#modal");
+const modal1 = document.querySelector("#default-modal");
 const fade1 = document.querySelector("#fade");
 
 const toggleModal1 = () => {
@@ -17,7 +17,7 @@ const toggleModal1 = () => {
 
 const openModalButton2 = document.querySelector("#open-cadastro");
 const closeModalButton2 = document.querySelector("#close-cadastro");
-const modal2 = document.querySelector("#modal-cadastro");
+const modal2 = document.querySelector("#default-modal-cadastro");
 const fade2 = document.querySelector("#fade-cadastro");
 
 const toggleModal2 = () => {

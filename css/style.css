@@ -46,8 +46,8 @@ html {
   top: 0;
 } */
 
-#modal.hide,
-#fade.hide, #modal-cadastro.hide,
+#default-modal.hide,
+#fade.hide, #default-modal-cadastro.hide,
 #fade-cadastro.hide  {
   opacity: 0;
   pointer-events: none;
