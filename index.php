@@ -341,49 +341,40 @@
     <div class="footer-container">
       <div class="logo">
         <img src="assets/logo-vertical.png" alt="">
-        <p>Somos uma plataforma online que
-          conecta você a psicólogos
-          qualificados</p>
-        
+        <p class="dark-blue">Somos uma plataforma online que conecta você a psicólogos qualificados</p>
       </div>
-      <div class="links">
-        <div class="links-coluna">
-          <div class="titulo">Sobre</div>
-          <div class="sub-links">
-            <div>Para Profissionais</div>
-            <div>Para Pacientes</div>
-          </div>
+
+      <div class="menu">
+        <div class="menu-coluna">
+          <h2 class="dark-blue">Sobre</h2>
+          <ul class="sub-menu">
+            <li><a href="#">Para Profissionais</a></li>
+            <li><a href="#">Para Clientes</a></li>
+          </ul>
         </div>
-        <div class="links-coluna">
-          <div class="titulo">Atendimento</div>
-          <div class="sub-links">
-            <div class="info">
-              <div class="icone">Telefone</div>
-              <div>(11) 94909-6814</div>
-            </div>
-            <div class="info">Formulário de contato</div>
-            <div class="info">
-              <div class="icone">Email</div>
-              <div>Por email</div>
-            </div>
-          </div>
+        <div class="menu-coluna">
+          <h2 class="dark-blue">Atendimento</h2>
+          <ul class="sub-menu">
+            <li><span class="icone">Telefone</span> (11) 94909-6814</li>
+            <li><a href="#">Formulário de Contato</a></li>
+            <li><span class="icone">Email</span> Por Email</li>
+          </ul>
         </div>
-        <div class="links-coluna">
-          <div class="titulo">Plataforma</div>
-          <div class="sub-links">
-            <div>Termos de uso</div>
-            <div>Princípios da LGPD</div>
-            <div>Política de privacidade</div>
-          </div>
+        <div class="menu-coluna">
+          <h2 class="dark-blue">Plataforma</h2>
+          <ul class="sub-menu">
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">Princípios da LGPD</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+          </ul>
         </div>
-        <div class="links-coluna">
-          <div class="titulo">Acesso rápido</div>
-          <div class="sub-links">
-            <div>Blog</div>
-            <div>Minha conta</div>
-            <div>Central de ajuda</div>
-            <div>Mapa do site</div>
-          </div>
+        <div class="menu-coluna">
+          <h2 class="dark-blue">Acesso Rápido</h2>
+          <ul class="sub-menu">
+            <li><a href="#">Minha Conta</a></li>
+            <li><a href="#">Central de Ajuda</a></li>
+            <li><a href="#">Mapa do Site</a></li>
+          </ul>
         </div>
       </div>
     </div>

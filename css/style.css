@@ -670,7 +670,7 @@ footer p {
 footer {
   background-color: var(--tertiary-color);
   padding: 30px;
-  color: #39394a;
+  color: #ffffff;
 }
 
 .colunas {
@@ -1061,17 +1061,49 @@ p {
   font-weight: 700;
   line-height: 24px;
   word-wrap: break-word
-  
-  
 }
 
 .sub-links {
   color: #415DA1;
-font-size: 14px;
-font-family: Montserrat;
-font-weight: 400;
-line-height: 20px;
-word-wrap: break-word;
+  font-size: 14px;
+  font-family: Montserrat;
+  font-weight: 400;
+  line-height: 20px;
+  word-wrap: break-word;
 
 }
 
+.dark-blue {
+  color: #415DA1;
+  font-size: 25px;
+  font-family: Montserrat;
+  font-weight: 700;
+  line-height: 24px;
+  word-wrap: break-word
+}
+
+.sub-menu {
+  color: #415DA1;
+  font-size: 20px;
+  font-family: Montserrat;
+  font-weight: 400;
+  line-height: 20px;
+  word-wrap: break-word;
+  list-style: none;
+  
+}
+
+.sub-menu a {
+  text-decoration: none; /* Remover o sublinhado das âncoras (links) */
+  color: darkblue;
+}
+
+.menu-coluna {
+  margin: 30px;
+  text-align: justify;
+  
+}
+
+.logo, img, p, .dark-blue{
+  margin-right: auto;
+}
