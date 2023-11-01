@@ -37,6 +37,24 @@ html {
   height: 200px;
 }
 
+/* #fade.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#modal.hide {
+  top: 0;
+} */
+
+#default-modal.hide,
+#fade.hide, #default-modal-cadastro.hide,
+#fade-cadastro.hide  {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
 body {
   font-family: var(--font-family-primary);
   background-color: var(--primary-color);
