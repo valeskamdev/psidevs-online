@@ -22,22 +22,31 @@
                 <!-- Lado Direito -->
                 <form class="conteudo-direito">
                     <div class="p-6">
-                        <div class="mb10">
+                        <div class="p-4 mb10">
                             <h2 class=" text-sky-800 font-sans text-2xl font-medium mb-2">Esqueci minha senha</h2>
                             <p>Informe o seu email para enviarmos o link para redefinir sua senha</p>
                         </div>
 
                         <div class="px-4">
-                            <div class="relative z-0 w-full mt-4 mb-6 group">
-                                <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">E-mail</label>
+                            <div class="relative mt-10">
+                                <label for="UserEmail" class="sr-only"> Email </label>
+
+                                <input
+                                    type="email"
+                                    id="UserEmail"
+                                    placeholder="E-mail"
+                                    class=" mt-10 w-full rounded-md border-gray-200 pe-10 shadow-sm sm:text-sm"/>
+
+                                    <span
+                                        class="mt-10 pointer-events-none absolute inset-y-0 end-0 grid w-10 place-content-center text-gray-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1644ad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+                                    </span>
                             </div>
 
-                            <div class="mb-6 text-center">
+                            <div class="mb-6 mt-4 text-center">
                                 <button type="submit" style="background: rgb(102,124,187);
-                                    background: linear-gradient(270deg, rgba(102,124,187,0.8911939775910365) 0%, rgba(90,155,249,1) 25%, rgba(118,174,226,1) 79%, rgba(163,210,253,1) 99%);
-                                /* Outros estilos que você deseja adicionar */" class=" text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Enviar</button>
-                            </div>
+                                    background: linear-gradient(270deg, rgba(102,124,187,0.8911939775910365) 0%, rgba(90,155,249,1) 25%, rgba(118,174,226,1) 79%, rgba(163,210,253,1) 99%);" class=" text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Enviar</button>
+                            </div>      
                                                         
                         </div>
 

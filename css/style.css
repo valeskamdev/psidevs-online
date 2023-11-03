@@ -26,14 +26,34 @@ html {
 }
 
 ::-webkit-scrollbar {
-  background-color: #f5f5f5; /* Cor de fundo do scroll */
+  background-color: #f5f5f5;
+  /* Cor de fundo do scroll */
   width: 15px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #415DA1; /* Cor da barra de rolagem */
+  background-color: #415DA1;
+  /* Cor da barra de rolagem */
   height: 200px;
 }
+
+/* #fade.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#modal.hide {
+  top: 0;
+} */
+
+#default-modal.hide,
+#fade.hide, #default-modal-cadastro.hide,
+#fade-cadastro.hide  {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
 
 body {
   font-family: var(--font-family-primary);
@@ -64,9 +84,8 @@ button {
 .limitador {
   margin: 0 auto;
   max-width: 1200px;
-  width: calc(
-    100% - 100px
-  ); /* a largura é a largura total menos 100px (50px para cada lado) */
+  width: calc(100% - 100px);
+  /* a largura é a largura total menos 100px (50px para cada lado) */
 }
 
 .info-bg {
@@ -579,7 +598,7 @@ nav {
   margin-bottom: var(--margin-primary);
 }
 
-.depoimentos > p {
+.depoimentos>p {
   font-weight: 500;
   font-size: 2rem;
   color: var(--secondary-color);
@@ -600,7 +619,7 @@ nav {
   margin: 0 20px;
 }
 
-.depoimentos-cliente > p {
+.depoimentos-cliente>p {
   font-weight: 400;
   font-size: 1.8rem;
   color: var(--quinary-color);
@@ -680,12 +699,10 @@ footer p {
   font-weight: 600;
 }
 
-.img-login-cliente{
-  
-}
+.img-login-cliente {}
 
 @media screen and (max-width: 1300px) {
-  .depoimentos > p {
+  .depoimentos>p {
     margin-left: 0;
   }
 }
@@ -699,7 +716,7 @@ footer p {
     width: 88%;
     gap: 35px;
   }
-  
+
 }
 
 @media screen and (max-width: 1173px) {
@@ -768,7 +785,7 @@ footer p {
     margin: 35px 0;
   }
 
-  .depoimentos > p {
+  .depoimentos>p {
     text-align: center;
   }
 
@@ -784,11 +801,11 @@ footer p {
 
   .servicos-img-texto article {
     width: 80%;
-}
+  }
 
-.separador {
-  display: none;
-}
+  .separador {
+    display: none;
+  }
 
 
 }
@@ -802,7 +819,7 @@ footer p {
     width: 35%;
   }
 
-  .diferenciais{
+  .diferenciais {
     flex-direction: column;
     max-width: 400px;
   }
@@ -863,7 +880,9 @@ footer p {
 }
 
 @media screen and (max-width: 749px) {
-  .info-num-adress div:nth-child(3), .info-num-adress div:nth-child(2)  {
+
+  .info-num-adress div:nth-child(3),
+  .info-num-adress div:nth-child(2) {
     display: none;
   }
 
@@ -888,29 +907,29 @@ footer p {
   .bem-vindo ul {
     width: 100%;
     flex-direction: column;
-}
+  }
 
-.bem-vindo ul li {
-  width:100%;
-}
+  .bem-vindo ul li {
+    width: 100%;
+  }
 
-.nos-escolher-texto article {
-  min-width: 268px;
-  margin: 2rem;
-}
+  .nos-escolher-texto article {
+    min-width: 268px;
+    margin: 2rem;
+  }
 
-.nos-escolher-conteudo {
-  margin-left: 0;
-  margin-top: 15px;
-  text-align: center;
-}
-  
+  .nos-escolher-conteudo {
+    margin-left: 0;
+    margin-top: 15px;
+    text-align: center;
+  }
+
 }
 
 
 @media screen and (max-width: 528px) {
   .info-num-adress {
-    width: auto; 
+    width: auto;
   }
 
   .info-bg {
@@ -935,7 +954,7 @@ footer p {
     z-index: 10;
     padding: 25px 0;
   }
-  
+
   .info-bg {
     position: unset;
     top: unset;
@@ -965,34 +984,41 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 1200px; /* Largura máxima desejada para o conteúdo */
-  margin: 0 auto; /* Centralizar o conteúdo horizontalmente */
+  max-width: 1200px;
+  /* Largura máxima desejada para o conteúdo */
+  margin: 0 auto;
+  /* Centralizar o conteúdo horizontalmente */
   text-align: left;
+}
+
+.lista {
+  font-size: 16px;
 }
 
 .info {
   display: flex;
-  
+
 }
 
 .info-block {
   flex: 1;
-  margin: 0 40px; /* Espaçamento entre as divs */
+  margin: 0 40px;
+  /* Espaçamento entre as divs */
   text-align: left;
 }
 
 /* Aplicar cor de fonte a todos os elementos de texto */
 footer,
-footer a,
 footer p,
 footer h2,
 footer ul,
 footer li {
   color: #415DA1;
-}
-
-footer, h2 {
-  font-size: 20px;  
+  font-size: 20px;
+  font-family: Montserrat;
+  font-weight: 700;
+  line-height: 24px;
+  word-wrap: break-word
 }
 
 ul {
@@ -1002,13 +1028,25 @@ ul {
 
 a {
   text-decoration: none;
+  font-size: 16px;
 }
 
+.telefone,
+.formulario-contato,
+.email {
+  color: #415DA1;
+  font-size: 20px;
+  font-family: Montserrat;
+  font-weight: 400;
+  line-height: 20px;
+  word-wrap: break-word
+}
 
-
-
-
-
-
-
-
+.prof, li, a {
+  color: #415DA1;
+  font-size: 20px;
+  font-family: Montserrat;
+  font-weight: 400;
+  line-height: 20px;
+  word-wrap: break-word
+}

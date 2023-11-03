@@ -86,8 +86,7 @@
       </div>
       <section class="servicos-img-texto">
         <div data-aos="zoom-in">
-          <img class="servicos-img" src="assets/medica-sobre-nos.png"
-            alt="medica segunda sua prancheta com a mão no óculos" />
+          <img class="servicos-img" src="assets/medica-sobre-nos.png" alt="medica segunda sua prancheta com a mão no óculos" />
         </div>
         <section class="servicos-cards">
           <article data-aos="flip-left">
@@ -247,7 +246,7 @@
         </div>
       </div>
     </article>
-        <article class="motivacional-pt2">
+    <article class="motivacional-pt2">
       <div data-aos="fade-up">
         <p>
           "A vida é imperfeita, mas cada momento tem sua própria beleza. Não
@@ -310,6 +309,7 @@
       <p data-aos="fade-right" data-aos-offset="210" data-aos-easing="ease-in-sine">Com a confiança de mais de 6500+
         clientes</p>
     </article>
+
   </main>
 
   <div vw class="enabled">
@@ -331,13 +331,17 @@
             Somos uma plataforma online que conecta você a psicólogos qualificados.
           </p>
         </div>
+
         <div class="info-block">
           <ul>
             <li><a href="sobre-nos.html">
                 <h2>Sobre</h2>
-              </a></li>
-            <li><a href="#">Para Profissionais</a></li>
-            <li><a href="#">Para Clientes</a></li>
+              </a>
+            </li>
+            <div class="prof">
+              <li><a href="#">Para Profissionais</a></li>
+              <li><a href="#">Para Clientes</a></li>
+            </div>
           </ul>
         </div>
         <div class="section">
@@ -356,17 +360,6 @@
             </div>
           </div>
         </div>
-
-        <div class="section">
-          <ul>
-            <li><h2>Atendimento</h2></li>
-            <li>(11)94909-6814</li>
-            <li>For</li>
-          </ul>
-
-        </div>
-
-
         <div class="info-block">
           <h2>Plataforma</h2>
           <ul>
@@ -383,6 +376,7 @@
             <li><a href="#">Mapa do Site</a></li>
           </ul>
         </div>
+
       </div>
     </div>
   </footer>
