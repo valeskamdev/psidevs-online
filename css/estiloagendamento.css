@@ -112,7 +112,7 @@ button {
 
 
 .agenda {
-    border-radius: 19px 19px 0px 0px;
+    border-radius: 19px ;
     background: #D4E2FF;
 
 }
@@ -125,6 +125,11 @@ button {
 
 .agenda .calendario{
     background-color: #f4f4f4;
+}
+
+.calendario{
+    border-radius: 19px ;
+    background: #D4E2FF;
 }
 
 
@@ -169,7 +174,7 @@ button {
        flex-direction: row;
     }
 
-    .descricao{
+    /* .descricao{
         display: none;
-    }
+    } */
 }
