@@ -7,57 +7,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento | Psidevs</title>
 
-    <link rel="stylesheet" href="css/dist/build.css">
-    <link rel="stylesheet" href="css/estiloagendamento.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
+    <link rel="stylesheet" href="css/estiloagendamento.css">
 </head>
 
 <body>
 
     <main>
-        <section class="destaque-agendamento flex-itens-baseline">
-            <p>
-                <picture>
-                    <source media="(min-width: 1100px)" srcset="assets/ligadevs.svg" />
-                    <img src="" alt="">
-                </picture>
-            </p>
-            <article>
-                <h2 class="text-center">Encontre um Especialista</h2>
+        <section class="destaque-agendamento 
+                        d-flex align-items-center 
+                        ">
+
+            <article class="container col-auto">
+                <h2 class="text-center  mb-3">
+                    Encontre um Especialista
+                </h2>
                 <form action="" method="get">
-                    <label for="busca"></label>
-                    <input type="search" name="busca" id="busca" placeholder="pesquisar">
-                    <button type="submit" name="pesquisar"><i class="bi bi-search"></i></button>
+                    <div class="input-group  input-group-lg mb-3 ">
+                        <input type="search" name="busca" id="busca" placeholder="pesquisar" class="form-control  form-control-lg">
+
+                        <button class="btn btn-outline-secondary pesquisabtn" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+
+                    </div>
+
+
                 </form>
+                
             </article>
-            <p>
-                <picture>
 
-                    <source media="(min-width: 1100px)" srcset="assets/ligacao-pesquisa.svg" /><img src="" alt="">
-                </picture>
-            </p>
+           
         </section>
-        <section class="filtros">
-            <form action="" method="get">
-                <div>
-                    <p>Tipo de Especialista</p>
-                    <select name="especialista" class="form-select form-select-lg mb-3" id="especialista">
-                        <option value="">Todos</option>
-                    </select>
-                </div>
-            </form>
-
-            <form action="" method="get">
-                <div>
-                    <p>Valor da sessão</p>
-                    <select name="preco" id="preco" class="form-select form-select-lg mb-3">
-                        <option value="">Qualquer valor</option>
-                    </select>
-                </div>
-            </form>
-        </section>
+ <section class="filtros align-items-center  mb-3">
+     <article class="container col-auto mb-3">
+                    <form action="" class=" row
+                                             g-3
+                                            justify-content-between
+                                            align-items-center " 
+                    method="get">
+                        <div class="col-auto form-floating">
+                            <select name="especialista" class="form-select  form-select-lg mb-3" id="especialista">
+                                <option value="">Qualquer Especialista</option>
+                            </select>
+                            <label for="especialista" class="form-label">
+                                Tipo de Especialista
+                            </label>
+                        </div>
+                        <div class="col-auto form-floating">
+                            <select name="preco" id="preco" class="form-select  form-select-lg mb-3 ">
+                                <option value="">Qualquer valor</option>
+                            </select>
+                            <label for="preco" class="form-label">
+                                Valor da sessão
+                            </label>
+                        </div>
+                    </form>
+                </article>
+ </section>
 
         <section class="container">
             <div class="card-psicologo">
@@ -78,8 +87,9 @@
                             <h2>Plataformas:</h2>
                             <div>
                                 <p class="d-flex icones "><img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-1.png" alt="">
-                                <img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-1.png" alt="">
-                                <img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-1.png" alt=""></p>
+                                    <img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-1.png" alt="">
+                                    <img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-1.png" alt="">
+                                </p>
                             </div>
                         </div>
                         <div class="agenda">
