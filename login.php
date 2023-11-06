@@ -27,11 +27,11 @@
                         </div>
                         <h2 class="text-center text-sky-800 font-sans text-2xl font-medium">Entre na sua conta</h2>
 
-                        <form class="px-4">
+                        <form method="post" name="form-login" class="px-4">
 
                             <div class="relative z-0 w-full mt-10 mb-4 group">
-                                <label for="Email" class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
-                                    <input type="email" id="Email" class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0" placeholder="E-mail" />
+                                <label for="Email" class="label-padrao-login">
+                                    <input type="email" id="Email" class="login-input peer" placeholder="E-mail" />
                                     <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
                                         E-mail
                                     </span>
@@ -39,8 +39,8 @@
                             </div>
 
                             <div class="relative z-0 w-full mb-6 group">
-                                <label for="Senha" class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
-                                    <input type="password" id="Senha" class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0" placeholder="Senha" />
+                                <label for="Senha" class="label-padrao-login">
+                                    <input type="password" id="Senha" class="login-input peer" placeholder="Senha" />
                                     <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
                                         Senha
                                     </span>
