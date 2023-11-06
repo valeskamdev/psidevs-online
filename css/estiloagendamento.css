@@ -73,28 +73,32 @@ button {
 
 }
 
- .pesquisabtn  {
+.pesquisabtn {
     border: none;
     background-color: #415DA1;
     color: #e9f0ff;
 }
- .pesquisabtn:hover  {
+
+.pesquisabtn:hover {
     border: none;
-    background-color:#e9f0ff;
-    color:  #415DA1;
+    background-color: #e9f0ff;
+    color: #415DA1;
 }
+
 .filtros {
     background-color: #415DA1;
-    height: 10vh;
+    height: 15vh;
 }
 
 .exibir-psicologo {
-    background-color: #93B3FB;
+   
+    background: rgb(182, 203, 251);
+    background: linear-gradient(225deg, rgba(182, 203, 251, 1) 45%, rgba(196, 211, 247, 1) 61%);
     border-radius: 20px;
-    /* width: 20vw; */
+    color: #434c61;
 }
 
-.esconder-lista{
+.esconder-lista {
     list-style: none;
 }
 
@@ -102,29 +106,29 @@ button {
     max-width: 55px;
 }
 
-.perfil-foto{
-   max-width: 120px;
+.perfil-foto {
+    max-width: 120px;
     clip-path: circle(50% at 50% 50%);
 }
 
-.espaco{
+.espaco {
     max-width: 300px;
 }
 
 
 .agenda {
-    border-radius: 19px ;
+    border-radius: 19px;
     background: #D4E2FF;
     display: none;
 
 }
 
-.agenda.aberto{
+.agenda.aberto {
     display: block;
 }
 
-.tamanho{
-    width: 20vw;
+.tamanho {
+    width: 40vw;
 }
 
 
@@ -132,17 +136,27 @@ button {
     text-align: center;
     color: #002776;
     letter-spacing: 0.24px;
-} 
+}
 
-.agenda .calendario{
+.agenda .calendario {
     background-color: #f4f4f4;
 }
 
-.calendario{
-    border-radius: 19px ;
+.calendario {
+    border-radius: 19px;
     background: #D4E2FF;
 }
 
+
+.horariosConsultas {
+    color: #f4f4f4;
+    background-color: #415DA1;
+}
+
+.horariosConsultas:hover {
+    /* color: #f4f4f4; */
+    background-color: #93B3FB;
+}
 
 
 
@@ -166,11 +180,11 @@ button {
         width: 50vw;
     }
 
-    .exibir-psicologo .perfil{
+    .exibir-psicologo .perfil {
         text-align: center;
         display: flex;
         flex-direction: column;
-     }
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -179,10 +193,19 @@ button {
     }
 
 
-    .exibir-psicologo .perfil{
-       text-align: center;
-       display: flex;
-       flex-direction: row;
+    .exibir-psicologo .perfil {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tamanho {
+        width: auto;
+    }
+
+    .quebra {
+        flex-direction: column;
+        flex-wrap: wrap;
     }
 
     /* .descricao{
