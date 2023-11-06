@@ -126,9 +126,9 @@
 
 
             <?php if (isset($_GET["campos_preechidos"])) { ?>
-              <div class="aviso-modal border-t border-b border-red-400 bg-red-100 text-red-700 px-4 py-3 " role="alert">
+              <div class="aviso-modal border-t border-b bg-teal-100 border-teal-500 text-teal-900 px-4 py-3"  role="alert">
                 <p class="font-bold">Disponibilidade foi preenchida!<br>
-                <span class="text-sm font-light">Não há necessidade de preencher os horários novamente.</span></p>
+                <span class="text-sm font-light">Não preencha os horários novamente.</span></p>
               </div>
             <?php } else { ?>
               <div class="aviso-modal bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3 flex justify-between" role="alert">
