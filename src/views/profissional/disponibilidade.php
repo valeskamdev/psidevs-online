@@ -115,17 +115,22 @@
           <div class="container_conteudo_perfil_bg card_bg">
             <div class="container_conteudo_perfil_estrutura">
 
-                <button class="adicionar bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Adicionar</button>
+            <div class="aviso-modal bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3 flex justify-between" role="alert">
+              <p class="font-bold">Adicione sua disponibilidade<br>
+              <span class="text-sm font-light">Ainda não possui horarios definidos.</span></p>
+              <button class="adicionar bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 border border-blue-700 rounded">Adicionar</button>
+            </div>
+
            <!-- Modal -->
-                <div class="bg-tertiary rounded-md m-7" id="modal-disp">
+                <div class="bg-blue-100 rounded-md m-7 hidden" id="modal-disp">
 
                     <form name="form-disponibilidade" id="form-disponibilidade" method="post" type="post">
                         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 p-8 sm:grid-cols-8">
                                                        <!-- Legendas Fixas -->
-                            <div class="hidden sm:col-span-3 md:block">
+                            <div class="font-semibold hidden sm:col-span-3 md:block">
                                 <label for="">Dias da semana</label>
                             </div>
-                            <div class="hidden md:block md:col-span-4">
+                            <div class="font-semibold hidden md:block md:col-span-4">
                                 <label for="">Intervalo de Horas</label>
                             </div>
 
@@ -275,7 +280,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 mt-5 rounded">Salvar</button>
+                        <button type="submit" class="salvar-disponibilidade bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 mt-5 rounded">Salvar</button>
                     </form>
                 </div>
 
@@ -302,12 +307,13 @@
     const modal1 = document.querySelector("#modal-disp");
 
     const toggleModal1 = () => {
-    modal1.classList.toggle("hidden");
+        modal1.classList.toggle("hidden");
+        openModalButton.disabled = true; // Desabilita o botão ao ser clicado
+        openModalButton.classList.add("bg-gray-400", "cursor-not-allowed", "opacity-50");
+
     };
 
-    [openModalButton].forEach((el) => {
-    el.addEventListener("click", () => toggleModal1());
-    });
+    openModalButton.addEventListener("click", () => toggleModal1());
   </script>
 
 </body>
