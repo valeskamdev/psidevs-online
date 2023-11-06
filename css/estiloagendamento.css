@@ -91,6 +91,7 @@ button {
 .exibir-psicologo {
     background-color: #93B3FB;
     border-radius: 20px;
+    /* width: 20vw; */
 }
 
 .esconder-lista{
@@ -114,8 +115,18 @@ button {
 .agenda {
     border-radius: 19px ;
     background: #D4E2FF;
+    display: none;
 
 }
+
+.agenda.aberto{
+    display: block;
+}
+
+.tamanho{
+    width: 20vw;
+}
+
 
 .agenda h2 {
     text-align: center;

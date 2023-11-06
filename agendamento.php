@@ -68,9 +68,10 @@
         </section>
 
         <section class="container">
-            
+
             <div class="card-psicologo">
-                <!-- Inicio do card -->
+                <?php for ($i = 0; $i <= 2; $i++) { ?>
+                    <!-- Inicio do card -->
                     <article class="exibir-psicologo my-3 py-3 ">
                         <div class="d-flex d-flex-row
                                     g-3
@@ -143,9 +144,13 @@
                                             </li>
                                         </ul>
                                     </li>
+
+                                    <li>
+                                        <p><a href="" class="horariosConsultas">Agendar Consulta</a></p>
+                                    </li>
                                 </ul>
                             </div>
-                            <div class="agenda p-3 m-3 align-self-start">
+                            <div class="agenda p-3 m-3 align-self-start ">
                                 <h2>Horarios Disponiveis <i class="bi bi-alarm"></i></h2>
                                 <div class="calendario table-responsive">
                                     <table class="table  caption-top    text-center">
@@ -166,56 +171,56 @@
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
-                                               
+
                                             </tr>
                                             <tr>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
-                                               
+
                                             </tr>
                                             <tr>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
-                                               
+
                                             </tr>
                                             <tr>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
-                                               
+
                                             </tr>
                                             <tr>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
-                                                
+
                                             </tr>
                                             <tr>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
-                                                
+
                                             </tr>
                                             <tr>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
-                                                
+
                                             </tr>
                                             <tr>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
                                                 <td>00:00</td>
-                                              
+
                                             </tr>
 
                                         </tbody>
@@ -224,11 +229,11 @@
                             </div>
                         </div>
                     </article>
-                <!-- Fim do card -->
+                    <!-- Fim do card -->
+                <?php } ?>
 
-               
-                
-               
+
+
             </div>
         </section>
 
@@ -239,6 +244,31 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+        const links = document.querySelectorAll(".horariosConsultas");
+        const agenda = document.querySelector(".agenda");
+        const cardPsi = document.querySelector(".exibir-psicologo");
+
+        for (const link of links) {
+            cardPsi.classList.add("tamanho");
+            link.addEventListener("click", function(event) {
+
+                event.preventDefault();
+                agenda.classList.toggle("aberto");
+                
+
+                if (agenda.classList.contains("aberto")) {
+                    cardPsi.classList.remove("tamanho");
+                } else {
+                    cardPsi.classList.add("tamanho");
+                };
+
+
+            })
+        }
+    </script>
+
 </body>
 
 </html>
