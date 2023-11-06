@@ -30,11 +30,11 @@
                 <ul class="my-4 space-y-3">
                     <li >
                         <button class= "h-3/6 w-full">
-                            <a href="login.php?" class="flex items-center p-6 text-base font-semibold text-gray-900 rounded-lg border border-gray-200 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white h-full">
+                            <a href="login.php?" class="flex items-center p-6 text-gray-700 rounded-lg border border-gray-200 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white h-full">
                                 <img src="img/cliente-icon.svg" class="w-10 mr-4" alt="">
-                                <div class="text-left">
-                                    <span class="flex-1 text-2xl lg:text-3xl">Cliente   |  Login</span>
-                                    <p class="text-xl leading-relaxed text-gray-400 dark:text-gray-400 lg:text-2xl">
+                                <div class="text-left font-ubuntu font-normal">
+                                    <span class="flex-1 text-2xl lg:text-3xl font-semibold">Cliente   |  Login</span>
+                                    <p class="text-xl leading-relaxed text-gray-500 dark:text-gray-400 lg:text-2xl">
                                     Quero fazer sessões de terapias e ver conteúdos sobre saúde emocional
                                     </p>
                                 </div>
@@ -43,11 +43,11 @@
                     </li>
                     <li>
                         <button class= "h-3/6 w-full">
-                            <a href="login.php?" class="flex items-center p-6 text-base font-semibold text-gray-900 rounded-lg border border-gray-200 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white h-full">
+                            <a href="login.php?" class="flex items-center p-6  text-gray-700 rounded-lg border border-gray-200 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white h-full">
                                 <img src="img/profissional-icon.svg" class="w-10 mr-4"  alt="">
-                                <div class="text-left">
-                                    <span class="flex-1 text-2xl lg:text-3xl">Profissional   |  Login</span>
-                                    <p class="text-xl leading-relaxed text-gray-400 dark:text-gray-400 lg:text-2xl">
+                                <div class="text-left font-ubuntu font-normal">
+                                    <span class="flex-1 text-2xl font-semibold lg:text-3xl">Profissional   |  Login</span>
+                                    <p class="text-xl leading-relaxed text-gray-500 dark:text-gray-400 lg:text-2xl">
                                     Quero atender pacientes online e fazer gestão da minha carreira
                                     </p>
                                 </div>
