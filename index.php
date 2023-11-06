@@ -70,7 +70,7 @@
       </div>
       <div class="bem-vindo-img-texto">
         <div data-aos="zoom-in">
-          <img src="assets/medica-bem-vindo.png" alt="médica segurando uma prancheta" />
+          <img src="assets/Doctor-pana.svg" alt="médica segurando uma prancheta" />
         </div>
         <div class="bem-vindo-beneficios">
           <h3 data-aos="fade-up">
@@ -103,7 +103,7 @@
       </div>
       <section class="servicos-img-texto">
         <div data-aos="zoom-in">
-          <img class="servicos-img" src="assets/medica-sobre-nos.png" alt="medica segunda sua prancheta com a mão no óculos" />
+          <img class="servicos-img" src="assets/Video call-bro.svg" alt="medica segunda sua prancheta com a mão no óculos" />
         </div>
         <section class="servicos-cards">
           <article data-aos="flip-left">
@@ -259,7 +259,7 @@
           </article>
         </div>
         <div class="nos-escolher-img" data-aos="zoom-in-up">
-          <img src="assets/sobre-nos.png" alt="Casal se abraçando depois de uma seção de terapia" />
+          <img src="assets/Psychologist-pana.svg" alt="paciente no divã" />
         </div>
       </div>
     </article>
