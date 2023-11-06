@@ -1,3 +1,12 @@
+<?php
+			if(isset($_POST['salvar-disponibilidade'])){
+        // if (!empty($_POST['']) && !empty($_POST[''])) {
+          header("location:disponibilidade.php?campos_preechidos");
+        // }
+      }
+?>
+
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -115,11 +124,19 @@
           <div class="container_conteudo_perfil_bg card_bg">
             <div class="container_conteudo_perfil_estrutura">
 
-            <div class="aviso-modal bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3 flex justify-between" role="alert">
-              <p class="font-bold">Adicione sua disponibilidade<br>
-              <span class="text-sm font-light">Ainda não possui horarios definidos.</span></p>
-              <button class="adicionar bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 border border-blue-700 rounded">Adicionar</button>
-            </div>
+
+            <?php if (isset($_GET["campos_preechidos"])) { ?>
+              <div class="aviso-modal border-t border-b border-red-400 bg-red-100 text-red-700 px-4 py-3 " role="alert">
+                <p class="font-bold">Disponibilidade foi preenchida!<br>
+                <span class="text-sm font-light">Não há necessidade de preencher os horários novamente.</span></p>
+              </div>
+            <?php } else { ?>
+              <div class="aviso-modal bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3 flex justify-between" role="alert">
+                <p class="font-bold">Adicione sua disponibilidade<br>
+                <span class="text-sm font-light">Ainda não possui horários definidos.</span></p>
+                <button class="adicionar bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 border border-blue-700 rounded">Adicionar</button>
+              </div>
+            <?php } ?>
 
            <!-- Modal -->
                 <div class="bg-blue-100 rounded-md m-7 hidden" id="modal-disp">
@@ -278,9 +295,119 @@
                                     </select>
                                 </div>
                             </div>
+                            <!-- SEXTA -->
+                        
+                            <div class=" mt-10 inline-flex items-center justify-center w-full sm:hidden">
+                                <hr class="w-64 h-px my-8 bg-gray-700 border-0 dark:bg-gray-700">
+                                <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Sexta</span>
+                            </div>
+                            <!-- Dias -->
+                            <div class="sm:col-span-3">
+                                <label class="md:hidden" for="">Dias da semana</label>
+                                <div class="mt-2 relative">
+                                    <select id="sexta" name="sexta" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option value="">Sexta</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Horarios -->
+                            <div class="sm:col-span-2">
+                                <label class="md:hidden" for="">Horários</label>
+                                <div class="mt-2 relative">
+                                    <select id="" name="horario-inicio" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option></option>
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="sm:grid-cols-1 flex justify-center content-center items-center">
+                                <span>Até</span>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <div class="mt-2 relative">
+                                    <select id="" name="horario-fim" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option></option>
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- SABADO -->
+                        
+                            <div class=" mt-10 inline-flex items-center justify-center w-full sm:hidden">
+                                <hr class="w-64 h-px my-8 bg-gray-700 border-0 dark:bg-gray-700">
+                                <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Sábado</span>
+                            </div>
+                            <!-- Dias -->
+                            <div class="sm:col-span-3">
+                                <label class="md:hidden" for="">Dias da semana</label>
+                                <div class="mt-2 relative">
+                                    <select id="sabado" name="sabado" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option value="">Sabado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Horarios -->
+                            <div class="sm:col-span-2">
+                                <label class="md:hidden" for="">Horários</label>
+                                <div class="mt-2 relative">
+                                    <select id="" name="horario-inicio" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option></option>
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="sm:grid-cols-1 flex justify-center content-center items-center">
+                                <span>Até</span>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <div class="mt-2 relative">
+                                    <select id="" name="horario-fim" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option></option>
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Domingo -->
+                        
+                            <div class=" mt-10 inline-flex items-center justify-center w-full sm:hidden">
+                                <hr class="w-64 h-px my-8 bg-gray-700 border-0 dark:bg-gray-700">
+                                <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Domingo</span>
+                            </div>
+                            <!-- Dias -->
+                            <div class="sm:col-span-3">
+                                <label class="md:hidden" for="">Dias da semana</label>
+                                <div class="mt-2 relative">
+                                    <select id="domingo" name="domingo" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option value="">Domingo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Horarios -->
+                            <div class="sm:col-span-2">
+                                <label class="md:hidden" for="">Horários</label>
+                                <div class="mt-2 relative">
+                                    <select id="" name="horario-inicio" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option></option>
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="sm:grid-cols-1 flex justify-center content-center items-center">
+                                <span>Até</span>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <div class="mt-2 relative">
+                                    <select id="" name="horario-fim" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option></option>
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                    <!-- Fim Dos Dias da Semana -->
                         </div>
 
-                        <button type="submit" class="salvar-disponibilidade bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 mt-5 rounded">Salvar</button>
+                        <button type="submit" name="salvar-disponibilidade" class="salvar-disponibilidade bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 mt-5 rounded">Salvar</button>
                     </form>
                 </div>
 
@@ -315,6 +442,32 @@
 
     openModalButton.addEventListener("click", () => toggleModal1());
   </script>
+
+<!-- <script>
+    const openModalButton = document.querySelector(".adicionar");
+    const button2 = document.querySelector(".salvar-disponibilidade");
+    const modal1 = document.querySelector("#modal-disp");
+    const formDisponibilidade = document.getElementById("form-disponibilidade");
+
+
+    const toggleModal1 = () => {
+        modal1.classList.toggle("hidden");
+    };
+
+    const disableAdicionarButton = () => {
+        openModalButton.disabled = true;
+        openModalButton.classList.add("bg-gray-400", "cursor-not-allowed", "opacity-50");
+    };
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        // Desativa o botão "Adicionar" após o envio do formulário
+        disableAdicionarButton();
+    };
+
+    openModalButton.addEventListener("click", () => toggleModal1());
+    formDisponibilidade.addEventListener("submit", handleFormSubmit);
+  </script> -->
 
 </body>
 </html>
