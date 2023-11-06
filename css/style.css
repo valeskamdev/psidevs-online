@@ -65,7 +65,7 @@ button {
 
 .limitador {
   margin: 3px auto;
-  max-width: 1980px;
+  max-width: 1200px;
   width: calc(100% - 100px);
   /* a largura é a largura total menos 100px (50px para cada lado) */
 }
@@ -1044,7 +1044,7 @@ footer {
 
 /* footer */
 
-footer,
+footer > 
 p {
   color: #415DA1;
   font-size: 12.80px;
