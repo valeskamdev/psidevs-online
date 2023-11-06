@@ -143,7 +143,7 @@
 
                     <form name="form-disponibilidade" id="form-disponibilidade" method="post" type="post">
                         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 p-8 sm:grid-cols-8">
-                                                       <!-- Legendas Fixas -->
+                                        <!-- Legendas Fixas -->
                             <div class="font-semibold hidden sm:col-span-3 md:block">
                                 <label for="">Dias da semana</label>
                             </div>
@@ -155,7 +155,7 @@
                             <div class="sm:col-span-3">
                                 <label class="md:hidden" for="">Dias da semana</label>
                                 <div class="mt-2 relative">
-                                    <select id="genero" name="genero" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="genero" name="genero" class="disponibilidade-padrao-select sm:text-md">
                                         <option value="" selected>Segunda</option>
                                     </select>
                                 </div>
@@ -165,7 +165,7 @@
                             <div class="sm:col-span-2">
                                 <label class="md:hidden" for="">Horários</label>
                                 <div class="mt-2 relative">
-                                    <select id="genero" name="genero" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="genero" name="genero" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
@@ -176,7 +176,7 @@
                             </div>
                             <div class="sm:col-span-2">
                                 <div class="mt-2 relative">
-                                    <select id="genero" name="genero" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="genero" name="genero" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
@@ -187,7 +187,7 @@
                             
                             <!-- Dias -->
                             <div class="mt-10 inline-flex items-center justify-center w-full sm:hidden">
-                                <hr class="w-64 h-px my-8 bg-gray-700 border-0 dark:bg-gray-700">
+                                <hr class="disponibilidade-hr">
                                 <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Terça</span>
                             </div>
 
@@ -195,7 +195,7 @@
                             <div class=" sm:border-t-0 sm:col-span-3">
                                 <label class="md:hidden" for="">Dias da semana</label>
                                 <div class="mt-2 relative">
-                                    <select id="terca" name="terca" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="terca" name="terca" class="disponibilidade-padrao-select sm:text-md">
                                         <option value="">Terça</option>
                                     </select>
                                 </div>
@@ -204,7 +204,7 @@
                             <div class="sm:col-span-2">
                                 <label class="md:hidden" for="">Horários</label>
                                 <div class="mt-2 relative">
-                                    <select id="" name="horario" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="" name="horario" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
@@ -215,7 +215,7 @@
                             </div>
                             <div class="sm:col-span-2">
                                 <div class="mt-2 relative">
-                                    <select id="" name="horario" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="" name="horario" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
@@ -224,14 +224,14 @@
                         <!-- QUARTA -->
                         
                             <div class=" mt-10 inline-flex items-center justify-center w-full sm:hidden">
-                                <hr class="w-64 h-px my-8 bg-gray-700 border-0 dark:bg-gray-700">
+                                <hr class="disponibilidade-hr">
                                 <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Quarta</span>
                             </div>
                             <!-- Dias -->
                             <div class="sm:col-span-3">
                                 <label class="md:hidden" for="">Dias da semana</label>
                                 <div class="mt-2 relative">
-                                    <select id="terca" name="terca" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="terca" name="terca" class="disponibilidade-padrao-select sm:text-md">
                                         <option value="">Quarta</option>
                                     </select>
                                 </div>
@@ -240,7 +240,7 @@
                             <div class="sm:col-span-2">
                                 <label class="md:hidden" for="">Horários</label>
                                 <div class="mt-2 relative">
-                                    <select id="" name="horario-inicio" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="" name="horario-inicio" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
@@ -251,7 +251,7 @@
                             </div>
                             <div class="sm:col-span-2">
                                 <div class="mt-2 relative">
-                                    <select id="" name="horario-fim" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="" name="horario-fim" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
@@ -262,14 +262,14 @@
                             <!-- QUINTA -->
                         
                             <div class=" mt-10 inline-flex items-center justify-center w-full sm:hidden">
-                                <hr class="w-64 h-px my-8 bg-gray-700 border-0 dark:bg-gray-700">
+                                <hr class="disponibilidade-hr">
                                 <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Quinta</span>
                             </div>
                             <!-- Dias -->
                             <div class="sm:col-span-3">
                                 <label class="md:hidden" for="">Dias da semana</label>
                                 <div class="mt-2 relative">
-                                    <select id="quinta" name="quinta" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="quinta" name="quinta" class="disponibilidade-padrao-select sm:text-md">
                                         <option value="">Quinta</option>
                                     </select>
                                 </div>
@@ -278,7 +278,7 @@
                             <div class="sm:col-span-2">
                                 <label class="md:hidden" for="">Horários</label>
                                 <div class="mt-2 relative">
-                                    <select id="" name="horario-inicio" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="" name="horario-inicio" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
@@ -289,7 +289,7 @@
                             </div>
                             <div class="sm:col-span-2">
                                 <div class="mt-2 relative">
-                                    <select id="" name="horario-fim" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="" name="horario-fim" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
@@ -298,14 +298,14 @@
                             <!-- SEXTA -->
                         
                             <div class=" mt-10 inline-flex items-center justify-center w-full sm:hidden">
-                                <hr class="w-64 h-px my-8 bg-gray-700 border-0 dark:bg-gray-700">
+                                <hr class="disponibilidade-hr">
                                 <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Sexta</span>
                             </div>
                             <!-- Dias -->
                             <div class="sm:col-span-3">
                                 <label class="md:hidden" for="">Dias da semana</label>
                                 <div class="mt-2 relative">
-                                    <select id="sexta" name="sexta" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="sexta" name="sexta" class="disponibilidade-padrao-select sm:text-md">
                                         <option value="">Sexta</option>
                                     </select>
                                 </div>
@@ -314,7 +314,7 @@
                             <div class="sm:col-span-2">
                                 <label class="md:hidden" for="">Horários</label>
                                 <div class="mt-2 relative">
-                                    <select id="" name="horario-inicio" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="" name="horario-inicio" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
@@ -325,7 +325,7 @@
                             </div>
                             <div class="sm:col-span-2">
                                 <div class="mt-2 relative">
-                                    <select id="" name="horario-fim" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="" name="horario-fim" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
@@ -334,14 +334,14 @@
                             <!-- SABADO -->
                         
                             <div class=" mt-10 inline-flex items-center justify-center w-full sm:hidden">
-                                <hr class="w-64 h-px my-8 bg-gray-700 border-0 dark:bg-gray-700">
+                                <hr class="disponibilidade-hr">
                                 <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Sábado</span>
                             </div>
                             <!-- Dias -->
                             <div class="sm:col-span-3">
                                 <label class="md:hidden" for="">Dias da semana</label>
                                 <div class="mt-2 relative">
-                                    <select id="sabado" name="sabado" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="sabado" name="sabado" class="disponibilidade-padrao-select sm:text-md">
                                         <option value="">Sabado</option>
                                     </select>
                                 </div>
@@ -350,7 +350,7 @@
                             <div class="sm:col-span-2">
                                 <label class="md:hidden" for="">Horários</label>
                                 <div class="mt-2 relative">
-                                    <select id="" name="horario-inicio" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="" name="horario-inicio" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
@@ -361,7 +361,7 @@
                             </div>
                             <div class="sm:col-span-2">
                                 <div class="mt-2 relative">
-                                    <select id="" name="horario-fim" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="" name="horario-fim" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
@@ -370,14 +370,14 @@
                             <!-- Domingo -->
                         
                             <div class=" mt-10 inline-flex items-center justify-center w-full sm:hidden">
-                                <hr class="w-64 h-px my-8 bg-gray-700 border-0 dark:bg-gray-700">
+                                <hr class="disponibilidade-hr">
                                 <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Domingo</span>
                             </div>
                             <!-- Dias -->
                             <div class="sm:col-span-3">
                                 <label class="md:hidden" for="">Dias da semana</label>
                                 <div class="mt-2 relative">
-                                    <select id="domingo" name="domingo" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="domingo" name="domingo" class="disponibilidade-padrao-select sm:text-md">
                                         <option value="">Domingo</option>
                                     </select>
                                 </div>
@@ -386,7 +386,7 @@
                             <div class="sm:col-span-2">
                                 <label class="md:hidden" for="">Horários</label>
                                 <div class="mt-2 relative">
-                                    <select id="" name="horario-inicio" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="" name="horario-inicio" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
@@ -397,14 +397,14 @@
                             </div>
                             <div class="sm:col-span-2">
                                 <div class="mt-2 relative">
-                                    <select id="" name="horario-fim" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-white sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="" name="horario-fim" class="disponibilidade-padrao-select sm:text-md">
                                         <option></option>
                                         <option></option>
                                     </select>
                                 </div>
                             </div>
 
-                    <!-- Fim Dos Dias da Semana -->
+                        <!-- Fim Dos Dias da Semana -->
                         </div>
 
                         <button type="submit" name="salvar-disponibilidade" class="salvar-disponibilidade bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 mt-5 rounded">Salvar</button>
@@ -432,6 +432,7 @@
   <script>
     const openModalButton = document.querySelector(".adicionar");
     const modal1 = document.querySelector("#modal-disp");
+    
 
     const toggleModal1 = () => {
         modal1.classList.toggle("hidden");
