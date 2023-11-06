@@ -341,7 +341,7 @@
     <div class="footer-container">
       <div class="logo">
         <img src="assets/logo-vertical.png" alt="">
-        <p class="dark-blue">Somos uma plataforma online que conecta você a psicólogos qualificados</p>
+        <p class="dark-blue-p">Somos uma plataforma online que conecta você a psicólogos qualificados</p>
       </div>
 
       <div class="menu">
@@ -354,6 +354,7 @@
         </div>
         <div class="menu-coluna">
           <h2 class="dark-blue">Atendimento</h2>
+          
           <ul class="sub-menu">
             <li><span class="icone">Telefone</span> (11) 94909-6814</li>
             <li><a href="#">Formulário de Contato</a></li>
