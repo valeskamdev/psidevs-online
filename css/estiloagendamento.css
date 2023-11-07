@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --font-family-primary: "Plus Jakarta Sans", sans-serif;
+    --primary-color: #e9f0ff;
+    --secondary-color: #415da1;
+    --tertiary-color: #d5e0fb;
+    --quaternary-color: #f4f4f4;
+    --quinary-color: #39394a;
+    --senary-color: #121229;
+    --octonary-color: #67b0cf;
+    --bottun-hover-dark: #394d64;
+    --letter-spacing: 0.8px;
+    --margin-primary: 13rem;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    background-color: #f5f5f5;
+    /* Cor de fundo do scroll */
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #415DA1;
+    /* Cor da barra de rolagem */
+    height: 200px;
+}
+
+html {
+    font-size: 85.5%;
+}
+
+body {
+    font-family: var(--font-family-primary);
+    background-color: var(--primary-color);
+    color: var(--quinary-color);
+    overflow-x: hidden;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+img:not(header h1 a img) {
+    max-width: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+
+button {
+    cursor: pointer;
+}
+
+.destaque-agendamento {
+    background-color: #C0D3FE;
+    height: 45vh;
+
+}
+
+.pesquisabtn {
+    border: none;
+    background-color: #415DA1;
+    color: #e9f0ff;
+}
+
+.pesquisabtn:hover {
+    border: none;
+    background-color: #e9f0ff;
+    color: #415DA1;
+}
+
+.filtros {
+    background-color: #415DA1;
+    height: 15vh;
+}
+
+.exibir-psicologo {
+   
+    background: rgb(182, 203, 251);
+    background: linear-gradient(225deg, rgba(182, 203, 251, 1) 45%, rgba(196, 211, 247, 1) 61%);
+    border-radius: 20px;
+    color: #434c61;
+}
+
+.esconder-lista {
+    list-style: none;
+}
+
+.icones img {
+    max-width: 55px;
+}
+
+.perfil-foto {
+    max-width: 120px;
+    clip-path: circle(50% at 50% 50%);
+}
+
+.espaco {
+    max-width: 300px;
+}
+
+
+.agenda {
+    border-radius: 19px;
+    background: #D4E2FF;
+    display: none;
+
+}
+
+.agenda.aberto {
+    display: block;
+}
+
+.tamanho {
+    width: 40vw;
+}
+
+
+.agenda h2 {
+    text-align: center;
+    color: #002776;
+    letter-spacing: 0.24px;
+}
+
+.agenda .calendario {
+    background-color: #f4f4f4;
+}
+
+.calendario {
+    border-radius: 19px;
+    background: #D4E2FF;
+}
+
+
+.horariosConsultas {
+    color: #f4f4f4;
+    background-color: #415DA1;
+}
+
+.horariosConsultas:hover {
+    /* color: #f4f4f4; */
+    background-color: #93B3FB;
+}
+
+
+
+@media screen and (max-width: 1600px) {
+    .destaque-agendamento form>input {
+        width: 20vw;
+    }
+}
+
+
+@media screen and (max-width: 1100px) {
+    html {
+        font-size: 73%;
+    }
+
+    .destaque-agendamento p>picture {
+        display: none;
+    }
+
+    .destaque-agendamento form>input {
+        width: 50vw;
+    }
+
+    .exibir-psicologo .perfil {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    html {
+        font-size: 68%;
+    }
+
+
+    .exibir-psicologo .perfil {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tamanho {
+        width: auto;
+    }
+
+    .quebra {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    /* .descricao{
+        display: none;
+    } */
+}

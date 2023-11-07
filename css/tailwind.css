@@ -265,8 +265,8 @@
   .mb10{
     @apply mb-10;
   }
-  .mt9{
-    @apply mt-9
+  .mtquatro{
+    @apply mt-14;
   }
   .mostrar-form{
     @apply hidden;
@@ -274,10 +274,16 @@
   .conteudo-direito{
     @apply bg-white rounded shadow-lg py-32 px-3 w-full mx-auto flex flex-col justify-center items-center;
   }
-  .p10{
-    @apply py-10;
-  }
-
+ 
+    #fade, #fade-cadastro{
+      @apply fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-10;
+    }
+    .modal-estrutura, .modal-cadastro{
+      @apply relative bg-white rounded-2xl shadow dark:bg-gray-700 w-full mx-auto p-10;
+    }
+    #fade, #fade-cadastro, .modal, .modal-cadastro{
+      @apply transition-opacity duration-100 opacity-100 pointer-events-auto;
+    }
   @screen sm {
     .foto-botoes{
       @apply row-span-1 col-span-2 text-left flex justify-start items-end;
