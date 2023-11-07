@@ -406,9 +406,10 @@
 
                         <!-- Fim Dos Dias da Semana -->
                         </div>
-
-                        <button type="submit" name="salvar-disponibilidade" class="salvar-disponibilidade bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 mt-5 rounded">Salvar</button>
-                    </form>
+                        <div class="flex justify-end mt-5 mr-10 pb-5">
+                          <button type="submit" name="salvar-disponibilidade" class="salvar-disponibilidade bg-blue-800 hover:bg-blue-700 text-white font-bold py-3 px-6 border border-blue-700 rounded">Salvar</button>
+                        </div>
+                      </form>
                 </div>
 
             </div>

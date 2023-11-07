@@ -49,7 +49,6 @@
     <?php require_once "inc/modal-cadastro.php"?>
 
     <article class="destaque">
-        <div class="limitador" data-aos="fade-right">
           <p>Encontre o equilíbrio emocional</p>
           <h2>O seu bem-estar mental é a nossa prioridade</h2>
           <p>
