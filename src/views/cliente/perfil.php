@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Ubuntu:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <title>Psidevs | Minha Conta</title>
+  <title>Psidevs | Meu Perfil</title>
 </head>
 <body class="bg-secondary">
   <header class="container_header">
@@ -113,24 +113,30 @@
         <div class="container_conteudo">
           <div class="container_conteudo_perfil_bg card_bg">
             <div class="container_conteudo_perfil_estrutura">
-              <form>
-                <!-- <img class="h-auto max-w-xs" src="../../../assets/cliente-avatar.svg" alt="image description" style="background-color: #9FA9FF;" width="150" height="200">
-                -->
+
+           <!-- Form Dados gerais -->
+              <form method="post" id="form-atualizar" name="form-atualizar" >
                 <div class="container-foto grid grid-flow-row-dense grid-rows-5 grid-cols-1 gap-4 sm:grid-cols-4 sm:grid-rows-2 ">
                   <div class="foto-upload row-span-3 flex justify-center sm:row-span-2 sm:justify-start">                 
-                    <label for="dropzone-file" class="flex flex-col items-center justify-center  max-w-xs h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                      <div class="flex flex-col items-center justify-center pt-6 pb-5 m-3">
+                    <label for="dropzone-file" class="flex flex-col items-center justify-center  max-w-xs h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-white dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                      <img class="foto-upload row-span-3 flex justify-center sm:row-span-2 sm:justify-start" src="../../../assets/cliente-avatar.svg" alt="image description" style="background-color: #9FA9FF;" width="190" height="240">
+                      <!-- <div class="flex flex-col items-center justify-center pt-6 pb-5 m-3">
                           <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                           </svg>
                           <p class="mb-2 text-sm text-gray-500 dark:text-gray-400 text-center"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                      </div>
-                      <input id="dropzone-file" type="file" class="hidden" />
+                      </div> -->
+                      <input id="dropzone-file" accept="image/png, image/jpeg" type="file" class="hidden" />
                     </label>
                   </div>
                   <div class="foto-botoes lg:col-span-3">
-                    <button type="button" class="perfil_botao bg-primary mr-4">DEFINIR NOVA FOTO
-                    </button>
+                    <div>
+                      <label type="button" class="perfil_botao bg-primary mr-4">
+                      CARREGAR NOVA FOTO
+                        <input id="file" name="file-perfil" accept="image/png, image/jpeg" type="file" class="hidden" />
+                      </label>
+                    </div>
+                    
                     <button type="button" class="perfil_botao text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg ">
                       SEM FOTO 
                     </button>
@@ -144,29 +150,35 @@
                 </div>
 
 
+          <!-- input DADOS GERAIS-->
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
-                              <label for="default_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Nome</label>
-                              <input type="text" id="large-input" placeholder="Josefa" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                              <label for="default_outlined" class="label-padrao-perfil">Nome</label>
+                              <input type="text" id="nome" name="nome" placeholder="Josefa" class="input-padrao-perfil sm:text-md">
                           </div>
                       </div>
+                      <!-- Emai -->
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
-                              <label for="default_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">E-mail</label>
-                              <input placeholder="nome@email.com" type="email" id="large-input"  class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                              <label for="default_outlined" class="label-padrao-perfil">E-mail</label>
+                              <input placeholder="nome@email.com" type="email" id="email" name="email" id="large-input"  class="input-padrao-perfil sm:text-md">
                           </div>
                       </div>
+
+                     <!-- TELEFONE -->
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
-                              <label for="default_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Telefone</label>
-                              <input type="tel" id="large-input" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                              <label for="default_outlined" class="label-padrao-perfil">Telefone</label>
+                              <input type="tel" id="telefone" name="telefone" class="input-padrao-perfil sm:text-md">
                           </div>
                       </div>
+
+                      <!-- GENERO -->
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
-                            <label for="default_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Gênero</label>
-                            <select id="genero" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <label for="default_outlined" class="label-padrao-perfil">Gênero</label>
+                            <select id="genero" name="genero" class="input-padrao-perfil sm:text-md">
                               <option selected></option>
                               <option value="nao-binario">Não Binário</option>
                               <option value="feminino">Feminino</option>
@@ -174,38 +186,103 @@
                             </select>
                           </div>
                       </div>
+
+                      <!-- CPF -->
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
-                              <label for="default_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">CRP</label>
-                              <input disabled type="text" id="large-input" placeholder="Josefa" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+                            <label for="default_outlined" class="label-padrao-perfil">CPF</label>
+                            <input type="text" id="cpf" name="cpf" class="input-padrao-perfil sm:text-md">
                           </div>
                       </div>
+                      
+                      <!-- DATA DE NASCIMENTO -->
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
-                            <label for="default_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Especialidade</label>
-                            <select disabled id="genero" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <label for="default_outlined" class="label-padrao-perfil">Data de Nascimento</label>
+                            <input type="date" id="data" name="data" class="input-padrao-perfil sm:text-md">
+                          </div>
+                      </div>
+
+                      <!-- SENHA -->
+                      <div class="sm:col-span-3">
+                          <div class="mt-2 relative">
+                            <label for="default_outlined" class="label-padrao-perfil">Senha</label>
+                            <input type="password" id="senha" name="senha" class="input-padrao-perfil sm:text-md" placeholder="••••••">
+                            <button type="button" name="alterar-senha" class="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-primary rounded-r-lg border hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Alterar senha
+                            </button>
+                          </div>
+                      </div>
+
+                      <div class="text-center sm:col-span-6 sm:text-left">
+                        <button id="atualizar" name="atualizar" type="submit" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
+                      </div>
+
+                    </div>
+              </form>
+
+                      
+           <!-- FORM - Area do profissional -->
+                <form method="post" id="form-atualizar-pro" name="form-atualizar-pro" >
+                  <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                      <div class="flex flex-wrap border-t-2 border-primary mt-8 sm:col-span-6 sm:flex-nowrap sm:justify-between sm:items-center sm:px-4">
+                          <h2 class= "text-lg text-primary font-semibold pb-1 mt-5 w-full sm:text-xl sm:w-1/2">Área Profissional</h2>
+                          <button class=" mt-5 inline-flex justify-center items-center"> 
+                              <a href="#" class="border-2 border-primary bg-secondary rounded-full inline-flex text-primary font-semibold py-3.5 px-5 hover:bg-primary/90 hover:text-neutral-100 transition duration-150 ease-in-out"> Adicionar Formação +</a>
+                          </button>
+                      </div>
+
+                      <div class="sm:col-span-3">
+                          <div class="mt-2 relative">
+                            <label for="default_outlined" class="label-padrao-perfil">CRP</label>
+                            <input type="text" id="crp" name="crp" class="input-padrao-perfil sm:text-md">
+                          </div>
+                      </div>
+
+                      <div class="sm:col-span-3">
+                          <div class="mt-2 relative">
+                            <label for="default_outlined" class="label-padrao-perfil">Região</label>
+                            <select id="regiao" name="regiao" class="input-padrao-perfil sm:text-md">
+                              <option selected></option>
                               <option selected></option>
                             </select>
                           </div>
                       </div>
+
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
-                            <label for="default_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Senha</label>
-                            <input type="password" id="password" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••" required>
+                            <label for="default_outlined" class="label-padrao-perfil">Especialidade</label>
+                            <select id="especialidade" name="especialidade" class="input-padrao-perfil sm:text-md">
+                              <option selected></option>
+                              <option selected></option>
+                            </select>
                           </div>
                       </div>
+
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
-                            <label for="default_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Confirmar senha</label>
-                            <input type="password" id="confirm_password" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••" required>
+                            <label for="default_outlined" class="label-padrao-perfil">Experiência</label>
+                            <select id="experiencia" name="experiencia" class="input-padrao-perfil sm:text-md">
+                              <option selected></option>
+                              <option selected></option>
+                            </select>
                           </div>
                       </div>
+
+                      
+                      <div class="flex flex-wrap sm:col-span-6 sm:items-center">
+                        <label for="descricao" class="block mb-2 text-sm font-semibold text-primary dark:text-white">Descrição</label>
+                        <textarea id="descricao" rows="4" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Escreva sobre você..."></textarea>
+                      </div>
+
+                      
                     
                       <div class="text-center sm:col-span-6 sm:text-left">
-                        <button type="button" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
+                        <button id="atualizar-profissional" name="atualizar-profissional" type="submit" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
                       </div>
-                    </div>
-              </form>
+                  </div>
+                </form>
+
             </div>
           </div>
         </div>
@@ -222,5 +299,4 @@
       document.querySelector('.backdrop').classList.toggle('drawer-backdrop');
     }
   </script>
-</body>
 </html>

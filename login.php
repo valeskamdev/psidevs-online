@@ -27,25 +27,37 @@
                         </div>
                         <h2 class="text-center text-sky-800 font-sans text-2xl font-medium">Entre na sua conta</h2>
 
-                        <form class="px-4">
-                            <div class="relative z-0 w-full mt-4 mb-6 group">
-                                <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">E-mail</label>
+                        <form method="post" name="form-login" class="px-4">
+
+                            <div class="relative z-0 w-full mt-10 mb-4 group">
+                                <label for="Email" class="label-padrao-login">
+                                    <input type="email" id="Email" class="login-input peer" placeholder="E-mail" />
+                                    <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+                                        E-mail
+                                    </span>
+                                </label>
                             </div>
+
                             <div class="relative z-0 w-full mb-6 group">
-                                <input type="password" name="repeat_password" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <label for="floating_repeat_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Senha</label>
+                                <label for="Senha" class="label-padrao-login">
+                                    <input type="password" id="Senha" class="login-input peer" placeholder="Senha" />
+                                    <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+                                        Senha
+                                    </span>
+                                </label>
                             </div>
+
 
                             <div class="flex items-center mt-4 mb-6">
                                 <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="default-checkbox" class="ml-2 text-sm font-light  text-sky-800 dark:text-gray-300">Lembra Senha</label>
                             </div>
 
+
                             <div class="mb-6 text-center">
-                                <button type="submit" style="background: rgb(102,124,187);
+                                <button type="submit" name="enviar" style="background: rgb(102,124,187);
                                     background: linear-gradient(270deg, rgba(102,124,187,0.8911939775910365) 0%, rgba(90,155,249,1) 25%, rgba(118,174,226,1) 79%, rgba(163,210,253,1) 99%);
-                                /* Outros estilos que você deseja adicionar */" class=" text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Criar conta</button>
+                                /* Outros estilos que você deseja adicionar */" class=" text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-16 py-2.5 text-center"><a href="src/views/cliente/consultas.php">Entrar</a></button>
                             </div>
 
                                                             

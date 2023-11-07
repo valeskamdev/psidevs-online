@@ -37,6 +37,26 @@ html {
   height: 200px;
 }
 
+#fade.hide {
+  opacity: 0;
+  pointer-events: none;
+  display:none
+}
+
+#modal.hide {
+  top: 0;
+  display: none;
+}
+
+#default-modal.hide,
+#fade.hide, #default-modal-cadastro.hide,
+#fade-cadastro.hide  {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
 body {
   font-family: var(--font-family-primary);
   background-color: var(--primary-color);
@@ -129,7 +149,7 @@ header {
 
 header div {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between ;
   align-items: center;
 }
 
@@ -139,6 +159,7 @@ nav {
 
 .logo {
   max-width: 250px;
+  max-width: 200px;
 }
 
 .icone {
@@ -149,6 +170,11 @@ header svg {
   padding-top: 4px;
   padding-right: 10px;
   width: 50px;
+}
+
+
+button {
+  border: none;
 }
 
 .menu {
@@ -164,6 +190,7 @@ header svg {
   margin-left: 30px;
 }
 
+
 .menu .con-age a {
   text-decoration: none;
   color: var(--quaternary-color);
@@ -172,6 +199,19 @@ header svg {
 .menu .config-header a {
   color: var(--secondary-color);
   font-weight: bolder;
+.menu .con-age button {
+  text-decoration: none;
+  color: var(--quaternary-color);
+  background-color: #415DA1;
+  font-weight: bolder;
+  font-size: 15px;
+} 
+
+.menu .config-header button {
+  color: var(--secondary-color);
+  font-weight: bolder;
+  font-size: 15px;
+  background-color: #e9f0ff;
 }
 
 /* .menu a:hover,
@@ -185,6 +225,12 @@ header svg {
   padding: 1.5rem;
   text-align: center;
   border-radius: 10px;
+
+}
+
+.config-header {
+  color: #415DA1;
+  text-align: center;
 }
 
 .config-header {
@@ -706,11 +752,6 @@ word-wrap: break-word;
 margin-left: 25px;
 }
 
-
-
-
-
-
 @media screen and (max-width: 1300px) {
   .depoimentos>p {
     margin-left: 0;
@@ -778,6 +819,7 @@ margin-left: 25px;
     font-size: 14px;
   }
 
+
   .contato {
     display: block;
   }
@@ -830,9 +872,11 @@ margin-left: 25px;
 
 @media screen and (max-width: 867px) {
 
+
   .menu p {
     font-size: 13px;
   }
+
 
   .servicos-cards {
     width: 100%;
@@ -887,6 +931,10 @@ margin-left: 25px;
     top: 87px;
     right: 0;
     left: 0;
+  }
+
+  .aberto .config-header, .con-age button {
+    padding: 20px;
   }
 
   .menu.aberto li {
@@ -1114,3 +1162,136 @@ p {
 
 
 
+  word-wrap: break-word
+}
+
+/* Finanças */
+
+.card-fin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5%;
+  padding: 2%;
+  flex-wrap: wrap;
+}
+
+.detalhamento {
+  box-shadow: 3px 3px 5px gray;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  background-color: white;
+  padding: 30px;
+}
+
+.sessoes {
+  box-shadow: 3px 3px 5px gray;
+  text-align: center;
+  width: 33%;
+  background-color: white;
+  padding: 30px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.sessoes h2 {
+  font-size: 50px;
+}
+
+.sessoes p {
+  font-size: 18px;
+}
+
+.sessoes p svg {
+  max-height: 25px;
+  max-width: 40px;
+}
+
+.detalhamento table, thead {
+  padding: 10px;
+  margin: auto;
+} 
+
+.detalhamento caption {
+  font-size: 20px;
+}
+
+.detalhamento table, thead, tr th {
+  font-size: 13px;
+  padding: 10px ;
+}
+
+.detalhamento table, tbody, tr td {
+  font-size: 13px;
+  padding: 35px;
+}
+
+@media screen and (max-width: 1426px) {
+  .sessoes p {
+    font-size: 13px;
+  }
+
+  .detalhamento table, thead, tr th {
+    font-size: 10px;
+    padding: 5px ;
+  }
+
+}
+
+@media screen and (max-width: 1127px) {
+
+  .sessoes h2 {
+    font-size: 36px;
+  }
+
+  .sessoes p {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 948px) {
+
+  .sessoes p svg {
+    max-width: 30px;
+  }
+
+}
+
+@media screen and (max-width: 913px) {
+
+  .sessoes h2 {
+    font-size: 30px;
+  }
+
+  .sessoes p svg {
+    max-width: 17px;
+  }
+
+  .sessoes {
+    padding: 25px;
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+}
+
+@media screen and (max-width: 832px) {
+
+  .sessoes {
+    width: 100%;
+    padding: 15px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 10px;
+  }
+
+  .detalhamento table, thead, tr th {
+    font-size: 7px;
+    padding: 3px ;
+  }
+
+  .detalhamento {
+    margin: 0px;
+  }
+} 
