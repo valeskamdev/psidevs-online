@@ -730,7 +730,6 @@ footer p {
   font-weight: 600;
 }
 
-
 @media screen and (max-width: 1300px) {
   .depoimentos>p {
     margin-left: 0;
@@ -1087,6 +1086,7 @@ ul {
 a {
   text-decoration: none;
   font-size: 16px;
+
 }
 
 .telefone,

@@ -12,8 +12,6 @@
 </head>
 
 <body>
-
-
 <header>
     <div class="limitador">
         <h1>
@@ -47,7 +45,6 @@
       </nav>
     </div>
   </header>
-
   <main>
     <article class="destaque">
       <div class="limitador" data-aos="fade-right">
