@@ -7,9 +7,9 @@ botao.addEventListener("click", function(event) {
     linksMenu.classList.toggle("aberto")
     
     if (linksMenu.classList.contains("aberto")) {
-        icone.src = "../assets/icon-fechar.svg";
+        icone.src = "assets/icon-fechar.svg";
     } else {
-        icone.src = "../assets/icon-menu.svg";
+        icone.src = "assets/icon-menu.svg";
     };
 
 });

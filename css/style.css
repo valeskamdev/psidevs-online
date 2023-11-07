@@ -156,7 +156,7 @@ nav {
 }
 
 .logo {
-  max-width: 250px;
+  max-width: 200px;
 }
 
 .icone {
@@ -730,6 +730,7 @@ footer p {
   font-weight: 600;
 }
 
+
 @media screen and (max-width: 1300px) {
   .depoimentos>p {
     margin-left: 0;
@@ -790,11 +791,6 @@ footer p {
 
 @media screen and (max-width: 1000px) {
 
-  .menu p {
-    padding: 1.5rem;
-    font-size: 14px;
-  }
-
   .contato {
     display: block;
   }
@@ -846,10 +842,6 @@ footer p {
 }
 
 @media screen and (max-width: 867px) {
-
-  .menu p {
-    font-size: 13px;
-  }
 
   .servicos-cards {
     width: 100%;
@@ -904,6 +896,10 @@ footer p {
     top: 87px;
     right: 0;
     left: 0;
+  }
+
+  .aberto .config-header, .con-age button {
+    padding: 20px;
   }
 
   .menu.aberto li {
@@ -1086,7 +1082,6 @@ ul {
 a {
   text-decoration: none;
   font-size: 16px;
-
 }
 
 .telefone,
@@ -1233,5 +1228,9 @@ a {
   .detalhamento table, thead, tr th {
     font-size: 7px;
     padding: 3px ;
+  }
+
+  .detalhamento {
+    margin: 0px;
   }
 } 
