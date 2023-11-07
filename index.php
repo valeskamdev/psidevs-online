@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="shortcut icon" href="assets/logo-favicon.svg" type="image/x-icon">
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dist/build.css">
 </head>
 
 <body>
@@ -24,7 +25,7 @@
         <a href="" class="icone"><img src="assets/icon-menu.svg" alt="icone de menu"></a>
       </h2>
         <div class="menu">
-          <p class="con-age">
+          <p class="con-age flex wrap">
             <svg width="20" height="22" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_631_457)">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M0.046875 4.57264C0.046875 3.18404 1.17256 2.05835 2.56117 2.05835H13.5326C14.9212 2.05835 16.0469 3.18404 16.0469 4.57264V15.5441C16.0469 16.9327 14.9212 18.0584 13.5326 18.0584H2.56117C1.17256 18.0584 0.046875 16.9327 0.046875 15.5441V4.57264ZM2.56117 3.42978C1.92998 3.42978 1.41831 3.94145 1.41831 4.57264V15.5441C1.41831 16.1753 1.92998 16.6869 2.56117 16.6869H13.5326C14.1638 16.6869 14.6755 16.1753 14.6755 15.5441V4.57264C14.6755 3.94145 14.1638 3.42978 13.5326 3.42978H2.56117Z" fill="white"/>
@@ -41,14 +42,16 @@
             </svg>
             <button type="">Agendar consulta</button>
           </p>
-          <p class="config-header"><button type="">Criar conta</button></p>
-          <p class="con-age"><button type="">Entrar</button></p>
+          <p id="open-cadastro" data-modal-target="staticModal" data-modal-toggle="staticModal" class="config-header"><button type="button">Criar conta</button></p>
+          <p  id="open" data-modal-target="staticModal" data-modal-toggle="staticModal" class="con-age"><button type="button">Entrar</button></p>
         </div>
       </nav>
     </div>
   </header>
 
   <main>
+    <?php require_once "inc/modal.php"?>
+    <?php require_once "inc/modal-cadastro.php"?>
     <article class="destaque">
       <div class="limitador" data-aos="fade-right">
         <p>Encontre o equilíbrio emocional</p>
@@ -411,6 +414,7 @@
   </script>
 
   <script src="js/menu.js"></script>
+  <script src="js/modal.js"></script>
   <script src="js/formulario.js"></script>
 </body>
 

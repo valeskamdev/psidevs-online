@@ -22,13 +22,13 @@
                 <!-- Lado Direito -->
                 <form class="conteudo-direito">
                     <div class="p-6">
-                        <div class="p-4 mb10">
-                            <h2 class=" text-sky-800 font-sans text-2xl font-medium mb-2">Esqueci minha senha</h2>
-                            <p>Informe o seu email para enviarmos o link para redefinir sua senha</p>
+                        <div class="p-3">
+                            <h2 class=" text-sky-800 font-sans text-2xl font-medium">Problemas para entrar?</h2>
+                            <p>Insira o seu email e enviaremos um link para você voltar a acessar a sua conta.</p>
                         </div>
 
                         <div class="px-4">
-                            <div class="relative mt-10">
+                            <div class="relative mt-6">
                                 <label for="UserEmail" class="sr-only"> Email </label>
 
                                 <input
@@ -43,9 +43,9 @@
                                     </span>
                             </div>
 
-                            <div class="mb-6 mt-4 text-center">
+                            <div class="mb-6 mt-6 text-center">
                                 <button type="submit" style="background: rgb(102,124,187);
-                                    background: linear-gradient(270deg, rgba(102,124,187,0.8911939775910365) 0%, rgba(90,155,249,1) 25%, rgba(118,174,226,1) 79%, rgba(163,210,253,1) 99%);" class=" text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Enviar</button>
+                                    background: linear-gradient(270deg, rgba(102,124,187,0.8911939775910365) 0%, rgba(90,155,249,1) 25%, rgba(118,174,226,1) 79%, rgba(163,210,253,1) 99%);" class=" text-white focus:ring-4 px-8 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-16 py-2.5 text-center">Enviar</button>
                             </div>      
                                                         
                         </div>
