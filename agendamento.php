@@ -147,90 +147,47 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="m-3 py-1 text-center"
-                                            <p>
-                                                <a  class="horariosConsultas btn">
-                                                  <i class="bi bi-calendar2-plus"></i> Agendar Consulta  
-                                                </a>
+                                        <li class="m-3 py-1 text-center" <p>
+                                            <a class="horariosConsultas btn">
+                                                <i class="bi bi-calendar2-plus"></i> Agendar Consulta
+                                            </a>
                                             </p>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="agenda p-3 m-3 align-self-start ">
                                     <h2>Horarios Disponiveis <i class="bi bi-alarm"></i></h2>
-                                    <div class="calendario table-responsive">
-                                        <table class="table  caption-top    text-center">
+                                    <div class="calendario">
+                                        <table class="table  caption-top table-responsive   text-center">
                                             <caption class="text-center"><b><i class="bi bi-calendar"></i> Novembro</b></caption>
                                             <thead>
-                                                <tr>
-                                                    <th>Segunda-feira</th>
-                                                    <th>Terça-feira</th>
-                                                    <th>Quarta-feira</th>
-                                                    <th>Quinta-feira</th>
-                                                </tr>
+                                                <div class="grid grid-cols-4 bg-purple-100 justify-center content-center w-full sticky top-0" id="date-container-<?= $profissional['id'] ?>">
+                                                </div>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
+                                            <div id="horarios-<?=$profissional['id']?>" class="grid grid-cols-4 w-full max-h-52 overflow-y-scroll">
+                    </div>
                                             </tbody>
-                                        </table>
+
+                                    </div>
+
+                                    </table>
+
+                                    <div class="d-flex my-3 justify-content-around ">
+                                        <button class="  rounded-md  my-3 px-3 py-2 btn anterior-button" data-profissional-id="<?= $profissional['id'] ?>">Anterior</button>
+                                        <button class=" rounded-md  my-3 px-3 py-2 btn proximo-button" data-profissional-id="<?= $profissional['id'] ?>">Próximo</button>
                                     </div>
                                 </div>
                             </div>
-                        </article>
                     </div>
-                    <!-- Fim do card -->
-                <?php } ?>
-
-
-
+                    </article>
             </div>
+            <!-- Fim do card -->
+        <?php } ?>
+
+
+
+        </div>
         </section>
 
     </main>
@@ -241,7 +198,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-  <script src="js/agendamento.js"></script>
+    <script src="js/agendamento.js"></script>
+    <script src="js/card-agendamento.js"></script>
 
 </body>
 

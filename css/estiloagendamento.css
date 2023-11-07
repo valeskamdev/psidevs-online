@@ -148,12 +148,12 @@ button {
 }
 
 
-.horariosConsultas {
+.horariosConsultas, .anterior-button, .proximo-button {
     color: #f4f4f4;
     background-color: #415DA1;
 }
 
-.horariosConsultas:hover {
+.horariosConsultas:hover, .anterior-button:hover, .proximo-button:hover {
     /* color: #f4f4f4; */
     background-color: #93B3FB;
 }
