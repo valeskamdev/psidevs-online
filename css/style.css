@@ -1148,6 +1148,71 @@ a {
 
 .detalhamento table, tbody, tr td {
   font-size: 13px;
-  padding: 30px;
+  padding: 35px;
 }
+
+@media screen and (max-width: 1426px) {
+  .sessoes p {
+    font-size: 13px;
+  }
+
+  .detalhamento table, thead, tr th {
+    font-size: 10px;
+    padding: 5px ;
+  }
+
+}
+
+@media screen and (max-width: 1127px) {
+
+  .sessoes h2 {
+    font-size: 36px;
+  }
+
+  .sessoes p {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 948px) {
+
+  .sessoes p svg {
+    max-width: 30px;
+  }
+
+}
+
+@media screen and (max-width: 913px) {
+
+  .sessoes h2 {
+    font-size: 30px;
+  }
+
+  .sessoes p svg {
+    max-width: 17px;
+  }
+
+  .sessoes {
+    padding: 25px;
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+}
+
+@media screen and (max-width: 832px) {
+
+  .sessoes {
+    width: 100%;
+    padding: 15px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 10px;
+  }
+
+  .detalhamento table, thead, tr th {
+    font-size: 7px;
+    padding: 3px ;
+  }
+} 
 

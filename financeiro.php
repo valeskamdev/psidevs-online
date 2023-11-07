@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">.
 </head>
 <body>
-<header>
+  <header>
     <div class="limitador">
         <h1>
           <a href="index.html"><img src="assets/logo.png" alt="Logo psidevs" class="logo"/></a>
@@ -32,12 +32,10 @@
             </clipPath>
             </defs>
             </svg>
-            <a href="">
-            Agendar consulta
-            </a>
+            <button type="">Agendar consulta</button>
           </p>
-          <p class="config-header"><a href="">Criar conta</a></p>
-          <p class="con-age"><a href="">Entrar</a></p>
+          <p class="config-header"><button type="">Criar conta</button></p>
+          <p class="con-age"><button type="">Entrar</button></p>
         </div>
       </nav>
     </div>
