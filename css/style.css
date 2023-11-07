@@ -37,14 +37,16 @@ html {
   height: 200px;
 }
 
-/* #fade.hide {
+#fade.hide {
   opacity: 0;
   pointer-events: none;
+  display:none
 }
 
 #modal.hide {
   top: 0;
-} */
+  display: none;
+}
 
 #default-modal.hide,
 #fade.hide, #default-modal-cadastro.hide,

@@ -262,9 +262,7 @@
   .foto-legenda{
     @apply row-span-1 flex justify-center items-start col-span-3;
   }
-  .mb10{
-    @apply mb-10;
-  }
+
   .mtquatro{
     @apply mt-14;
   }
@@ -272,6 +270,9 @@
     @apply hidden;
   }
   .conteudo-direito{
+    @apply bg-white rounded shadow-lg py-32 px-3 w-full mx-auto flex flex-col justify-center items-center;
+  }
+  .conteudo-direito-senha{
     @apply bg-white rounded shadow-lg py-32 px-3 w-full mx-auto flex flex-col justify-center items-center;
   }
  
