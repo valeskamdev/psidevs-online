@@ -37,14 +37,16 @@ html {
   height: 200px;
 }
 
-/* #fade.hide {
+#fade.hide {
   opacity: 0;
   pointer-events: none;
+  display:none
 }
 
 #modal.hide {
   top: 0;
-} */
+  display: none;
+}
 
 #default-modal.hide,
 #fade.hide, #default-modal-cadastro.hide,
@@ -82,7 +84,7 @@ button {
 /* INICIO HOME */
 
 .limitador {
-  margin: 0 auto;
+  margin: 3px auto;
   max-width: 1200px;
   width: calc(100% - 100px);
   /* a largura é a largura total menos 100px (50px para cada lado) */
@@ -102,7 +104,7 @@ button {
 
 .info-num-adress {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 45%;
 }
@@ -157,6 +159,7 @@ nav {
 
 .logo {
   max-width: 250px;
+  max-width: 200px;
 }
 
 .icone {
@@ -168,6 +171,7 @@ header svg {
   padding-right: 10px;
   width: 50px;
 }
+
 
 button {
   border: none;
@@ -186,6 +190,15 @@ button {
   margin-left: 30px;
 }
 
+
+.menu .con-age a {
+  text-decoration: none;
+  color: var(--quaternary-color);
+}
+
+.menu .config-header a {
+  color: var(--secondary-color);
+  font-weight: bolder;
 .menu .con-age button {
   text-decoration: none;
   color: var(--quaternary-color);
@@ -212,12 +225,19 @@ button {
   padding: 1.5rem;
   text-align: center;
   border-radius: 10px;
+
 }
 
 .config-header {
   color: #415DA1;
   text-align: center;
 }
+
+.config-header {
+  color: #415DA1;
+  text-align: center;
+}
+
 
 .destaque {
   background: url(../assets/destaque.jpeg);
@@ -696,23 +716,12 @@ footer p {
 footer {
   background-color: var(--tertiary-color);
   padding: 30px;
-  color: #39394a;
+  color: #ffffff;
 }
 
 .colunas {
   justify-content: space-around;
   display: flex;
-}
-
-.redes_sociais a img {
-  margin-top: 15px;
-  margin-right: 15px;
-  transition: 0.3s;
-  width: 35px;
-}
-
-.redes_sociais a img:hover {
-  transform: scale(1.2);
 }
 
 footer p a {
@@ -728,6 +737,19 @@ footer p a:hover {
 footer p {
   margin-top: 30px;
   font-weight: 600;
+}
+
+.logo, img, .dark-blue{
+  margin-left: auto;
+}
+
+.dark-blue-p {
+  color: #415DA1;
+font-size: 20.80px;
+font-family: Montserrat;
+font-weight: 400;
+word-wrap: break-word;
+margin-left: 25px;
 }
 
 @media screen and (max-width: 1300px) {
@@ -749,6 +771,8 @@ footer p {
 }
 
 @media screen and (max-width: 1173px) {
+
+
   .servicos-img-texto img {
     display: none;
   }
@@ -794,6 +818,7 @@ footer p {
     padding: 1.5rem;
     font-size: 14px;
   }
+
 
   .contato {
     display: block;
@@ -847,9 +872,11 @@ footer p {
 
 @media screen and (max-width: 867px) {
 
+
   .menu p {
     font-size: 13px;
   }
+
 
   .servicos-cards {
     width: 100%;
@@ -904,6 +931,10 @@ footer p {
     top: 87px;
     right: 0;
     left: 0;
+  }
+
+  .aberto .config-header, .con-age button {
+    padding: 20px;
   }
 
   .menu.aberto li {
@@ -980,6 +1011,7 @@ footer p {
 
 
 @media screen and (max-width: 528px) {
+
   .info-num-adress {
     width: auto;
   }
@@ -1064,48 +1096,72 @@ footer {
   text-align: left;
 }
 
-/* Aplicar cor de fonte a todos os elementos de texto */
-footer,
-footer p,
-footer h2,
-footer ul,
-footer li {
+/* footer */
+
+footer, >
+p {
   color: #415DA1;
-  font-size: 20px;
+  font-size: 12.80px;
+  font-family: Montserrat;
+  font-weight: 400;
+  line-height: 19.20px;
+  word-wrap: break-word
+}
+
+.titulo {
+  color: #415DA1;
+  font-size: 16px;
   font-family: Montserrat;
   font-weight: 700;
   line-height: 24px;
   word-wrap: break-word
 }
 
-ul {
-  list-style-type: none;
-}
-
-
-a {
-  text-decoration: none;
-  font-size: 16px;
-
-}
-
-.telefone,
-.formulario-contato,
-.email {
+.sub-links {
   color: #415DA1;
-  font-size: 20px;
+  font-size: 14px;
   font-family: Montserrat;
   font-weight: 400;
   line-height: 20px;
+  word-wrap: break-word;
+
+}
+
+.dark-blue {
+  color: #415DA1;
+  font-size: 25px;
+  font-family: Montserrat;
+  font-weight: 700;
+  line-height: 24px;
   word-wrap: break-word
 }
 
-.prof, li, a {
+
+
+.sub-menu {
   color: #415DA1;
   font-size: 20px;
   font-family: Montserrat;
   font-weight: 400;
   line-height: 20px;
+  word-wrap: break-word;
+  list-style: none;
+  
+}
+
+.sub-menu a {
+  text-decoration: none; /* Remover o sublinhado das âncoras (links) */
+  color: darkblue;
+}
+
+.menu-coluna {
+  margin: 30px;
+  text-align: justify;
+  
+}
+
+
+
   word-wrap: break-word
 }
 
@@ -1233,5 +1289,9 @@ a {
   .detalhamento table, thead, tr th {
     font-size: 7px;
     padding: 3px ;
+  }
+
+  .detalhamento {
+    margin: 0px;
   }
 } 
