@@ -18,7 +18,7 @@
 <header>
     <div class="limitador">
       <h1>
-        <a href="index.html"><img src="assets/logo.png" alt="Logo psidevs" class="logo" /></a>
+        <a href="index.php"><img src="assets/logo.png" alt="Logo psidevs" class="logo" /></a>
       </h1>
       <nav>
         <h2>
@@ -47,7 +47,7 @@
           <p class="config-header"><a href="">Criar conta</a></p>
           <p class="con-age"><a href="">Entrar</a></p>
         <h1>
-          <a href="index.html"><img src="assets/logo.png" alt="Logo psidevs" class="logo"/></a>
+          <a href="index.php"><img src="assets/logo.png" alt="Logo psidevs" class="logo"/></a>
         </h1>   
       <nav>
       <h2>
@@ -69,7 +69,7 @@
             </clipPath>
             </defs>
             </svg>
-            <button type="">Agendar consulta</button>
+            <a href="agendamento.php">Agendar consulta</a>
           </p>
           <p id="open-cadastro" data-modal-target="staticModal" data-modal-toggle="staticModal" class="config-header"><button type="button">Criar conta</button></p>
           <p  id="open" data-modal-target="staticModal" data-modal-toggle="staticModal" class="con-age"><button type="button">Entrar</button></p>
@@ -412,8 +412,8 @@
   </footer>
 
 
-  <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-  <div class="elfsight-app-3504cfe4-e6c9-4b0c-b144-0539a098d2fd"></div>
+<!--  <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>-->
+<!--  <div class="elfsight-app-3504cfe4-e6c9-4b0c-b144-0539a098d2fd"></div>-->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init({
@@ -421,14 +421,13 @@
       once: true
     });
   </script>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
+<!--  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>-->
+<!--  <script>-->
+<!--    new window.VLibras.Widget('https://vlibras.gov.br/app');-->
+<!--  </script>-->
 
   <script src="js/menu.js"></script>
   <script src="js/modal.js"></script>
-  <script src="js/formulario.js"></script>
 </body>
 
 </html>
