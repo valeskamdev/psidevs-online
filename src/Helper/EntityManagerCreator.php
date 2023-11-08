@@ -21,7 +21,6 @@ class EntityManagerCreator
             paths: [__DIR__ . "/.."],
             isDevMode: true);
 
-//        $config->addCustomStringFunction('UUID', 'DoctrineExtensions\Query\Mysql\Uuid');
         $connection = DriverManager::getConnection([
             'driver' => 'pdo_mysql',
             'host' => 'localhost',

@@ -1,3 +1,31 @@
+<?php
+
+use Psidevs\Entity\Cliente;
+use Psidevs\Entity\ControleDeAcesso;
+use Psidevs\Entity\Usuario;
+use Psidevs\Entity\Utilitarios;
+use Psidevs\Helper\EntityManagerCreator;
+use Psidevs\Repository\QueryBuilderConsulta;
+
+require_once "../../vendor/autoload.php";
+
+$verificaLogin = new ControleDeAcesso();
+$verificaLogin->verificaAcesso();
+$verificaLogin->verificaAcessoCliente();
+if(isset($_GET["sair"])) $verificaLogin-> logout();
+
+$usuario = new Usuario();
+$usuario->setTipoUsuario($_SESSION['tipo_usuario']);
+$usuario->setNome($_SESSION['nome']);
+
+$entityManager   = EntityManagerCreator::createEntityManager();
+$objetoClienteConsulta   = new QueryBuilderConsulta($entityManager, $entityManager->getClassMetadata(Cliente::class));
+
+$consultaHoje = $objetoClienteConsulta->buscaUmaConsultaCliente();
+
+var_dump($consultaHoje);
+?>
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -20,7 +48,7 @@
     </div>
     <div class="header_perfil hidden lg:flex">
       <div class="header_perfil_nome pe-5 text-neutral-100 font-ubuntu">
-        <p>Josefa Ferreira</p>
+        <p><?=$usuario->getNome()?></p>
         <p class="font-medium">Perfil</p>
       </div>
       <div class="header_perfil_avatar">
@@ -86,7 +114,7 @@
   <div class="container_bg">
     <div class="container_sub_header_bg">
       <div class="container_sub_header">
-        <h2 class="container_sub_header_saudacao">Boa tarde, Josefa Ferreira</h2>
+        <h2 class="container_sub_header_saudacao"> <span id="saudacao"></span>, <?=$usuario->getNome()?></h2>
         <div class="container_header_marcar_consulta_botao_bg">
           <a href="#" class="container_header_marcar_consulta_botao"><img src="../../assets/icone-plus.svg" class="pe-2" alt="Sinal de adição">Marcar consulta</a>
         </div>
@@ -125,11 +153,11 @@
             <div class="container_conteudo_consulta_hoje">
               <div class="container_conteudo_consulta_hoje_titulo">
                 <h2 class="consultaTitulo">Consulta de hoje</h2>
-                <span class="container_conteudo_consulta_hoje_horario">16:40</span>
+                <span class="container_conteudo_consulta_hoje_horario"><?=Utilitarios::formataHora($consultaHoje['data'])?></span>
               </div>
               <div class="divisor container_conteudo_consulta_hoje_body_rodape">
                 <div class="container_conteudo_consulta_hoje_corpo">
-                  <h3 class="container_conteudo_consulta_hoje_corpo_titulo">Jorge Nogueira</h3>
+                  <h3 class="container_conteudo_consulta_hoje_corpo_titulo"><?=$consultaHoje['nome']?></h3>
                   <p class="container_conteudo_consulta_hoje_corpo_subtitulo">Psicólogo Educacional</p>
                   <p class="container_conteudo_consulta_hoje_corpo_texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, magnam, maxime!
                     Adipisci aut blanditiis commodi delectus laboriosam nulla rerum?</p>
@@ -263,5 +291,6 @@
       document.querySelector('.backdrop').classList.toggle('drawer-backdrop');
     }
   </script>
+<script src="../../js/saudacao.js"></script>
 </body>
 </html>
