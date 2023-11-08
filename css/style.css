@@ -155,6 +155,25 @@ nav {
   width: 70%;
 }
 
+.logo {
+  max-width: 200px;
+}
+
+.icone {
+  display: none;
+}
+
+header svg {
+  padding-top: 4px;
+  padding-right: 10px;
+  width: 50px;
+}
+
+nav button {
+  border: none;
+}
+
+
 .icone {
   display: none;
 }
@@ -163,29 +182,46 @@ nav {
   display: flex;
   list-style: none;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
-.menu li {
+.menu p {
   font-weight: 500;
   font-size: 1.8rem;
-  width: 100%;
+  margin-left: 30px;
 }
 
-.menu a {
+.menu .con-age button {
   text-decoration: none;
-  color: var(--quinary-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
-  transition: 0.3s;
+  color: var(--quaternary-color);
+  background-color: #415DA1;
+  font-weight: bolder;
+  font-size: 15px;
+} 
+
+.menu .config-header button {
+  color: var(--secondary-color);
+  font-weight: bolder;
+  font-size: 15px;
+  background-color: #e9f0ff;
 }
 
-.menu a:hover,
+/* .menu a:hover,
 .menu a:focus {
   background-color: var(--secondary-color);
   color: var(--quaternary-color);
+}   */
+
+.con-age {
+  background-color: #415DA1;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.config-header {
+  color: #415DA1;
+  text-align: center;
 }
 
 .destaque {
@@ -831,6 +867,18 @@ footer p {
 }
 
 @media screen and (max-width: 848px) {
+
+  .menu p svg {
+    display: none;
+  }
+
+  .menu p {
+    width: 100%;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 0px;
+  }
+
   .icone {
     display: block;
   }
@@ -852,6 +900,18 @@ footer p {
     top: 87px;
     right: 0;
     left: 0;
+  }
+
+  .aberto .config-header, .con-age button {
+    padding: 20px;
+  }
+  .con-age, .menu .con-age button{
+    background-color: var(--primary-color);
+    color: #415DA1;
+  }
+  .menu .con-age #botao-agendamento{
+    margin: auto;
+    margin-top: 5px;
   }
 
   .menu.aberto li {
@@ -943,6 +1003,11 @@ footer p {
 }
 
 @media screen and (max-width: 388px) {
+
+  .logo {
+    max-width: 150px;
+  }
+
   .info-num-adress div:nth-child(1) {
     display: none;
   }
@@ -965,6 +1030,7 @@ footer p {
     min-width: 150px;
   }
 }
+
 
 @media screen and (max-width: 338px) {
   .servicos-img-texto article {
