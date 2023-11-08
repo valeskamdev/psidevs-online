@@ -248,12 +248,9 @@
                       </div>
 
                       <div class="sm:col-span-3">
-                          <div class="mt-2 relative">
-                            <label for="regiao" class="label-padrao-perfil">Região</label>
-                            <select id="regiao" name="regiao" class="input-padrao-perfil sm:text-md">
-                              <option selected></option>
-                              <option selected></option>
-                            </select>
+                        <div class="mt-2 relative">
+                            <label for="valor" class="label-padrao-perfil">Valor Consulta</label>
+                            <input type="text" id="valor" name="valor" value="" class="input-padrao-perfil sm:text-md" type="number" min="0" max="500" step="1" >
                           </div>
                       </div>
 
