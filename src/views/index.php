@@ -161,8 +161,9 @@ var_dump($proximas3ConsultasCliente);
                   <p class="container_conteudo_consulta_hoje_corpo_subtitulo">Profissional</p>
                   <h3 class="container_conteudo_consulta_hoje_corpo_titulo"><?= $consultaHojeCliente[0]['nome']?></h3>
                   <p class="container_conteudo_consulta_hoje_corpo_subtitulo"></p>
-                  <p class="container_conteudo_consulta_hoje_corpo_texto">Você está prestes a ter uma importante consulta de psicologia. Para obter informações adicionais
-                    sobre o papel da psicologia em sua vida e como encontrar apoio emocional, visite [ link do site de um psicólogo aqui].</p>
+                  <p class="container_conteudo_consulta_hoje_corpo_texto">Hoje é um dia importante para o seu bem-estar mental. Às <?=Utilitarios::formataHora($consultaHojeCliente[0]['data'])?>, você terá a oportunidade
+                    de conversar com o profissional <?=$consultaHojeCliente[0]['nome']?>, um(a) psicólogo(a) dedicado(a) a ajudar a melhorar a sua qualidade de vida.
+                  </p>
                 </div>
                 <div class="container_conteudo_consulta_hoje_rodape">
                   <div class="container_conteudo_consulta_hoje_rodape_plataforma hidden">
@@ -187,7 +188,8 @@ var_dump($proximas3ConsultasCliente);
              <img src="../../assets/flor-consulta-hoje.svg" alt="flor com uma mensagem de 'Nenhuma consulta para hoje'.">
             </div>
           </div>
-          <?php } ?>
+          <?php }
+          if(!empty($proximas3ConsultasCliente)) { ?>
           <div class="container_conteudo_proxima_consulta_bg card_bg">
             <div class="container_conteudo_proxima_consulta">
               <div class="container_conteudo_proxima_consulta_titulo">
@@ -198,7 +200,7 @@ var_dump($proximas3ConsultasCliente);
                 <li><div class="container_conteudo_proxima_consulta_profissional">
                     <div class="container_conteudo_proxima_consulta_profissional_avatar_e_horario">
                       <div class="container_conteudo_proxima_consulta_grupo_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar de uma mulher">
+                        <img src="../../assets/foto_perfil/<?=$consulta['foto']?>" class="avatar" alt="Avatar de uma mulher">
                       </div>
                       <div class="container_conteudo_proxima_consulta_grupo_texto">
                         <h3 class="container_conteudo_proxima_consulta_grupo_texto_titulo"><?=$consulta['nome']?></h3>
@@ -216,6 +218,13 @@ var_dump($proximas3ConsultasCliente);
               <a href="consultas.php" class="rodape">Ver todas consultas</a>
             </div>
           </div>
+          <?php } else { ?>
+          <div class="container_flor_bg flor_espacamento">
+            <div class="container_flor">
+              <img src="../../assets/flor-proximas-consultas.svg" alt="flor com uma mensagem de 'Sem próximas consultas'.">
+            </div>
+          </div>
+          <?php } ?>
           <div class="container_conteudo_historico_consulta_bg card_bg">
             <div class="container_conteudo_historico_consulta">
               <div class="container_conteudo_historico_consulta_sessao">

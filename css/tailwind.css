@@ -224,7 +224,7 @@
   }
 
   .container_flor_bg {
-    @apply card_bg mt-0 border-primary
+    @apply card_bg mt-0 border-primary py-7;
   }
 
   .container_flor_bg img {
@@ -261,6 +261,10 @@
 
   .dataConsulta_status_badge {
     @apply font-medium rounded px-2 py-1 text-sm;
+  }
+
+  .avatar {
+    @apply w-12 h-12 rounded-full object-cover border-2 border-border-blue;
   }
 
   .divisor {
@@ -326,6 +330,10 @@
     }
     .mostrar-form{
       @apply hidden;
+    }
+
+    .flor_espacamento {
+      @apply my-8;
     }
   }
   @screen md {
@@ -404,6 +412,10 @@
 
     .container_conteudo_consulta_hoje_rodape_texto {
       @apply w-10/12;
+    }
+
+    .flor_espacamento {
+      @apply my-0;
     }
   }
 }
