@@ -31,7 +31,7 @@ function loginProfissional($entityManager, $idUsuario): void
     $_SESSION['especializacao'] = $especializacao;
     $_SESSION['experiencia'] = $experiencia;
 
-    header("location:src/views/cliente/index.php");
+    header("location:src/views/index.php");
 }
 
 function loginCliente($entityManager, $idUsuario): void
@@ -42,5 +42,5 @@ function loginCliente($entityManager, $idUsuario): void
     $idCliente = $cliente->getId();
     $_SESSION['id_cliente'] = $idCliente;
 
-    header("location:src/views/cliente/index.php");
+    header("location:src/views/index.php");
 }
