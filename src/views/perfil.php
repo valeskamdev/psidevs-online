@@ -218,13 +218,13 @@
                           <div class="mt-2 relative">
                             <label for="senha" class="label-padrao-perfil">Senha</label>
                             <input type="password" id="senha" name="senha" class="input-padrao-perfil sm:text-md" placeholder="••••••">
-                            <button type="button" name="alterar-senha" class="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-primary rounded-r-lg border hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <button type="button" name="alterar-senha" class="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-primary bg-secondary rounded-r-lg border hover:bg-primary/90 hover:text-neutral-100">
                                 Alterar senha
                             </button>
                           </div>
                       </div>
 
-                      <div class="text-center sm:col-span-6 sm:text-left">
+                      <div class="mx-auto sm:col-span-6 sm:text-left">
                         <button id="atualizar" name="atualizar" type="submit" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
                       </div>
 
@@ -240,6 +240,22 @@
                           </button>
                       </div>
 
+                      <div class="modal-formacao flex flex-col flex-nowrap sm:col-span-6 sm:items-center">
+                        <button type="button"  class="flex justify-center items-center close-formacao mr-5 mb-6 text-gray-400 bg-transparent hover:bg-green-100 hover:text-gray-900 rounded-lg text-sm w-12 h-8 ml-auto" >
+                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                        </button>
+                        <div class="w-full p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 justify-between dark:bg-gray-800 dark:text-green-400" role="alert">
+                            <p><span class="font-medium">Engenharia De Software</span>  |  Graduação</p>
+                            <p>Fiap - Centro Universitário  |  2022</p>
+                        </div>
+                        <div class="w-full p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 justify-between dark:bg-gray-800 dark:text-green-400" role="alert">
+                            <p><span class="font-medium">Engenharia De Software</span>  |  Graduação</p>
+                            <p>Fiap - Centro Universitário  |  2022</p>
+                        </div>
+                      </div>
+
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
                             <label for="crp" class="label-padrao-perfil">CRP</label>
@@ -248,13 +264,10 @@
                       </div>
 
                       <div class="sm:col-span-3">
-                          <div class="mt-2 relative">
-                            <label for="regiao" class="label-padrao-perfil">Região</label>
-                            <select id="regiao" name="regiao" class="input-padrao-perfil sm:text-md">
-                              <option selected></option>
-                              <option selected></option>
-                            </select>
-                          </div>
+                        <div class="mt-2 relative">
+                            <label for="valor" class="label-padrao-perfil">Valor Consulta</label>
+                            <input type="text" id="valor" name="valor" value="" class="input-padrao-perfil sm:text-md" type="number" min="0" max="500" step="1" >
+                        </div>
                       </div>
 
                       <div class="sm:col-span-3">
@@ -284,8 +297,7 @@
                       </div>
 
 
-
-                      <div class="text-center sm:col-span-6 sm:text-left">
+                      <div class="text-center mx-auto sm:col-span-6 sm:text-left">
                         <button id="atualizar-profissional" name="atualizar-profissional" type="submit" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
                       </div>
                   </div>
@@ -297,7 +309,7 @@
                       <span class="text-sm font-light">Não preencha os horários novamente.</span></p>
                   </div>
                 <?php } else { ?>
-                  <div class="aviso-modal bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3 flex justify-between" role="alert">
+                  <div class="aviso-modal bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3 my-9 flex justify-between" role="alert">
                     <p class="font-bold">Adicione sua disponibilidade<br>
                       <span class="text-sm font-light">Ainda não possui horários definidos.</span></p>
                     <button class="adicionar bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 border border-blue-700 rounded">Adicionar</button>
@@ -602,6 +614,23 @@
   };
 
   openModalButton.addEventListener('click', () => toggleModal1());
+
+
+
+
+    const closeModalButtons = document.querySelectorAll(".close-formacao");
+    const modalFormacoes = document.querySelectorAll(".modal-formacao");
+
+    const toggleModal = () => {
+      modalFormacoes.forEach((modal) => {
+        modal.classList.toggle("hidden");
+      });
+    };
+
+    closeModalButtons.forEach((button) => {
+      button.addEventListener("click", toggleModal);
+    });
+
 </script>
 </body>
 </html>
