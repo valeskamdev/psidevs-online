@@ -15,7 +15,7 @@ class ControleDeAcesso
     {
         if ( ! isset($_SESSION['id'])) {
             session_destroy();
-            header("location:../public/login.php?acesso_proibido");
+            header("location:../../login.php?acesso_proibido");
             die();
         }
     }
@@ -35,14 +35,14 @@ class ControleDeAcesso
     public function logout(): void
     {
         session_destroy();
-        header("location:../public/login.php?logout");
+        header("location:../../login.php?logout");
         die();
     }
 
     public function verificaAcessoProfissional(): void
     {
         if ($_SESSION ['tipo_usuario'] !== "profissional") {
-            header("location:../public/nao-autorizado.php");
+            header("location:../../nao-autorizado.php");
             die();
         }
     }
@@ -50,7 +50,7 @@ class ControleDeAcesso
     public function verificaAcessoCliente(): void
     {
         if ($_SESSION ['tipo_usuario'] !== "cliente") {
-            header("location:../public/nao-autorizado.php");
+            header("location:../../nao-autorizado.php");
             die();
         }
     }

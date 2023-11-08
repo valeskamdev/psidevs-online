@@ -36,36 +36,49 @@ if (isset($_POST['entrar'])) {
     $entityManager = EntityManagerCreator::createEntityManager();
 
     $usuario = fazerLogin($entityManager, $email);
-    if( empty($email) || empty($senha) ){
+
+
+    if (empty($email) || empty($senha)) {
         header("location:login.php?campos_obrigatorios");
-        exit();
-    }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("location:login.php?campos_obrigatorios");
-        exit();
-    }
-
-    if (password_verify($senha, $usuario->getSenha())) {
-        $idUsuario = $usuario->getId();
-        $tipoUsuario = $usuario->getTipoUsuario();
-
-        if ($tipoUsuario === 'profissional') {
-            loginProfissional($entityManager, $idUsuario);
-        } else {
-            loginCliente($entityManager, $idUsuario);
+    } else {
+        if ( ! $usuario) {
+            header("location:login.php?credenciais_invalidas");
+            exit();
         }
 
-        $nomeUsuario = $usuario->getNome();
-        $emailUsuario = $usuario->getEmail();
-        $cpfUsuario = $usuario->getCpf();
-        $dataNascimentoUsuario = $usuario->getDataNascimento()->format('d/m/Y');
-        $generoUsuario = $usuario->getGenero();
-        $fotoUsuario = $usuario->getFoto();
+        if (password_verify($senha, $usuario->getSenha())) {
+            $idUsuario   = $usuario->getId();
+            $tipoUsuario = $usuario->getTipoUsuario();
 
-        $verificaLogin->login($idUsuario, $nomeUsuario, $emailUsuario, $cpfUsuario, $dataNascimentoUsuario, $generoUsuario, $fotoUsuario, $tipoUsuario);
-    } else {
-        header("location:login.php?credenciais_invalidas");
+            if ($tipoUsuario === 'profissional') {
+                loginProfissional($entityManager, $idUsuario);
+            } else {
+                loginCliente($entityManager, $idUsuario);
+            }
+
+            $nomeUsuario           = $usuario->getNome();
+            $emailUsuario          = $usuario->getEmail();
+            $cpfUsuario            = $usuario->getCpf();
+            $dataNascimentoUsuario = $usuario->getDataNascimento()->format(
+              'd/m/Y'
+            );
+            $generoUsuario         = $usuario->getGenero();
+            $fotoUsuario           = $usuario->getFoto();
+
+            $verificaLogin->login(
+              $idUsuario,
+              $nomeUsuario,
+              $emailUsuario,
+              $cpfUsuario,
+              $dataNascimentoUsuario,
+              $generoUsuario,
+              $fotoUsuario,
+              $tipoUsuario
+            );
+        } else {
+            header("location:login.php?credenciais_invalidas");
+        }
     }
 }
 ?>
@@ -112,9 +125,9 @@ if (isset($_POST['entrar'])) {
 
                             <?php } ?>
 
-                            <div class="relative z-0 w-full mt-10 mb-4 group">
+                            <div class="relative z-0 w-full mt-6 mb-4 group">
                                 <label for="email" class="label-padrao-login">
-                                    <input required type="email" id="email" class="login-input peer w-full" placeholder="E-mail" />
+                                    <input  type="email" id="email" name="email" class="login-input peer w-full" placeholder="E-mail" />
                                     <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
                                         E-mail
                                     </span>
@@ -123,7 +136,7 @@ if (isset($_POST['entrar'])) {
 
                             <div class="relative z-0 w-full mb-6 group">
                                 <label for="senha" class="label-padrao-login">
-                                    <input required type="password" id="senha" class="login-input peer w-full" placeholder="Senha" />
+                                    <input  type="password" id="senha" name="senha" class="login-input peer w-full" placeholder="Senha" />
                                     <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
                                         Senha
                                     </span>
@@ -133,7 +146,7 @@ if (isset($_POST['entrar'])) {
                             <div class="mb-6 text-center">
                                 <button type="submit" name="entrar" style="background: rgb(102,124,187);
                                     background: linear-gradient(270deg, rgba(102,124,187,0.8911939775910365) 0%, rgba(90,155,249,1) 25%, rgba(118,174,226,1) 79%, rgba(163,210,253,1) 99%);
-                                /* Outros estilos que você deseja adicionar */" class=" text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-16 py-2.5 text-center"><a href="src/views/consultas.php">Entrar</a></button>
+                                /* Outros estilos que você deseja adicionar */" class=" text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-16 py-2.5 text-center">Entrar</button>
                             </div>
 
                                                             
