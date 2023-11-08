@@ -10,7 +10,7 @@ class QueryBuilderConsulta extends EntityRepository
     {
 
         $qb = $this->createQueryBuilder('cliente')
-            ->select('profissional_usuario.nome as nome', 'consulta.id', 'consulta.data', 'consulta.valor', 'consulta.status')
+            ->select('profissional_usuario.nome as nome', 'profissional_usuario.foto as foto', 'consulta.id', 'consulta.data', 'consulta.valor', 'consulta.status')
             ->innerJoin('cliente.consultas', 'consulta')
             ->innerJoin('consulta.profissional', 'profissional')
             ->innerJoin('profissional.usuario', 'profissional_usuario')
@@ -18,6 +18,24 @@ class QueryBuilderConsulta extends EntityRepository
             ->andWhere('consulta.status = :status')
             ->setParameter('clienteId', $_SESSION['id_cliente'])
             ->setParameter('status', 'agendada')
+            ->getQuery();
+        return $qb->getResult();
+    }
+
+
+    public function proximasTresConsultas()
+    {
+
+        $qb = $this->createQueryBuilder('cliente')
+            ->select('profissional_usuario.nome as nome', 'profissional_usuario.foto as foto', 'consulta.id', 'consulta.data', 'consulta.valor', 'consulta.status')
+            ->innerJoin('cliente.consultas', 'consulta')
+            ->innerJoin('consulta.profissional', 'profissional')
+            ->innerJoin('profissional.usuario', 'profissional_usuario')
+            ->where('cliente.id = :clienteId')
+            ->andWhere('consulta.status = :status')
+            ->setParameter('clienteId', $_SESSION['id_cliente'])
+            ->setParameter('status', 'agendada')
+            ->setMaxResults(3)
             ->getQuery();
         return $qb->getResult();
     }

@@ -21,8 +21,9 @@ $usuario->setNome($_SESSION['nome']);
 $entityManager   = EntityManagerCreator::createEntityManager();
 $objetoClienteConsulta   = new QueryBuilderConsulta($entityManager, $entityManager->getClassMetadata(Cliente::class));
 
-$consultaHoje = $objetoClienteConsulta->buscaUmaConsultaCliente();
-var_dump($consultaHoje);
+$consultaHojeCliente = $objetoClienteConsulta->buscaUmaConsultaCliente();
+$proximas3ConsultasCliente   = $objetoClienteConsulta->proximasTresConsultas();
+var_dump($proximas3ConsultasCliente);
 ?>
 
 <!doctype html>
@@ -148,16 +149,17 @@ var_dump($consultaHoje);
         </div>
       </div>
         <div class="container_conteudo">
-          <?php if(!empty($consultaHoje)) { ?>
+          <?php if(!empty($consultaHojeCliente)) { ?>
           <div class="container_conteudo_consulta_hoje_bg">
             <div class="container_conteudo_consulta_hoje">
               <div class="container_conteudo_consulta_hoje_titulo">
                 <h2 class="consultaTitulo">Consulta de hoje</h2>
-                <span class="container_conteudo_consulta_hoje_horario"><?=Utilitarios::formataHora($consultaHoje[0]['data'])?></span>
+                <span class="container_conteudo_consulta_hoje_horario"><?=Utilitarios::formataHora($consultaHojeCliente[0]['data'])?></span>
               </div>
               <div class="divisor container_conteudo_consulta_hoje_body_rodape">
                 <div class="container_conteudo_consulta_hoje_corpo">
-                  <h3 class="container_conteudo_consulta_hoje_corpo_titulo"><?=$consultaHoje[0]['nome']?></h3>
+                  <p class="container_conteudo_consulta_hoje_corpo_subtitulo">Profissional</p>
+                  <h3 class="container_conteudo_consulta_hoje_corpo_titulo"><?= $consultaHojeCliente[0]['nome']?></h3>
                   <p class="container_conteudo_consulta_hoje_corpo_subtitulo"></p>
                   <p class="container_conteudo_consulta_hoje_corpo_texto">Você está prestes a ter uma importante consulta de psicologia. Para obter informações adicionais
                     sobre o papel da psicologia em sua vida e como encontrar apoio emocional, visite [ link do site de um psicólogo aqui].</p>
@@ -182,7 +184,7 @@ var_dump($consultaHoje);
           <?php } else { ?>
           <div class="container_flor_bg">
             <div class="container_flor">
-             <img src="../../assets/flor-consulta-hoje.svg" alt="">
+             <img src="../../assets/flor-consulta-hoje.svg" alt="flor com uma mensagem de 'Nenhuma consulta para hoje'.">
             </div>
           </div>
           <?php } ?>
@@ -192,52 +194,26 @@ var_dump($consultaHoje);
                 <h2 class="consultaTitulo">Próximas consultas</h2>
               </div>
               <ul class="divisor">
+                <?php foreach ($proximas3ConsultasCliente as $consulta) : ?>
                 <li><div class="container_conteudo_proxima_consulta_profissional">
                     <div class="container_conteudo_proxima_consulta_profissional_avatar_e_horario">
                       <div class="container_conteudo_proxima_consulta_grupo_avatar">
                         <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar de uma mulher">
                       </div>
                       <div class="container_conteudo_proxima_consulta_grupo_texto">
-                        <h3 class="container_conteudo_proxima_consulta_grupo_texto_titulo">Fábia Araújo de Nogueira</h3>
-                        <span class="dataConsulta"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
+                        <h3 class="container_conteudo_proxima_consulta_grupo_texto_titulo"><?=$consulta['nome']?></h3>
+                        <span class="dataConsulta"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span><?=Utilitarios::formataData($consulta['data'])?></span><span class="ms-2">Meet</span></span>
                       </div>
                     </div>
                     <div class="container_conteudo_proxima_consulta_horario">
-                      <span class="horarioConsulta">14:30</span>
+                      <span class="horarioConsulta"><?=Utilitarios::formataHora($consulta['data'])?></span>
                     </div>
                   </div></li>
-                <li><div class="container_conteudo_proxima_consulta_profissional">
-                    <div class="container_conteudo_proxima_consulta_profissional_avatar_e_horario">
-                      <div class="container_conteudo_proxima_consulta_grupo_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar de uma mulher">
-                      </div>
-                      <div class="container_conteudo_proxima_consulta_grupo_texto">
-                        <h3 class="container_conteudo_proxima_consulta_grupo_texto_titulo">Fábia Araújo de Nogueira</h3>
-                        <span class="dataConsulta"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                      </div>
-                    </div>
-                    <div class="container_conteudo_proxima_consulta_grupo_horario">
-                      <span class="horarioConsulta">14:30</span>
-                    </div>
-                  </div></li>
-                <li><div class="container_conteudo_proxima_consulta_profissional">
-                    <div class="container_conteudo_proxima_consulta_profissional_avatar_e_horario">
-                      <div class="container_conteudo_proxima_consulta_grupo_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar de uma mulher">
-                      </div>
-                      <div class="container_conteudo_proxima_consulta_grupo_texto">
-                        <h3 class="container_conteudo_proxima_consulta_grupo_texto_titulo">Fábia Araújo de Nogueira</h3>
-                        <span class="dataConsulta"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                      </div>
-                    </div>
-                    <div class="container_conteudo_proxima_consulta_grupo_horario">
-                      <span class="horarioConsulta">14:30</span>
-                    </div>
-                  </div></li>
+                <?php endforeach; ?>
               </ul>
             </div>
             <div class="container_conteudo_proxima_consulta_rodape">
-              <a href="#" class="rodape">Ver todas consultas</a>
+              <a href="consultas.php" class="rodape">Ver todas consultas</a>
             </div>
           </div>
           <div class="container_conteudo_historico_consulta_bg card_bg">

@@ -98,12 +98,9 @@
     @apply text-xl font-bold text-primary;
   }
 
-  /*.container_conteudo_consulta_hoje_barra {*/
-  /*  @apply border-b-4 border-border-blue w-2/12;*/
-  /*}*/
 
   .container_conteudo_consulta_hoje_corpo_subtitulo {
-    @apply text-lg text-neutral-700 mb-4;
+    @apply text-sm font-bold text-neutral-700 mb-2;
   }
 
   .container_conteudo_consulta_hoje_corpo_texto {
@@ -207,7 +204,7 @@
   }
 
   .dot {
-    @apply before:content-['\007C'] before:mx-1 after:content-['\007C'] after:mx-1 before:text-primary after:text-primary;
+    @apply mx-2;
   }
 
   .botaoReagendar {
@@ -236,7 +233,7 @@
 
   .container_conteudo_historico_consulta_rodape,
   .container_conteudo_proxima_consulta_rodape {
-    @apply bg-tertiary rounded-b-xl px-3 py-4;
+    @apply bg-tertiary rounded-b-xl px-3 py-4 flex items-center;
   }
 
   .rodape {
@@ -397,7 +394,7 @@
     .container_conteudo_proxima_consulta_bg,
     .container_conteudo_consulta_hoje_bg,
     .container_flor_bg {
-      @apply col-span-2;
+      @apply grid col-span-2;
     }
 
     .container_conteudo_historico_consulta_bg,

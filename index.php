@@ -17,7 +17,7 @@
 <header>
     <div class="limitador">
         <h1>
-          <a href="index.html"><img src="assets/logo.png" alt="Logo psidevs" class="logo"/></a>
+          <a href="index.php"><img src="assets/logo.png" alt="Logo psidevs" class="logo"/></a>
         </h1>   
       <nav>
       <h2>
