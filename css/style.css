@@ -37,20 +37,19 @@ html {
   height: 200px;
 }
 
-#fade.hide {
+/* #fade.hide {
   opacity: 0;
   pointer-events: none;
-  display:none
 }
 
 #modal.hide {
   top: 0;
-  display: none;
-}
+} */
 
 #default-modal.hide,
-#fade.hide, #default-modal-cadastro.hide,
-#fade-cadastro.hide  {
+#fade.hide,
+#default-modal-cadastro.hide,
+#fade-cadastro.hide {
   opacity: 0;
   pointer-events: none;
 }
@@ -84,7 +83,7 @@ button {
 /* INICIO HOME */
 
 .limitador {
-  margin: 3px auto;
+  margin: 0 auto;
   max-width: 1200px;
   width: calc(100% - 100px);
   /* a largura é a largura total menos 100px (50px para cada lado) */
@@ -104,7 +103,7 @@ button {
 
 .info-num-adress {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 45%;
 }
@@ -138,7 +137,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
-  padding: 13px 0;
+  padding: 25px 0;
 }
 
 .info-bg {
@@ -149,7 +148,7 @@ header {
 
 header div {
   display: flex;
-  justify-content: space-between ;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -158,7 +157,6 @@ nav {
 }
 
 .logo {
-  max-width: 250px;
   max-width: 200px;
 }
 
@@ -172,9 +170,13 @@ header svg {
   width: 50px;
 }
 
-
-button {
+nav button {
   border: none;
+}
+
+
+.icone {
+  display: none;
 }
 
 .menu {
@@ -190,15 +192,6 @@ button {
   margin-left: 30px;
 }
 
-
-.menu .con-age a {
-  text-decoration: none;
-  color: var(--quaternary-color);
-}
-
-.menu .config-header a {
-  color: var(--secondary-color);
-  font-weight: bolder;
 .menu .con-age button {
   text-decoration: none;
   color: var(--quaternary-color);
@@ -225,19 +218,12 @@ button {
   padding: 1.5rem;
   text-align: center;
   border-radius: 10px;
-
 }
 
 .config-header {
   color: #415DA1;
   text-align: center;
 }
-
-.config-header {
-  color: #415DA1;
-  text-align: center;
-}
-
 
 .destaque {
   background: url(../assets/destaque.jpeg);
@@ -703,54 +689,11 @@ button {
   font-size: 1.2rem;
 }
 
-/* FOOTER */
 
-footer h2 {
-  font-size: 1.9rem;
-}
 
-footer p {
-  font-size: 1.4rem;
-}
 
-footer {
-  background-color: var(--tertiary-color);
-  padding: 30px;
-  color: #ffffff;
-}
 
-.colunas {
-  justify-content: space-around;
-  display: flex;
-}
 
-footer p a {
-  text-decoration: none;
-  color: #39394a;
-  transition: 0.3s;
-}
-
-footer p a:hover {
-  color: #99a1b4;
-}
-
-footer p {
-  margin-top: 30px;
-  font-weight: 600;
-}
-
-.logo, img, .dark-blue{
-  margin-left: auto;
-}
-
-.dark-blue-p {
-  color: #415DA1;
-font-size: 20.80px;
-font-family: Montserrat;
-font-weight: 400;
-word-wrap: break-word;
-margin-left: 25px;
-}
 
 @media screen and (max-width: 1300px) {
   .depoimentos>p {
@@ -771,8 +714,6 @@ margin-left: 25px;
 }
 
 @media screen and (max-width: 1173px) {
-
-
   .servicos-img-texto img {
     display: none;
   }
@@ -813,13 +754,6 @@ margin-left: 25px;
 }
 
 @media screen and (max-width: 1000px) {
-
-  .menu p {
-    padding: 1.5rem;
-    font-size: 14px;
-  }
-
-
   .contato {
     display: block;
   }
@@ -871,13 +805,6 @@ margin-left: 25px;
 }
 
 @media screen and (max-width: 867px) {
-
-
-  .menu p {
-    font-size: 13px;
-  }
-
-
   .servicos-cards {
     width: 100%;
   }
@@ -935,6 +862,14 @@ margin-left: 25px;
 
   .aberto .config-header, .con-age button {
     padding: 20px;
+  }
+  .con-age, .menu .con-age button{
+    background-color: var(--primary-color);
+    color: #415DA1;
+  }
+  .menu .con-age #botao-agendamento{
+    margin: auto;
+    margin-top: 5px;
   }
 
   .menu.aberto li {
@@ -1011,7 +946,6 @@ margin-left: 25px;
 
 
 @media screen and (max-width: 528px) {
-
   .info-num-adress {
     width: auto;
   }
@@ -1055,6 +989,7 @@ margin-left: 25px;
   }
 }
 
+
 @media screen and (max-width: 338px) {
   .servicos-img-texto article {
     min-width: 250px;
@@ -1062,236 +997,99 @@ margin-left: 25px;
 }
 
 
+/*FOOTER */
+
 footer {
+  background-color: #D5E0FB;
+  font-family: var(--font-family-primary);
+}
+
+footer,
+li {
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}
+
+footer,
+div,
+h2 {
+  margin-bottom: 20px;
+}
+
+footer,
+.info {
   display: flex;
-  justify-content: center;
+  list-style-type: none;
+  gap: 50px;
   align-items: center;
-  padding: 20px;
+}
+
+footer,
+h2 {
+
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.somos {
+
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.2px;
+  /* 150% */
 }
 
 .footer-container {
+  padding: 50px;
+}
+
+.info-block,
+figure {
+  width: 150px;
+  margin: 0;
+  /* flex-shrink: 0;  */
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  /* Largura máxima desejada para o conteúdo */
-  margin: 0 auto;
-  /* Centralizar o conteúdo horizontalmente */
-  text-align: left;
+  flex-direction: column;
 }
 
-.lista {
-  font-size: 16px;
-}
-
-.info {
-  display: flex;
-
-}
-
-.info-block {
-  flex: 1;
-  margin: 0 40px;
-  /* Espaçamento entre as divs */
-  text-align: left;
-}
-
-/* footer */
-
-footer, >
-p {
-  color: #415DA1;
-  font-size: 12.80px;
-  font-family: Montserrat;
-  font-weight: 400;
-  line-height: 19.20px;
-  word-wrap: break-word
-}
-
-.titulo {
-  color: #415DA1;
-  font-size: 16px;
-  font-family: Montserrat;
-  font-weight: 700;
-  line-height: 24px;
-  word-wrap: break-word
-}
-
-.sub-links {
-  color: #415DA1;
-  font-size: 14px;
-  font-family: Montserrat;
-  font-weight: 400;
-  line-height: 20px;
-  word-wrap: break-word;
-
-}
-
-.dark-blue {
-  color: #415DA1;
-  font-size: 25px;
-  font-family: Montserrat;
-  font-weight: 700;
-  line-height: 24px;
-  word-wrap: break-word
+.info-block>figure {
+  padding-bottom: 10px;
 }
 
 
 
-.sub-menu {
-  color: #415DA1;
-  font-size: 20px;
-  font-family: Montserrat;
-  font-weight: 400;
-  line-height: 20px;
-  word-wrap: break-word;
-  list-style: none;
-  
-}
+/* Consultas de mídia para responsividade */
+@media screen and (max-width: 768px) {
 
-.sub-menu a {
-  text-decoration: none; /* Remover o sublinhado das âncoras (links) */
-  color: darkblue;
-}
-
-.menu-coluna {
-  margin: 30px;
-  text-align: justify;
-  
-}
-
-
-
-  word-wrap: break-word
-}
-
-/* Finanças */
-
-.card-fin {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 5%;
-  padding: 2%;
-  flex-wrap: wrap;
-}
-
-.detalhamento {
-  box-shadow: 3px 3px 5px gray;
-  text-align: center;
-  width: 100%;
-  margin-top: 20px;
-  background-color: white;
-  padding: 30px;
-}
-
-.sessoes {
-  box-shadow: 3px 3px 5px gray;
-  text-align: center;
-  width: 33%;
-  background-color: white;
-  padding: 30px;
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-
-.sessoes h2 {
-  font-size: 50px;
-}
-
-.sessoes p {
-  font-size: 18px;
-}
-
-.sessoes p svg {
-  max-height: 25px;
-  max-width: 40px;
-}
-
-.detalhamento table, thead {
-  padding: 10px;
-  margin: auto;
-} 
-
-.detalhamento caption {
-  font-size: 20px;
-}
-
-.detalhamento table, thead, tr th {
-  font-size: 13px;
-  padding: 10px ;
-}
-
-.detalhamento table, tbody, tr td {
-  font-size: 13px;
-  padding: 35px;
-}
-
-@media screen and (max-width: 1426px) {
-  .sessoes p {
-    font-size: 13px;
+  /* Estilos para iPad e dispositivos similares */
+  footer,
+  .info {
+    flex-direction: column;
   }
 
-  .detalhamento table, thead, tr th {
-    font-size: 10px;
-    padding: 5px ;
-  }
-
-}
-
-@media screen and (max-width: 1127px) {
-
-  .sessoes h2 {
-    font-size: 36px;
-  }
-
-  .sessoes p {
-    font-size: 10px;
+  .info-block,
+  figure {
+    width: 80%;
+    height: auto;
   }
 }
 
-@media screen and (max-width: 948px) {
+@media screen and (max-width: 480px) {
 
-  .sessoes p svg {
-    max-width: 30px;
+  /* Estilos para celulares e dispositivos similares */
+  footer,
+  .info {
+    flex-direction: column;
   }
 
+  .info-block,
+  figure {
+    /* width: 80%; */
+    height: auto;
+  }
 }
 
-@media screen and (max-width: 913px) {
-
-  .sessoes h2 {
-    font-size: 30px;
-  }
-
-  .sessoes p svg {
-    max-width: 17px;
-  }
-
-  .sessoes {
-    padding: 25px;
-    padding-top: 90px;
-    padding-bottom: 90px;
-  }
-
-}
-
-@media screen and (max-width: 832px) {
-
-  .sessoes {
-    width: 100%;
-    padding: 15px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    margin-bottom: 10px;
-  }
-
-  .detalhamento table, thead, tr th {
-    font-size: 7px;
-    padding: 3px ;
-  }
-
-  .detalhamento {
-    margin: 0px;
-  }
-} 

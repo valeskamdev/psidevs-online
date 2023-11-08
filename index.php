@@ -17,35 +17,6 @@
 
 <header>
     <div class="limitador">
-      <h1>
-        <a href="index.html"><img src="assets/logo.png" alt="Logo psidevs" class="logo" /></a>
-      </h1>
-      <nav>
-        <h2>
-          <a href="" class="icone"><img src="assets/icon-menu.svg" alt="icone de menu"></a>
-        </h2>
-        <div class="menu">
-          <p class="con-age">
-            <svg width="20" height="22" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_631_457)">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.046875 4.57264C0.046875 3.18404 1.17256 2.05835 2.56117 2.05835H13.5326C14.9212 2.05835 16.0469 3.18404 16.0469 4.57264V15.5441C16.0469 16.9327 14.9212 18.0584 13.5326 18.0584H2.56117C1.17256 18.0584 0.046875 16.9327 0.046875 15.5441V4.57264ZM2.56117 3.42978C1.92998 3.42978 1.41831 3.94145 1.41831 4.57264V15.5441C1.41831 16.1753 1.92998 16.6869 2.56117 16.6869H13.5326C14.1638 16.6869 14.6755 16.1753 14.6755 15.5441V4.57264C14.6755 3.94145 14.1638 3.42978 13.5326 3.42978H2.56117Z" fill="white" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7038 0.229736C12.0825 0.229736 12.3895 0.536741 12.3895 0.91545V4.5726C12.3895 4.95131 12.0825 5.25831 11.7038 5.25831C11.3251 5.25831 11.0181 4.95131 11.0181 4.5726V0.91545C11.0181 0.536741 11.3251 0.229736 11.7038 0.229736Z" fill="white" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.38981 0.229736C4.76852 0.229736 5.07553 0.536741 5.07553 0.91545V4.5726C5.07553 4.95131 4.76852 5.25831 4.38981 5.25831C4.0111 5.25831 3.7041 4.95131 3.7041 4.5726V0.91545C3.7041 0.536741 4.0111 0.229736 4.38981 0.229736Z" fill="white" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.046875 8.22966C0.046875 7.85095 0.35388 7.54395 0.732589 7.54395H15.3612C15.7399 7.54395 16.0469 7.85095 16.0469 8.22966C16.0469 8.60837 15.7399 8.91537 15.3612 8.91537H0.732589C0.35388 8.91537 0.046875 8.60837 0.046875 8.22966Z" fill="white" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.7041 11.8869C3.7041 11.5082 4.0111 11.2012 4.38981 11.2012H6.21838C6.59709 11.2012 6.9041 11.5082 6.9041 11.8869V13.7155C6.9041 14.0942 6.59709 14.4012 6.21838 14.4012H4.38981C4.0111 14.4012 3.7041 14.0942 3.7041 13.7155V11.8869ZM5.07553 12.5727V13.0298H5.53267V12.5727H5.07553Z" fill="white" />
-              </g>
-              <defs>
-                <clipPath id="clip0_631_457">
-                  <rect width="16" height="18" fill="white" transform="translate(0.046875 0.229736)" />
-                </clipPath>
-              </defs>
-            </svg>
-            <a href="">
-              Agendar consulta
-            </a>
-          </p>
-          <p class="config-header"><a href="">Criar conta</a></p>
-          <p class="con-age"><a href="">Entrar</a></p>
         <h1>
           <a href="index.html"><img src="assets/logo.png" alt="Logo psidevs" class="logo"/></a>
         </h1>   
@@ -69,7 +40,7 @@
             </clipPath>
             </defs>
             </svg>
-            <button type="">Agendar consulta</button>
+            <button type="" id="botao-agendamento">Agendar consulta</button>
           </p>
           <p id="open-cadastro" data-modal-target="staticModal" data-modal-toggle="staticModal" class="config-header"><button type="button">Criar conta</button></p>
           <p  id="open" data-modal-target="staticModal" data-modal-toggle="staticModal" class="con-age"><button type="button">Entrar</button></p>
@@ -81,6 +52,26 @@
   <main>
     <?php require_once "inc/modal.php"?>
     <?php require_once "inc/modal-cadastro.php"?>
+  <article class="destaque">
+    <div class="limitador" data-aos="fade-right">
+      <p>Encontre o equilíbrio emocional</p>
+      <h2>O seu bem-estar mental é a nossa prioridade</h2>
+      <p>
+        Você encontra uma equipe de profissionais dedicados a ajudá-lo.
+        Oferecemos tratamentos <br />
+        personalizados e eficazes para ajudá-lo a lidar com seus problemas
+      </p>
+      <a href="servicos.html">Nossos Serviços</a>
+    </div>
+  </article>
+  <article class="bem-vindo limitador">
+    <div class="bem-vindo-titulos" data-aos="fade-up">
+      <p>bem-vindo à psidevs</p>
+      <h2>Consulte o nosso melhor médico para o tratamento adequado</h2>
+    </div>
+  </header>
+
+  <main>
     <article class="destaque">
       <div class="limitador" data-aos="fade-right">
         <p>Encontre o equilíbrio emocional</p>
@@ -100,7 +91,7 @@
       </div>
       <div class="bem-vindo-img-texto">
         <div data-aos="zoom-in">
-          <img src="assets/Doctor-pana.svg" alt="médica segurando uma prancheta" />
+          <img src="assets/medica-bem-vindo.png" alt="médica segurando uma prancheta" />
         </div>
         <div class="bem-vindo-beneficios">
           <h3 data-aos="fade-up">
@@ -133,7 +124,7 @@
       </div>
       <section class="servicos-img-texto">
         <div data-aos="zoom-in">
-          <img class="servicos-img" src="assets/Video call-bro.svg" alt="medica segunda sua prancheta com a mão no óculos" />
+          <img class="servicos-img" src="assets/medica-sobre-nos.png" alt="medica segunda sua prancheta com a mão no óculos" />
         </div>
         <section class="servicos-cards">
           <article data-aos="flip-left">
@@ -289,7 +280,7 @@
           </article>
         </div>
         <div class="nos-escolher-img" data-aos="zoom-in-up">
-          <img src="assets/Psychologist-pana.svg" alt="paciente no divã" />
+          <img src="assets/sobre-nos.png" alt="Casal se abraçando depois de uma seção de terapia" />
         </div>
       </div>
     </article>
@@ -367,50 +358,49 @@
   </div>
 
 
-  <footer>
-    <div class="footer-container">
-      <div class="logo">
-        <img src="assets/logo-vertical.png" alt="">
-        <p class="dark-blue-p">Somos uma plataforma online que conecta você a psicólogos qualificados</p>
-      </div>
+  <footer > 
+    <div class="footer-container limitador">
+      <div class="info">
+        <div class="info-block">
+          <figure>
+            <img src="assets/logo-vertical.png" alt="Logo Psidev">
+          </figure>
+          <p class="somos">
+            Somos uma plataforma online que conecta você a psicólogos qualificados.
+          </p>
+        </div>
 
-      <div class="menu">
-        <div class="menu-coluna">
-          <h2 class="dark-blue">Sobre</h2>
-          <ul class="sub-menu">
-            <li><a href="#">Para Profissionais</a></li>
-            <li><a href="#">Para Clientes</a></li>
-          </ul>
+        <div>
+          <h2>Sobre</h2>
+          <li>Para Profissionais</li>
+          <li>Para Clientes</li>
         </div>
-        <div class="menu-coluna">
-          <h2 class="dark-blue">Atendimento</h2>
-          
-          <ul class="sub-menu">
-            <li><span class="icone">Telefone</span> (11) 94909-6814</li>
-            <li><a href="#">Formulário de Contato</a></li>
-            <li><span class="icone">Email</span> Por Email</li>
-          </ul>
+
+
+        <div>
+          <h2>Atendimento</h2>
+          <li>(11)94909-6814</li>
+          <li>Formulário de contato</li>
+          <li>E-mail</li>
         </div>
-        <div class="menu-coluna">
-          <h2 class="dark-blue">Plataforma</h2>
-          <ul class="sub-menu">
-            <li><a href="#">Termos de Uso</a></li>
-            <li><a href="#">Princípios da LGPD</a></li>
-            <li><a href="#">Política de Privacidade</a></li>
-          </ul>
+
+        <div>
+          <h2>Plataforma</h2>
+          <li>Termos de uso</li>
+          <li>LGPD</li>
+          <li>Política de privacidade</li>
         </div>
-        <div class="menu-coluna">
-          <h2 class="dark-blue">Acesso Rápido</h2>
-          <ul class="sub-menu">
-            <li><a href="#">Minha Conta</a></li>
-            <li><a href="#">Central de Ajuda</a></li>
-            <li><a href="#">Mapa do Site</a></li>
-          </ul>
+
+        <div>
+          <h2>Acesso rápido</h2>
+          <li>Minha conta</li>
+          <li>Central de ajuda</li>
+          <li>Mapa do site</li>
         </div>
+
+
       </div>
-    </div>
   </footer>
-
 
   <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
   <div class="elfsight-app-3504cfe4-e6c9-4b0c-b144-0539a098d2fd"></div>
@@ -426,8 +416,9 @@
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
 
-  <script src="js/menu.js"></script>
+<script src="js/menu.js"></script>
   <script src="js/modal.js"></script>
+  <script src="js/menu.js"></script>
   <script src="js/formulario.js"></script>
 </body>
 
