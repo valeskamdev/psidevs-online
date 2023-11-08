@@ -240,6 +240,22 @@
                           </button>
                       </div>
 
+                      <div class="modal-formacao flex flex-col flex-nowrap sm:col-span-6 sm:items-center">
+                        <button type="button"  class="flex justify-center items-center close-formacao mr-5 mb-6 text-gray-400 bg-transparent hover:bg-green-100 hover:text-gray-900 rounded-lg text-sm w-12 h-8 ml-auto" >
+                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                        </button>
+                        <div class="w-full p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 justify-between dark:bg-gray-800 dark:text-green-400" role="alert">
+                            <p><span class="font-medium">Engenharia De Software</span>  |  Graduação</p>
+                            <p>Fiap - Centro Universitário  |  2022</p>
+                        </div>
+                        <div class="w-full p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 justify-between dark:bg-gray-800 dark:text-green-400" role="alert">
+                            <p><span class="font-medium">Engenharia De Software</span>  |  Graduação</p>
+                            <p>Fiap - Centro Universitário  |  2022</p>
+                        </div>
+                      </div>
+
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
                             <label for="crp" class="label-padrao-perfil">CRP</label>
@@ -251,7 +267,7 @@
                         <div class="mt-2 relative">
                             <label for="valor" class="label-padrao-perfil">Valor Consulta</label>
                             <input type="text" id="valor" name="valor" value="" class="input-padrao-perfil sm:text-md" type="number" min="0" max="500" step="1" >
-                          </div>
+                        </div>
                       </div>
 
                       <div class="sm:col-span-3">
@@ -278,22 +294,6 @@
                       <div class="flex flex-wrap sm:col-span-6 sm:items-center">
                         <label for="descricao" class="block mb-2 text-sm font-semibold text-primary dark:text-white">Descrição</label>
                         <textarea id="descricao" rows="4" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Escreva sobre você..."></textarea>
-                      </div>
-
-                      <div class="modal-formacao flex flex-col flex-nowrap sm:col-span-6 sm:items-center">
-                        <button type="button"  class="flex justify-center items-center close-formacao mr-5 mb-6 text-gray-400 bg-transparent hover:bg-green-100 hover:text-gray-900 rounded-lg text-sm w-12 h-8 ml-auto" >
-                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                            </svg>
-                        </button>
-                        <div class="w-full p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 justify-between dark:bg-gray-800 dark:text-green-400" role="alert">
-                            <p><span class="font-medium">Engenharia De Software</span>  |  Graduação</p>
-                            <p>Fiap - Centro Universitário  |  2022</p>
-                        </div>
-                        <div class="w-full p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 justify-between dark:bg-gray-800 dark:text-green-400" role="alert">
-                            <p><span class="font-medium">Engenharia De Software</span>  |  Graduação</p>
-                            <p>Fiap - Centro Universitário  |  2022</p>
-                        </div>
                       </div>
 
 
