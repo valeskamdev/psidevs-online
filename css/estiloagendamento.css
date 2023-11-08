@@ -87,7 +87,7 @@ button {
 
 .filtros {
     background-color: #415DA1;
-    height: 15vh;
+    /* height: 15vh; */
 }
 
 .exibir-psicologo {
@@ -98,6 +98,12 @@ button {
     border: rgb(177 195 240) solid;
     /* background-color: #f4f4f4; */
     color: #434c61;
+}
+
+
+.borda{
+    border-radius: 20px;
+    border: rgb(177 195 240) solid;
 }
 
 .esconder-lista {
@@ -127,16 +133,14 @@ button {
 
 .agenda {
     border-radius: 19px;
-    background: #D4E2FF;
-    display: block;
-    
+    background: #D4E2FF;  
 
 }
 
-.agenda.aberto {
+
+.btnConsulta{
     display: none;
 }
-
 
 
 
@@ -202,11 +206,7 @@ button {
     }
 
 
-    .exibir-psicologo .perfil {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-    }
+    
 
     .tamanho {
         width: auto;
@@ -215,6 +215,18 @@ button {
     .quebra {
         flex-direction: column;
         flex-wrap: wrap;
+    }
+
+    .btnConsulta{
+        display: block;
+    }
+
+    .agenda{
+        display: none;
+    }
+
+    .agenda.aberto {
+        display: block;
     }
 
     /* .descricao{

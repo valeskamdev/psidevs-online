@@ -22,6 +22,7 @@
                 <h2 class="text-center text-[3rem]  mb-3">
                     Encontre um Especialista
                 </h2>
+                <!-- inicio Pesquisa -->
                 <form action="" method="get" class="text-center">
                     <div class="relative mb-3">
                         <input type="search" name="busca" id="busca" placeholder="pesquisar" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -35,25 +36,34 @@
 
                 </form>
 
+                <!-- Fim pesquisa -->
+
             </article>
 
 
         </section>
-        <section class="filtros flex items-center  mb-3">
-            <article class="container flex mb-3">
-                <form action="" class=" flex
-                                             w-full
-                                             justify-between
-                                            items-center " method="get">
+        <section class="filtros  items-center  mb-3">
+            <article class="container mb-3 flex flex-row flex-wrap p-3 justify-between itens-center w-full">
+                <!-- inicio Filtro Especialista -->
+                <form action="" class="mb-3" method="get">
+
                     <div class="flex-auto text-[1.4rem]">
                         <label for="especialista" class="block mb-2 text-sm font-medium text-white white:text my-1 mx-1 mb-3 w-[40%] ">
-                            Tipo de Especialista
+                            Especialista
                         </label>
                         <select name="especialista" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-64 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 my-1 mx-1 mb-3 " id="especialista">
                             <option value="">Qualquer Especialista</option>
                         </select>
                     </div>
-                    <div class="flex-auto text-[1.4rem] self-end">
+                </form>
+
+                <!-- Fim Filtro Especialista -->
+
+                <!-- inicio Filtro Preço -->
+
+                <form action="" class="mb-3" method="get">
+
+                    <div class="flex-auto text-[1.4rem]">
                         <label for="preco" class="block mb-2 text-sm font-medium text-white  white:text my-1 mx-1 mb-3 ">
                             Valor da sessão
                         </label>
@@ -61,7 +71,12 @@
                             <option value="">Qualquer valor</option>
                         </select>
                     </div>
+
+
                 </form>
+
+                <!-- inicio Filtro Preço -->
+
             </article>
         </section>
 
@@ -81,9 +96,11 @@
                                         quebra
                                         justify-around
                                         items-center">
-                                <div class="espaco">
+                                <!-- inicio Detalhes Profissional -->
+                                <div class="espaco w-1/2">
                                     <ul class="esconder-lista ">
                                         <li>
+                                            <!-- inicio Perfil Foto/Preço/nome Proficional  -->
                                             <ul class="esconder-lista flex flex-row
                                                         m-3
                                                         justify-center
@@ -97,37 +114,57 @@
                                                         <img src="" alt="">
                                                     </p>
                                                 </li>
+
                                                 <li>
                                                     <ul class="nome-preco esconder-lista m-2">
-                                                        <li>
+                                                        <li class="m-2 p-2">
                                                             <p>Vitor Dev</p>
                                                         </li>
 
-                                                        <li>
+                                                        <li class="m-2 p-2">
                                                             <p>Preco</p>
                                                         </li>
                                                     </ul>
                                                 </li>
 
                                             </ul>
+                                            <!-- fim Perfil Foto/Preço/nome Proficional  -->
                                         </li>
+                                        <!-- inicio Perfil Especialidades -->
                                         <li>
 
-                                                    <h2  class="m-2 p-2">Especialidades:</h2>
-                                                    <div class="flex flex-wrap justify-around">
-                                                        <p class=" fundoEspe p-2 m-2">Especialidade</p>
-                                                        <p class=" fundoEspe p-2 m-2">Especialidade</p>
-                                                        <p class=" fundoEspe p-2 m-2">Especialidade</p>
-                                                    </div>                            
-                                                                                           
+                                            <h2 class="m-2 p-2">Especialidades:</h2>
+                                            <div class="flex flex-wrap justify-around">
+                                                <button class="disabled">
+                                                    <p class=" fundoEspe p-2 m-2">Especialidade</p>
+                                                </button>
+                                                <button class="disabled">
+                                                    <p class=" fundoEspe p-2 m-2">Especialidade</p>
+                                                </button>
+                                                <button class="disabled">
+                                                    <p class=" fundoEspe p-2 m-2">Especialidade</p>
+                                                </button>
+                                            </div>
+
                                         </li>
+                                        <!-- fim Perfil Especialidades  -->
+
+                                        <!-- inicio Perfil Crp/Região  -->
                                         <li class="m-2 p-3">
                                             <h2>CRP: </h2>
                                             <h2><span> REGIÃO: </span></h2>
                                         </li>
+                                        <!-- Fim Perfil Crp/Região  -->
+
+                                        <!-- inicio Perfil Descrição  -->
+
                                         <li class="descricao esconder-lista">
                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ipsa officia officiis sunt aperiam dolores eligendi iusto adipisci ea, dolore quam cum tenetur, possimus porro similique quis dolor amet ullam!</p>
                                         </li>
+
+                                        <!-- Fim Perfil Descrição  -->
+
+                                        <!-- inicio Perfil Plataformas  -->
                                         <li class="my-2  py-1">
                                             <h2 class="text-[2rem]">Plataformas:</h2>
                                             <ul class="esconder-lista flex flex-row
@@ -159,21 +196,31 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="m-3 py-1 text-center" <p>
-                                            <a class="horariosConsultas m-3 p-3 rounded-lg btn">
-                                                <i class="bi bi-calendar2-plus"></i> Agendar Consulta
-                                            </a>
+                                        <!-- Fim Perfil Plataformas  -->
+
+                                        <!-- Inicio do botão de Exibir Consulta Para telas de até no maximo 700px -->
+                                        <li class="m-3 py-1 text-center btnConsulta">
+                                            <p>
+                                                <a class="horariosConsultas m-3 p-3 rounded-lg btn">
+                                                    <button class="disabled"><i class="bi bi-calendar2-plus"></i> Agendar Consulta</button>
+                                                </a>
                                             </p>
                                         </li>
+                                        <!-- Fim do botão de Exibir Consulta Para telas de até no maximo 700px -->
                                     </ul>
                                 </div>
-                                <div class="agenda py-3 m-3 self-start p-3 ">
+                                <!-- Fim Detalhes Profissional -->
+
+                                <!-- Inico Agenda Profissional -->
+                                <div class="agenda borda  py-3 m-3 self-start p-3 w-1/2 text-center">
                                     <h2 class="text-[2rem]">Horarios Disponiveis <i class="bi bi-alarm"></i></h2>
-                                    <div class="calendario">
-                                        <table class="table-auto  caption-top">
-                                            <caption class="text-center">
+                                    <div class="calendario  borda ">
+                                        <!-- Inicio Calendario -->
+                                        <table class="table-auto w-full  caption-top">
+                                            <caption class="text-center ">
                                                 <h2><b><i class="bi bi-calendar"></i></b></h2>
                                             </caption>
+                                            <!-- Inicio Dias Da Semana -->
                                             <thead>
                                                 <tr>
                                                     <th>Segunda</th>
@@ -182,7 +229,10 @@
                                                     <th>Quinta</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <!-- Fim  Dias Da Semana -->
+
+                                            <!-- Inicio Horas -->
+                                            <tbody class="text-center m-3 p-3">
                                                 <tr>
                                                     <td>00:00</td>
                                                     <td>00:00</td>
@@ -232,6 +282,7 @@
                                                     <td>00:00</td>
                                                 </tr>
                                             </tbody>
+                                            <!-- Fim Horas -->
 
                                     </div>
 
@@ -241,13 +292,15 @@
                                         <button class="  rounded-md   p-3 m-3 btn anterior-button" data-profissional-id="<?= $profissional['id'] ?>">Anterior</button>
                                         <button class=" rounded-md   p-3 m-3 btn proximo-button" data-profissional-id="<?= $profissional['id'] ?>">Próximo</button>
                                     </div>
+                                    <!-- Fim Calendario -->
                                 </div>
+                                <!-- Fim Agenda Profissional -->
                             </div>
                     </div>
                     </article>
             </div>
             <!-- Fim do card -->
-        <?php  } ?>
+                <?php  } ?>
 
 
 
