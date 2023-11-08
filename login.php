@@ -22,7 +22,7 @@ if (isset($_GET["campos_obrigatorios"])) {
     $alerta = "Sucesso!";
     $cor = "bg-green-700";
     $texto = "text-green-200";
-} elseif (isset($_GET["nao_autorizado"])) {
+} elseif (isset($_GET["acesso_proibido"])) {
     $feedback = "Você não tem permissão para acessar essa página!";
     $alerta = "Atenção!";
     $cor = "bg-yellow-100";

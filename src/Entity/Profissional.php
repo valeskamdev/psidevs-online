@@ -38,8 +38,6 @@ class Profissional
     #[ORM\Column(name: "valor_consulta", type: "decimal", precision: 6, scale: 2)]
     private float $valorConsulta;
 
-    #[ORM\Column(name: "tipo_profissional", type: "string")]
-    private string $tipoProfissional;
 
     #[ORM\OneToMany(mappedBy: "profissional", targetEntity: Formacao::class, cascade: ["remove"])]
     private Collection $formacoes;
@@ -190,15 +188,6 @@ class Profissional
         $this->valorConsulta = filter_var($valorConsulta, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     }
 
-    public function getTipoProfissional(): string
-    {
-        return $this->tipoProfissional;
-    }
-
-    public function setTipoProfissional(string $tipoProfissional): void
-    {
-        $this->tipoProfissional = $tipoProfissional;
-    }
 
     /**
      * @return \Doctrine\Common\Collections\Collection

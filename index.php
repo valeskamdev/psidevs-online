@@ -8,12 +8,11 @@
   <title>PsiDevs</title>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="shortcut icon" href="assets/logo-favicon.svg" type="image/x-icon">
-  <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/dist/build.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-
 
 <header>
     <div class="limitador">
@@ -43,33 +42,13 @@
             <button type="" id="botao-agendamento">Agendar consulta</button>
           </p>
           <p id="open-cadastro" data-modal-target="staticModal" data-modal-toggle="staticModal" class="config-header"><button type="button">Criar conta</button></p>
-          <p  id="open" data-modal-target="staticModal" data-modal-toggle="staticModal" class="con-age"><button type="button">Entrar</button></p>
+          <p  id="open" data-modal-target="staticModal" data-modal-toggle="staticModal" class="con-age text-white"><a href="login.php">Entrar</a></p>
         </div>
       </nav>
     </div>
   </header>
 
-  <main>
-    <?php require_once "inc/modal.php"?>
-    <?php require_once "inc/modal-cadastro.php"?>
-  <article class="destaque">
-    <div class="limitador" data-aos="fade-right">
-      <p>Encontre o equilíbrio emocional</p>
-      <h2>O seu bem-estar mental é a nossa prioridade</h2>
-      <p>
-        Você encontra uma equipe de profissionais dedicados a ajudá-lo.
-        Oferecemos tratamentos <br />
-        personalizados e eficazes para ajudá-lo a lidar com seus problemas
-      </p>
-      <a href="servicos.html">Nossos Serviços</a>
-    </div>
-  </article>
-  <article class="bem-vindo limitador">
-    <div class="bem-vindo-titulos" data-aos="fade-up">
-      <p>bem-vindo à psidevs</p>
-      <h2>Consulte o nosso melhor médico para o tratamento adequado</h2>
-    </div>
-  </header>
+  <?php require_once "inc/modal-cadastro.php"?>
 
   <main>
     <article class="destaque">

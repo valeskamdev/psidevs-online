@@ -22,7 +22,6 @@ $entityManager   = EntityManagerCreator::createEntityManager();
 $objetoClienteConsulta   = new QueryBuilderConsulta($entityManager, $entityManager->getClassMetadata(Cliente::class));
 
 $consultaHoje = $objetoClienteConsulta->buscaUmaConsultaCliente();
-
 var_dump($consultaHoje);
 ?>
 
@@ -149,18 +148,19 @@ var_dump($consultaHoje);
         </div>
       </div>
         <div class="container_conteudo">
+          <?php if(!empty($consultaHoje)) { ?>
           <div class="container_conteudo_consulta_hoje_bg">
             <div class="container_conteudo_consulta_hoje">
               <div class="container_conteudo_consulta_hoje_titulo">
                 <h2 class="consultaTitulo">Consulta de hoje</h2>
-                <span class="container_conteudo_consulta_hoje_horario"><?=Utilitarios::formataHora($consultaHoje['data'])?></span>
+                <span class="container_conteudo_consulta_hoje_horario"><?=Utilitarios::formataHora($consultaHoje[0]['data'])?></span>
               </div>
               <div class="divisor container_conteudo_consulta_hoje_body_rodape">
                 <div class="container_conteudo_consulta_hoje_corpo">
-                  <h3 class="container_conteudo_consulta_hoje_corpo_titulo"><?=$consultaHoje['nome']?></h3>
-                  <p class="container_conteudo_consulta_hoje_corpo_subtitulo">Psicólogo Educacional</p>
-                  <p class="container_conteudo_consulta_hoje_corpo_texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, magnam, maxime!
-                    Adipisci aut blanditiis commodi delectus laboriosam nulla rerum?</p>
+                  <h3 class="container_conteudo_consulta_hoje_corpo_titulo"><?=$consultaHoje[0]['nome']?></h3>
+                  <p class="container_conteudo_consulta_hoje_corpo_subtitulo"></p>
+                  <p class="container_conteudo_consulta_hoje_corpo_texto">Você está prestes a ter uma importante consulta de psicologia. Para obter informações adicionais
+                    sobre o papel da psicologia em sua vida e como encontrar apoio emocional, visite [ link do site de um psicólogo aqui].</p>
                 </div>
                 <div class="container_conteudo_consulta_hoje_rodape">
                   <div class="container_conteudo_consulta_hoje_rodape_plataforma hidden">
@@ -169,16 +169,23 @@ var_dump($consultaHoje);
                   <div class="container_conteudo_consulta_hoje_rodape_conteudo">
                     <div class="container_conteudo_consulta_hoje_rodape_textos">
                       <h4 class="container_conteudo_consulta_hoje_rodape_titulo">Entre na chamada</h4>
-                      <p class="container_conteudo_consulta_hoje_rodape_texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <p class="container_conteudo_consulta_hoje_rodape_texto">Prepare-se para a consulta mantendo uma mente aberta e disposta a compartilhar seus pensamentos e sentimentos</p>
                     </div>
                   </div>
                   <div class="container_conteudo_consulta_hoje_rodape_conteudo_link">
-                    <a href="#" class="container_conteudo_consulta_hoje_rodape_conteudo_link_botao">Conectar</a>
+                    <a href="https://zoom.us" class="container_conteudo_consulta_hoje_rodape_conteudo_link_botao">Conectar</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <?php } else { ?>
+          <div class="container_flor_bg">
+            <div class="container_flor">
+             <img src="../../assets/flor-consulta-hoje.svg" alt="">
+            </div>
+          </div>
+          <?php } ?>
           <div class="container_conteudo_proxima_consulta_bg card_bg">
             <div class="container_conteudo_proxima_consulta">
               <div class="container_conteudo_proxima_consulta_titulo">

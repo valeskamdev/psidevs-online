@@ -90,8 +90,6 @@ class QueryBuilderConsulta extends EntityRepository
     }
 
 
-    // buscar apenas uma consulta (agendada) com a data de hoje. traga data e nome do profissional (SELECT * FROM consulta
-    //WHERE data >= CURDATE() AND data < CURDATE() + INTERVAL 1 DAY;)
     public function buscaUmaConsultaCliente()
     {
         $qb = $this->createQueryBuilder('cliente')
@@ -107,6 +105,7 @@ class QueryBuilderConsulta extends EntityRepository
             ->setParameter('status', 'agendada')
             ->setParameter('data', new \DateTime('now'))
             ->setParameter('dataMaisUmDia', new \DateTime('now + 1 day'))
+            ->orderBy('consulta.data', 'ASC')
             ->getQuery();
         return $qb->getResult();
     }
