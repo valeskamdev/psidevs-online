@@ -153,7 +153,7 @@ if (isset($_POST['entrar'])) {
                             <div class="flex flex-wrap items-center">
                                 <label for="link-checkbox" class="ml-2 my-2 text-sm font-light text-gray-900 dark:text-gray-300">Esqueceu a senha? <a href="" class="text-blue-600 font-light">
                                         Redefinir senha</a></label>
-                                <label for="link-checkbox" class="ml-2 text-sm font-light text-gray-900 dark:text-gray-300">Não tem conta? <a href="cadastro.php" class="text-blue-600 font-light">
+                                <label for="link-checkbox" class="ml-2 text-sm font-light text-gray-900 dark:text-gray-300">Não tem conta? <a href="cadastro.php?type=cliente" class="text-blue-600 font-light">
                                             Crie uma Conta</a></label>
                             </div>
                         </form>

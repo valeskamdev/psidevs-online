@@ -22,8 +22,8 @@ $entityManager   = EntityManagerCreator::createEntityManager();
 $objetoClienteConsulta   = new QueryBuilderConsulta($entityManager, $entityManager->getClassMetadata(Cliente::class));
 
 $consultaHojeCliente = $objetoClienteConsulta->buscaUmaConsultaCliente();
-$proximas3ConsultasCliente   = $objetoClienteConsulta->proximasTresConsultas();
-var_dump($proximas3ConsultasCliente);
+$proximas3ConsultasCliente   = $objetoClienteConsulta->proximasTresConsultasCliente();
+$historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCliente();
 ?>
 
 <!doctype html>
@@ -204,7 +204,7 @@ var_dump($proximas3ConsultasCliente);
                       </div>
                       <div class="container_conteudo_proxima_consulta_grupo_texto">
                         <h3 class="container_conteudo_proxima_consulta_grupo_texto_titulo"><?=$consulta['nome']?></h3>
-                        <span class="dataConsulta"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span><?=Utilitarios::formataData($consulta['data'])?></span><span class="ms-2">Meet</span></span>
+                        <span class="dataConsulta"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span><?=Utilitarios::formataData($consulta['data'])?></span><span class="ms-2">Zoom</span></span>
                       </div>
                     </div>
                     <div class="container_conteudo_proxima_consulta_horario">
@@ -225,52 +225,46 @@ var_dump($proximas3ConsultasCliente);
             </div>
           </div>
           <?php } ?>
+          <?php if(!empty($historico2ConsultasCliente)) { ?>
           <div class="container_conteudo_historico_consulta_bg card_bg">
             <div class="container_conteudo_historico_consulta">
               <div class="container_conteudo_historico_consulta_sessao">
                 <div class="container_conteudo_historico_consulta_titulo">
                   <h2 class="consultaTitulo">Histórico de consultas</h2>
                 </div>
+                <?php foreach ($historico2ConsultasCliente as $consulta) : ?>
                 <div class="divisor">
                   <div class="container_conteudo_historico_consulta_profissional_bg">
                     <div class="container_conteudo_historico_consulta_profissional">
                       <div class="container_conteudo_historico_consulta_profissional_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
+                        <img src="../../assets/foto_perfil/<?=$consulta['foto']?>" class="avatar" alt="Avatar de uma mulher">
                       </div>
                       <div class="container_conteudo_historico_consulta_profissional_texto">
-                        <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
-                        <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                        <span class="dataConsulta_status_badge text-green-800 bg-green-100 me-2">Finalizada</span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary">R$ 75,00</span>
-                      </div>
-                    </div>
-                    <div class="container_conteudo_historico_consulta_profissional_botao">
-                      <a href="#" class="botaoReagendar">Reagendar</a>
-                    </div>
-                  </div>
-                  <div class="container_conteudo_historico_consulta_profissional_bg">
-                    <div class="container_conteudo_historico_consulta_profissional">
-                      <div class="container_conteudo_historico_consulta_profissional_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
-                      </div>
-                      <div class="container_conteudo_historico_consulta_profissional_texto">
-                        <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
-                        <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                        <span class="dataConsulta_status_badge text-red-800 bg-red-100 me-2">Cancelada</span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary">R$ 75,00</span>
+                        <h3 class="font-inter text-neutral-600 mb-1 text-lg"><?=$consulta['nome']?></h3>
+                        <span class="dataConsulta mb-3"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span><?=Utilitarios::formataData($consulta['data'])?></span><span class="ms-2">Zoom</span></span>
+                        <span class="dataConsulta_status_badge <?php $estilizacaoStatus = $consulta['status'] === 'realizada' ? 'text-green-800 bg-green-100' : 'text-red-800 bg-red-100';  echo $estilizacaoStatus ?>  0 me-2"><?=Utilitarios::primeriaLetraMaiscula($consulta['status'])?></span>
+                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary"><?=Utilitarios::formataPreco($consulta['valor'])?></span>
                       </div>
                     </div>
                     <div class="container_conteudo_historico_consulta_profissional_botao">
                       <a href="../../agendamento.php" class="botaoReagendar">Reagendar</a>
                     </div>
                   </div>
+                  <?php endforeach; ?>
                 </div>
               </div>
             </div>
-            <div class="container_conteudo_historico_consulta_rodape">
-              <a href="historico.php" class="rodape">Ver histórico de consultas</a>
+          </div>
+          <div class="container_conteudo_historico_consulta_rodape">
+            <a href="historico.php" class="rodape">Ver histórico de consultas</a>
+          </div>
+          <?php } else { ?>
+          <div class="container_flor_bg container_flor_maior">
+            <div class="container_flor">
+              <img src="../../assets/flor-historico-consultas.svg" alt="flor com uma mensagem de 'Sem histórico consultas'.">
             </div>
           </div>
+          <?php } ?>
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ class QueryBuilderConsulta extends EntityRepository
     }
 
 
-    public function proximasTresConsultas()
+    public function proximasTresConsultasCliente()
     {
 
         $qb = $this->createQueryBuilder('cliente')
@@ -56,10 +56,10 @@ class QueryBuilderConsulta extends EntityRepository
         return $qb->getResult();
     }
 
-    public function historicoConsultas()
+    public function historicoConsultasCliente()
     {
         $qb = $this->createQueryBuilder('cliente')
-            ->select('profissional_usuario.nome as nome', 'consulta.id', 'consulta.data', 'consulta.valor', 'consulta.status')
+            ->select('profissional_usuario.nome as nome','profissional_usuario.foto as foto', 'consulta.id', 'consulta.data', 'consulta.valor', 'consulta.status')
             ->innerJoin('cliente.consultas', 'consulta')
             ->innerJoin('consulta.profissional', 'profissional')
             ->innerJoin('profissional.usuario', 'profissional_usuario')
@@ -69,6 +69,23 @@ class QueryBuilderConsulta extends EntityRepository
             ->setParameter('clienteId', $_SESSION['id_cliente'])
             ->setParameter('cancelada', 'cancelada')
             ->setParameter('realizada', 'realizada')
+            ->getQuery();
+        return $qb->getResult();
+    }
+
+    public function historicoDuasConsultasCliente()
+    {
+        $qb = $this->createQueryBuilder('cliente')
+            ->select('profissional_usuario.nome as nome', 'profissional_usuario.foto as foto', 'consulta.id', 'consulta.data', 'consulta.valor', 'consulta.status')
+            ->innerJoin('cliente.consultas', 'consulta')
+            ->innerJoin('consulta.profissional', 'profissional')
+            ->innerJoin('profissional.usuario', 'profissional_usuario')
+            ->where('cliente.id = :clienteId')
+            ->andWhere('consulta.status = :cancelada', 'consulta.status = :realizada')
+            ->setParameter('clienteId', $_SESSION['id_cliente'])
+            ->setParameter('cancelada', 'cancelada')
+            ->setParameter('realizada', 'realizada')
+            ->setMaxResults(2)
             ->getQuery();
         return $qb->getResult();
     }

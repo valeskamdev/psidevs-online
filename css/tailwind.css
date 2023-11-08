@@ -33,8 +33,7 @@
     @apply px-4;
   }
 
-  .container_conteudo_consulta_hoje,
-  .container_conteudo_historico_consulta {
+  .container_conteudo_consulta_hoje {
     @apply py-6 px-4;
   }
 
@@ -123,7 +122,8 @@
     @apply bg-tertiary pt-6 pb-4 sticky top-0;
   }
 
-  .container_conteudo_proxima_consulta {
+  .container_conteudo_proxima_consulta,
+  .container_conteudo_historico_consulta {
     @apply pt-6 px-4;
   }
 
@@ -406,7 +406,8 @@
     }
 
     .container_conteudo_historico_consulta_bg,
-    .container_conteudo_historico_consulta_bg_pagina_consultas, .container_conteudo_perfil_bg {
+    .container_conteudo_historico_consulta_bg_pagina_consultas, .container_conteudo_perfil_bg,
+    .container_flor_maior {
       @apply col-span-4;
     }
 
