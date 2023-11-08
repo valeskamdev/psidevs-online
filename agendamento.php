@@ -100,7 +100,7 @@
                                 <div class="espaco w-1/2">
                                     <ul class="esconder-lista ">
                                         <li>
-                                            <!-- inicio Perfil Foto/Preço/nome Proficional  -->
+                                            <!-- inicio Perfil Foto/Crp/Região/nome Proficional  -->
                                             <ul class="esconder-lista flex flex-row
                                                         m-3
                                                         justify-center
@@ -118,22 +118,25 @@
                                                 <li>
                                                     <ul class="nome-preco esconder-lista m-2">
                                                         <li class="m-2 p-2">
-                                                            <p>Vitor Dev</p>
+                                                            <p><b>Vitor Dev</b></p>
                                                         </li>
 
                                                         <li class="m-2 p-2">
-                                                            <p>Preco</p>
+                                                            <p> 06/XXX. XXX</p>
+                                                        </li>
+                                                        <li class="m-2 p-2">
+                                                            <p> São Paulo/sp </p>
                                                         </li>
                                                     </ul>
                                                 </li>
 
                                             </ul>
-                                            <!-- fim Perfil Foto/Preço/nome Proficional  -->
+                                            <!-- fim Perfil Foto Crp/Região/nome Proficional  -->
                                         </li>
                                         <!-- inicio Perfil Especialidades -->
                                         <li>
-
-                                            <h2 class="m-2 p-2">Especialidades:</h2>
+                                            <hr>
+                                            <h2 class="my-2 p-2"><b>Especialidades:</b></h2>
                                             <div class="flex flex-wrap justify-around">
                                                 <button class="disabled">
                                                     <p class=" fundoEspe p-2 m-2">Especialidade</p>
@@ -145,28 +148,29 @@
                                                     <p class=" fundoEspe p-2 m-2">Especialidade</p>
                                                 </button>
                                             </div>
-
+                                           
                                         </li>
                                         <!-- fim Perfil Especialidades  -->
 
-                                        <!-- inicio Perfil Crp/Região  -->
-                                        <li class="m-2 p-3">
-                                            <h2>CRP: </h2>
-                                            <h2><span> REGIÃO: </span></h2>
-                                        </li>
-                                        <!-- Fim Perfil Crp/Região  -->
+                                      
 
                                         <!-- inicio Perfil Descrição  -->
 
                                         <li class="descricao esconder-lista">
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ipsa officia officiis sunt aperiam dolores eligendi iusto adipisci ea, dolore quam cum tenetur, possimus porro similique quis dolor amet ullam!</p>
+                                            <hr>
+                                        <h2 class="my-3"><b>Descrição:</b></h2>
+                                            <p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ipsa officia officiis sunt aperiam dolores eligendi iusto adipisci ea, dolore quam cum tenetur, possimus porro similique quis dolor amet ullam!</p>
+                                            
+                                            
                                         </li>
 
                                         <!-- Fim Perfil Descrição  -->
 
+
                                         <!-- inicio Perfil Plataformas  -->
                                         <li class="my-2  py-1">
-                                            <h2 class="text-[2rem]">Plataformas:</h2>
+                                            <hr>
+                                            <h2 class="my-3"><b>Plataformas:</b></h2>
                                             <ul class="esconder-lista flex flex-row
                                                         m-3
                                                         g-3
@@ -198,8 +202,22 @@
                                         </li>
                                         <!-- Fim Perfil Plataformas  -->
 
+                                          <!-- inicio Perfil Valor  -->
+                                          <li> 
+                                        <hr>
+                                        <h2 class="my-1 p-1"><b>Valor:</b></h2>
+                                            <div  class="my-1 p-1 flex flex-row flex-wrap
+                                        itens-center justify-between">
+                                                <h3 class="my-1 p-1">Sessão 50 min</h3>
+                                                <p class="fundoPreco my-1 p-1"><b>$180</b></p>
+                                            </div>
+                                           
+                                        </li>
+                                        <!-- Fim Perfil Valor  -->
+
                                         <!-- Inicio do botão de Exibir Consulta Para telas de até no maximo 700px -->
                                         <li class="m-3 py-1 text-center btnConsulta">
+                                            
                                             <p>
                                                 <a class="horariosConsultas m-3 p-3 rounded-lg btn">
                                                     <button class="disabled"><i class="bi bi-calendar2-plus"></i> Agendar Consulta</button>
@@ -216,7 +234,7 @@
                                     <h2 class="text-[2rem]">Horarios Disponiveis <i class="bi bi-alarm"></i></h2>
                                     <div class="calendario  borda ">
                                         <!-- Inicio Calendario -->
-                                        <table class="table-auto w-full  caption-top">
+                                        <table class="table-auto table-responsive w-full  caption-top">
                                             <caption class="text-center ">
                                                 <h2><b><i class="bi bi-calendar"></i></b></h2>
                                             </caption>
