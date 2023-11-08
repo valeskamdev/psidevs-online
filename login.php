@@ -133,7 +133,7 @@ if (isset($_POST['entrar'])) {
                             <div class="mb-6 text-center">
                                 <button type="submit" name="entrar" style="background: rgb(102,124,187);
                                     background: linear-gradient(270deg, rgba(102,124,187,0.8911939775910365) 0%, rgba(90,155,249,1) 25%, rgba(118,174,226,1) 79%, rgba(163,210,253,1) 99%);
-                                /* Outros estilos que você deseja adicionar */" class=" text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-16 py-2.5 text-center"><a href="src/views/cliente/consultas.php">Entrar</a></button>
+                                /* Outros estilos que você deseja adicionar */" class=" text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-16 py-2.5 text-center"><a href="src/views/consultas.php">Entrar</a></button>
                             </div>
 
                                                             
