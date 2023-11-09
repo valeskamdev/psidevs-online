@@ -12,7 +12,7 @@
     <hr>
     <p>Desculpe, mas você <span>não tem permissão </span> para acessar este recurso.</p>
     <p>
-      <a href="home.php">Voltar para a página inicial 🔗</a>
+      <a href="index.php">Voltar para a Home 🔗</a>
     </p>
 </body>
 </html>

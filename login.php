@@ -20,8 +20,8 @@ if (isset($_GET["campos_obrigatorios"])) {
 } elseif (isset($_GET["logout"])) {
     $feedback = "Você foi desconectado!";
     $alerta = "Sucesso!";
-    $cor = "bg-green-700";
-    $texto = "text-green-200";
+    $cor = "bg-green-100";
+    $texto = "text-green-700";
 } elseif (isset($_GET["acesso_proibido"])) {
     $feedback = "Você não tem permissão para acessar essa página!";
     $alerta = "Atenção!";

@@ -3,6 +3,7 @@ ob_start();
 
 use Psidevs\Entity\Cliente;
 use Psidevs\Entity\ControleDeAcesso;
+use Psidevs\Entity\Profissional;
 use Psidevs\Entity\Usuario;
 use Psidevs\Entity\Utilitarios;
 use Psidevs\Helper\EntityManagerCreator;
@@ -12,7 +13,6 @@ require_once "../../vendor/autoload.php";
 
 $verificaLogin = new ControleDeAcesso();
 $verificaLogin->verificaAcesso();
-$verificaLogin->verificaAcessoCliente();
 if(isset($_GET["sair"])) $verificaLogin-> logout();
 
 $usuario = new Usuario();
@@ -21,10 +21,7 @@ $usuario->setNome($_SESSION['nome']);
 
 $entityManager   = EntityManagerCreator::createEntityManager();
 $objetoClienteConsulta   = new QueryBuilderConsulta($entityManager, $entityManager->getClassMetadata(Cliente::class));
-
-$consultaHojeCliente = $objetoClienteConsulta->buscaUmaConsultaCliente();
-$proximas3ConsultasCliente   = $objetoClienteConsulta->proximasTresConsultasCliente();
-$historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCliente();
+$objetoProfissinalConsulta   = new QueryBuilderConsulta($entityManager, $entityManager->getClassMetadata(Profissional::class));
 ?>
 
 <!doctype html>
@@ -35,10 +32,10 @@ $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCl
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../../css/dist/build.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Ubuntu:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https:fonts.googleapis.com">
+  <link rel="preconnect" href="https:fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https:cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  <link href="https:fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Ubuntu:wght@400;500;600;700&display=swap" rel="stylesheet">
   <title>Psidevs | Minha Conta</title>
 </head>
 <body class="bg-secondary">
@@ -150,7 +147,11 @@ $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCl
         </div>
       </div>
         <div class="container_conteudo">
-          <?php if(!empty($consultaHojeCliente)) { ?>
+            
+          <?php
+          if($usuario->getTipoUsuario() === 'cliente') {
+              $consultaHojeCliente = $objetoClienteConsulta->buscaUmaConsultaCliente();
+          if(!empty($consultaHojeCliente)) { ?>
           <div class="container_conteudo_consulta_hoje_bg">
             <div class="container_conteudo_consulta_hoje">
               <div class="container_conteudo_consulta_hoje_titulo">
@@ -177,7 +178,7 @@ $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCl
                     </div>
                   </div>
                   <div class="container_conteudo_consulta_hoje_rodape_conteudo_link">
-                    <a href="https://zoom.us" class="container_conteudo_consulta_hoje_rodape_conteudo_link_botao">Conectar</a>
+                    <a href="https:zoom.us" class="container_conteudo_consulta_hoje_rodape_conteudo_link_botao">Conectar</a>
                   </div>
                 </div>
               </div>
@@ -190,6 +191,99 @@ $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCl
             </div>
           </div>
           <?php }
+          }
+          if($usuario->getTipoUsuario() === 'profissional') {
+              $consultaHojeProfissional = $objetoProfissinalConsulta->buscaUmaConsultaProfissional();
+
+          if(!empty($consultaHojeProfissional)) { ?>
+          <div class="container_conteudo_consulta_hoje_bg">
+            <div class="container_conteudo_consulta_hoje">
+              <div class="container_conteudo_consulta_hoje_titulo">
+                 <h2 class="consultaTitulo">Consulta de hoje</h2>
+                 <span
+                  class="container_conteudo_consulta_hoje_horario"><?= Utilitarios::formataHora(
+                         $consultaHojeProfissional[0]['data']
+                      ) ?></span>
+                
+              </div>
+              
+              <div class="divisor container_conteudo_consulta_hoje_body_rodape">
+                
+                <div class="container_conteudo_consulta_hoje_corpo">
+                   <p
+                    class="container_conteudo_consulta_hoje_corpo_subtitulo">
+                    Profissional</p>
+                   <h3
+                    class="container_conteudo_consulta_hoje_corpo_titulo"><?= $consultaHojeProfissional[0]['nome'] ?></h3>
+                   <p
+                    class="container_conteudo_consulta_hoje_corpo_subtitulo"></p>
+                   <p class="container_conteudo_consulta_hoje_corpo_texto">
+                    Hoje é um dia importante para o seu bem-estar mental.
+                    Às <?= Utilitarios::formataHora(
+                           $consultaHojeProfissional[0]['data']
+                        ) ?>, você terá a oportunidade
+                     de conversar com o
+                    profissional <?= $consultaHojeProfissional[0]['nome'] ?>, um(a)
+                    psicólogo(a) dedicado(a) a ajudar a melhorar a sua qualidade
+                    de vida.
+                     </p>
+                  
+                </div>
+                
+                <div class="container_conteudo_consulta_hoje_rodape">
+                  
+                  <div
+                    class="container_conteudo_consulta_hoje_rodape_plataforma hidden">
+                     <img src="../../assets/icone-plataforma-zoom.svg"
+                            class="" alt="Plataforma Zoom">
+                    
+                  </div>
+                  
+                  <div class="container_conteudo_consulta_hoje_rodape_conteudo">
+                    
+                    <div class="container_conteudo_consulta_hoje_rodape_textos">
+                       <h4
+                        class="container_conteudo_consulta_hoje_rodape_titulo">
+                        Entre na chamada</h4>
+                       <p
+                        class="container_conteudo_consulta_hoje_rodape_texto">
+                        Prepare-se para a consulta mantendo uma mente aberta e
+                        disposta a compartilhar seus pensamentos e
+                        sentimentos</p>
+                      
+                    </div>
+                    
+                  </div>
+                  
+                  <div
+                    class="container_conteudo_consulta_hoje_rodape_conteudo_link">
+                     <a href="https:zoom.us"
+                          class="container_conteudo_consulta_hoje_rodape_conteudo_link_botao">Conectar</a>
+                    
+                  </div>
+                  
+                </div>
+                
+              </div>
+              
+            </div>
+            
+          </div>
+           <?php } else { ?>
+          <div class="container_flor_bg">
+            
+            <div class="container_flor">
+               <img src="../../assets/flor-consulta-hoje.svg"
+                      alt="flor com uma mensagem de 'Nenhuma consulta para hoje'.">
+              
+            </div>
+            
+          </div>
+           <?php }
+          }
+
+          if ($usuario->getTipoUsuario() === 'cliente') {
+              $proximas3ConsultasCliente   = $objetoClienteConsulta->proximasTresConsultasCliente();
           if(!empty($proximas3ConsultasCliente)) { ?>
           <div class="container_conteudo_proxima_consulta_bg card_bg">
             <div class="container_conteudo_proxima_consulta">
@@ -225,8 +319,51 @@ $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCl
               <img src="../../assets/flor-proximas-consultas.svg" alt="flor com uma mensagem de 'Sem próximas consultas'.">
             </div>
           </div>
-          <?php } ?>
-          <?php if(!empty($historico2ConsultasCliente)) { ?>
+          <?php }
+          }
+          if ($usuario->getTipoUsuario() === 'profissional') {
+              $proximas3ConsultasProfissional   = $objetoProfissinalConsulta->proximasTresConsultasProfissional();
+              if(!empty($proximas3ConsultasProfissional)) { ?>
+                <div class="container_conteudo_proxima_consulta_bg card_bg">
+                  <div class="container_conteudo_proxima_consulta">
+                    <div class="container_conteudo_proxima_consulta_titulo">
+                      <h2 class="consultaTitulo">Próximas consultas</h2>
+                    </div>
+                    <ul class="divisor">
+                        <?php foreach ($proximas3ConsultasProfissional as $consulta) : ?>
+                          <li><div class="container_conteudo_proxima_consulta_profissional">
+                              <div class="container_conteudo_proxima_consulta_profissional_avatar_e_horario">
+                                <div class="container_conteudo_proxima_consulta_grupo_avatar">
+                                  <img src="../../assets/foto_perfil/<?=$consulta['foto']?>" class="avatar" alt="foto do profissional">
+                                </div>
+                                <div class="container_conteudo_proxima_consulta_grupo_texto">
+                                  <h3 class="container_conteudo_proxima_consulta_grupo_texto_titulo"><?=$consulta['nome']?></h3>
+                                  <span class="dataConsulta"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span><?=Utilitarios::formataData($consulta['data'])?></span><span class="ms-2">Zoom</span></span>
+                                </div>
+                              </div>
+                              <div class="container_conteudo_proxima_consulta_horario">
+                                <span class="horarioConsulta"><?=Utilitarios::formataHora($consulta['data'])?></span>
+                              </div>
+                            </div></li>
+                        <?php endforeach; ?>
+                    </ul>
+                  </div>
+                  <div class="container_conteudo_proxima_consulta_rodape">
+                    <a href="consultas.php" class="rodape">Ver todas consultas</a>
+                  </div>
+                </div>
+              <?php } else { ?>
+                <div class="container_flor_bg flor_espacamento">
+                  <div class="container_flor">
+                    <img src="../../assets/flor-proximas-consultas.svg" alt="flor com uma mensagem de 'Sem próximas consultas'.">
+                  </div>
+                </div>
+              <?php }
+          }
+
+          if ($usuario->getTipoUsuario() === 'cliente') {
+          $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCliente();
+          if(!empty($historico2ConsultasCliente)) { ?>
           <div class="container_conteudo_historico_consulta_bg card_bg">
             <div class="container_conteudo_historico_consulta">
               <div class="container_conteudo_historico_consulta_sessao">
@@ -242,7 +379,7 @@ $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCl
                       </div>
                       <div class="container_conteudo_historico_consulta_profissional_texto">
                         <h3 class="font-inter text-neutral-600 mb-1 text-lg"><?=$consulta['nome']?></h3>
-                        <span class="dataConsulta mb-3"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span><?=Utilitarios::formataData($consulta['data'])?></span><span class="ms-2">Zoom</span></span>
+                        <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span><?=Utilitarios::formataData($consulta['data'])?></span><span class="dot"><?=Utilitarios::formataHora($consulta['data'])?></span><span>Meet</span></span>
                         <span class="dataConsulta_status_badge <?php $estilizacaoStatus = $consulta['status'] === 'realizada' ? 'text-green-800 bg-green-100' : 'text-red-800 bg-red-100';  echo $estilizacaoStatus ?>  0 me-2"><?=Utilitarios::primeriaLetraMaiscula($consulta['status'])?></span>
                         <span class="dataConsulta_status_badge text-gray-800 bg-tertiary"><?=Utilitarios::formataPreco($consulta['valor'])?></span>
                       </div>
@@ -265,7 +402,46 @@ $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCl
               <img src="../../assets/flor-historico-consultas.svg" alt="flor com uma mensagem de 'Sem histórico consultas'.">
             </div>
           </div>
-          <?php } ?>
+          <?php } }
+          if ($usuario->getTipoUsuario() === 'profissional') {
+              $historico2ConsultasProfissional   = $objetoProfissinalConsulta->historicoDuasConsultasProfissional();
+              if(!empty($historico2ConsultasProfissional)) { ?>
+                <div class="container_conteudo_historico_consulta_bg card_bg">
+                  <div class="container_conteudo_historico_consulta">
+                    <div class="container_conteudo_historico_consulta_sessao">
+                      <div class="container_conteudo_historico_consulta_titulo">
+                        <h2 class="consultaTitulo">Histórico de consultas</h2>
+                      </div>
+                        <?php foreach ($historico2ConsultasProfissional as $consulta) : ?>
+                      <div class="divisor">
+                        <div class="container_conteudo_historico_consulta_profissional_bg">
+                          <div class="container_conteudo_historico_consulta_profissional">
+                            <div class="container_conteudo_historico_consulta_profissional_avatar">
+                              <img src="../../assets/foto_perfil/<?=$consulta['foto']?>" class="avatar" alt="foto do profissional">
+                            </div>
+                            <div class="container_conteudo_historico_consulta_profissional_texto">
+                              <h3 class="font-inter text-neutral-600 mb-1 text-lg"><?=$consulta['nome']?></h3>
+                              <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span><?=Utilitarios::formataData($consulta['data'])?></span><span class="dot"><?=Utilitarios::formataHora($consulta['data'])?></span><span>Meet</span></span>
+                              <span class="dataConsulta_status_badge <?php $estilizacaoStatus = $consulta['status'] === 'realizada' ? 'text-green-800 bg-green-100' : 'text-red-800 bg-red-100';  echo $estilizacaoStatus ?>  0 me-2"><?=Utilitarios::primeriaLetraMaiscula($consulta['status'])?></span>
+                              <span class="dataConsulta_status_badge text-gray-800 bg-tertiary"><?=Utilitarios::formataPreco($consulta['valor'])?></span>
+                            </div>
+                          </div>
+                        </div>
+                          <?php endforeach; ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container_conteudo_historico_consulta_rodape">
+                  <a href="historico.php" class="rodape">Ver histórico de consultas</a>
+                </div>
+              <?php } else { ?>
+                <div class="container_flor_bg container_flor_maior">
+                  <div class="container_flor">
+                    <img src="../../assets/flor-historico-consultas.svg" alt="flor com uma mensagem de 'Sem histórico consultas'.">
+                  </div>
+                </div>
+              <?php } } ?>
         </div>
       </div>
     </div>

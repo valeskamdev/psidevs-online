@@ -41,6 +41,24 @@ class QueryBuilderConsulta extends EntityRepository
             ->getQuery();
         return $qb->getResult();
     }
+
+    public function proximasTresConsultasProfissional()
+    {
+        $qb = $this->createQueryBuilder('profissional')
+            ->select('cliente_usuario.nome as nome', 'cliente_usuario.foto as foto', 'consulta.id', 'consulta.data', 'consulta.valor', 'consulta.status')
+            ->innerJoin('profissional.consultas', 'consulta')
+            ->innerJoin('consulta.cliente', 'cliente')
+            ->innerJoin('cliente.usuario', 'cliente_usuario')
+            ->where('profissional.id = :profissionalId')
+            ->andWhere('consulta.status = :status')
+            ->setParameter('profissionalId', $_SESSION['id_profissional'])
+            ->setParameter('status', 'agendada')
+            ->setMaxResults(3)
+            ->orderBy('consulta.data', 'ASC')
+            ->getQuery();
+        return $qb->getResult();
+    }
+
     public function buscaConsultasPassadas()
     {
         $qb = $this->createQueryBuilder('cliente')
@@ -90,8 +108,26 @@ class QueryBuilderConsulta extends EntityRepository
             ->setMaxResults(2)
             ->getQuery();
         return $qb->getResult();
-
     }
+
+    public function historicoDuasConsultasProfissional()
+    {
+        $qb = $this->createQueryBuilder('profissional')
+            ->select('cliente_usuario.nome as nome', 'cliente_usuario.foto as foto', 'consulta.id', 'consulta.data', 'consulta.valor', 'consulta.status')
+            ->innerJoin('profissional.consultas', 'consulta')
+            ->innerJoin('consulta.cliente', 'cliente')
+            ->innerJoin('cliente.usuario', 'cliente_usuario')
+            ->where('profissional.id = :profissionalId')
+            ->andWhere('consulta.status = :cancelada OR consulta.status = :realizada')
+            ->setParameter('profissionalId', $_SESSION['id_profissional'])
+            ->setParameter('cancelada', 'cancelada')
+            ->setParameter('realizada', 'realizada')
+            ->setMaxResults(2)
+            ->getQuery();
+        return $qb->getResult();
+    }
+
+
 
     public function  buscaUmaProximaConsulta()
     {
@@ -140,6 +176,26 @@ class QueryBuilderConsulta extends EntityRepository
             ->andWhere('consulta.data >= :data')
             ->andWhere('consulta.data < :dataMaisUmDia')
             ->setParameter('clienteId', $_SESSION['id_cliente'])
+            ->setParameter('status', 'agendada')
+            ->setParameter('data', new \DateTime('now'))
+            ->setParameter('dataMaisUmDia', new \DateTime('now + 1 day'))
+            ->orderBy('consulta.data', 'ASC')
+            ->getQuery();
+        return $qb->getResult();
+    }
+
+    public function buscaUmaConsultaProfissional()
+    {
+        $qb = $this->createQueryBuilder('profissional')
+            ->select('cliente_usuario.nome as nome', 'consulta.id', 'consulta.data', 'consulta.valor', 'consulta.status')
+            ->innerJoin('profissional.consultas', 'consulta')
+            ->innerJoin('consulta.cliente', 'cliente')
+            ->innerJoin('cliente.usuario', 'cliente_usuario')
+            ->where('profissional.id = :profissionalId')
+            ->andWhere('consulta.status = :status')
+            ->andWhere('consulta.data >= :data')
+            ->andWhere('consulta.data < :dataMaisUmDia')
+            ->setParameter('profissionalId', $_SESSION['id_profissional'])
             ->setParameter('status', 'agendada')
             ->setParameter('data', new \DateTime('now'))
             ->setParameter('dataMaisUmDia', new \DateTime('now + 1 day'))
