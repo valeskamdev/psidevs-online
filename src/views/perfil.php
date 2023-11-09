@@ -75,6 +75,10 @@ $queryBuilderProfissional   = new QueryBuilderProfissinal($entityManager, $entit
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Ubuntu:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link
+    href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="../../css/foto_perfil.css">
   <title>Psidevs | Minha Conta</title>
 </head>
@@ -545,8 +549,39 @@ $queryBuilderProfissional   = new QueryBuilderProfissinal($entityManager, $entit
                   </form>
                 <?php } ?>
 
-              <?php if($usuario->getTipoUsuario() === 'profissional') {
+                <?php
+                if(isset($_POST['salvar_dados_profissional'])) {
+                    $entityProfissional = $entityManager->find(Profissional::class, $_SESSION['id_profissional']);
+                    $entityProfissional->setRegistroCRP($_POST['registro_crp']);
+                    $entityProfissional->setValorConsulta(Utilitarios::precoParaBanco($_POST['valor_consulta']));
+                    $entityProfissional->setDescricao($_POST['descricao']);
+
+                    $experiencia = implode(', ', $_POST['experiencia']);
+                    $especialidade = implode(', ', $_POST['especialidade']);
+
+                    $entityProfissional->setExperiencia($experiencia);
+                    $entityProfissional->setEspecialidade($especialidade);
+
+                    $objetoProfissional = new ObjetoRepository(
+                        $entityManager,
+                        $entityManager->getClassMetadata(Profissional::class)
+                    );
+
+                    $objetoProfissional->atualizar($entityProfissional);
+
+                    $_SESSION['registro_crp'] = $entityProfissional->getRegistroCRP();
+                    $_SESSION['valor_consulta'] = $entityProfissional->getValorConsulta();
+                    $_SESSION['descricao'] = $entityProfissional->getDescricao();
+                    $_SESSION['experiencia'] = $entityProfissional->getExperiencia();
+                    $_SESSION['especializacao'] = $entityProfissional->getEspecialidade();
+
+                    header("location:perfil.php?dados_profissional_atualizado");
+                }
+
+              if($usuario->getTipoUsuario() === 'profissional') {
                   $formacoes = $queryBuilderProfissional->buscaFormacoes();
+                  $profissional = $queryBuilderProfissional->buscarUm();
+                  var_dump($profissional);
                   ?>
            <!-- FORM - Area do profissional -->
                 <form method="post" id="form-atualizar-pro" name="form-atualizar-pro" >
@@ -557,46 +592,71 @@ $queryBuilderProfissional   = new QueryBuilderProfissinal($entityManager, $entit
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
                             <label for="crp" class="label-padrao-perfil">CRP</label>
-                            <input type="text" id="crp" name="crp" class="input-padrao-perfil sm:text-md">
+                            <input type="text" id="crp" name="registro_crp" value="<?=$profissional[0]['registroCRP']?>" class="input-padrao-perfil sm:text-md">
                           </div>
                       </div>
 
                       <div class="sm:col-span-3">
                         <div class="mt-2 relative">
-                            <label for="valor" class="label-padrao-perfil">Valor Consulta</label>
-                            <input type="text" id="valor" name="valor" value="" class="input-padrao-perfil sm:text-md" type="number" min="0" max="500" step="1" >
+                            <label for="valorConsulta" class="label-padrao-perfil">Valor Consulta</label>
+                            <input  id="valorConsulta" name="valor_consulta" value="<?=$profissional[0]['valorConsulta']?>" class="input-padrao-perfil sm:text-md" type="text">
+                          <div id="mensagemErro" class="text-rose-500"></div>
                         </div>
                       </div>
 
-                      <div class="sm:col-span-3">
-                          <div class="mt-2 relative">
-                            <label for="especialidade" class="label-padrao-perfil">Especialidade</label>
-                            <select id="especialidade" name="especialidade" class="input-padrao-perfil sm:text-md">
-                              <option selected></option>
-                              <option selected></option>
-                            </select>
-                          </div>
+                    <div class="sm:col-span-3">
+                      <label class="inline-block text-sm text-gray-600" for="especialidade">Especialidade</label>
+                      <div class="relative flex w-full">
+                        <select
+                          id="select-especialidade"
+                          name="especialidade[]"
+                          multiple
+                          autocomplete="off"
+                          class="especialidade block w-full rounded-sm cursor-pointer focus:outline-none"
+                        >
+                            <?php
+                            $especializacoesSelecionadas = $_SESSION['especializacao'];
+                            $especializacoesSelecionadas = explode(', ', $especializacoesSelecionadas);
+                            foreach ($data['especializacoes'] as $especializacao) : ?>
+                                <?php
+                                $selecionada = in_array($especializacao, $especializacoesSelecionadas) ? 'selected' : '';
+                                ?>
+                              <option value="<?=$especializacao?>" <?=$selecionada?>><?= $especializacao ?></option>
+                            <?php endforeach; ?>
+                        </select>
                       </div>
-
-                      <div class="sm:col-span-3">
-                          <div class="mt-2 relative">
-                            <label for="experiencia" class="label-padrao-perfil">Experiência</label>
-                            <select id="experiencia" name="experiencia" class="input-padrao-perfil sm:text-md">
-                              <option selected></option>
-                              <option selected></option>
-                            </select>
-                          </div>
+                    </div>
+                    <div class="sm:col-span-3">
+                      <label class="inline-block text-sm text-gray-600" for="experiencia">Experiência</label>
+                      <div class="relative flex w-full">
+                        <select
+                          id="select-experiencia"
+                          name="experiencia[]"
+                          multiple
+                          autocomplete="off"
+                          class="experiencia block w-full rounded-sm cursor-pointer focus:outline-none"
+                        >
+                            <?php
+                            $experienciasSelecionadas = $_SESSION['experiencia']; // String com as opções selecionadas separadas por vírgulas
+                            $experienciasSelecionadas = explode(', ', $experienciasSelecionadas); // Converte para um array
+                            foreach ($data['experiencias'] as $experiencia) : ?>
+                                <?php
+                                // Verifica se a opção está no array de opções selecionadas
+                                $selecionada = in_array($experiencia, $experienciasSelecionadas) ? 'selected' : '';
+                                ?>
+                              <option value="<?=$experiencia?>" <?=$selecionada?>><?= $experiencia ?></option>
+                            <?php endforeach; ?>
+                        </select>
                       </div>
-
-
+                    </div>
                       <div class="flex flex-wrap sm:col-span-6 sm:items-center">
                         <label for="descricao" class="block mb-2 text-sm font-semibold text-primary dark:text-white">Descrição</label>
-                        <textarea id="descricao" rows="4" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Escreva sobre você..."></textarea>
+                        <textarea id="descricao" rows="4" name="descricao" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Escreva sobre você..."><?=$profissional[0]['descricao']?></textarea>
                       </div>
 
 
                       <div class="text-center mx-auto sm:col-span-6 sm:text-left">
-                        <button id="atualizar-profissional" name="atualizar-profissional" type="submit" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
+                        <button id="atualizar-profissional" name="salvar_dados_profissional" type="submit" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
                       </div>
                   </div>
                 </form>
@@ -992,7 +1052,7 @@ if ($consultaApagadaParam) {
 ?>
 <?php
 // Verifica se o parâmetro consulta_apagada está presente na URL
-$consultaApagadaParam = isset($_GET["dados_profissionais_altualizado"]) ?? null;
+$consultaApagadaParam = isset($_GET["dados_profissional_atualizado"]) ?? null;
 
 if ($consultaApagadaParam) {
     echo '
@@ -1240,6 +1300,25 @@ if ($consultaApagadaParam) {
     openModalButton.classList.add('bg-gray-400', 'cursor-not-allowed', 'opacity-50');
 
   };
+
+  openModalButton.addEventListener('click', () => toggleModal1());
+
+
+
+
+  const closeModalButtons = document.querySelectorAll(".close-formacao");
+  const modalFormacoes = document.querySelectorAll(".modal-formacao");
+
+  const toggleModal = () => {
+    modalFormacoes.forEach((modal) => {
+      modal.classList.toggle("hidden");
+    });
+  };
+
+  closeModalButtons.forEach((button) => {
+    button.addEventListener("click", toggleModal);
+  });
+
 </script>
 <script src="../../js/saudacao.js"></script>
 <script src="../../js/inputMask.js"></script>
