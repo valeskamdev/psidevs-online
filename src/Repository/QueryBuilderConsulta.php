@@ -110,6 +110,25 @@ class QueryBuilderConsulta extends EntityRepository
         return $qb->getResult();
     }
 
+    public function historicoConsultasProfissional()
+    {
+        $qb = $this->createQueryBuilder('profissional')
+            ->select('cliente_usuario.nome as nome', 'cliente_usuario.foto as foto', 'consulta.id', 'consulta.data', 'consulta.valor', 'consulta.status')
+            ->innerJoin('profissional.consultas', 'consulta')
+            ->innerJoin('consulta.cliente', 'cliente')
+            ->innerJoin('cliente.usuario', 'cliente_usuario')
+            ->where('profissional.id = :profissionalId')
+            ->andWhere('consulta.status = :cancelada OR consulta.status = :realizada')
+            ->setParameter('profissionalId', $_SESSION['id_profissional'])
+            ->setParameter('cancelada', 'cancelada')
+            ->setParameter('realizada', 'realizada')
+            ->orderBy('consulta.data', 'DESC')
+            ->getQuery();
+        return $qb->getResult();
+    }
+
+
+
     public function historicoDuasConsultasCliente()
     {
         $qb = $this->createQueryBuilder('cliente')

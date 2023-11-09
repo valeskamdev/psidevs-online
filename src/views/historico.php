@@ -3,6 +3,7 @@ ob_start();
 
 use Psidevs\Entity\Cliente;
 use Psidevs\Entity\ControleDeAcesso;
+use Psidevs\Entity\Profissional;
 use Psidevs\Entity\Usuario;
 use Psidevs\Entity\Utilitarios;
 use Psidevs\Helper\EntityManagerCreator;
@@ -12,7 +13,6 @@ require_once "../../vendor/autoload.php";
 
 $verificaLogin = new ControleDeAcesso();
 $verificaLogin->verificaAcesso();
-$verificaLogin->verificaAcessoCliente();
 if(isset($_GET["sair"])) $verificaLogin-> logout();
 
 $usuario = new Usuario();
@@ -21,8 +21,7 @@ $usuario->setNome($_SESSION['nome']);
 
 $entityManager   = EntityManagerCreator::createEntityManager();
 $objetoClienteConsulta   = new QueryBuilderConsulta($entityManager, $entityManager->getClassMetadata(Cliente::class));
-
-$historicoConsultaCliente = $objetoClienteConsulta->historicoConsultasCliente();
+$objetoProfissinalConsulta   = new QueryBuilderConsulta($entityManager, $entityManager->getClassMetadata(Profissional::class));
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -146,6 +145,12 @@ $historicoConsultaCliente = $objetoClienteConsulta->historicoConsultasCliente();
           </nav>
         </div>
       </div>
+
+      <?php
+
+      if ($usuario->getTipoUsuario() === 'cliente') {
+          $historicoConsultaCliente = $objetoClienteConsulta->historicoConsultasCliente();
+      ?>
       <div class="container_conteudo">
           <?php if(!empty($historicoConsultaCliente)) { ?>
         <div class="container_conteudo_historico_consulta_bg_pagina_consultas card_bg">
@@ -184,7 +189,47 @@ $historicoConsultaCliente = $objetoClienteConsulta->historicoConsultasCliente();
               <img src="../../assets/flor-historico-consultas.svg" alt="flor com uma mensagem de 'Sem hitórico consultas'.">
             </div>
           </div>
-        <?php } ?>
+        <?php } }
+
+      if ($usuario->getTipoUsuario() === 'profissional') {
+          $historicoConsultaProfissional = $objetoProfissinalConsulta->historicoConsultasProfissional();
+          ?>
+        <div class="container_conteudo">
+          <?php if(!empty($historicoConsultaProfissional)) { ?>
+          <div class="container_conteudo_historico_consulta_bg_pagina_consultas card_bg">
+            <div class="container_conteudo_historico_consulta_pagina_consultas">
+              <div class="container_conteudo_historico_consulta_sessao">
+                <div class="container_conteudo_historico_consulta_titulo_pagina_consultas">
+                  <h2 class="consultaTitulo individual mb-0">Minhas de consultas</h2>
+                </div>
+                <div class="divisor historicos_consulta">
+                    <?php foreach ($historicoConsultaProfissional as $consulta) : ?>
+                      <div class="container_conteudo_historico_consulta_profissional_bg">
+                        <div class="container_conteudo_historico_consulta_profissional">
+                          <div class="container_conteudo_historico_consulta_profissional_avatar">
+                            <img src="../../assets/foto_perfil/<?=$consulta['foto']?>" class="avatar" alt="foto do profissional">
+                          </div>
+                          <div class="container_conteudo_historico_consulta_profissional_texto">
+                            <h3 class="font-inter text-neutral-600 mb-1 text-lg"><?=$consulta['nome']?></h3>
+                            <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span><?=Utilitarios::formataData($consulta['data'])?></span><span class="dot"><?=Utilitarios::formataHora($consulta['data'])?></span><span>Meet</span></span>
+                            <span class="dataConsulta_status_badge <?php $estilizacaoStatus = $consulta['status'] === 'realizada' ? 'text-green-800 bg-green-100' : 'text-red-800 bg-red-100';  echo $estilizacaoStatus ?> me-2"><?=Utilitarios::primeriaLetraMaiscula($consulta['status'])?></span>
+                            <span class="dataConsulta_status_badge text-gray-800 bg-tertiary"><?=Utilitarios::formataPreco($consulta['valor'])?></span>
+                          </div>
+                        </div>
+                      </div>
+                    <?php endforeach; ?>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <?php } else { ?>
+          <div class="container_flor_bg container_flor_maior">
+            <div class="container_flor">
+              <img src="../../assets/flor-historico-consultas.svg" alt="flor com uma mensagem de 'Sem hitórico consultas'.">
+            </div>
+          </div>
+          <?php } } ?>
     </div>
   </div>
   <div class="backdrop" onclick="Openbar()"></div>
