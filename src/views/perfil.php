@@ -707,6 +707,7 @@ $queryBuilderProfissional   = new QueryBuilderProfissinal($entityManager, $entit
 
                 }
 
+                if($usuario->getTipoUsuario() === 'profissional') {
 
                 if (empty($disponibilidade)) {
                 ?>
@@ -763,7 +764,7 @@ $queryBuilderProfissional   = new QueryBuilderProfissinal($entityManager, $entit
                     <p class="font-bold">Disponibilidade foi preenchida!<br>
                       <span class="text-sm font-light">Caso queira alterar, exclua a disponibilidade atual e cadastre uma nova.</span>
                   </div>
-                  <?php } ?>
+                  <?php } } ?>
 
 
 
