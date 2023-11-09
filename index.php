@@ -349,28 +349,28 @@
           </p>
         </div>
 
-        <div>
+        <div class="somos">
           <h2>Sobre</h2>
           <li>Para Profissionais</li>
           <li>Para Clientes</li>
         </div>
 
 
-        <div>
+        <div class="somos">
           <h2>Atendimento</h2>
           <li>(11)94909-6814</li>
           <li>Formulário de contato</li>
           <li>E-mail</li>
         </div>
 
-        <div>
+        <div class="somos">
           <h2>Plataforma</h2>
           <li>Termos de uso</li>
           <li>LGPD</li>
           <li>Política de privacidade</li>
         </div>
 
-        <div>
+        <div class="somos">
           <h2>Acesso rápido</h2>
           <li>Minha conta</li>
           <li>Central de ajuda</li>
