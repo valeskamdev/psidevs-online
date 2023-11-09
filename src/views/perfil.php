@@ -3,6 +3,7 @@ ob_start();
 
 use Psidevs\Entity\Cliente;
 use Psidevs\Entity\ControleDeAcesso;
+use Psidevs\Entity\Disponibilidade;
 use Psidevs\Entity\Formacao;
 use Psidevs\Entity\Profissional;
 use Psidevs\Entity\Usuario;
@@ -581,7 +582,6 @@ $queryBuilderProfissional   = new QueryBuilderProfissinal($entityManager, $entit
               if($usuario->getTipoUsuario() === 'profissional') {
                   $formacoes = $queryBuilderProfissional->buscaFormacoes();
                   $profissional = $queryBuilderProfissional->buscarUm();
-                  var_dump($profissional);
                   ?>
            <!-- FORM - Area do profissional -->
                 <form method="post" id="form-atualizar-pro" name="form-atualizar-pro" >
@@ -654,7 +654,6 @@ $queryBuilderProfissional   = new QueryBuilderProfissinal($entityManager, $entit
                         <textarea id="descricao" rows="4" name="descricao" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Escreva sobre você..."><?=$profissional[0]['descricao']?></textarea>
                       </div>
 
-
                       <div class="text-center mx-auto sm:col-span-6 sm:text-left">
                         <button id="atualizar-profissional" name="salvar_dados_profissional" type="submit" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
                       </div>
@@ -676,298 +675,106 @@ $queryBuilderProfissional   = new QueryBuilderProfissinal($entityManager, $entit
 
                 </div>
 
-                <?php if (isset($_GET["campos_preechidos"])) { ?>
-                  <div class="aviso-modal border-t border-b bg-teal-100 border-teal-500 text-teal-900 px-4 py-3"  role="alert">
-                    <p class="font-bold">Disponibilidade foi preenchida!<br>
-                      <span class="text-sm font-light">Não preencha os horários novamente.</span></p>
+                <?php
+
+                //verificar se o profissonal ja tem horarios cadastrados
+                $queryBuilderDisponibilidade = new QueryBuilderProfissinal($entityManager, $entityManager->getClassMetadata(Disponibilidade::class));
+                $disponibilidade = $queryBuilderDisponibilidade->buscaDisponibilidades($_SESSION['id_profissional']);
+                $entityProfissional = $entityManager->find(Profissional::class, $_SESSION['id_profissional']);
+                if (isset($_POST['salvar_horarios'])) {
+                    for ($i = 0; $i < count($_POST['dia_semana']); $i++) {
+                        $disponibilidade = new Disponibilidade();
+                        $disponibilidade->setDiaSemana($_POST['dia_semana'][$i]);
+                        $disponibilidade->setHoraInicio($_POST['hora_inicio'][$i]);
+                        $disponibilidade->setHoraTermino($_POST['hora_fim'][$i]);
+
+                        $idProfissionalManager = $entityManager->find(
+                            Profissional::class,
+                            $_SESSION['id_profissional']
+                        );
+                        $idProfissionalManager->adicionarDisponibilidade(
+                            $disponibilidade
+                        );
+
+                        $objetoDisponibilidade = new ObjetoRepository(
+                            $entityManager,
+                            $entityManager->getClassMetadata(Disponibilidade::class)
+                        );
+                        $objetoDisponibilidade->inserir($disponibilidade);
+                    }
+                    header("location:perfil?horarios_cadastrados");
+                }
+
+                }
+
+
+                if (empty($disponibilidade)) {
+                ?>
+                <!-- Modal -->
+                  <div class="w-full">
+                    <div class="mt-10 grid grid-cols-10 w-full">
+
+                        <?php foreach ($data['diaDaSemana'] as $semana) : ?>
+                          <!-- Dia da semana -->
+                          <div class="col-span-10 ">
+                            <label for="grid-last-name">Dias da semana</label>
+                            <div class="mt-2 relative">
+                              <select name="dia_semana[]" aria-label="diaDaSemana" class="disponibilidade-padrao-select sm:text-md">
+                                <option value="<?= Utilitarios::formataDiaDaSemana($semana) ?>" selected><?= $semana ?></option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <!-- Horários -->
+                          <div class="col-span-10">
+                            <label for="grid-last-name">Intervalo de Horas</label>
+                            <div class="mt-2 relative">
+                              <select name="hora_inicio[]" aria-label="horaInicio" class="disponibilidade-padrao-select sm:text-md">
+                                <option value="" selected>Selecione um horário</option>
+                                  <?php foreach ($data['horarios'] as $horario) : ?>
+                                    <option value="<?= $horario ?>"><?= $horario ?></option>
+                                  <?php endforeach; ?>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="col-span-10  flex justify-center content-center items-center">
+                            <span>Até</span>
+                          </div>
+
+                          <div class="col-span-10 ">
+                            <div class="mt-2 relative">
+                              <select name="hora_fim[]" aria-label="horaFim" class="disponibilidade-padrao-select sm:text-md">
+                                <option value="" selected>Selecione um horário</option>
+                                  <?php foreach ($data['horarios'] as $horario) : ?>
+                                    <option value="<?= $horario ?>"><?= $horario ?></option>
+                                  <?php endforeach; ?>
+                              </select>
+                            </div>
+                          </div>
+                        <?php endforeach; ?>
+                    </div>
+                  </div>
+                  <div class="text-center mx-auto sm:col-span-6 sm:text-left mt-5">
+                    <button id="atualizar-profissional" name="salvar_dados_profissional" type="submit" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
                   </div>
                 <?php } else { ?>
-                  <div class="aviso-modal bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3 my-9 flex justify-between" role="alert">
-                    <p class="font-bold">Adicione sua disponibilidade<br>
-                      <span class="text-sm font-light">Ainda não possui horários definidos.</span></p>
-                    <button class="adicionar bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 border border-blue-700 rounded">Adicionar</button>
+                  <div class="aviso-modal border-t mt-4 border-b bg-teal-100 border-teal-500 text-teal-900 px-4 py-3"  role="alert">
+                    <p class="font-bold">Disponibilidade foi preenchida!<br>
+                      <span class="text-sm font-light">Caso queira alterar, exclua a disponibilidade atual e cadastre uma nova.</span>
                   </div>
-                <?php } ?>
-
-              <!-- Modal -->
-              <div class="bg-blue-100 rounded-md m-7 hidden" id="modal-disp">
-                <form name="form-disponibilidade" id="form-disponibilidade" method="post" type="post">
-                  <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 p-8 sm:grid-cols-8">
-                    <!-- Legendas Fixas -->
-                    <div class="font-semibold hidden sm:col-span-3 md:block">
-                      <label for="">Dias da semana</label>
-                    </div>
-                    <div class="font-semibold hidden md:block md:col-span-4">
-                      <label for="">Intervalo de Horas</label>
-                    </div>
-
-                    <!-- SEGUNDA -->
-                    <div class="sm:col-span-3">
-                      <label class="md:hidden" for="diaSemana">Dias da semana</label>
-                      <div class="mt-2 relative">
-                        <select id="diaSemana" name="diaSemana" class="disponibilidade-padrao-select sm:text-md">
-                          <option value="" selected>Segunda</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <!-- Horarios -->
-                    <div class="sm:col-span-2">
-                      <label class="md:hidden" for="horario">Horários</label>
-                      <div class="mt-2 relative">
-                        <select id="horaInicio" aria-label="horaInicio" name="horario" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="sm:grid-cols-1 flex justify-center content-center items-center">
-                      <span>Até</span>
-                    </div>
-                    <div class="sm:col-span-2">
-                      <div class="mt-2 relative">
-                        <select id="horaTermino" aria-label="horaTermino" name="genero" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <!-- TERÇA -->
-
-                    <!-- Dias -->
-                    <div class="mt-10 inline-flex items-center justify-center w-full sm:hidden">
-                      <hr class="disponibilidade-hr">
-                      <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Terça</span>
-                    </div>
+                  <?php } ?>
 
 
-                    <div class=" sm:border-t-0 sm:col-span-3">
-                      <label class="md:hidden" for="">Dias da semana</label>
-                      <div class="mt-2 relative">
-                        <select id="terca" aria-label="" name="terca" class="disponibilidade-padrao-select sm:text-md">
-                          <option value="">Terça</option>
-                        </select>
-                      </div>
-                    </div>
-                    <!-- Horarios -->
-                    <div class="sm:col-span-2">
-                      <label class="md:hidden" for="">Horários</label>
-                      <div class="mt-2 relative">
-                        <select id="" name="horario" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="sm:grid-cols-1 flex justify-center content-center items-center">
-                      <span>Até</span>
-                    </div>
-                    <div class="sm:col-span-2">
-                      <div class="mt-2 relative">
-                        <select id="" name="horario" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-                    <!-- QUARTA -->
-
-                    <div class=" mt-10 inline-flex items-center justify-center w-full sm:hidden">
-                      <hr class="disponibilidade-hr">
-                      <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Quarta</span>
-                    </div>
-                    <!-- Dias -->
-                    <div class="sm:col-span-3">
-                      <label class="md:hidden" for="">Dias da semana</label>
-                      <div class="mt-2 relative">
-                        <select id="terca" name="terca" class="disponibilidade-padrao-select sm:text-md">
-                          <option value="">Quarta</option>
-                        </select>
-                      </div>
-                    </div>
-                    <!-- Horarios -->
-                    <div class="sm:col-span-2">
-                      <label class="md:hidden" for="">Horários</label>
-                      <div class="mt-2 relative">
-                        <select id="" name="horario-inicio" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="sm:grid-cols-1 flex justify-center content-center items-center">
-                      <span>Até</span>
-                    </div>
-                    <div class="sm:col-span-2">
-                      <div class="mt-2 relative">
-                        <select id="" name="horario-fim" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-
-
-                    <!-- QUINTA -->
-
-                    <div class=" mt-10 inline-flex items-center justify-center w-full sm:hidden">
-                      <hr class="disponibilidade-hr">
-                      <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Quinta</span>
-                    </div>
-                    <!-- Dias -->
-                    <div class="sm:col-span-3">
-                      <label class="md:hidden" for="">Dias da semana</label>
-                      <div class="mt-2 relative">
-                        <select id="quinta" name="quinta" class="disponibilidade-padrao-select sm:text-md">
-                          <option value="">Quinta</option>
-                        </select>
-                      </div>
-                    </div>
-                    <!-- Horarios -->
-                    <div class="sm:col-span-2">
-                      <label class="md:hidden" for="">Horários</label>
-                      <div class="mt-2 relative">
-                        <select id="" name="horario-inicio" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="sm:grid-cols-1 flex justify-center content-center items-center">
-                      <span>Até</span>
-                    </div>
-                    <div class="sm:col-span-2">
-                      <div class="mt-2 relative">
-                        <select id="" name="horario-fim" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-                    <!-- SEXTA -->
-
-                    <div class=" mt-10 inline-flex items-center justify-center w-full sm:hidden">
-                      <hr class="disponibilidade-hr">
-                      <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Sexta</span>
-                    </div>
-                    <!-- Dias -->
-                    <div class="sm:col-span-3">
-                      <label class="md:hidden" for="">Dias da semana</label>
-                      <div class="mt-2 relative">
-                        <select id="sexta" name="sexta" class="disponibilidade-padrao-select sm:text-md">
-                          <option value="">Sexta</option>
-                        </select>
-                      </div>
-                    </div>
-                    <!-- Horarios -->
-                    <div class="sm:col-span-2">
-                      <label class="md:hidden" for="">Horários</label>
-                      <div class="mt-2 relative">
-                        <select id="" name="horario-inicio" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="sm:grid-cols-1 flex justify-center content-center items-center">
-                      <span>Até</span>
-                    </div>
-                    <div class="sm:col-span-2">
-                      <div class="mt-2 relative">
-                        <select id="" name="horario-fim" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-                    <!-- SABADO -->
-
-                    <div class=" mt-10 inline-flex items-center justify-center w-full sm:hidden">
-                      <hr class="disponibilidade-hr">
-                      <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Sábado</span>
-                    </div>
-                    <!-- Dias -->
-                    <div class="sm:col-span-3">
-                      <label class="md:hidden" for="">Dias da semana</label>
-                      <div class="mt-2 relative">
-                        <select id="sabado" name="sabado" class="disponibilidade-padrao-select sm:text-md">
-                          <option value="">Sabado</option>
-                        </select>
-                      </div>
-                    </div>
-                    <!-- Horarios -->
-                    <div class="sm:col-span-2">
-                      <label class="md:hidden" for="">Horários</label>
-                      <div class="mt-2 relative">
-                        <select id="" name="horario-inicio" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="sm:grid-cols-1 flex justify-center content-center items-center">
-                      <span>Até</span>
-                    </div>
-                    <div class="sm:col-span-2">
-                      <div class="mt-2 relative">
-                        <select id="" name="horario-fim" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-                    <!-- Domingo -->
-
-                    <div class=" mt-10 inline-flex items-center justify-center w-full sm:hidden">
-                      <hr class="disponibilidade-hr">
-                      <span class="absolute px-3 font-medium text-gray-900 bg-tertiary -translate-x-1/2left-1/2 dark:text-white dark:bg-gray-900">Domingo</span>
-                    </div>
-                    <!-- Dias -->
-                    <div class="sm:col-span-3">
-                      <label class="md:hidden" for="">Dias da semana</label>
-                      <div class="mt-2 relative">
-                        <select id="domingo" name="domingo" class="disponibilidade-padrao-select sm:text-md">
-                          <option value="">Domingo</option>
-                        </select>
-                      </div>
-                    </div>
-                    <!-- Horarios -->
-                    <div class="sm:col-span-2">
-                      <label class="md:hidden" for="">Horários</label>
-                      <div class="mt-2 relative">
-                        <select id="" name="horario-inicio" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="sm:grid-cols-1 flex justify-center content-center items-center">
-                      <span>Até</span>
-                    </div>
-                    <div class="sm:col-span-2">
-                      <div class="mt-2 relative">
-                        <select id="" name="horario-fim" class="disponibilidade-padrao-select sm:text-md">
-                          <option></option>
-                          <option></option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <!-- Fim Dos Dias da Semana -->
-                  </div>
-                  <div class="flex justify-end mt-5 mr-10 pb-5">
-                    <button type="submit" name="salvar-disponibilidade" class="salvar-disponibilidade bg-blue-800 hover:bg-blue-700 text-white font-bold py-3 px-6 border border-blue-700 rounded">Salvar</button>
-                  </div>
-                </form>
-              </div>
-
-              <?php } ?>
 
             </div>
+
           </div>
+
         </div>
+
     </div>
+
   </div>
   <div class="backdrop" onclick="Openbar()"></div>
 </main>
@@ -1128,7 +935,45 @@ if ($consultaApagadaParam) {
 }
 
 ?>
+<?php
+// Verifica se o parâmetro consulta_apagada está presente na URL
+$consultaApagadaParam = isset($_GET["horarios_cadastrados"]) ?? null;
 
+if ($consultaApagadaParam) {
+    echo '
+   <div id="alertConsultaCancelada" class="alert flex animate-fade-down animate-delay-400 animate-once flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300 max-w-sm absolute top-[84px] right-4 z-50 " role="alert">
+  <div class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+				<span class="text-green-500">
+					<svg fill="currentColor"
+               viewBox="0 0 20 20"
+               class="h-6 w-6">
+						<path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"></path>
+					</svg>
+				</span>
+  </div>
+  <div class="alert-content ml-4">
+    <div class="alert-title font-semibold text-lg text-green-800">
+      Sucesso!
+    </div>
+    <div class="alert-description text-sm text-green-600">
+      Seus horários foram cadastrados com sucesso.
+    </div>
+  </div>
+</div>
+   ';
+
+    echo '<script>
+            // Oculta o alerta após 5 segundos
+            setTimeout(function() {
+              document.getElementById("alertConsultaCancelada").classList.remove("flex");
+             document.getElementById("alertConsultaCancelada").classList.add("hidden");
+            }, 5000);
+          </script>';
+}
+
+?>
 <div
   data-dialog-backdrop="dialog-md"
   data-dialog-backdrop-close="true"
@@ -1302,8 +1147,6 @@ if ($consultaApagadaParam) {
   };
 
   openModalButton.addEventListener('click', () => toggleModal1());
-
-
 
 
   const closeModalButtons = document.querySelectorAll(".close-formacao");
