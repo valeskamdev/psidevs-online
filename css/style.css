@@ -1056,25 +1056,23 @@ footer > h2
 @media screen and (max-width: 768px) {
 
   /* Estilos para iPad e dispositivos similares */
-  footer > .info
-   {
+  footer,
+  .info {
+    display: flex;
     flex-direction: column;
-  }
+    align-items: start;
+    }
+    
 
   .info-block > figure
    {
-    width: 80%;
+    width: 40%;
     height: auto;
   }
 }
 
 @media screen and (max-width: 480px) {
 
-  /* Estilos para celulares e dispositivos similares */
-  footer > .info
-   {
-    flex-direction: column;
-  }
 
   .info-block > figure
    {
