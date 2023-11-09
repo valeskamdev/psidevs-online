@@ -1234,3 +1234,16 @@ a {
     margin: 0px;
   }
 } 
+
+@media screen and (max-width: 382px) {
+
+  .detalhamento table, thead, tr th {
+    font-size: 5px;
+    padding: 0px ;
+    margin: 0px;
+  }
+
+  .detalhamento {
+    margin: 0px;
+  }
+} 
