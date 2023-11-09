@@ -179,7 +179,7 @@
   }
 
   .container_conteudo_historico_consulta_bg_pagina_consultas, .container_conteudo_perfil_bg {
-    @apply h-[700px] overflow-auto clear-both;
+    @apply min-h-[700px] overflow-auto clear-both;
   }
 
   .sidebar {

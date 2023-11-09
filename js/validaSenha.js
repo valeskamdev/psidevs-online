@@ -195,6 +195,7 @@ document.getElementById('salvarSenha').addEventListener('click', async function 
       if (data.senha_correta && data.match) {
         // Senha correta e a nova senha coincide com a confirmação, você pode fechar o modal
         let modal = document.getElementById('modalSenha');
+        window.location.href = 'perfil.php?senha_alterada';
         modal.close();
       } else if (data.senha_correta && !data.match) {
         // Senha correta, mas a nova senha não coincide com a confirmação

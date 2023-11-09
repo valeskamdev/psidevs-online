@@ -46,7 +46,7 @@ $historicoConsultaCliente = $objetoClienteConsulta->historicoConsultasCliente();
     </div>
     <div class="header_perfil hidden lg:flex">
       <div class="header_perfil_nome pe-5 text-neutral-100 font-ubuntu">
-        <p>Josefa Ferreira</p>
+        <p><?=$usuario->getNome()?></p>
         <p class="font-medium">Perfil</p>
       </div>
       <div class="header_perfil_avatar">

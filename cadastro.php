@@ -59,8 +59,6 @@ if(isset($_POST['criar_conta'])) {
         );
         $objetoProfissional->inserir($profissional);
     } elseif ($_GET['type'] === 'cliente') {
-        var_dump("cliente");
-        var_dump($_POST);
         $usuario = getUsuario();
         $usuario->setTipoUsuario('cliente');
 

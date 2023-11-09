@@ -25,8 +25,6 @@ $objetoClienteConsulta   = new QueryBuilderConsulta($entityManager, $entityManag
 $consultaHojeCliente = $objetoClienteConsulta->buscaUmaConsultaCliente();
 $proximas3ConsultasCliente   = $objetoClienteConsulta->proximasTresConsultasCliente();
 $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCliente();
-
-var_dump($historico2ConsultasCliente);
 ?>
 
 <!doctype html>

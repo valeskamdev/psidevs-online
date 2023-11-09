@@ -1,3 +1,69 @@
+<?php
+ob_start();
+
+use Psidevs\Entity\Cliente;
+use Psidevs\Entity\ControleDeAcesso;
+use Psidevs\Entity\Formacao;
+use Psidevs\Entity\Profissional;
+use Psidevs\Entity\Usuario;
+use Psidevs\Entity\Utilitarios;
+use Psidevs\Helper\EntityManagerCreator;
+use Psidevs\Repository\ObjetoRepository;
+use Psidevs\Repository\QueryBuilderCliente;
+use Psidevs\Repository\QueryBuilderConsulta;
+use Psidevs\Repository\QueryBuilderProfissinal;
+
+require_once "../../vendor/autoload.php";
+
+$verificaLogin = new ControleDeAcesso();
+$verificaLogin->verificaAcesso();
+$verificaLogin->verificaAcessoCliente();
+if(isset($_GET["sair"])) $verificaLogin-> logout();
+
+$jsonData = file_get_contents('../../config/enums.json');
+$data = json_decode($jsonData, true);
+
+$anos = Utilitarios::inputAnoConclusao();
+
+$usuario = new Usuario();
+$usuario->setTipoUsuario($_SESSION['tipo_usuario']);
+$usuario->setNome($_SESSION['nome']);
+
+$entityManager = EntityManagerCreator::createEntityManager();
+if (isset($_POST['salvar-formacao'])) {
+
+    $formacao = new Formacao();
+    $formacao->setNomeCurso($_POST['nome-curso']);
+    $formacao->setInstituicao($_POST['instituicao']);
+    $formacao->setTipoCurso($_POST['tipo-curso']);
+    $formacao->setAnoConclusao($_POST['ano-conclusao']);
+
+    $idProfissionalManager = $entityManager->find(Profissional::class, $_SESSION['id_profissional']);
+
+    if ($idProfissionalManager !== null) {
+        // Adiciona a disponibilidade ao profissional logado
+        $idProfissionalManager->adicionarFormacao($formacao);
+        header("location:inicio");
+    } else {
+        echo "Profissional não encontrado";
+        exit();
+    }
+
+    // Insere a disponibilidade no banco de dados
+    $objetoFormacao = new ObjetoRepository($entityManager, $entityManager->getClassMetadata(Formacao::class));
+    $objetoFormacao->inserir($formacao);
+    exit();
+}
+
+$queryBuilderCliente = new QueryBuilderCliente($entityManager, $entityManager->getClassMetadata(Cliente::class));
+$cliente = $queryBuilderCliente->buscarUm();
+
+
+//$queryBuilderProfissional = new QueryBuilderProfissinal($entityManager, $entityManager->getClassMetadata(Profissional::class));
+//$profissional = $queryBuilderProfissional->buscarUm();
+//$formacoes = $queryBuilderProfissional->buscaFormacoes();
+
+?>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -10,6 +76,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Ubuntu:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="../../css/foto_perfil.css">
   <title>Psidevs | Minha Conta</title>
 </head>
 <body class="bg-secondary">
@@ -86,9 +154,9 @@
   <div class="container_bg">
     <div class="container_sub_header_bg">
       <div class="container_sub_header">
-        <h2 class="container_sub_header_saudacao">Boa tarde, Josefa Ferreira</h2>
-        <div class="container_header_marcar_consulta_botao_bg">
-          <a href="#" class="container_header_marcar_consulta_botao"><img src="../../assets/icone-plus.svg" class="pe-2" alt="Sinal de adição">Marcar consulta</a>
+        <h2 class="container_sub_header_saudacao"><span id="saudacao"></span>, <?=$usuario->getNome()?></h2>
+        <div class="container_header_marcar_consulta_botao_bg z-50">
+          <a href="consultas.php" class="container_header_marcar_consulta_botao"><img src="../../assets/icone-plus.svg" class="pe-2 " alt="Sinal de adição">Marcar consulta</a>
         </div>
       </div>
     </div>
@@ -121,58 +189,127 @@
         </div>
       </div>
 <div class="container_conteudo">
-          <div class="container_conteudo_perfil_bg card_bg">
+          <div class="container_conteudo_perfil_bg card_bg mb-16">
             <div class="container_conteudo_perfil_estrutura">
 
+                <?php
+                if(isset($_POST['salvar_dados_pessoais'])) {
+                    $entityUsuario      = $entityManager->find(Usuario::class, $_SESSION['id']);
+//                    $entityCliente = $entityManager->find(
+//                        Profissional::class,
+//                        $_SESSION['id_profissional']
+//                    );
+
+                    $entityCliente = $entityManager->find(
+                        Cliente::class,
+                        $_SESSION['id_cliente']
+                    );
+
+                    $entityUsuario->setNome($_POST['nome']);
+                    $entityUsuario->setEmail($_POST['email']);
+                    $entityUsuario->setCpf($_POST['cpf']);
+                    $entityUsuario->setTelefone($_POST['telefone']);
+                    $entityUsuario->setGenero($_POST['genero']);
+
+                    if (isset($_POST['regiao'])) {
+                        $entityCliente->setRegiao($_POST['regiao']);
+                    }
+                    $entityUsuario->setDataNascimento(
+                        Utilitarios::dataParaBanco(
+                            $_POST['data_nascimento']
+                        )
+                    );
+
+                    if ( ! empty($_FILES['foto']['name'])) {
+                        // Verificar se o novo arquivo de imagem é diferente do existente
+                        $novaImagem      = $_FILES['foto']['name'];
+                        $imagemExistente = $entityUsuario->getFoto();
+
+                        if ($novaImagem !== $imagemExistente) {
+                            // Realizar o upload do novo arquivo de imagem
+                            $entityUsuario->upload($_FILES['foto']);
+                            $entityUsuario->setFoto($novaImagem);
+                        }
+                    }
+
+                    $objetoUsuario = new ObjetoRepository(
+                        $entityManager,
+                        $entityManager->getClassMetadata(Usuario::class)
+                    );
+
+                    $objetoProfissional = new ObjetoRepository(
+                        $entityManager,
+                        $entityManager->getClassMetadata(Profissional::class)
+                    );
+
+                    $objetoUsuario->atualizar($entityUsuario);
+                    $objetoProfissional->atualizar($entityCliente);
+
+                    $_SESSION['nome']            = $entityUsuario->getNome();
+                    $_SESSION['email']           = $entityUsuario->getEmail();
+                    $_SESSION['cpf']             = $entityUsuario->getCpf();
+                    $_SESSION['telefone']        = $entityUsuario->getTelefone();
+                    $_SESSION['data_nascimento'] = $entityUsuario->getDataNascimento();
+                    $_SESSION['genero']          = $entityUsuario->getGenero();
+
+                    if (isset($_POST['regiao'])) {
+                        $_SESSION['regiao'] = $entityCliente->getRegiao();
+                    }
+                    $_SESSION['foto'] = $entityUsuario->getFoto();
+
+                    header("location:perfil.php?dados_pessoais_atualizado");
+                }
+                ?>
            <!-- Form Dados gerais -->
-              <form method="post" id="form-atualizar" name="form-atualizar" >
-                <div class="container-foto grid grid-flow-row-dense grid-rows-5 grid-cols-1 gap-4 sm:grid-cols-4 sm:grid-rows-2 ">
-                  <div class="foto-upload row-span-3 flex justify-center sm:row-span-2 sm:justify-start">                 
-                    <label for="dropzone-file" class="flex flex-col items-center justify-center  max-w-xs h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-white dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                      <img class="foto-upload row-span-3 flex justify-center sm:row-span-2 sm:justify-start" src="../../assets/cliente-avatar.svg" alt="image description" style="background-color: #9FA9FF;" width="190" height="240">
-                      <!-- <div class="flex flex-col items-center justify-center pt-6 pb-5 m-3">
-                          <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                          </svg>
-                          <p class="mb-2 text-sm text-gray-500 dark:text-gray-400 text-center"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                      </div> -->
-                      <input id="dropzone-file" accept="image/png, image/jpeg" type="file" class="hidden" />
-                    </label>
-                  </div>
-                  <div class="foto-botoes lg:col-span-3">
-                    <div>
-                      <label type="button" class="perfil_botao bg-primary mr-4">
-                      CARREGAR NOVA FOTO
-                        <input id="file" name="file-perfil" accept="image/png, image/jpeg" type="file" class="hidden" />
-                      </label>
-                    </div>
-                    
-                    <button type="button" class="perfil_botao text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg ">
-                      SEM FOTO 
-                    </button>
-                  </div>
-
-                  <div class="foto-legenda">
-                    <label class="text-gray-500 font-bold">
-                      <span class="text-sm"> JPG ou PNG permitidos. (Tamanho máx. 800k) </span>
-                    </label>
-                  </div>
-                </div>
+              <form method="post" name="salvar_dados_pessoais" id="formDadosPessoais"  enctype="multipart/form-data">
 
 
-          <!-- input DADOS GERAIS-->
+                <div class="container_conteudo_perfil_bg card_bg">
+                  <div class="container_conteudo_perfil_estrutura">
+
+                    <!-- Form Dados gerais -->
+                      <div class="container-foto grid grid-flow-row-dense grid-rows-5 grid-cols-1 gap-4 sm:grid-cols-4 sm:grid-rows-2 ">
+                        <div class="foto-upload row-span-3 flex justify-center sm:row-span-2 sm:justify-start">
+                          <div class="avatar-upload">
+                            <div class="avatar-edit">
+                              <input type='file' name="foto" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                            </div>
+                            <div class="avatar-preview">
+                                <?php
+                                $foto = $cliente['foto'];
+                                $imageURL = empty($foto) ? '../../assets/foto_perfil/foto_padrao.svg' : '../../assets/foto_perfil/' . $foto;
+                                ?>
+                              <div id="imagePreview" style="background-image: url('<?= $imageURL ?>');"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="foto-botoes lg:col-span-3 ms-5">
+                          <div>
+                            <label for="imageUpload" class="perfil_botao bg-primary mr-4">
+                              CARREGAR NOVA FOTO
+                              <input id="file" name="file-perfil" accept="image/png, image/jpeg" type="file" class="hidden" />
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="foto-legenda">
+                          <label class="text-gray-500 font-bold">
+                            <span class="text-sm"> JPG ou PNG permitidos. (Tamanho máx. 800k) </span>
+                          </label>
+                        </div>
+                      </div>
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
                               <label for="nome" class="label-padrao-perfil">Nome</label>
-                              <input type="text" id="nome" name="nome" placeholder="Josefa" class="input-padrao-perfil sm:text-md">
+                              <input type="text" id="nome" name="nome" value="<?=$cliente['nome']?>"  class="input-padrao-perfil sm:text-md">
                           </div>
                       </div>
                       <!-- Emai -->
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
                               <label for="email" class="label-padrao-perfil">E-mail</label>
-                              <input placeholder="nome@email.com" type="email" id="email" name="email" class="input-padrao-perfil sm:text-md">
+                              <input placeholder="nome@email.com" value="<?=$cliente['email']?>" type="email" id="email" name="email" class="input-padrao-perfil sm:text-md">
                           </div>
                       </div>
 
@@ -180,7 +317,7 @@
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
                               <label for="telefone" class="label-padrao-perfil">Telefone</label>
-                              <input type="tel" id="telefone" name="telefone" class="input-padrao-perfil sm:text-md">
+                              <input type="tel" id="telefone" name="telefone" value="<?=$cliente['telefone']?>" class="input-padrao-perfil sm:text-md">
                           </div>
                       </div>
 
@@ -189,10 +326,10 @@
                           <div class="mt-2 relative">
                             <label for="genero" class="label-padrao-perfil">Gênero</label>
                             <select id="genero" name="genero" class="input-padrao-perfil sm:text-md">
-                              <option selected></option>
-                              <option value="nao-binario">Não Binário</option>
-                              <option value="feminino">Feminino</option>
-                              <option value="masculino">Masculino</option>
+                              <option selected disabled></option>
+                                <?php foreach ($data['generos'] as $genero) : ?>
+                                  <option value="<?=Utilitarios::formataString($genero)?>" <?php if(Utilitarios::formataString($genero) === Utilitarios::formataString($cliente['genero'])) echo ' selected '?>><?=$genero?></option>
+                                <?php endforeach; ?>
                             </select>
                           </div>
                       </div>
@@ -201,7 +338,7 @@
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
                             <label for="cpf" class="label-padrao-perfil">CPF</label>
-                            <input type="text" id="cpf" name="cpf" class="input-padrao-perfil sm:text-md">
+                            <input type="text" id="cpf" name="cpf" value="<?=$cliente['cpf']?>" class="input-padrao-perfil sm:text-md">
                           </div>
                       </div>
                       
@@ -209,7 +346,7 @@
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
                             <label for="dataNascimento" class="label-padrao-perfil">Data de Nascimento</label>
-                            <input type="date" id="dataNascimento" name="data_nascimento" class="input-padrao-perfil sm:text-md">
+                            <input type="date" id="dataNascimento" name="data_nascimento" value="<?=Utilitarios::formataDataParaInputDate($cliente['dataNascimento'])?>" class="input-padrao-perfil sm:text-md">
                           </div>
                       </div>
 
@@ -217,19 +354,21 @@
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
                             <label for="senha" class="label-padrao-perfil">Senha</label>
-                            <input type="password" id="senha" name="senha" class="input-padrao-perfil sm:text-md" placeholder="••••••">
-                            <button type="button" name="alterar-senha" class="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-primary bg-secondary rounded-r-lg border hover:bg-primary/90 hover:text-neutral-100">
+                            <input type="password" disabled id="senha" name="senha" class="input-padrao-perfil sm:text-md" placeholder="••••••">
+                            <button type="button" name="alterar-senha" onclick="modalSenha.showModal()" id="alterarSenha" class="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-primary bg-secondary rounded-r-lg border hover:bg-primary/90 hover:text-neutral-100">
                                 Alterar senha
                             </button>
                           </div>
                       </div>
 
                       <div class="mx-auto sm:col-span-6 sm:text-left">
-                        <button id="atualizar" name="atualizar" type="submit" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
+                        <button id="atualizar" name="salvar_dados_pessoais" type="submit" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
                       </div>
 
                     </div>
               </form>
+
+              <?php if($usuario->getTipoUsuario() === 'profissional') { ?>
            <!-- FORM - Area do profissional -->
                 <form method="post" id="form-atualizar-pro" name="form-atualizar-pro" >
                   <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -589,6 +728,8 @@
                 </form>
               </div>
 
+              <?php } ?>
+
             </div>
           </div>
         </div>
@@ -596,7 +737,195 @@
   </div>
   <div class="backdrop" onclick="Openbar()"></div>
 </main>
+<?php
+// Verifica se o parâmetro consulta_apagada está presente na URL
+$consultaApagadaParam = isset($_GET["dados_pessoais_atualizado"]) ?? null;
 
+if ($consultaApagadaParam) {
+    echo '
+   <div id="alertConsultaCancelada" class="alert flex animate-fade-down animate-delay-400 animate-once flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300 max-w-sm absolute top-[84px] right-7 z-50 " role="alert">
+  <div class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+				<span class="text-green-500">
+					<svg fill="currentColor"
+               viewBox="0 0 20 20"
+               class="h-6 w-6">
+						<path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"></path>
+					</svg>
+				</span>
+  </div>
+  <div class="alert-content ml-4">
+    <div class="alert-title font-semibold text-lg text-green-800">
+      Sucesso!
+    </div>
+    <div class="alert-description text-sm text-green-600">
+      Seus dados pessoais foram atualizados com sucesso.
+    </div>
+  </div>
+</div>
+   ';
+
+    echo '<script>
+            // Oculta o alerta após 5 segundos
+            setTimeout(function() {
+              document.getElementById("alertConsultaCancelada").classList.remove("flex");
+             document.getElementById("alertConsultaCancelada").classList.add("hidden");
+            }, 5000);
+          </script>';
+}
+
+?>
+<?php
+// Verifica se o parâmetro consulta_apagada está presente na URL
+$consultaApagadaParam = isset($_GET["dados_profissionais_altualizado"]) ?? null;
+
+if ($consultaApagadaParam) {
+    echo '
+   <div id="alertConsultaCancelada" class="alert flex animate-fade-down animate-delay-400 animate-once flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300 max-w-sm absolute top-[84px] right-7 z-50 " role="alert">
+  <div class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+				<span class="text-green-500">
+					<svg fill="currentColor"
+               viewBox="0 0 20 20"
+               class="h-6 w-6">
+						<path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"></path>
+					</svg>
+				</span>
+  </div>
+  <div class="alert-content ml-4">
+    <div class="alert-title font-semibold text-lg text-green-800">
+      Sucesso!
+    </div>
+    <div class="alert-description text-sm text-green-600">
+      Seus dados profissionais foram atualizados com sucesso.
+    </div>
+  </div>
+</div>
+   ';
+
+    echo '<script>
+            // Oculta o alerta após 5 segundos
+            setTimeout(function() {
+              document.getElementById("alertConsultaCancelada").classList.remove("flex");
+             document.getElementById("alertConsultaCancelada").classList.add("hidden");
+            }, 5000);
+          </script>';
+}
+
+?>
+<?php
+// Verifica se o parâmetro consulta_apagada está presente na URL
+$consultaApagadaParam = isset($_GET["senha_alterada"]) ?? null;
+
+if ($consultaApagadaParam) {
+    echo '
+   <div id="alertConsultaCancelada" class="alert flex animate-fade-down animate-delay-400 animate-once flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300 max-w-sm absolute top-[84px] right-7 z-50 " role="alert">
+  <div class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+				<span class="text-green-500">
+					<svg fill="currentColor"
+               viewBox="0 0 20 20"
+               class="h-6 w-6">
+						<path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"></path>
+					</svg>
+				</span>
+  </div>
+  <div class="alert-content ml-4">
+    <div class="alert-title font-semibold text-lg text-green-800">
+      Sucesso!
+    </div>
+    <div class="alert-description text-sm text-green-600">
+      Sua senha foi alterada com sucesso.
+    </div>
+  </div>
+</div>
+   ';
+
+    echo '<script>
+            // Oculta o alerta após 5 segundos
+            setTimeout(function() {
+              document.getElementById("alertConsultaCancelada").classList.remove("flex");
+             document.getElementById("alertConsultaCancelada").classList.add("hidden");
+            }, 5000);
+          </script>';
+}
+
+?>
+<dialog id="modalSenha" class="modal rounded-md">
+  <form action="../../inc/processa-senha.php" method="post" id="myForm">
+    <div class="modal-box bg-slate-100 p-7">
+      <h3 class="font-bold text-xl text-slate-900 mb-7">Alterar senha</h3>
+      <div class="flex flex-wrap">
+          <div class="mb-1">
+
+            <div class="sm:col-span-3">
+              <div class="mt-2 relative">
+                <label for="senhaAtual" class="label-padrao-perfil">Senha atual</label>
+                <input  type="password" id="senhaAtual" name="senha_atual" class="input-padrao-perfil sm:text-md">
+              </div>
+          <p id="errorSenhaAtual" class="text-sm mb-5"></p>
+        </div>
+          <div class="mb-1">
+            <div class="sm:col-span-3">
+              <div class="mt-2 relative">
+                <label for="novaSenha" class="label-padrao-perfil">Nova sennha</label>
+                <input type="password" oninput="validatePassword()" id="novaSenha" name="nova_senha" class="input-padrao-perfil sm:text-md">
+              </div>
+            </div>
+            </div>
+          <p id="errorNovaSenha" class="text-sm mb-5"></p>
+
+          <form action="" method="post">
+          <div class="w-full px-3 mb-5">
+            <p id="lengthError" class="mt-4 text-gray-600">Insira no mínimo 6 caracteres</p>
+            <p id="uppercaseError" class="mt-4 text-gray-600">A senha deve conter uma letra maiúscula</p>
+            <p id="specialCharError" class="mt-4 text-gray-600">A senha deve conter um caractere especial</p>
+          </div>
+
+          <div class="mb-1">
+            <div class="sm:col-span-3">
+              <div class="mt-2 relative">
+                <label for="confirmarSenha" class="label-padrao-perfil">Confirmar senha</label>
+                <input type="password"
+                       oninput="validateConfirmPassword()"
+                       id="confirmarSenha"  name="confirma_senha" class="input-padrao-perfil sm:text-md">
+              </div>
+            </div>
+          </div>
+          <p id="errorConfirmaSenha" class="text-sm mb-5"></p>
+        </div>
+      </div>
+      <div class="modal-action">
+        <button type="submit" id="salvarSenha" class="btn py-3 px-4 bg-primary border-0 text-slate-100 font-medium hover:bg-primary/90 rounded-md">Salvar senha</button>
+        <button type="button" id="naoSalvarSenha" class="btn py-3 px-4 bg-red-400 border-0 text-slate-100 font-medium hover:bg-red-600 rounded-md">Cancelar</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+<script>
+  new TomSelect(".experiencia",{
+    plugins: ['remove_button'],
+    maxItems: 8,
+    create: true,
+    loadThrottle: 300,
+    addPrecedence: true
+  });
+
+  new TomSelect(".especialidade",{
+    plugins: ['remove_button'],
+    maxItems: 3,
+    create: true,
+    loadThrottle: 300,
+    addPrecedence: true,
+  });
+</script>
 <script>
   function Openbar() {
     document.querySelector('.sidebar').classList.toggle('right-[0px]');
@@ -615,9 +944,6 @@
 
   openModalButton.addEventListener('click', () => toggleModal1());
 
-
-
-
     const closeModalButtons = document.querySelectorAll(".close-formacao");
     const modalFormacoes = document.querySelectorAll(".modal-formacao");
 
@@ -632,5 +958,83 @@
     });
 
 </script>
+<script src="../../js/saudacao.js"></script>
+<script src="../../js/inputMask.js"></script>
+<script src="../../js/fotoPerfil.js"></script>
+<script src="../../js/validaValorConsulta.js"></script>
+<script src="../../js/validaSenha.js"></script>
+<script>
+  document.getElementById("cancelar").addEventListener("click", function(event) {
+    event.preventDefault();
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const instituicaoInput = document.getElementById("instituicao");
+    const instituicaoLista = document.querySelector(".instituicao-lista");
+
+    const nomeCursoInput = document.getElementById("nomeCurso");
+    const nomeCursoLista = document.querySelector(".nome-curso-lista");
+
+    const limiteSugestoes = 5; // Defina o limite de sugestões desejado
+    const tamanhoMinimo = 2;  // Número mínimo de letras digitadas
+
+    function atualizarSugestoes(sugestoes, input, sugestoesList) {
+      const valorInput = input.value.toLowerCase();
+      sugestoesList.innerHTML = '';
+      let sugestoesExibidas = 0;
+
+      if (valorInput.length < tamanhoMinimo) {
+        sugestoesList.style.display = "none";
+        return;
+      }
+
+      sugestoes.forEach(sugestao => {
+        if (sugestoesExibidas >= limiteSugestoes) {
+          return; // Limite de sugestões atingido
+        }
+        if (sugestao.toLowerCase().includes(valorInput)) {
+          const li = document.createElement("li");
+          li.className = "pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900 w-full";
+          li.textContent = sugestao;
+          sugestoesList.appendChild(li);
+          sugestoesExibidas++;
+        }
+      });
+
+      if (sugestoesExibidas > 0) {
+        sugestoesList.style.display = "block";
+      }
+    }
+
+    instituicaoInput.addEventListener("input", function() {
+      fetch('../../config/enums.json')
+        .then(response => response.json())
+        .then(data => atualizarSugestoes(data.instituicoes, instituicaoInput, instituicaoLista));
+    });
+
+    instituicaoLista.addEventListener("click", function(e) {
+      if (e.target.tagName === "LI") {
+        instituicaoInput.value = e.target.textContent.trim();
+        instituicaoLista.style.display = "none";
+      }
+    });
+
+    nomeCursoInput.addEventListener("input", function() {
+      fetch('../../config/enums.json')
+        .then(response => response.json())
+        .then(data => atualizarSugestoes(data.nomeCurso, nomeCursoInput, nomeCursoLista));
+    });
+
+    nomeCursoLista.addEventListener("click", function(e) {
+      if (e.target.tagName === "LI") {
+        nomeCursoInput.value = e.target.textContent.trim();
+        nomeCursoLista.style.display = "none";
+      }
+    });
+  });
+</script>
 </body>
 </html>
+<?php
+ob_end_flush();
+?>
