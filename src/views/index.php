@@ -281,7 +281,6 @@ $objetoProfissinalConsulta   = new QueryBuilderConsulta($entityManager, $entityM
           </div>
            <?php }
           }
-
           if ($usuario->getTipoUsuario() === 'cliente') {
               $proximas3ConsultasCliente   = $objetoClienteConsulta->proximasTresConsultasCliente();
           if(!empty($proximas3ConsultasCliente)) { ?>
@@ -360,7 +359,6 @@ $objetoProfissinalConsulta   = new QueryBuilderConsulta($entityManager, $entityM
                 </div>
               <?php }
           }
-
           if ($usuario->getTipoUsuario() === 'cliente') {
           $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCliente();
           if(!empty($historico2ConsultasCliente)) { ?>

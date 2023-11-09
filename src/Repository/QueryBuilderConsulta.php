@@ -23,6 +23,23 @@ class QueryBuilderConsulta extends EntityRepository
         return $qb->getResult();
     }
 
+    public function proximasConsultasProfissional()
+    {
+        $qb = $this->createQueryBuilder('profissional')
+            ->select('cliente_usuario.nome as nome', 'cliente_usuario.foto as foto', 'consulta.id', 'consulta.data', 'consulta.valor', 'consulta.status')
+            ->innerJoin('profissional.consultas', 'consulta')
+            ->innerJoin('consulta.cliente', 'cliente')
+            ->innerJoin('cliente.usuario', 'cliente_usuario')
+            ->where('profissional.id = :profissionalId')
+            ->andWhere('consulta.status = :status')
+            ->setParameter('profissionalId', $_SESSION['id_profissional'])
+            ->setParameter('status', 'agendada')
+            ->orderBy('consulta.data', 'ASC')
+            ->getQuery();
+        return $qb->getResult();
+    }
+
+
 
     public function proximasTresConsultasCliente()
     {
