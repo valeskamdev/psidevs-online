@@ -204,7 +204,7 @@
   }
 
   .dot {
-    @apply mx-2;
+    @apply before:content-['\007C'] before:mx-1 after:content-['\007C'] after:mx-1 before:text-primary after:text-primary;
   }
 
   .botaoReagendar {
@@ -321,6 +321,10 @@
     @apply border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0;
   }
 
+  .flor_espacamento {
+    @apply my-8;
+  }
+
   @screen sm {
     .foto-botoes{
       @apply row-span-1 col-span-2 text-left flex justify-start items-end;
@@ -330,10 +334,6 @@
     }
     .mostrar-form{
       @apply hidden;
-    }
-
-    .flor_espacamento {
-      @apply my-8;
     }
   }
   @screen md {
@@ -415,6 +415,9 @@
       @apply w-10/12;
     }
 
+    .flor_espacamento {
+      @apply my-0;
+    }
     .flor_espacamento {
       @apply my-0;
     }

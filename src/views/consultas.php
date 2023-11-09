@@ -1,3 +1,31 @@
+<?php
+ob_start();
+
+use Psidevs\Entity\Cliente;
+use Psidevs\Entity\Consulta;
+use Psidevs\Entity\ControleDeAcesso;
+use Psidevs\Entity\Usuario;
+use Psidevs\Entity\Utilitarios;
+use Psidevs\Helper\EntityManagerCreator;
+use Psidevs\Repository\ObjetoRepository;
+use Psidevs\Repository\QueryBuilderConsulta;
+
+require_once "../../vendor/autoload.php";
+
+$verificaLogin = new ControleDeAcesso();
+$verificaLogin->verificaAcesso();
+$verificaLogin->verificaAcessoCliente();
+if(isset($_GET["sair"])) $verificaLogin-> logout();
+
+$usuario = new Usuario();
+$usuario->setTipoUsuario($_SESSION['tipo_usuario']);
+$usuario->setNome($_SESSION['nome']);
+
+$entityManager   = EntityManagerCreator::createEntityManager();
+$objetoClienteConsulta   = new QueryBuilderConsulta($entityManager, $entityManager->getClassMetadata(Cliente::class));
+
+$proximasConsultaCliente = $objetoClienteConsulta->proximasConsultasCliente();
+?>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -86,9 +114,9 @@
   <div class="container_bg">
     <div class="container_sub_header_bg">
       <div class="container_sub_header">
-        <h2 class="container_sub_header_saudacao">Boa tarde, Josefa Ferreira</h2>
+        <h2 class="container_sub_header_saudacao"> <span id="saudacao"></span>, <?=$usuario->getNome()?></h2>
         <div class="container_header_marcar_consulta_botao_bg">
-          <a href="#" class="container_header_marcar_consulta_botao"><img src="../../assets/icone-plus.svg" class="pe-2" alt="Sinal de adição">Marcar consulta</a>
+          <a href="../../agendamento.php" class="container_header_marcar_consulta_botao"><img src="../../assets/icone-plus.svg" class="pe-2" alt="Sinal de adição">Marcar consulta</a>
         </div>
       </div>
     </div>
@@ -128,150 +156,28 @@
                   <h2 class="consultaTitulo individual mb-0">Minhas de consultas</h2>
                 </div>
                 <div class="divisor historicos_consulta">
-                  <div class="container_conteudo_historico_consulta_profissional_bg">
+                  <?php foreach ($proximasConsultaCliente as $consulta) : ?>
+                    <div class="container_conteudo_historico_consulta_profissional_bg">
                     <div class="container_conteudo_historico_consulta_profissional">
                       <div class="container_conteudo_historico_consulta_profissional_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
+                        <img src="../../assets/foto_perfil/<?=$consulta['foto']?>" class="avatar" alt="foto do profissional">
                       </div>
                       <div class="container_conteudo_historico_consulta_profissional_texto">
-                        <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
-                        <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-200 me-2">Em Andamento</span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary">R$ 75,00</span>
+                        <h3 class="font-inter text-neutral-600 mb-1 text-lg"><?=$consulta['nome']?></h3>
+                        <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span><?=Utilitarios::formataData($consulta['data'])?></span><span class="dot"><?=Utilitarios::formataHora($consulta['data'])?></span><span>Meet</span></span>
+                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-200 me-2"><?=Utilitarios::primeriaLetraMaiscula($consulta['status'])?></span>
+                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary"><?=Utilitarios::formataPreco($consulta['valor'])?></span>
                       </div>
                     </div>
+
                     <div class="container_conteudo_historico_consulta_profissional_botao">
-                      <a href="#" class="botaoCancelar">Cancelar</a>
+                      <form action="" method="post">
+                        <button type="button" name="cancelar"  data-id="<?=$consulta['id']?>" onclick="modalCancelarConsulta.showModal()" class="botaoCancelar">Cancelar</button>
+                      </form>
+
                     </div>
                   </div>
-                  <div class="container_conteudo_historico_consulta_profissional_bg">
-                    <div class="container_conteudo_historico_consulta_profissional">
-                      <div class="container_conteudo_historico_consulta_profissional_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
-                      </div>
-                      <div class="container_conteudo_historico_consulta_profissional_texto">
-                        <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
-                        <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-200 me-2">Em Andamento</span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary">R$ 75,00</span>
-                      </div>
-                    </div>
-                    <div class="container_conteudo_historico_consulta_profissional_botao">
-                      <a href="#" class="botaoCancelar">Cancelar</a>
-                    </div>
-                  </div>
-                  <div class="container_conteudo_historico_consulta_profissional_bg">
-                    <div class="container_conteudo_historico_consulta_profissional">
-                      <div class="container_conteudo_historico_consulta_profissional_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
-                      </div>
-                      <div class="container_conteudo_historico_consulta_profissional_texto">
-                        <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
-                        <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-200 me-2">Em Andamento</span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary">R$ 75,00</span>
-                      </div>
-                    </div>
-                    <div class="container_conteudo_historico_consulta_profissional_botao">
-                      <a href="#" class="botaoCancelar">Cancelar</a>
-                    </div>
-                  </div>
-                  <div class="container_conteudo_historico_consulta_profissional_bg">
-                    <div class="container_conteudo_historico_consulta_profissional">
-                      <div class="container_conteudo_historico_consulta_profissional_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
-                      </div>
-                      <div class="container_conteudo_historico_consulta_profissional_texto">
-                        <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
-                        <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-200 me-2">Em Andamento</span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary">R$ 75,00</span>
-                      </div>
-                    </div>
-                    <div class="container_conteudo_historico_consulta_profissional_botao">
-                      <a href="#" class="botaoCancelar">Cancelar</a>
-                    </div>
-                  </div>
-                  <div class="container_conteudo_historico_consulta_profissional_bg">
-                    <div class="container_conteudo_historico_consulta_profissional">
-                      <div class="container_conteudo_historico_consulta_profissional_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
-                      </div>
-                      <div class="container_conteudo_historico_consulta_profissional_texto">
-                        <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
-                        <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-200 me-2">Em Andamento</span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary">R$ 75,00</span>
-                      </div>
-                    </div>
-                    <div class="container_conteudo_historico_consulta_profissional_botao">
-                      <a href="#" class="botaoCancelar">Cancelar</a>
-                    </div>
-                  </div>
-                  <div class="container_conteudo_historico_consulta_profissional_bg">
-                    <div class="container_conteudo_historico_consulta_profissional">
-                      <div class="container_conteudo_historico_consulta_profissional_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
-                      </div>
-                      <div class="container_conteudo_historico_consulta_profissional_texto">
-                        <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
-                        <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-200 me-2">Em Andamento</span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary">R$ 75,00</span>
-                      </div>
-                    </div>
-                    <div class="container_conteudo_historico_consulta_profissional_botao">
-                      <a href="#" class="botaoCancelar">Cancelar</a>
-                    </div>
-                  </div>
-                  <div class="container_conteudo_historico_consulta_profissional_bg">
-                    <div class="container_conteudo_historico_consulta_profissional">
-                      <div class="container_conteudo_historico_consulta_profissional_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
-                      </div>
-                      <div class="container_conteudo_historico_consulta_profissional_texto">
-                        <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
-                        <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-200 me-2">Em Andamento</span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary">R$ 75,00</span>
-                      </div>
-                    </div>
-                    <div class="container_conteudo_historico_consulta_profissional_botao">
-                      <a href="#" class="botaoCancelar">Cancelar</a>
-                    </div>
-                  </div>
-                  <div class="container_conteudo_historico_consulta_profissional_bg">
-                    <div class="container_conteudo_historico_consulta_profissional">
-                      <div class="container_conteudo_historico_consulta_profissional_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
-                      </div>
-                      <div class="container_conteudo_historico_consulta_profissional_texto">
-                        <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
-                        <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-200 me-2">Em Andamento</span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary">R$ 75,00</span>
-                      </div>
-                    </div>
-                    <div class="container_conteudo_historico_consulta_profissional_botao">
-                      <a href="#" class="botaoCancelar">Cancelar</a>
-                    </div>
-                  </div>
-                  <div class="container_conteudo_historico_consulta_profissional_bg">
-                    <div class="container_conteudo_historico_consulta_profissional">
-                      <div class="container_conteudo_historico_consulta_profissional_avatar">
-                        <img src="../../assets/icone-avatar-profissional.svg" alt="Avatar profissional">
-                      </div>
-                      <div class="container_conteudo_historico_consulta_profissional_texto">
-                        <h3 class="font-inter text-neutral-600 mb-1 text-lg">Daniela Júlia Queiroz</h3>
-                        <span class="dataConsulta mb-1"><img src="../../assets/icone-horario.svg" class="me-2" alt="Calendário"><span>20/06/2023</span><span class="dot">09:00</span><span>Meet</span></span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-gray-200 me-2">Em Andamento</span>
-                        <span class="dataConsulta_status_badge text-gray-800 bg-tertiary">R$ 75,00</span>
-                      </div>
-                    </div>
-                    <div class="container_conteudo_historico_consulta_profissional_botao">
-                      <a href="#" class="botaoCancelar">Cancelar</a>
-                    </div>
-                  </div>
+                  <?php endforeach; ?>
                 </div>
               </div>
             </div>
@@ -282,11 +188,125 @@
   <div class="backdrop" onclick="Openbar()"></div>
 </main>
 
+
+<?php
+if(isset($_POST['modal_cancelar'])) {
+    $idConsulta = $_POST['id_consulta'];
+    $consulta = $entityManager->find(Consulta::class, $idConsulta);
+    $consulta->setStatus('cancelada');
+    $objetoCliente = new ObjetoRepository(
+        $entityManager,
+        $entityManager->getClassMetadata(Consulta::class)
+    );
+    $objetoCliente->atualizar($consulta);
+    header("location:consultas.php?consulta_apagada");
+    exit();
+}
+?>
+
+<dialog
+  id="modalCancelarConsulta"
+  class="rounded-2xl border border-blue-100 bg-white p-4 shadow-lg sm:p-6 lg:p-8 max-w-lg"
+>
+  <div class="flex items-center gap-4">
+    <span class="shrink-0 rounded-full bg-red-400 p-2 text-white">
+      <svg
+        class="h-4 w-4"
+        fill="currentColor"
+        viewbox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+
+    <p class="font-medium sm:text-lg">Atenção</p>
+  </div>
+
+  <p class="mt-4 text-gray-600">
+    Tem certeza que deseja cancelar a consulta? <br> <span class="font-medium text-xs text-red-600">(Essa ação não poderá ser desfeita)</span>
+  </p>
+  <hr class="my-4 text-gray-600">
+  <form action="" method="post">
+    <div class="py-4 text-slate-600" id="profissional-info">
+      <input type="hidden" name="id_consulta" id="idConsulta">
+      <p class="mb-2">Dados da consulta:</p>
+      <p><span class="font-medium mb-1">Profissional:</span> <span id="profissionalConsulta"></span></p>
+      <p><span class="font-medium mb-1">Data:</span> <span id="dataConsulta"></span></p>
+      <p><span class="font-medium">Valor:</span> <span id="valorConsulta"></span></p>
+    </div>
+
+
+  <div class="mt-6 sm:flex sm:gap-4">
+    <button type="submit" name="modal_cancelar" id="cancelarConsulta"
+      class="inline-block w-full rounded-lg bg-primary px-5 py-3 text-center text-sm font-semibold hover:bg-primary/90 text-white sm:w-auto"
+    >Cancelar Consulta</button>
+
+    <button type="button"  id="NaoCancelarConsulta"
+      class="mt-2 inline-block w-full rounded-lg bg-gray-200 px-5 py-3 text-center text-sm font-semibold text-gray-500 hover:bg-gray-300 sm:mt-0 sm:w-auto"
+>Não cancelar consulta</button>
+  </div>
+  </form>
+</dialog>
+
+
+<?php
+// Verifica se o parâmetro consulta_apagada está presente na URL
+$consultaApagadaParam = isset($_GET["consulta_apagada"]) ?? null;
+
+if ($consultaApagadaParam) {
+    echo '
+   <div id="alertConsultaCancelada" class="alert flex animate-fade-down animate-delay-400 animate-once flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300 max-w-sm absolute top-[84px] right-7 z-50 " role="alert">
+  <div class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+				<span class="text-green-500">
+					<svg fill="currentColor"
+               viewBox="0 0 20 20"
+               class="h-6 w-6">
+						<path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"></path>
+					</svg>
+				</span>
+  </div>
+  <div class="alert-content ml-4">
+    <div class="alert-title font-semibold text-lg text-green-800">
+      Sucesso!
+    </div>
+    <div class="alert-description text-sm text-green-600">
+      Sua consulta foi cancelada com sucesso.
+    </div>
+  </div>
+</div>
+   ';
+
+    echo '<script>
+            // Oculta o alerta após 5 segundos
+            setTimeout(function() {
+              document.getElementById("alertConsultaCancelada").classList.remove("flex");
+             document.getElementById("alertConsultaCancelada").classList.add("hidden");
+            }, 5000);
+          </script>';
+}
+
+?>
+
 <script>
   function Openbar() {
     document.querySelector('.sidebar').classList.toggle('right-[0px]');
     document.querySelector('.backdrop').classList.toggle('drawer-backdrop');
   }
 </script>
+<script src="../../js/saudacao.js"></script>
+<script src="../../js/modalCancelarConsulta.js"></script>
+<script>
+  let consultas = <?php echo json_encode($proximasConsultaCliente); ?>;
+</script>
 </body>
 </html>
+<?php
+ob_end_flush();
+?>

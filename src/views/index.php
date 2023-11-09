@@ -1,4 +1,5 @@
 <?php
+ob_start();
 
 use Psidevs\Entity\Cliente;
 use Psidevs\Entity\ControleDeAcesso;
@@ -24,6 +25,8 @@ $objetoClienteConsulta   = new QueryBuilderConsulta($entityManager, $entityManag
 $consultaHojeCliente = $objetoClienteConsulta->buscaUmaConsultaCliente();
 $proximas3ConsultasCliente   = $objetoClienteConsulta->proximasTresConsultasCliente();
 $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCliente();
+
+var_dump($historico2ConsultasCliente);
 ?>
 
 <!doctype html>
@@ -116,7 +119,7 @@ $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCl
       <div class="container_sub_header">
         <h2 class="container_sub_header_saudacao"> <span id="saudacao"></span>, <?=$usuario->getNome()?></h2>
         <div class="container_header_marcar_consulta_botao_bg">
-          <a href="#" class="container_header_marcar_consulta_botao"><img src="../../assets/icone-plus.svg" class="pe-2" alt="Sinal de adição">Marcar consulta</a>
+          <a href="../../agendamento.php" class="container_header_marcar_consulta_botao"><img src="../../assets/icone-plus.svg" class="pe-2" alt="Sinal de adição">Marcar consulta</a>
         </div>
       </div>
     </div>
@@ -200,7 +203,7 @@ $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCl
                 <li><div class="container_conteudo_proxima_consulta_profissional">
                     <div class="container_conteudo_proxima_consulta_profissional_avatar_e_horario">
                       <div class="container_conteudo_proxima_consulta_grupo_avatar">
-                        <img src="../../assets/foto_perfil/<?=$consulta['foto']?>" class="avatar" alt="Avatar de uma mulher">
+                        <img src="../../assets/foto_perfil/<?=$consulta['foto']?>" class="avatar" alt="foto do profissional">
                       </div>
                       <div class="container_conteudo_proxima_consulta_grupo_texto">
                         <h3 class="container_conteudo_proxima_consulta_grupo_texto_titulo"><?=$consulta['nome']?></h3>
@@ -237,7 +240,7 @@ $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCl
                   <div class="container_conteudo_historico_consulta_profissional_bg">
                     <div class="container_conteudo_historico_consulta_profissional">
                       <div class="container_conteudo_historico_consulta_profissional_avatar">
-                        <img src="../../assets/foto_perfil/<?=$consulta['foto']?>" class="avatar" alt="Avatar de uma mulher">
+                        <img src="../../assets/foto_perfil/<?=$consulta['foto']?>" class="avatar" alt="foto do profissional">
                       </div>
                       <div class="container_conteudo_historico_consulta_profissional_texto">
                         <h3 class="font-inter text-neutral-600 mb-1 text-lg"><?=$consulta['nome']?></h3>
@@ -280,3 +283,6 @@ $historico2ConsultasCliente   = $objetoClienteConsulta->historicoDuasConsultasCl
 <script src="../../js/saudacao.js"></script>
 </body>
 </html>
+<?php
+ob_end_flush();
+?>

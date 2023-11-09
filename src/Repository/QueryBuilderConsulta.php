@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityRepository;
 
 class QueryBuilderConsulta extends EntityRepository
 {
-    public function proximasConsultas()
+    public function proximasConsultasCliente()
     {
 
         $qb = $this->createQueryBuilder('cliente')
@@ -18,6 +18,7 @@ class QueryBuilderConsulta extends EntityRepository
             ->andWhere('consulta.status = :status')
             ->setParameter('clienteId', $_SESSION['id_cliente'])
             ->setParameter('status', 'agendada')
+            ->orderBy('consulta.data', 'ASC')
             ->getQuery();
         return $qb->getResult();
     }
@@ -36,6 +37,7 @@ class QueryBuilderConsulta extends EntityRepository
             ->setParameter('clienteId', $_SESSION['id_cliente'])
             ->setParameter('status', 'agendada')
             ->setMaxResults(3)
+            ->orderBy('consulta.data', 'ASC')
             ->getQuery();
         return $qb->getResult();
     }
@@ -81,13 +83,14 @@ class QueryBuilderConsulta extends EntityRepository
             ->innerJoin('consulta.profissional', 'profissional')
             ->innerJoin('profissional.usuario', 'profissional_usuario')
             ->where('cliente.id = :clienteId')
-            ->andWhere('consulta.status = :cancelada', 'consulta.status = :realizada')
+            ->andWhere('consulta.status = :cancelada OR consulta.status = :realizada')
             ->setParameter('clienteId', $_SESSION['id_cliente'])
             ->setParameter('cancelada', 'cancelada')
             ->setParameter('realizada', 'realizada')
             ->setMaxResults(2)
             ->getQuery();
         return $qb->getResult();
+
     }
 
     public function  buscaUmaProximaConsulta()
