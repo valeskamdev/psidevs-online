@@ -165,6 +165,7 @@ if(isset($_POST['criar_conta'])) {
                                 </div>
                               <div id="erroCPF"></div>
 
+                              <?php if ($_GET['type'] === 'profissional') { ?>
                                 <div class="relative z-0 w-full mb-6 group">
                                     <label for="crp" class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
                                         <input required type="text" id="crp" name="crp" class="w-full peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0" placeholder="Senha" />
@@ -174,6 +175,7 @@ if(isset($_POST['criar_conta'])) {
                                     </label>
                                 </div>
                               <div id="erroCRP"></div>
+                              <?php } ?>
 
                               <div class="relative z-0 w-full mb-6 group">
                                 <label for="dataNascimento" class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
