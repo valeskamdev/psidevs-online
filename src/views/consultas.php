@@ -149,6 +149,7 @@ $proximasConsultaCliente = $objetoClienteConsulta->proximasConsultasCliente();
         </div>
       </div>
       <div class="container_conteudo">
+<?php if(!empty($proximasConsultaCliente)) { ?>
           <div class="container_conteudo_historico_consulta_bg_pagina_consultas card_bg">
             <div class="container_conteudo_historico_consulta_pagina_consultas">
               <div class="container_conteudo_historico_consulta_sessao">
@@ -183,6 +184,13 @@ $proximasConsultaCliente = $objetoClienteConsulta->proximasConsultasCliente();
             </div>
           </div>
         </div>
+<?php } else { ?>
+  <div class="container_flor_bg container_flor_maior">
+    <div class="container_flor">
+      <img src="../../assets/flor-proximas-consultas.svg" alt="flor com uma mensagem de 'Sem próximas consultas'.">
+    </div>
+  </div>
+  <?php } ?>
     </div>
   </div>
   <div class="backdrop" onclick="Openbar()"></div>
