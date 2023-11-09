@@ -267,6 +267,10 @@
     @apply w-12 h-12 rounded-full object-cover border-2 border-border-blue;
   }
 
+  .imagem_profissional {
+    @apply w- h-12 rounded-full object-cover border-2 border-border-blue;
+  }
+
   .divisor {
     @apply divide-y divide-gray-200
   }

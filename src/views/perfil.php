@@ -159,7 +159,7 @@ $queryBuilderProfissional   = new QueryBuilderProfissinal($entityManager, $entit
       <div class="container_sub_header">
         <h2 class="container_sub_header_saudacao"><span id="saudacao"></span>, <?=$usuario->getNome()?></h2>
         <div class="container_header_marcar_consulta_botao_bg z-50">
-          <a href="consultas.php" class="container_header_marcar_consulta_botao"><img src="../../assets/icone-plus.svg" class="pe-2 " alt="Sinal de adição">Marcar consulta</a>
+          <a href="../../agendamento.php" class="container_header_marcar_consulta_botao"><img src="../../assets/icone-plus.svg" class="pe-2 " alt="Sinal de adição">Marcar consulta</a>
         </div>
       </div>
     </div>
@@ -438,7 +438,7 @@ $queryBuilderProfissional   = new QueryBuilderProfissinal($entityManager, $entit
                         }
                         $_SESSION['foto'] = $entityUsuario->getFoto();
 
-                        header("location:index.php?dados_pessoais_atualizado");
+                        header("location:perfil.php?dados_pessoais_atualizado");
                     }
                     ?>
                   <!-- Form Dados gerais -->
@@ -702,7 +702,7 @@ $queryBuilderProfissional   = new QueryBuilderProfissinal($entityManager, $entit
                         );
                         $objetoDisponibilidade->inserir($disponibilidade);
                     }
-                    header("location:perfil?horarios_cadastrados");
+                    header("location:perfil.php?horarios_cadastrados");
                 }
 
                 }
@@ -756,7 +756,7 @@ $queryBuilderProfissional   = new QueryBuilderProfissinal($entityManager, $entit
                     </div>
                   </div>
                   <div class="text-center mx-auto sm:col-span-6 sm:text-left mt-5">
-                    <button id="atualizar-profissional" name="salvar_dados_profissional" type="submit" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
+                    <button id="atualizar-profissional" name="salvar_horarios" type="submit" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
                   </div>
                 <?php } else { ?>
                   <div class="aviso-modal border-t mt-4 border-b bg-teal-100 border-teal-500 text-teal-900 px-4 py-3"  role="alert">

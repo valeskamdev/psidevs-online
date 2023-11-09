@@ -1,339 +1,368 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<?php
+ob_start();
 
-<head>
+use Psidevs\Entity\Cliente;
+use Psidevs\Entity\Consulta;
+use Psidevs\Entity\ControleDeAcesso;
+use Psidevs\Entity\Disponibilidade;
+use Psidevs\Entity\Profissional;
+use Psidevs\Entity\Utilitarios;
+use Psidevs\Helper\EntityManagerCreator;
+use Psidevs\Repository\ObjetoRepository;
+use Psidevs\Repository\QueryBuilderProfissinal;
 
+require_once "vendor/autoload.php";
+
+$verificaLogin = new ControleDeAcesso();
+$verificaLogin->verificaAcesso();
+$verificaLogin->verificaAcessoCliente();
+
+$entityManager        = EntityManagerCreator::createEntityManager();
+
+$metadataProfissional = $entityManager->getClassMetadata(Profissional::class);
+$profissionalRepository = new QueryBuilderProfissinal($entityManager, $metadataProfissional);
+$dadosDeProfissionais = $profissionalRepository->buscarTodos();
+
+$metadataDisponibilidade = $entityManager->getClassMetadata(Disponibilidade::class);
+$disponibilidadeRepository = new QueryBuilderProfissinal($entityManager, $metadataDisponibilidade);
+
+?>
+  <!doctype html>
+  <html lang="pt-br">
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento | Psidevs</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.3/dist/full.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/dist/build.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/estiloagendamento.css">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
 
-<body>
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+  <div class='flex items-center justify-center min-h-screen bg-blue-300'>
+    <div class='w-7/12 mx-20 p-5 bg-white rounded-lg shadow-xl'>
+      <div class=''>
+        <h1 class="text-2xl text-center mb-5">Encotre Psicólogos</h1>
+        <a href="src/views/index.php" class="text-2xl text-blue-700 underline">Minha Conta</a>
+        <div class="flex justify-center items-center flex-wrap">
 
-    <main>
-        <section class="destaque-agendamento
-                       flex items-center 
-                        ">
+            <?php foreach ($dadosDeProfissionais as $profissional) :
+                $idProfissional = $profissional['id'];
+                $disponibilidades = $disponibilidadeRepository->buscaDisponibilidadesAgendamento($idProfissional);
 
-            <article class="container flex flex-col">
-                <h2 class="text-center text-[3rem]  mb-3">
-                    Encontre um Especialista
-                </h2>
-                <!-- inicio Pesquisa -->
-                <form action="" method="get" class="text-center">
-                    <div class="relative mb-3">
-                        <input type="search" name="busca" id="busca" placeholder="pesquisar" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                // Filtra as disponibilidades para que apenas as que possuem horaInicio e horaTermino sejam exibidas
+                if(empty($disponibilidades) ) {
+                    continue;
+                }
 
-                        <button class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 pesquisabtn" type="submit">
-                            <i class="bi bi-search"></i>
-                        </button>
+                $disponibilidadesPorProfissional[$idProfissional] = $disponibilidades;
+                ?>
+              <article class="group w-full bg-slate-200 m-5">
+                <img
+                  alt="imagem"
+                  src="assets/foto_perfil/<?=$profissional['foto']?>?>"
+                  class="avatar"
+                />
+                <div class="flex flex-wrap">
+                  <div class="p-4 flex flex-col justify-center">
+                    <h2 class="text-lg font-medium text-gray-900"><?=$profissional['nome']?></h2>
+                    <p>CRP: <?=$profissional['registroCRP']?> | <span>  <?=Utilitarios::primeriaLetraMaiscula($profissional['regiao'])?></span></p>
+                    <span><?=$profissional['especialidade']?></span> <br>
+                    <span><?=Utilitarios::formataPreco($profissional['valorConsulta'])?> / 40 MIN</span>
 
+                    <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500"><?=$profissional['descricao']?></p>
+                  </div>
+
+                  <div class="w-[220px] text-xs flex flex-col items-center m-3">
+                    <div class="flex flex-col justify-start overflow-auto rounded-lg w-[180px] bg-slate-100 mb-2">
+                      <div class="grid grid-cols-4 bg-purple-100 justify-center content-center w-full sticky top-0" id="date-container-<?=$profissional['id']?>">
+                      </div>
+                      <div id="horarios-<?=$profissional['id']?>" class="grid grid-cols-4 w-full max-h-52 overflow-y-scroll">
+                      </div>
                     </div>
-
-
-                </form>
-
-                <!-- Fim pesquisa -->
-
-            </article>
-
-
-        </section>
-        <section class="filtros  items-center  mb-3">
-            <article class="container mb-3 flex flex-row flex-wrap p-3 justify-between itens-center w-full">
-                <!-- inicio Filtro Especialista -->
-                <form action="" class="mb-3" method="get">
-
-                    <div class="flex-auto text-[1.4rem]">
-                        <label for="especialista" class="block mb-2 text-sm font-medium text-white white:text my-1 mx-1 mb-3 w-[40%] ">
-                            Especialista
-                        </label>
-                        <select name="especialista" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-64 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 my-1 mx-1 mb-3 " id="especialista">
-                            <option value="">Qualquer Especialista</option>
-                        </select>
+                    <div class="flex justify-between w-full">
+                      <button type="button" class="bg-blue-800 text-white rounded-md px-3 py-2 anterior-button" data-profissional-id="<?=$profissional['id']?>">Anterior</button>
+                      <button type="button" class="bg-blue-800 text-white rounded-md px-3 py-2 proximo-button" data-profissional-id="<?=$profissional['id']?>">Próximo</button>
                     </div>
-                </form>
+                  </div>
+                </div>
+              </article>
+              <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  const idProfissional = "<?php echo $profissional['id']; ?>";
+                  const disponibilidades = <?php echo json_encode($disponibilidadesPorProfissional[$idProfissional]); ?>;
 
-                <!-- Fim Filtro Especialista -->
+                  const daysOfWeek = {
+                    "Dom": "Sunday",
+                    "Seg": "Monday",
+                    "Ter": "Tuesday",
+                    "Qua": "Wednesday",
+                    "Qui": "Thursday",
+                    "Sex": "Friday",
+                    "Sab": "Saturday"
+                  };
 
-                <!-- inicio Filtro Preço -->
+                  const currentDate = new Date();
+                  const dateContainer = document.getElementById("date-container-<?=$profissional['id']?>");
+                  const horariosContainer = document.getElementById("horarios-<?=$profissional['id']?>");
+                  const anteriorButton = document.querySelector("button.anterior-button[data-profissional-id='<?=$profissional['id']?>']");
+                  const proximoButton = document.querySelector("button.proximo-button[data-profissional-id='<?=$profissional['id']?>']");
 
-                <form action="" class="mb-3" method="get">
+                  function formatHour(hour) {
+                    return hour.substring(0, 5);
+                  }
 
-                    <div class="flex-auto text-[1.4rem]">
-                        <label for="preco" class="block mb-2 text-sm font-medium text-white  white:text my-1 mx-1 mb-3 ">
-                            Valor da sessão
-                        </label>
-                        <select name="preco" id="preco" class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-64 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 my-1 mx-1 mb-3 ">
-                            <option value="">Qualquer valor</option>
-                        </select>
-                    </div>
+                  function calculateMaxHorarios() {
+                    return disponibilidades.reduce((max, disponibilidade) => {
+                      if (disponibilidade.horaInicio && disponibilidade.horaTermino) {
+                        const start = new Date();
+                        start.setHours(parseInt(disponibilidade.horaInicio.split(":")[0], 10));
+                        start.setMinutes(parseInt(disponibilidade.horaInicio.split(":")[1], 10));
 
+                        const end = new Date();
+                        end.setHours(parseInt(disponibilidade.horaTermino.split(":")[0], 10));
+                        end.setMinutes(parseInt(disponibilidade.horaTermino.split(":")[1], 10));
 
-                </form>
+                        const diffInMinutes = (end - start) / 1000 / 60;
+                        return Math.max(max, diffInMinutes / 30);
+                      }
+                      return max;
+                    }, 0);
+                  }
 
-                <!-- inicio Filtro Preço -->
+                  function updateHorariosByDay() {
+                    dateContainer.innerHTML = "";
+                    horariosContainer.innerHTML = "";
 
-            </article>
-        </section>
+                    const maxHorarios = calculateMaxHorarios();
+                    const hoje = new Date(); // Data de hoje
 
-        <section class="container">
+                    for (let i = 0; i < 4; i++) {
+                      let nextDay = Object.keys(daysOfWeek)[currentDate.getDay()];
+                      let disponibilidade = disponibilidades.find(item => item.diaSemana === nextDay);
 
-            <div class="card-psicologo 
-           flex flex-col 
-            flex-wrap  
-            items-center
-            justify-around">
-                <?php for ($i = 0; $i <= 6; $i++) { ?>
-                    <!-- Inicio do card -->
-                    <div class="card-container col-auto w-full">
-                        <article class="exibir-psicologo my-3 py-2  tamanho ">
-                            <div class="flex d-flex-row
-                                        m-3
-                                        quebra
-                                        justify-around
-                                        items-center">
-                                <!-- inicio Detalhes Profissional -->
-                                <div class="espaco w-1/2">
-                                    <ul class="esconder-lista ">
-                                        <li>
-                                            <!-- inicio Perfil Foto/Crp/Região/nome Proficional  -->
-                                            <ul class="esconder-lista flex flex-row
-                                                        m-3
-                                                        justify-center
-                                                        items-center">
-                                                <li>
-                                                    <p class="perfil-foto m-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                                        </svg>
-                                                        <img src="" alt="">
-                                                    </p>
-                                                </li>
-
-                                                <li>
-                                                    <ul class="nome-preco esconder-lista m-2">
-                                                        <li class="m-2 p-2">
-                                                            <p><b>Vitor Dev</b></p>
-                                                        </li>
-
-                                                        <li class="m-2 p-2">
-                                                            <p> 06/XXX. XXX</p>
-                                                        </li>
-                                                        <li class="m-2 p-2">
-                                                            <p> São Paulo/sp </p>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-
-                                            </ul>
-                                            <!-- fim Perfil Foto Crp/Região/nome Proficional  -->
-                                        </li>
-                                        <!-- inicio Perfil Especialidades -->
-                                        <li>
-                                            <hr>
-                                            <h2 class="my-2 p-2"><b>Especialidades:</b></h2>
-                                            <div class="flex flex-wrap justify-around">
-                                                <button class="disabled">
-                                                    <p class=" fundoEspe p-2 m-2">Especialidade</p>
-                                                </button>
-                                                <button class="disabled">
-                                                    <p class=" fundoEspe p-2 m-2">Especialidade</p>
-                                                </button>
-                                                <button class="disabled">
-                                                    <p class=" fundoEspe p-2 m-2">Especialidade</p>
-                                                </button>
-                                            </div>
-                                           
-                                        </li>
-                                        <!-- fim Perfil Especialidades  -->
-
-                                      
-
-                                        <!-- inicio Perfil Descrição  -->
-
-                                        <li class="descricao esconder-lista">
-                                            <hr>
-                                        <h2 class="my-3"><b>Descrição:</b></h2>
-                                            <p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ipsa officia officiis sunt aperiam dolores eligendi iusto adipisci ea, dolore quam cum tenetur, possimus porro similique quis dolor amet ullam!</p>
-                                            
-                                            
-                                        </li>
-
-                                        <!-- Fim Perfil Descrição  -->
-
-
-                                        <!-- inicio Perfil Plataformas  -->
-                                        <li class="my-2  py-1">
-                                            <hr>
-                                            <h2 class="my-3"><b>Plataformas:</b></h2>
-                                            <ul class="esconder-lista flex flex-row
-                                                        m-3
-                                                        g-3
-                                                        text-[1.7rem]
-                                                        justify-around
-                                                        items-center">
-                                                <li>
-                                                    <a href="agendamento.php?teams">
-                                                        <button class="btn btn-primary">
-                                                            <h3><i class="bi bi-microsoft-teams"></i></h3>
-                                                        </button>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="agendamento.php?meet">
-                                                        <button class="btn btn-success">
-                                                            <h3><i class="bi bi-camera-reels"></i></h3>
-                                                        </button>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="agendamento.php?zoom">
-                                                        <button class="btn btn-primary">
-                                                            <h3><i class="bi bi-camera-video-fill"></i></h3>
-                                                        </button>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <!-- Fim Perfil Plataformas  -->
-
-                                          <!-- inicio Perfil Valor  -->
-                                          <li> 
-                                        <hr>
-                                        <h2 class="my-1 p-1"><b>Valor:</b></h2>
-                                            <div  class="my-1 p-1 flex flex-row flex-wrap
-                                        itens-center justify-between">
-                                                <h3 class="my-1 p-1">Sessão 50 min</h3>
-                                                <p class="fundoPreco my-1 p-1"><b>$180</b></p>
-                                            </div>
-                                           
-                                        </li>
-                                        <!-- Fim Perfil Valor  -->
-
-                                        <!-- Inicio do botão de Exibir Consulta Para telas de até no maximo 700px -->
-                                        <li class="m-3 py-1 text-center btnConsulta">
-                                            
-                                            <p>
-                                                <a class="horariosConsultas m-3 p-3 rounded-lg btn">
-                                                    <button class="disabled"><i class="bi bi-calendar2-plus"></i> Agendar Consulta</button>
-                                                </a>
-                                            </p>
-                                        </li>
-                                        <!-- Fim do botão de Exibir Consulta Para telas de até no maximo 700px -->
-                                    </ul>
-                                </div>
-                                <!-- Fim Detalhes Profissional -->
-
-                                <!-- Inico Agenda Profissional -->
-                                <div class="agenda borda  py-3 m-3 self-start p-3 w-1/2 text-center">
-                                    <h2 class="text-[2rem]">Horarios Disponiveis <i class="bi bi-alarm"></i></h2>
-                                    <div class="calendario  borda ">
-                                        <!-- Inicio Calendario -->
-                                        <table class="table-auto table-responsive w-full  caption-top">
-                                            <caption class="text-center ">
-                                                <h2><b><i class="bi bi-calendar"></i></b></h2>
-                                            </caption>
-                                            <!-- Inicio Dias Da Semana -->
-                                            <thead>
-                                                <tr>
-                                                    <th>Segunda</th>
-                                                    <th>Terça</th>
-                                                    <th>Quarta</th>
-                                                    <th>Quinta</th>
-                                                </tr>
-                                            </thead>
-                                            <!-- Fim  Dias Da Semana -->
-
-                                            <!-- Inicio Horas -->
-                                            <tbody class="text-center m-3 p-3">
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                            </tbody>
-                                            <!-- Fim Horas -->
-
-                                    </div>
-
-                                    </table>
-
-                                    <div class="flex my-3 justify-between w-full">
-                                        <button class="  rounded-md   p-3 m-3 btn anterior-button" data-profissional-id="<?= $profissional['id'] ?>">Anterior</button>
-                                        <button class=" rounded-md   p-3 m-3 btn proximo-button" data-profissional-id="<?= $profissional['id'] ?>">Próximo</button>
-                                    </div>
-                                    <!-- Fim Calendario -->
-                                </div>
-                                <!-- Fim Agenda Profissional -->
-                            </div>
-                    </div>
-                    </article>
+                      dateContainer.innerHTML += `
+        <div class="flex items-center p-1 col-span-1">
+            <div class="text-center w-full">
+                <p class="text-purple-900 text-sm">${nextDay}</p>
+                <p class="text-purple-900 font-bold">${currentDate.toLocaleString('pt-BR', { month: 'short' })}</p>
+                <p class="text-purple-900 font-bold">${currentDate.getDate()}</p>
             </div>
-            <!-- Fim do card -->
-                <?php  } ?>
-
-
-
         </div>
-        </section>
+    `;
 
-    </main>
+                      horariosContainer.innerHTML += `
+        <div class="col-span-1">
+            ${disponibilidade && disponibilidade.horaInicio && disponibilidade.horaTermino ? (
+                        Array.from({ length: maxHorarios }, (_, index) => {
+                          if (disponibilidade.horaInicio && disponibilidade.horaTermino) {
+                            let startTime = new Date();
+                            startTime.setHours(parseInt(disponibilidade.horaInicio.split(":")[0], 10));
+                            startTime.setMinutes(parseInt(disponibilidade.horaInicio.split(":")[1], 10));
+                            startTime.setMinutes(startTime.getMinutes() + index * 30);
+
+                            if (hoje > currentDate) {
+                              return `
+                             <div class=" text-center py-2 bg-gray-200 border border-gray-300 m-1 disabled">-</div>
+                            `;
+                            }
+                            if (hoje.getDate() === currentDate.getDate() && startTime.getHours() < hoje.getHours()) {
+                              return `
+                            <div class="hidden">-</div>
+                            `;
+                            }
+
+                            if (
+                              startTime.getHours() > parseInt(disponibilidade.horaTermino.split(":")[0], 10) ||
+                              (startTime.getHours() === parseInt(disponibilidade.horaTermino.split(":")[0], 10) &&
+                                startTime.getMinutes() > parseInt(disponibilidade.horaTermino.split(":")[1], 10))
+                            ) {
+                              return `
+                            <div class="hidden">-</div>
+                            `;
+                            }
+                            return `
+                        <button
+                        onclick="my_modal_1.showModal()"
+                        data-dia="${currentDate.getDate()}"
+                        data-dia-semana="${nextDay}"
+                        data-horario="${formatHour(startTime.toTimeString())}"
+                        data-mes="${currentDate.getMonth() + 1}"
+                        class="text-center py-2 px-0.5 border border-gray-300 cursor-pointer text-slate-700 m-1 hover:bg-blue-100">
+                            ${formatHour(startTime.toTimeString())}
+                        </button>
+                        `;
+                          } else {
+                            return `<div class="text-center py-2 bg-gray-200 border border-gray-300 m-1 disabled">-</div>`;
+                          }
+                        }).join('')
+                      ) : (
+                        Array.from({ length: maxHorarios }, () => {
+                          return `<div class="text-center py-2 bg-gray-200 border border-gray-300 m-1 disabled">-</div>`;
+                        }).join('')
+                      )}
+        </div>
+    `;
+                      currentDate.setDate(currentDate.getDate() + 1);
+                    }
+                  }
+                  anteriorButton.addEventListener("click", () => {
+                    currentDate.setDate(currentDate.getDate() - 8);
+                    updateHorariosByDay();
+                  });
+
+                  proximoButton.addEventListener("click", () => {
+                    currentDate.setDate(currentDate.getDate());
+                    updateHorariosByDay();
+                  });
+
+                  // Inicialmente, exiba os horários do dia da semana atual
+                  updateHorariosByDay();
 
 
+                  // Função para exibir o modal com informações
+                  function exibirModal(info) {
+                    // const modal = document.getElementById("my_modal_1");
+                    const modalInfo = document.getElementById("profissional-info");
+                    modalInfo.innerHTML = info;
+                    // modal.showModal();
+                  }
 
+                  // Adicionar eventos de clique aos botões de horário
+                  // Depois
+                  horariosContainer.addEventListener("click", (event) => {
+                    if (event.target.tagName === "BUTTON") {
+                      // Obter as informações a partir dos atributos de dados
+                      const dia = event.target.getAttribute("data-dia");
+                      const diaSemana = event.target.getAttribute("data-dia-semana");
+                      const horario = event.target.getAttribute("data-horario");
+                      const mes = event.target.getAttribute("data-mes");
 
+                      // Você pode agora utilizar essas informações para preencher o modal
+                      const nomeProfissional = "<?=$profissional['nome']?>";
+                      const data = `${dia}/${mes}/${currentDate.getFullYear()}`;
+                      const hora = `${horario}`;
+                      const duracao = "Duração: 40 Minutos";  // Substitua pela duração real
+                      const preco = "<?=Utilitarios::formataPreco($profissional['valorConsulta'])?>";
+                      const info = `
+                                  Profissional: ${nomeProfissional}<br>Data: ${data} ${hora}<br>Duração: ${duracao}<br>Preço: ${preco}
+                                `;
 
-    <script src="js/agendamento.js"></script>
-    <script src="js/card-agendamento.js"></script>
+                      document.getElementById("idProfissionalInput").value = "<?=$profissional['id']?>";
+                      document.getElementById("dataInput").value = data;
+                      document.getElementById("horaInput").value = hora;
+                      document.getElementById("precoInput").value = preco;
+                      exibirModal(info);
+                    }
+                  });
 
-</body>
+                  document.getElementById("cancelar").addEventListener("click", function(event) {
+                    event.preventDefault();
+                    my_modal_1.close();
+                  });
+                });
+              </script>
+            <?php endforeach; ?>
+            <?php
+            if (isset($_POST['agendar'])) {
+                $profissional = $entityManager->find(Profissional::class, $_POST['id_profissional']);
+                $cliente = $entityManager->find(Cliente::class, $_SESSION['id_cliente']);
 
-</html>
+                $consulta = new Consulta();
+                $consulta->setProfissional($profissional);
+                $consulta->setCliente($cliente);
+                $consulta->setData(Utilitarios::dataHoraParaBanco($_POST['data'], $_POST['hora']));
+                $consulta->setValor(Utilitarios::precoParaBanco($_POST['preco']));
+                $consulta->setStatus('agendada');
+
+                $objetoCliente = new ObjetoRepository(
+                    $entityManager,
+                    $entityManager->getClassMetadata(Consulta::class)
+                );
+                $objetoCliente->inserir($consulta);
+                header('location:src/views/perfil.php?consulta_agendada');
+                exit();
+            }
+            ?>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <?php
+  // Verifica se o parâmetro consulta_apagada está presente na URL
+  $consultaApagadaParam = isset($_GET["consulta_agendada"]) ?? null;
+
+  if ($consultaApagadaParam) {
+      echo '
+   <div id="alertConsultaCancelada" class="alert flex animate-fade-down animate-delay-400 animate-once flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300 max-w-sm absolute top-[84px] right-7 z-50 " role="alert">
+  <div class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+				<span class="text-green-500">
+					<svg fill="currentColor"
+               viewBox="0 0 20 20"
+               class="h-6 w-6">
+						<path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"></path>
+					</svg>
+				</span>
+  </div>
+  <div class="alert-content ml-4">
+    <div class="alert-title font-semibold text-lg text-green-800">
+      Sucesso!
+    </div>
+    <div class="alert-description text-sm text-green-600">
+      Sua consulta foi agandada com sucesso.
+    </div>
+  </div>
+</div>
+   ';
+
+      echo '<script>
+            // Oculta o alerta após 5 segundos
+            setTimeout(function() {
+              document.getElementById("alertConsultaCancelada").classList.remove("flex");
+             document.getElementById("alertConsultaCancelada").classList.add("hidden");
+            }, 5000);
+          </script>';
+  }
+
+  ?>
+
+  <dialog id="my_modal_1" class="modal">
+    <div class="modal-box  bg-slate-100">
+      <h3 class="font-bold text-lg text-slate-900">Informações da Consulta</h3>
+      <form action="" method="post">
+        <input type="hidden" name="id_profissional" id="idProfissionalInput" value="">
+        <input type="hidden" name="data" id="dataInput" value="">
+        <input type="hidden" name="hora" id="horaInput" value="">
+        <input type="hidden" name="preco" id="precoInput" value="">
+        <div class="py-4 text-slate-600" id="profissional-info">
+          <!-- Aqui as informações da consulta serão preenchidas dinamicamente. -->
+        </div>
+        <div class="modal-action">
+          <button name="agendar" id="agendar" class="btn bg-green-300 border-0 text-slate-900 hover:bg-green-500">Agendar</button>
+          <button id="cancelar" class="btn bg-red-300 border-0 text-slate-900 hover:bg-red-500">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
+  />
+  </body>
+  </html>
+<?php
+ob_end_flush();
+?>

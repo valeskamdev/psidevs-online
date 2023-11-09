@@ -39,7 +39,7 @@
             </clipPath>
             </defs>
             </svg>
-            <button type="" id="botao-agendamento">Agendar consulta</button>
+            <a href="agendamento.php" id="botao-agendamento" class="text-white">Agendar consulta</a>
           </p>
           <p id="open-cadastro" data-modal-target="staticModal" data-modal-toggle="staticModal" class="config-header"><button type="button">Criar conta</button></p>
           <p  id="open" data-modal-target="staticModal" data-modal-toggle="staticModal" class="con-age text-white"><a href="login.php">Entrar</a></p>
