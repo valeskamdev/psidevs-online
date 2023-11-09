@@ -17,7 +17,6 @@ require_once "../../vendor/autoload.php";
 
 $verificaLogin = new ControleDeAcesso();
 $verificaLogin->verificaAcesso();
-$verificaLogin->verificaAcessoCliente();
 if(isset($_GET["sair"])) $verificaLogin-> logout();
 
 $jsonData = file_get_contents('../../config/enums.json');
@@ -43,7 +42,7 @@ if (isset($_POST['salvar-formacao'])) {
     if ($idProfissionalManager !== null) {
         // Adiciona a disponibilidade ao profissional logado
         $idProfissionalManager->adicionarFormacao($formacao);
-        header("location:inicio");
+        header("location:perfil.php?formacao_cadastrada");
     } else {
         echo "Profissional não encontrado";
         exit();
@@ -56,8 +55,7 @@ if (isset($_POST['salvar-formacao'])) {
 }
 
 $queryBuilderCliente = new QueryBuilderCliente($entityManager, $entityManager->getClassMetadata(Cliente::class));
-$cliente = $queryBuilderCliente->buscarUm();
-
+$queryBuilderProfissional   = new QueryBuilderProfissinal($entityManager, $entityManager->getClassMetadata(Profissional::class));
 
 //$queryBuilderProfissional = new QueryBuilderProfissinal($entityManager, $entityManager->getClassMetadata(Profissional::class));
 //$profissional = $queryBuilderProfissional->buscarUm();
@@ -188,11 +186,15 @@ $cliente = $queryBuilderCliente->buscarUm();
           </nav>
         </div>
       </div>
+
 <div class="container_conteudo">
           <div class="container_conteudo_perfil_bg card_bg mb-16">
             <div class="container_conteudo_perfil_estrutura">
 
+
                 <?php
+                if($usuario->getTipoUsuario() === 'cliente') {
+                    $cliente = $queryBuilderCliente->buscarUm();
                 if(isset($_POST['salvar_dados_pessoais'])) {
                     $entityUsuario      = $entityManager->find(Usuario::class, $_SESSION['id']);
 //                    $entityCliente = $entityManager->find(
@@ -367,34 +369,191 @@ $cliente = $queryBuilderCliente->buscarUm();
 
                     </div>
               </form>
+                    <?php } ?>
 
-              <?php if($usuario->getTipoUsuario() === 'profissional') { ?>
+
+                <?php
+                if($usuario->getTipoUsuario() === 'profissional') {
+                    $profissional = $queryBuilderProfissional->buscarUm();
+                    if(isset($_POST['salvar_dados_pessoais'])) {
+                        $entityUsuario      = $entityManager->find(Usuario::class, $_SESSION['id']);
+                        $entityProfissional = $entityManager->find(
+                            Profissional::class,
+                            $_SESSION['id_profissional']
+                        );
+
+                        $entityUsuario->setNome($_POST['nome']);
+                        $entityUsuario->setEmail($_POST['email']);
+                        $entityUsuario->setCpf($_POST['cpf']);
+                        $entityUsuario->setTelefone($_POST['telefone']);
+                        $entityUsuario->setGenero($_POST['genero']);
+
+                        if (isset($_POST['regiao'])) {
+                            $entityProfissional->setRegiao($_POST['regiao']);
+                        }
+                        $entityUsuario->setDataNascimento(
+                            Utilitarios::dataParaBanco(
+                                $_POST['data_nascimento']
+                            )
+                        );
+
+                        if ( ! empty($_FILES['foto']['name'])) {
+                            $novaImagem      = $_FILES['foto']['name'];
+                            $imagemExistente = $entityUsuario->getFoto();
+
+                            if ($novaImagem !== $imagemExistente) {
+                                // Realizar o upload do novo arquivo de imagem
+                                $entityUsuario->upload($_FILES['foto']);
+                                $entityUsuario->setFoto($novaImagem);
+                            }
+                        }
+
+                        $objetoUsuario = new ObjetoRepository(
+                            $entityManager,
+                            $entityManager->getClassMetadata(Usuario::class)
+                        );
+
+                        $objetoProfissional = new ObjetoRepository(
+                            $entityManager,
+                            $entityManager->getClassMetadata(Profissional::class)
+                        );
+
+                        $objetoUsuario->atualizar($entityUsuario);
+                        $objetoProfissional->atualizar($entityProfissional);
+
+                        $_SESSION['nome']            = $entityUsuario->getNome();
+                        $_SESSION['email']           = $entityUsuario->getEmail();
+                        $_SESSION['cpf']             = $entityUsuario->getCpf();
+                        $_SESSION['telefone']        = $entityUsuario->getTelefone();
+                        $_SESSION['data_nascimento'] = $entityUsuario->getDataNascimento();
+                        $_SESSION['genero']          = $entityUsuario->getGenero();
+
+                        if (isset($_POST['regiao'])) {
+                            $_SESSION['regiao'] = $entityProfissional->getRegiao();
+                        }
+                        $_SESSION['foto'] = $entityUsuario->getFoto();
+
+                        header("location:index.php?dados_pessoais_atualizado");
+                    }
+                    ?>
+                  <!-- Form Dados gerais -->
+                  <form method="post" name="salvar_dados_pessoais" id="formDadosPessoais"  enctype="multipart/form-data">
+
+
+                    <div class="container_conteudo_perfil_bg card_bg">
+                      <div class="container_conteudo_perfil_estrutura">
+
+                        <!-- Form Dados gerais -->
+                        <div class="container-foto grid grid-flow-row-dense grid-rows-5 grid-cols-1 gap-4 sm:grid-cols-4 sm:grid-rows-2 ">
+                          <div class="foto-upload row-span-3 flex justify-center sm:row-span-2 sm:justify-start">
+                            <div class="avatar-upload">
+                              <div class="avatar-edit">
+                                <input type='file' name="foto" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                              </div>
+                              <div class="avatar-preview">
+                                  <?php
+                                  $foto = $profissional['foto'];
+                                  $imageURL = empty($foto) ? '../../assets/foto_perfil/foto_padrao.svg' : '../../assets/foto_perfil/' . $foto;
+                                  ?>
+                                <div id="imagePreview" style="background-image: url('<?= $imageURL ?>');"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="foto-botoes lg:col-span-3 ms-5">
+                            <div>
+                              <label for="imageUpload" class="perfil_botao bg-primary mr-4">
+                                CARREGAR NOVA FOTO
+                                <input id="file" name="file-perfil" accept="image/png, image/jpeg" type="file" class="hidden" />
+                              </label>
+                            </div>
+                          </div>
+
+                          <div class="foto-legenda">
+                            <label class="text-gray-500 font-bold">
+                              <span class="text-sm"> JPG ou PNG permitidos. (Tamanho máx. 800k) </span>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                          <div class="sm:col-span-3">
+                            <div class="mt-2 relative">
+                              <label for="nome" class="label-padrao-perfil">Nome</label>
+                              <input type="text" id="nome" name="nome" value="<?=$profissional['nome']?>"  class="input-padrao-perfil sm:text-md">
+                            </div>
+                          </div>
+                          <!-- Emai -->
+                          <div class="sm:col-span-3">
+                            <div class="mt-2 relative">
+                              <label for="email" class="label-padrao-perfil">E-mail</label>
+                              <input placeholder="nome@email.com" value="<?=$profissional['email']?>" type="email" id="email" name="email" class="input-padrao-perfil sm:text-md">
+                            </div>
+                          </div>
+
+                          <!-- TELEFONE -->
+                          <div class="sm:col-span-3">
+                            <div class="mt-2 relative">
+                              <label for="telefone" class="label-padrao-perfil">Telefone</label>
+                              <input type="tel" id="telefone" name="telefone" value="<?=$profissional['telefone']?>" class="input-padrao-perfil sm:text-md">
+                            </div>
+                          </div>
+
+                          <!-- GENERO -->
+                          <div class="sm:col-span-3">
+                            <div class="mt-2 relative">
+                              <label for="genero" class="label-padrao-perfil">Gênero</label>
+                              <select id="genero" name="genero" class="input-padrao-perfil sm:text-md">
+                                <option selected disabled></option>
+                                  <?php foreach ($data['generos'] as $genero) : ?>
+                                    <option value="<?=Utilitarios::formataString($genero)?>" <?php if(Utilitarios::formataString($genero) === Utilitarios::formataString($profissional['genero'])) echo ' selected '?>><?=$genero?></option>
+                                  <?php endforeach; ?>
+                              </select>
+                            </div>
+                          </div>
+
+                          <!-- CPF -->
+                          <div class="sm:col-span-3">
+                            <div class="mt-2 relative">
+                              <label for="cpf" class="label-padrao-perfil">CPF</label>
+                              <input type="text" id="cpf" name="cpf" value="<?=$profissional['cpf']?>" class="input-padrao-perfil sm:text-md">
+                            </div>
+                          </div>
+
+                          <!-- DATA DE NASCIMENTO -->
+                          <div class="sm:col-span-3">
+                            <div class="mt-2 relative">
+                              <label for="dataNascimento" class="label-padrao-perfil">Data de Nascimento</label>
+                              <input type="date" id="dataNascimento" name="data_nascimento" value="<?=Utilitarios::formataDataParaInputDate($profissional['dataNascimento'])?>" class="input-padrao-perfil sm:text-md">
+                            </div>
+                          </div>
+
+                          <!-- SENHA -->
+                          <div class="sm:col-span-3">
+                            <div class="mt-2 relative">
+                              <label for="senha" class="label-padrao-perfil">Senha</label>
+                              <input type="password" disabled id="senha" name="senha" class="input-padrao-perfil sm:text-md" placeholder="••••••">
+                              <button type="button" name="alterar-senha" onclick="modalSenha.showModal()" id="alterarSenha" class="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-primary bg-secondary rounded-r-lg border hover:bg-primary/90 hover:text-neutral-100">
+                                Alterar senha
+                              </button>
+                            </div>
+                          </div>
+
+                          <div class="mx-auto sm:col-span-6 sm:text-left">
+                            <button id="atualizar" name="salvar_dados_pessoais" type="submit" class="perfil_botao bg-primary text-lg sm:col-span-3">SALVAR ALTERAÇÕES</button>
+                          </div>
+
+                        </div>
+                  </form>
+                <?php } ?>
+
+              <?php if($usuario->getTipoUsuario() === 'profissional') {
+                  $formacoes = $queryBuilderProfissional->buscaFormacoes();
+                  ?>
            <!-- FORM - Area do profissional -->
                 <form method="post" id="form-atualizar-pro" name="form-atualizar-pro" >
                   <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                       <div class="flex flex-wrap border-t-2 border-primary mt-8 sm:col-span-6 sm:flex-nowrap sm:justify-between sm:items-center sm:px-4">
                           <h2 class= "text-lg text-primary font-semibold pb-1 mt-5 w-full sm:text-xl sm:w-1/2">Área Profissional</h2>
-                          <button class=" mt-5 inline-flex justify-center items-center">
-                              <a href="#" class="border-2 border-primary bg-secondary rounded-full inline-flex text-primary font-semibold py-3.5 px-5 hover:bg-primary/90 hover:text-neutral-100 transition duration-150 ease-in-out"> Adicionar Formação +</a>
-                          </button>
                       </div>
-
-                      <div class="modal-formacao flex flex-col flex-nowrap sm:col-span-6 sm:items-center">
-                        <button type="button"  class="flex justify-center items-center close-formacao mr-5 mb-6 text-gray-400 bg-transparent hover:bg-green-100 hover:text-gray-900 rounded-lg text-sm w-12 h-8 ml-auto" >
-                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                            </svg>
-                        </button>
-                        <div class="w-full p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 justify-between dark:bg-gray-800 dark:text-green-400" role="alert">
-                            <p><span class="font-medium">Engenharia De Software</span>  |  Graduação</p>
-                            <p>Fiap - Centro Universitário  |  2022</p>
-                        </div>
-                        <div class="w-full p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 justify-between dark:bg-gray-800 dark:text-green-400" role="alert">
-                            <p><span class="font-medium">Engenharia De Software</span>  |  Graduação</p>
-                            <p>Fiap - Centro Universitário  |  2022</p>
-                        </div>
-                      </div>
-
                       <div class="sm:col-span-3">
                           <div class="mt-2 relative">
                             <label for="crp" class="label-padrao-perfil">CRP</label>
@@ -441,6 +600,21 @@ $cliente = $queryBuilderCliente->buscarUm();
                       </div>
                   </div>
                 </form>
+
+                <hr class=" my-12 border-t-2 border-primary">
+
+                <button type="button" data-ripple-light="true"
+                        data-dialog-target="dialog-md"
+                    class="border-2 border-primary bg-secondary rounded-full inline-flex text-primary font-semibold py-3.5 px-5 hover:bg-primary/90 hover:text-neutral-100 transition duration-150 ease-in-out"> Adicionar Formação +</button>
+
+                <div class="modal-formacao flex flex-col flex-nowrap sm:col-span-6 sm:items-center">
+                  <?php foreach ($formacoes as $formacao) : ?>
+                  <div class="w-full p-4 mt-5` text-sm text-slate-800 rounded-lg bg-border-blue/50 my-2 justify-between " role="alert">
+                      <?=$formacao['nomeCurso']?> | <?=$formacao['tipoCurso']?> <br> <?=$formacao['instituicao']?> | <?=$formacao['anoConclusao']?>
+                  </div>
+                    <?php endforeach; ?>
+
+                </div>
 
                 <?php if (isset($_GET["campos_preechidos"])) { ?>
                   <div class="aviso-modal border-t border-b bg-teal-100 border-teal-500 text-teal-900 px-4 py-3"  role="alert">
@@ -737,13 +911,53 @@ $cliente = $queryBuilderCliente->buscarUm();
   </div>
   <div class="backdrop" onclick="Openbar()"></div>
 </main>
+
+<?php
+// Verifica se o parâmetro consulta_apagada está presente na URL
+$consultaApagadaParam = isset($_GET["formacao_cadastrada"]) ?? null;
+
+if ($consultaApagadaParam) {
+    echo '
+   <div id="alertConsultaCancelada" class="alert flex animate-fade-down animate-delay-400 animate-once flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300 max-w-sm absolute top-[84px] right-4 z-50 " role="alert">
+  <div class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+				<span class="text-green-500">
+					<svg fill="currentColor"
+               viewBox="0 0 20 20"
+               class="h-6 w-6">
+						<path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"></path>
+					</svg>
+				</span>
+  </div>
+  <div class="alert-content ml-4">
+    <div class="alert-title font-semibold text-lg text-green-800">
+      Sucesso!
+    </div>
+    <div class="alert-description text-sm text-green-600">
+      Sua formação foi cadastrada com sucesso.
+    </div>
+  </div>
+</div>
+   ';
+
+    echo '<script>
+            // Oculta o alerta após 5 segundos
+            setTimeout(function() {
+              document.getElementById("alertConsultaCancelada").classList.remove("flex");
+             document.getElementById("alertConsultaCancelada").classList.add("hidden");
+            }, 5000);
+          </script>';
+}
+
+?>
 <?php
 // Verifica se o parâmetro consulta_apagada está presente na URL
 $consultaApagadaParam = isset($_GET["dados_pessoais_atualizado"]) ?? null;
 
 if ($consultaApagadaParam) {
     echo '
-   <div id="alertConsultaCancelada" class="alert flex animate-fade-down animate-delay-400 animate-once flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300 max-w-sm absolute top-[84px] right-7 z-50 " role="alert">
+   <div id="alertConsultaCancelada" class="alert flex animate-fade-down animate-delay-400 animate-once flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300 max-w-sm absolute top-[84px] right-4 z-50 " role="alert">
   <div class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
 				<span class="text-green-500">
 					<svg fill="currentColor"
@@ -782,7 +996,7 @@ $consultaApagadaParam = isset($_GET["dados_profissionais_altualizado"]) ?? null;
 
 if ($consultaApagadaParam) {
     echo '
-   <div id="alertConsultaCancelada" class="alert flex animate-fade-down animate-delay-400 animate-once flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300 max-w-sm absolute top-[84px] right-7 z-50 " role="alert">
+   <div id="alertConsultaCancelada" class="alert flex animate-fade-down animate-delay-400 animate-once flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300 max-w-sm absolute top-[84px] right-4 z-50 " role="alert">
   <div class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
 				<span class="text-green-500">
 					<svg fill="currentColor"
@@ -821,7 +1035,7 @@ $consultaApagadaParam = isset($_GET["senha_alterada"]) ?? null;
 
 if ($consultaApagadaParam) {
     echo '
-   <div id="alertConsultaCancelada" class="alert flex animate-fade-down animate-delay-400 animate-once flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300 max-w-sm absolute top-[84px] right-7 z-50 " role="alert">
+   <div id="alertConsultaCancelada" class="alert flex animate-fade-down animate-delay-400 animate-once flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300 max-w-sm absolute top-[84px] right-4 z-50 " role="alert">
   <div class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
 				<span class="text-green-500">
 					<svg fill="currentColor"
@@ -854,6 +1068,85 @@ if ($consultaApagadaParam) {
 }
 
 ?>
+
+<div
+  data-dialog-backdrop="dialog-md"
+  data-dialog-backdrop-close="true"
+  class="pointer-events-none fixed inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300"
+>
+  <div
+    data-dialog="dialog-md"
+    class=" m-4 p-5 rounded-lg bg-white font-sans text-base font-light leading-relaxed text-blue-gray-500 antialiased shadow-2xl"
+  >
+    <form action="" method="post">
+      <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">
+        Formação</h2>
+      <p class="leading-relaxed mb-5 text-gray-600">Post-ironic portland
+        shabby chic echo park, banjo fashion axe</p>
+      <div class="flex flex-col mb-4 relative">
+        <div class="">
+          <label for="nomeCurso"
+                 class="blockmb-2 text-sm font-medium text-gray-600 ">Nome do curso</label>
+          <input type="text" id="nomeCurso" name="nome-curso" class="input bg-white input-bordered w-full border-slate-400" placeholder="search..." autocomplete="off"  />
+        </div>
+        <ul class="bg-white border border-gray-100 w-full mt-2 nome-curso-lista absolute z-10 top-[68px]">
+
+        </ul>
+      </div>
+      <div class="flex flex-col mb-4">
+        <label for="tipoCurso"
+               class="blockmb-2 text-sm font-medium text-gray-600 ">Tipo de curso</label>
+        <select id="tipoCurso" name="tipo-curso" class="input bg-white input-bordered w-full border-slate-400">
+          <option disabled selected>Selecione uma opcao</option>
+            <?php foreach ($data['tipoCurso'] as $tipoCurso) : ?>
+              <option><?=$tipoCurso?></option>
+            <?php endforeach; ?>
+        </select>
+      </div>
+      <div class="flex flex-col mb-4 relative">
+        <div class="">
+          <label for="instituicao"
+                 class="blockmb-2 text-sm font-medium text-gray-600 ">Instituicao</label>
+          <input type="text" id="instituicao" name="instituicao" class="input bg-white input-bordered w-full border-slate-400" placeholder="search..." autocomplete="off" />
+        </div>
+        <ul class="bg-white border border-gray-100 w-full mt-2 instituicao-lista absolute z-10 top-[68px]">
+        </ul>
+      </div>
+      <div class="flex flex-col mb-4">
+        <label for="dataConclusao"
+               class="blockmb-2 text-sm font-medium text-gray-600 ">Ano de
+          conclusão</label>
+        <select id="dataConclusao" name="ano-conclusao" class="input bg-white input-bordered w-full border-slate-400">
+          <option disabled selected>Selecione uma opcao</option>
+            <?php foreach ($anos as $ano) : ?>
+              <option><?=$ano?></option>
+            <?php endforeach; ?>
+        </select>
+      </div>
+
+      <div class="grid place-content-end grid-flow-col">
+        <button
+          type="submit"
+          data-ripple-light="true"
+          data-dialog-close="true"
+          class="middle none center rounded-lg bg-gradient-to-tr from-green-600 to-green-400 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          name="salvar-formacao"
+        >
+          Confirm
+        </button>
+        <button
+          data-ripple-dark="true"
+          data-dialog-close="true"
+          id="cancelar"
+          class="middle none center mr-1 bg-red-100 rounded-lg py-3 px-6 font-sans text-xs font-bold uppercase text-red-500 transition-all hover:bg-red-500/10 active:bg-red-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        >
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <dialog id="modalSenha" class="modal rounded-md">
   <form action="../../inc/processa-senha.php" method="post" id="myForm">
     <div class="modal-box bg-slate-100 p-7">
@@ -909,6 +1202,7 @@ if ($consultaApagadaParam) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
 <script>
   new TomSelect(".experiencia",{
     plugins: ['remove_button'],
@@ -932,6 +1226,11 @@ if ($consultaApagadaParam) {
     document.querySelector('.backdrop').classList.toggle('drawer-backdrop');
   }
 
+  document.getElementById("naoSalvarFormacao").addEventListener("click", function() {
+    let modal = document.getElementById("modalFormacao");
+    modal.close();
+  });
+
   const openModalButton = document.querySelector('.adicionar');
   const modal1 = document.querySelector('#modal-disp');
 
@@ -941,22 +1240,6 @@ if ($consultaApagadaParam) {
     openModalButton.classList.add('bg-gray-400', 'cursor-not-allowed', 'opacity-50');
 
   };
-
-  openModalButton.addEventListener('click', () => toggleModal1());
-
-    const closeModalButtons = document.querySelectorAll(".close-formacao");
-    const modalFormacoes = document.querySelectorAll(".modal-formacao");
-
-    const toggleModal = () => {
-      modalFormacoes.forEach((modal) => {
-        modal.classList.toggle("hidden");
-      });
-    };
-
-    closeModalButtons.forEach((button) => {
-      button.addEventListener("click", toggleModal);
-    });
-
 </script>
 <script src="../../js/saudacao.js"></script>
 <script src="../../js/inputMask.js"></script>

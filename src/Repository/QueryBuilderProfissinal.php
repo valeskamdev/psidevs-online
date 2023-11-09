@@ -18,7 +18,7 @@ class QueryBuilderProfissinal extends EntityRepository
     public function buscarUm()
     {
         $qb = $this->createQueryBuilder('p')
-            ->select('p', 'u')
+            ->select('p', 'u.nome', 'u.email', 'u.cpf', 'u.telefone', 'u.dataNascimento', 'u.genero', 'u.foto', 'u.tipoUsuario')
             ->leftJoin('p.usuario', 'u')
             ->where('p.id = :id')
             ->setParameter('id', $_SESSION['id_profissional'])
