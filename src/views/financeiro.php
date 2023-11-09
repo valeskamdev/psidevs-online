@@ -87,8 +87,8 @@
     <div class="container_sub_header_bg">
       <div class="container_sub_header">
         <h2 class="container_sub_header_saudacao">Boa tarde, Josefa Ferreira</h2>
-        <div class="container_header_marcar_consulta_botao_bg">
-          <a href="#" class="container_header_marcar_consulta_botao z-50"><img src="../../assets/icone-plus.svg" class="pe-2" alt="Sinal de adição">Marcar consulta</a>
+        <div class="container_header_marcar_consulta_botao_bg z-50">
+          <a href="#" class="container_header_marcar_consulta_botao"><img src="../../assets/icone-plus.svg" class="pe-2" alt="Sinal de adição">Marcar consulta</a>
         </div>
       </div>
     </div>
