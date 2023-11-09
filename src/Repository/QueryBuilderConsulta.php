@@ -66,11 +66,11 @@ class QueryBuilderConsulta extends EntityRepository
             ->innerJoin('consulta.profissional', 'profissional')
             ->innerJoin('profissional.usuario', 'profissional_usuario')
             ->where('cliente.id = :clienteId')
-            ->andWhere('consulta.status = :cancelada')
-            ->orWhere('consulta.status = :realizada')
+            ->andWhere('consulta.status = :cancelada OR consulta.status = :realizada')
             ->setParameter('clienteId', $_SESSION['id_cliente'])
             ->setParameter('cancelada', 'cancelada')
             ->setParameter('realizada', 'realizada')
+            ->orderBy('consulta.data', 'DESC')
             ->getQuery();
         return $qb->getResult();
     }
