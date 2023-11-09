@@ -47,8 +47,9 @@ html {
 } */
 
 #default-modal.hide,
-#fade.hide, #default-modal-cadastro.hide,
-#fade-cadastro.hide  {
+#fade.hide,
+#default-modal-cadastro.hide,
+#fade-cadastro.hide {
   opacity: 0;
   pointer-events: none;
 }
@@ -136,7 +137,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
-  padding: 13px 0;
+  padding: 25px 0;
 }
 
 .info-bg {
@@ -147,7 +148,7 @@ header {
 
 header div {
   display: flex;
-  justify-content: space-between ;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -169,8 +170,13 @@ header svg {
   width: 50px;
 }
 
-button {
+nav button {
   border: none;
+}
+
+
+.icone {
+  display: none;
 }
 
 .menu {
@@ -192,7 +198,7 @@ button {
   background-color: #415DA1;
   font-weight: bolder;
   font-size: 15px;
-} 
+}
 
 .menu .config-header button {
   color: var(--secondary-color);
@@ -683,52 +689,10 @@ button {
   font-size: 1.2rem;
 }
 
-/* FOOTER */
 
-footer h2 {
-  font-size: 1.9rem;
-}
 
-footer p {
-  font-size: 1.4rem;
-}
 
-footer {
-  background-color: var(--tertiary-color);
-  padding: 30px;
-  color: #39394a;
-}
 
-.colunas {
-  justify-content: space-around;
-  display: flex;
-}
-
-.redes_sociais a img {
-  margin-top: 15px;
-  margin-right: 15px;
-  transition: 0.3s;
-  width: 35px;
-}
-
-.redes_sociais a img:hover {
-  transform: scale(1.2);
-}
-
-footer p a {
-  text-decoration: none;
-  color: #39394a;
-  transition: 0.3s;
-}
-
-footer p a:hover {
-  color: #99a1b4;
-}
-
-footer p {
-  margin-top: 30px;
-  font-weight: 600;
-}
 
 
 @media screen and (max-width: 1300px) {
@@ -790,7 +754,6 @@ footer p {
 }
 
 @media screen and (max-width: 1000px) {
-
   .contato {
     display: block;
   }
@@ -842,7 +805,6 @@ footer p {
 }
 
 @media screen and (max-width: 867px) {
-
   .servicos-cards {
     width: 100%;
   }
@@ -900,6 +862,14 @@ footer p {
 
   .aberto .config-header, .con-age button {
     padding: 20px;
+  }
+  .con-age, .menu .con-age button{
+    background-color: var(--primary-color);
+    color: #415DA1;
+  }
+  .menu .con-age #botao-agendamento{
+    margin: auto;
+    margin-top: 5px;
   }
 
   .menu.aberto li {
@@ -1019,6 +989,7 @@ footer p {
   }
 }
 
+
 @media screen and (max-width: 338px) {
   .servicos-img-texto article {
     min-width: 250px;
@@ -1026,193 +997,90 @@ footer p {
 }
 
 
+/*FOOTER */
+
 footer {
+  background-color: #D5E0FB;
+  font-family: var(--font-family-primary);
+}
+
+footer > li
+ {
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}
+
+
+footer,
+.info {
   display: flex;
-  justify-content: center;
+  list-style-type: none;
+  gap: 50px;
   align-items: center;
-  padding: 20px;
+}
+
+footer > h2
+ {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.somos {
+
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.2px;
+  /* 150% */
 }
 
 .footer-container {
+  padding: 50px;
+}
+
+.info-block > figure
+ {
+  width: 150px;
+  margin: 0;
+  /* flex-shrink: 0;  */
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  /* Largura máxima desejada para o conteúdo */
-  margin: 0 auto;
-  /* Centralizar o conteúdo horizontalmente */
-  text-align: left;
+  flex-direction: column;
+  padding-bottom: 10px;
 }
 
-.lista {
-  font-size: 16px;
-}
+/* Consultas de mídia para responsividade */
+@media screen and (max-width: 768px) {
 
-.info {
-  display: flex;
-
-}
-
-.info-block {
-  flex: 1;
-  margin: 0 40px;
-  /* Espaçamento entre as divs */
-  text-align: left;
-}
-
-/* Aplicar cor de fonte a todos os elementos de texto */
-footer,
-footer p,
-footer h2,
-footer ul,
-footer li {
-  color: #415DA1;
-  font-size: 20px;
-  font-family: Montserrat;
-  font-weight: 700;
-  line-height: 24px;
-  word-wrap: break-word
-}
-
-ul {
-  list-style-type: none;
-}
-
-
-a {
-  text-decoration: none;
-  font-size: 16px;
-}
-
-.telefone,
-.formulario-contato,
-.email {
-  color: #415DA1;
-  font-size: 20px;
-  font-family: Montserrat;
-  font-weight: 400;
-  line-height: 20px;
-  word-wrap: break-word
-}
-
-.prof, li, a {
-  color: #415DA1;
-  font-size: 20px;
-  font-family: Montserrat;
-  font-weight: 400;
-  line-height: 20px;
-  word-wrap: break-word
-}
-
-/* Finanças */
-
-.card-fin {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 5%;
-  padding: 2%;
-  flex-wrap: wrap;
-}
-
-.detalhamento {
-  box-shadow: 3px 3px 5px gray;
-  text-align: center;
-  width: 100%;
-  margin-top: 20px;
-  background-color: white;
-  padding: 30px;
-}
-
-.sessoes {
-  box-shadow: 3px 3px 5px gray;
-  text-align: center;
-  width: 33%;
-  background-color: white;
-  padding: 30px;
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-
-.sessoes h2 {
-  font-size: 50px;
-}
-
-.sessoes p {
-  font-size: 18px;
-}
-
-.sessoes p svg {
-  max-height: 25px;
-  max-width: 40px;
-}
-
-.detalhamento table, thead {
-  padding: 10px;
-  margin: auto;
-} 
-
-.detalhamento caption {
-  font-size: 20px;
-}
-
-.detalhamento table, thead, tr th {
-  font-size: 13px;
-  padding: 10px ;
-}
-
-.detalhamento table, tbody, tr td {
-  font-size: 13px;
-  padding: 35px;
-}
-
-@media screen and (max-width: 1426px) {
-  .sessoes p {
-    font-size: 13px;
+  /* Estilos para iPad e dispositivos similares */
+  footer > .info
+   {
+    flex-direction: column;
   }
 
-  .detalhamento table, thead, tr th {
-    font-size: 10px;
-    padding: 5px ;
-  }
-
-}
-
-@media screen and (max-width: 1127px) {
-
-  .sessoes h2 {
-    font-size: 36px;
-  }
-
-  .sessoes p {
-    font-size: 10px;
+  .info-block > figure
+   {
+    width: 80%;
+    height: auto;
   }
 }
 
-@media screen and (max-width: 948px) {
+@media screen and (max-width: 480px) {
 
-  .sessoes p svg {
-    max-width: 30px;
+  /* Estilos para celulares e dispositivos similares */
+  footer > .info
+   {
+    flex-direction: column;
   }
 
-}
-
-@media screen and (max-width: 913px) {
-
-  .sessoes h2 {
-    font-size: 30px;
+  .info-block > figure
+   {
+    /* width: 80%; */
+    height: auto;
   }
-
-  .sessoes p svg {
-    max-width: 17px;
-  }
-
-  .sessoes {
-    padding: 25px;
-    padding-top: 90px;
-    padding-bottom: 90px;
-  }
-
 }
 
 @media screen and (max-width: 832px) {
@@ -1229,10 +1097,6 @@ a {
     font-size: 7px;
     padding: 3px ;
   }
-
-  .detalhamento {
-    margin: 0px;
-  }
 } 
 
 @media screen and (max-width: 382px) {
@@ -1242,8 +1106,5 @@ a {
     padding: 0px ;
     margin: 0px;
   }
-
-  .detalhamento {
-    margin: 0px;
-  }
 } 
+

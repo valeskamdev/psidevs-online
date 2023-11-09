@@ -8,23 +8,23 @@
   <title>PsiDevs</title>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="shortcut icon" href="assets/logo-favicon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="css/dist/build.css">
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
-
 <header>
     <div class="limitador">
         <h1>
-          <a href="index.html"><img src="assets/logo.png" alt="Logo psidevs" class="logo"/></a>
+          <a href="index.php"><img src="assets/logo.png" alt="Logo psidevs" class="logo"/></a>
         </h1>   
       <nav>
       <h2>
         <a href="" class="icone"><img src="assets/icon-menu.svg" alt="icone de menu"></a>
       </h2>
         <div class="menu">
-          <p class="con-age">
+          <p class="con-age flex wrap">
             <svg width="20" height="22" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_631_457)">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M0.046875 4.57264C0.046875 3.18404 1.17256 2.05835 2.56117 2.05835H13.5326C14.9212 2.05835 16.0469 3.18404 16.0469 4.57264V15.5441C16.0469 16.9327 14.9212 18.0584 13.5326 18.0584H2.56117C1.17256 18.0584 0.046875 16.9327 0.046875 15.5441V4.57264ZM2.56117 3.42978C1.92998 3.42978 1.41831 3.94145 1.41831 4.57264V15.5441C1.41831 16.1753 1.92998 16.6869 2.56117 16.6869H13.5326C14.1638 16.6869 14.6755 16.1753 14.6755 15.5441V4.57264C14.6755 3.94145 14.1638 3.42978 13.5326 3.42978H2.56117Z" fill="white"/>
@@ -39,14 +39,16 @@
             </clipPath>
             </defs>
             </svg>
-            <button type="">Agendar consulta</button>
+            <button type="" id="botao-agendamento">Agendar consulta</button>
           </p>
-          <p class="config-header"><button type="">Criar conta</button></p>
-          <p class="con-age"><button type="">Entrar</button></p>
+          <p id="open-cadastro" data-modal-target="staticModal" data-modal-toggle="staticModal" class="config-header"><button type="button">Criar conta</button></p>
+          <p  id="open" data-modal-target="staticModal" data-modal-toggle="staticModal" class="con-age text-white"><a href="login.php">Entrar</a></p>
         </div>
       </nav>
     </div>
   </header>
+
+  <?php require_once "inc/modal-cadastro.php"?>
 
   <main>
     <article class="destaque">
@@ -335,65 +337,48 @@
   </div>
 
 
-  <footer>
-    <div class="footer-container">
+  <footer > 
+    <div class="footer-container limitador">
       <div class="info">
         <div class="info-block">
           <figure>
-            <img src="assets/logo.svg" alt="Logo Psidev">
+            <img src="assets/logo-vertical.png" alt="Logo Psidev">
           </figure>
-          <p>
+          <p class="somos">
             Somos uma plataforma online que conecta você a psicólogos qualificados.
           </p>
         </div>
 
-        <div class="info-block">
-          <ul>
-            <li><a href="sobre-nos.html">
-                <h2>Sobre</h2>
-              </a>
-            </li>
-            <div class="prof">
-              <li><a href="#">Para Profissionais</a></li>
-              <li><a href="#">Para Clientes</a></li>
-            </div>
-          </ul>
-        </div>
-        <div class="section">
-          <div class="atendimento">
-            <h2>Atendimento</h2>
-          </div>
-          <div class="list">
-            <div class="telefone">
-              (11) 94909-6814
-            </div>
-            <div class="formulario-contato">
-              Formulário de contato
-            </div>
-            <div class="email">
-              Por E-mail
-            </div>
-          </div>
-        </div>
-        <div class="info-block">
-          <h2>Plataforma</h2>
-          <ul>
-            <li><a href="#">Termos de Uso</a></li>
-            <li><a href="#">LGPD</a></li>
-            <li><a href="#">Política de Privacidade</a></li>
-          </ul>
-        </div>
-        <div class="info-block">
-          <h2>Acesso Rápido</h2>
-          <ul>
-            <li><a href="#">Minha Conta</a></li>
-            <li><a href="#">Central de Ajuda</a></li>
-            <li><a href="#">Mapa do Site</a></li>
-          </ul>
+        <div>
+          <h2>Sobre</h2>
+          <li>Para Profissionais</li>
+          <li>Para Clientes</li>
         </div>
 
+
+        <div>
+          <h2>Atendimento</h2>
+          <li>(11)94909-6814</li>
+          <li>Formulário de contato</li>
+          <li>E-mail</li>
+        </div>
+
+        <div>
+          <h2>Plataforma</h2>
+          <li>Termos de uso</li>
+          <li>LGPD</li>
+          <li>Política de privacidade</li>
+        </div>
+
+        <div>
+          <h2>Acesso rápido</h2>
+          <li>Minha conta</li>
+          <li>Central de ajuda</li>
+          <li>Mapa do site</li>
+        </div>
+
+
       </div>
-    </div>
   </footer>
 
   <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
@@ -410,6 +395,8 @@
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
 
+<script src="js/menu.js"></script>
+  <script src="js/modal.js"></script>
   <script src="js/menu.js"></script>
   <script src="js/formulario.js"></script>
 </body>

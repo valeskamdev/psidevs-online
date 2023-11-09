@@ -1,0 +1,15 @@
+{
+  "name": "valeskamdev/psidevs-plataform",
+  "autoload": {
+    "psr-4": {
+      "Psidevs\\": "src/"
+    }
+  },
+  "require": {
+    "ext-pdo": "*",
+    "doctrine/orm": "^2.11.0",
+    "doctrine/dbal": "^3.2",
+    "ramsey/uuid-doctrine": "^2.0",
+    "ext-iconv": "*"
+  }
+}
