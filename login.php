@@ -109,7 +109,7 @@ if (isset($_POST['entrar'])) {
                 <div class="conteudo-direito">
                     <div class="p-6">
                         <div class="flex items-center justify-center mb-6">
-                            <img class="h-auto max-w-xs" src="img/login_avatar.png" alt="avatar generico" width="140" height="190">
+                            <a href="index.php"><img class="h-auto max-w-xs" src="img/login-avatar.png" alt="avatar generico" width="140" height="190"></a>
                         </div>
                         <h2 class="text-center text-sky-800 font-sans text-2xl font-medium">Entre na sua conta</h2>
 
