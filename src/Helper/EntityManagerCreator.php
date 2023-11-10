@@ -26,7 +26,7 @@ class EntityManagerCreator
             'host' => 'localhost',
             'user' => 'root',
             'password' => '',
-            'dbname' => 'teste_psidevs_2',
+            'dbname' => 'psidevs',
         ], $config);
         return new EntityManager($connection, $config);
     }
